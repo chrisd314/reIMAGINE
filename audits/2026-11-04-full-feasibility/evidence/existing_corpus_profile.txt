@@ -1,0 +1,47 @@
+Unit: one narrative = one tale text from an Ashliman page (story version); 1518 raw records -> 1498 narratives (11 merged exact duplicates). Words: median 532, IQR 247-1086; <100 words 82, <200 295; suspected fragments 48; near-duplicate non-representatives 11.
+
+Source citation present: 1318; with at least one 4-digit year: 1267 (85%). Earliest year cited per narrative: median 1888; by century: {1400: 2, 1500: 6, 1600: 18, 1700: 19, 1800: 848, 1900: 370, 2000: 4}
+These are edition/translation/publication years of the source used by the editor; they do not date the narrative. Raw 'date_obtained' values: ['2021', '2022'] (scrape dates).
+
+Collections with a religious or didactic framing (provenance/source/title match; overlaps possible):
+    58  Aesop (all translators) [fable (non-religious)]; ATU types 30; median words 145
+    36  La Fontaine / Bierce / Tolstoy / Krylov / Lessing / Marie de France [fable (non-religious)]; ATU types 24; median words 231
+    26  Panchatantra / Bidpai / Kalilah / Hitopadesa / Anvar [nīti / didactic]; ATU types 18; median words 608
+    18  Jataka [Buddhist]; ATU types 15; median words 804
+    12  Gesta Romanorum [Christian exemplum]; ATU types 12; median words 436
+     2  Sermon exempla (Jacques de Vitry, Odo, Etienne de Bourbon, Bromyard) [Christian exemplum]; ATU types 2; median words 136
+     3  Bible / Talmud / Midrash / Qur'an [scripture/commentary]; ATU types 3; median words 405
+     4  Sufi / Persian didactic (Rumi, Sa'di, Attar) [Islamic (Sufi) didactic]; ATU types 4; median words 170
+  religious-collection versions (Jataka, Gesta, exempla, scripture, Sufi): 39; ATU chapter 'Religious Tales' (750-849): 92
+  ATU types with at least one religious-collection version and one other version: 31 types (38 religious-collection + 293 other versions)
+  NOTE: this is the raw metadata screen. On inspection 2 of the 3 'scripture' hits are folk texts that mention a Bible (tale-1375, tale-1388); the corrected frame (29 types, 36 + 257 versions) is in evidence/annotation_frame_types.csv.
+
+Explicit lesson statements stored inside the narrative text (part of what the current TF-IDF and embeddings read):
+    18  labelled 'Moral'
+    13  'Application'/'Reflexion'
+     2  'this story/fable shows/teaches'
+     6  'teaches us'/'we learn'/'learn from this'
+    34  any of the above (2.3% of narratives); in religious-collection versions: 7
+
+  ATU 280A: 10 versions, 3 with a stated lesson. Stated lessons (first 150 chars):
+     tale-0051 'An Ant and a Grasshopper': "Reflexion: Here's a reproof to men of sensuality, and pleasure. The moral preaches industry, and beats down sloth, and shews that after-wit is nothing"
+     tale-0053 'The Ant and the Grasshopper (Bewick)': 'Application: As summer is the season in which the industrious laborious husbandman lays up his supplies for the winter, so youth and manhood are the t'
+     tale-0054 'The Ant and the Grasshopper (Croxall)': 'Application: As summer is the season of the year in which the industrious and laborious husbandman gathers and lays up such fruits as may supply his n'
+
+  ATU 275: 31 versions, 3 with a stated lesson. Stated lessons (first 150 chars):
+     tale-1189 'The Elephant and the Ants': 'This story teaches us not to despise the poor man, because one day he may have an opportunity to put us to shame. From this story of the elephant we s'
+     tale-1195 'The Hare and the Tortoise (Jacobs)': 'Moral: Plodding wins the race.'
+     tale-1196 'The Hare and The Tortoise (Croxall)': 'THE APPLICATION Industry and application to business makes amends for the want of a quick and ready wit. Hence it is, that the victory is not always t'
+
+  ATU 156: 6 versions, 2 with a stated lesson. Stated lessons (first 150 chars):
+     tale-0027 'Androcles': 'Moral: Gratitude is the sign of noble souls.'
+     tale-0029 'Of the Remembrance of Benefits': 'Application: My beloved, the knight is the world; the lame lion is the human race; the thorn, original sin, drawn out by baptism. The pit represents p'
+
+Editor notes stored with the tales: non-empty 816; containing a transmission/origin claim word: 49. Examples:
+     tale-0665: ..."The second half of this tale belongs to type 425 (The Search for the Lost Husband). Link to another translation of this tale: Ignácz Kúnos, 'The Enchanted Hog,' Turkish [and Romanian] Fairy Tales and Folk Tales, translated from the Hungarian version by R"
+     tale-0946: ...' probably a late addition, as it does not appear in many of the MSS., e.g., the Bresl. Edit. The wife usually spreads a cloth over the cage; this in the Turkish translation becomes a piece of leather.'
+     tale-1036: ...'Another translation of this legend is found in Jacob Grimm, Teutonic Mythology, translated by James Steven Stallybrass, vol. 3 (London: George Bell and Sons, 1883'
+     tale-1501: ..."Link to another translation of this story: W. R. S. Ralston, 'Emilian the Fool,' Russian Folk-Tales (London: Smith, Elder, and Company, 1873), pp. 263-67."
+     tale-0046: ..." note by Teit concerning his source: 'This myth ... I collected at Hope [on the Fraser River], where interior influence is rather strong. Similar versions are said to be current among the Spuzzum Indians. The narrator was an old man who could speak some Thomp"
+
+Cleaning flags on raw records: {'': 1421, 'suspected_truncated_start': 42, 'suspected_truncated_end': 34, 'short_text': 11, 'suspected_truncated_end;suspected_truncated_start': 3, 'residual_marker': 3, 'repetition_collapsed;suspected_truncated_start': 2, 'tail_contains_new_tale': 1, 'short_text;suspected_truncated_start': 1}

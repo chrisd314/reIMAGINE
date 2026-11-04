@@ -1,0 +1,28 @@
+{
+  "run_id": "ouaw-20261030-ed9feb8a",
+  "schema_version": "1.0.0",
+  "created": "2026-10-30T02:22:18",
+  "seconds": 225.5,
+  "config_hash": "75d4bf724561",
+  "inputs_sha256": {
+    "narratives.parquet": "2e177cdea4caec75da1a9899bc6a240f6f7c0d625f0e9878b1d7f4bf229dcbd5",
+    "lexical_tfidf.npz": "e3ec0cabd0a8b2af5633d7db7679d8814b46b22e4bee5ecaf567f12b6c474ed3",
+    "semantic_vectors.npz": "b1570870829bfbc397ddc61500e5abe5226ae03e062290b2f316b93abb94b65d"
+  },
+  "versions": {
+    "python": "3.11.9",
+    "numpy": "2.4.6",
+    "pandas": "3.1.0",
+    "networkx": "3.6.1",
+    "scikit_learn": "1.9.1",
+    "sentence_transformers": "6.2.0",
+    "torch": "2.15.0+cpu"
+  },
+  "cohort_sizes": {
+    "text": 1498,
+    "joint": 1133,
+    "joint_nodup": 1125,
+    "joint_nofrag": 1094,
+    "joint_balanced": 475
+  }
+}

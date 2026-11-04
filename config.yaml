@@ -1,0 +1,218 @@
+# Once Upon a World: pipeline configuration.
+# Analysis parameters below the `sources` block are frozen in ANALYSIS_PLAN.md
+# before any agreement statistic is computed. Later changes are logged there.
+
+sources:
+  trilogy_repository: https://github.com/j-hagedorn/trilogy
+  trilogy_commit: d57c2cefd0b216c8ce5c251f618c3e931c732d0a
+  files:
+    - filename: trilogy/aft.csv
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/data/aft.csv
+      format: csv
+      role: primary corpus (one row per recorded tale; ATU label, provenance, source, text)
+      citation: &aftcite "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78"
+      stated_licence: &trilogylic "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
+    - filename: trilogy/README.md
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/README.md
+      format: markdown
+      role: repository documentation and stated licence
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/LICENSE.md
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/LICENSE.md
+      format: markdown
+      role: licence text shipped with the repository
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/data_dictionary.md
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/docs/data_dictionary.md
+      format: markdown
+      role: field definitions for aft.csv and the type/motif tables
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/atu_df.csv
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/data/atu_df.csv
+      format: csv
+      role: type-level ATU descriptions (reference only; not tale-level annotation)
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/atu_seq.csv
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/data/atu_seq.csv
+      format: csv
+      role: type-level motif sequences per ATU type (reference only; not tale-level annotation)
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/tmi.csv
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/data/tmi.csv
+      format: csv
+      role: Thompson Motif Index entries (reference only)
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/atu_combos.csv
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/data/atu_combos.csv
+      format: csv
+      role: documented co-occurring tale-type combinations (reference only)
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/fetch_ashliman.R
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/fetch/fetch_ashliman.R
+      format: R source (read as documentation; never executed)
+      role: documents how aft.csv fields were scraped and derived
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: trilogy/aft_article_johd.Rmd
+      url: https://raw.githubusercontent.com/j-hagedorn/trilogy/{commit}/docs/analyses/aft_article_intro/aft_article_johd.Rmd
+      format: R Markdown (read as documentation)
+      role: source of the corpus paper; describes collection and curation
+      citation: *aftcite
+      stated_licence: *trilogylic
+    - filename: metadata/zenodo_6575263.json
+      url: https://zenodo.org/api/records/6575263
+      version: Zenodo API snapshot at retrieval time
+      format: json
+      role: metadata of the archived release described in the paper (version, licence)
+      citation: *aftcite
+      stated_licence: "as recorded in the Zenodo metadata itself"
+    - filename: metadata/crossref_johd78.json
+      url: https://api.crossref.org/works/10.5334/johd.78
+      version: Crossref API snapshot at retrieval time
+      format: json
+      role: bibliographic metadata used to verify the corpus citation
+      citation: *aftcite
+      stated_licence: "Crossref metadata (facts, CC0 per Crossref)"
+    - filename: geo/ne_50m_admin_0_countries.geojson
+      url: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson
+      version: Natural Earth v5.1.2 (git tag)
+      format: geojson
+      role: country label points (LABEL_X/LABEL_Y) and UN sub-regions for recorded country associations
+      citation: "Natural Earth (2022). Admin 0 - Countries, 1:50m, v5.1.2. https://www.naturalearthdata.com/"
+      stated_licence: "Public domain (Natural Earth terms of use)"
+    - filename: geo/ne_50m_admin_0_map_subunits.geojson
+      url: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_map_subunits.geojson
+      version: Natural Earth v5.1.2 (git tag)
+      format: geojson
+      role: label points for England, Scotland and Wales (map subunits of the United Kingdom)
+      citation: "Natural Earth (2022). Admin 0 - Map subunits, 1:50m, v5.1.2. https://www.naturalearthdata.com/"
+      stated_licence: "Public domain (Natural Earth terms of use)"
+    - filename: metadata/ashliman_folktexts.html
+      url: https://sites.pitt.edu/~dash/folktexts.html
+      version: page snapshot at retrieval time (single page; the site was not crawled)
+      format: html
+      role: attribution and copyright notice of the underlying collection
+      citation: "Ashliman, D. L. (1996-). Folktexts: A library of folktales, folklore, fairy tales, and mythology. University of Pittsburgh. https://sites.pitt.edu/~dash/folktexts.html"
+      stated_licence: "Copyright notice as printed on the page (see LICENSE_NOTES.md)"
+
+cleaning:
+  # Automatic trailing cut: earliest strong post-narrative marker (source line,
+  # (City: Publisher, Year) citation, navigation, classification note, copyright,
+  # editorial note) located at or after this fraction of the text length.
+  tail_marker_min_relative_position: 0.5
+  # Tails holding a new tale opening and more than this many words are flagged for review.
+  tail_review_max_words: 80
+  # Texts shorter than this are flagged for inspection (not excluded by the flag itself).
+  short_text_words: 30
+  # Texts with fewer words than this after cleaning are excluded as empty.
+  min_words_after_cleaning: 5
+
+cohorts:
+  # Mapping confidence levels accepted as a defensible geographical label.
+  geo_min_confidence: [high, medium]
+  near_duplicate:
+    # Word 5-gram shingles; a pair sharing at least this Jaccard overlap is flagged
+    # as a near duplicate (edition reuse or near-identical copy) for inspection.
+    shingle_words: 5
+    jaccard_threshold: 0.5
+
+# ---------------------------------------------------------------------------
+# Analysis parameters frozen on 2026-10-29 before any agreement statistic was
+# computed (see ANALYSIS_PLAN.md). Changes after that date are logged there.
+# ---------------------------------------------------------------------------
+lexical:
+  fit_cohort: text            # one TF-IDF space fitted on the text cohort, reused for every subset
+  unicode_normalisation: NFKC
+  lowercase: true
+  expand_negated_contractions: true   # don't -> do not, can't -> can not, won't -> will not, ...
+  token_pattern: '(?u)\b[^\W\d_]{2,}\b'   # letters only, at least two
+  stop_words: sklearn_english_minus_negation
+  negation_words_kept: ['no', not, nor, never, none, nothing, nobody, neither, nowhere, cannot, without, noone, nevertheless]   # 'no' quoted: bare no is boolean false in YAML
+  min_df: 2
+  sublinear_tf: true
+  norm: l2
+  smooth_idf: true
+  name_masking_sensitivity:
+    rule: "word capitalised in more than half of its occurrences in the text cohort is treated as a name (week 6, 'Take the names out')"
+    threshold: 0.5
+
+semantic:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  model_max_tokens: 256          # verified: max_seq_length 256 including [CLS]/[SEP]
+  chunk_max_tokens: 200          # primary, including special tokens
+  alt_chunk_max_tokens: 128      # sensitivity
+  min_tail_tokens: 32            # a final remainder shorter than this joins the previous chunk if the result fits
+  chunk_vectors_normalised: true # the model ends with a Normalize module
+  pooling_primary: mean          # equal weight per chunk, then L2-normalise the tale vector
+  pooling_sensitivity: token_weighted
+  batch_size: 64
+
+graphs:
+  densities: [0.05, 0.10, 0.15]
+  primary_density: 0.10
+  louvain_resolution: 1.0
+  seeds: [42, 7, 19]
+  primary_seed: 42
+  modularity_null:
+    shuffles: 20                 # degree-preserving edge swaps, Louvain rerun on each (week 4)
+    swaps_per_edge: 10
+    seed: 2026
+  display_backbone:
+    # Drawing only; never used for statistics. Changed 2026-10-29 (see ANALYSIS_PLAN.md change log):
+    # the disparity filter kept 0-42 edges at alpha <= 0.2 because edge weights in these
+    # thresholded similarity graphs are nearly uniform per node, so each tale's k strongest
+    # edges in the analysis graph are drawn instead.
+    method: strongest_per_node
+    k: 5
+    alpha_tried: 0.05
+    max_edges_per_node_listed: 20
+
+evaluation:
+  label_systems: [atu, place, region]
+  diagnostic_label_systems: [source]
+  permutations: 1000
+  permutation_seed: 20261029
+  p_value: "one-sided upper: (1 + #(null >= observed)) / (1 + N)"
+  neighbours_k: 10
+  balanced_subset: {by: broad_region, cap: 60, seed: 42}
+
+distance:
+  earth_radius_km: 6371.0088
+  bins_km: [0, 1, 500, 1000, 2000, 4000, 8000, 12000, 20100]
+  permutations: 1000
+  permutation_seed: 4242
+  correlation: spearman
+  display_sample_pairs: 6000
+  display_sample_seed: 11
+
+validation:
+  seed: 7
+  similarity_representation: semantic
+  bands: {high: [0.98, 1.0], medium: [0.70, 0.90], low: [0.0, 0.50]}   # percentiles of all joint-cohort pair similarities
+  per_stratum_dev: 2
+  per_stratum_final: 5
+  max_pairs_per_tale: 2
+
+export:
+  # Local preview includes full texts. Set to false before any public deployment
+  # until the publication questions in LICENSE_NOTES.md are resolved.
+  include_full_texts: true
+  # Story examples, chosen after inspecting computed neighbours (presentation only;
+  # never used in any statistic). One example is not evidence of migration.
+  opening_pair:
+    a: tale-0086
+    b: tale-0087
+    a_chunk: 1
+    b_chunk: 0
+    note: "ATU 425C, Russia and China. Ranked 8th by embedding similarity among same-type pairs from different continents (length >= 250 words, no fragments or near-duplicates, different sources); chosen because its best-matching passages show a clear shared episode."
+  story_pairs:
+    unexpected: {a: tale-0173, b: tale-0665, note: "Highest embedding similarity between tales of different ATU type and region (0.918)."}
+    weak: {a: tale-1139, b: tale-1144, note: "One of the least similar same-type pairs (ATU 175, embeddings 0.280)."}

@@ -1,0 +1,74 @@
+Hand review (rows) vs rule screen (columns) on the 30 reviewed links:
+rule_final    rejected  unresolved  validated
+final_status                                 
+rejected             6           2          0
+unresolved           1           7          0
+validated            1           2         11
+
+Coverage funnel (rule screen; hand review suggests about half of world-religion candidates survive):
+    926  Berezkin traditions in the coordinate snapshot (macleginn, 926 x 2,138)
+    866  ... with a motif profile of at least 10 motifs
+    926  ... with an interpretable location (area centroid, mostly whole/half degree)
+    190  ... with any candidate link to a religion-coded record by name or published EA assignment (SCCS, Pulotu, DRH)
+     68  ... with a rule-validated identity link to an SCCS society
+     68  ... whose SCCS society has a SCCS2002 code (any, incl. indigenous)
+     23  ... coded with a world religion (deep or superficial; Buddhist; Hindu)
+     14  ... world religion excluding 'superficial' Christianization/Islamization
+      4  ... with a branch-level label (Buddhist branches only)
+     22  ... world-religion links that also pass the time check
+     21  ... and have >= 10 motifs (final world-religion sample)
+     37  comparison group: rule-validated, time-compatible, indigenous-coded, >= 10 motifs
+     35  Pulotu name candidates (traditions); identity still to be checked
+     75  DRH eHRAF-entry name candidates (traditions); no world-religion affiliation field
+
+Final rule-screened sample by SCCS region and religion family:
+family                     Buddhism  Christianity  Indigenous  Islam  All
+t_region                                                                 
+Brazil                            0             0           5      0    5
+Caucasus                          0             1           1      0    2
+Central America                   0             0           1      0    1
+China                             2             0           0      0    2
+East Tropical Africa              0             0           3      0    3
+Eastern Asia                      0             0           1      0    1
+Eastern Canada                    0             0           2      0    2
+Eastern Europe                    0             1           0      0    1
+Indian Subcontinent               0             0           0      1    1
+Indo-China                        1             0           0      0    1
+Mexico                            0             2           0      0    2
+Middle Asia                       0             0           0      1    1
+North-Central U.S.A.              0             0           2      0    2
+Northeast Tropical Africa         0             2           0      1    3
+Northern Africa                   0             0           0      1    1
+Northern South America            0             0           2      0    2
+Northwestern U.S.A.               0             0           2      0    2
+Russian Far East                  0             1           1      0    2
+South-Central U.S.A.              0             0           2      0    2
+Southeastern Europe               0             0           0      1    1
+Southern South America            0             0           2      0    2
+Southwestern U.S.A.               0             0           1      0    1
+Subarctic America                 0             1           4      0    5
+West Tropical Africa              0             0           2      2    4
+Western Asia                      0             0           0      2    2
+Western Canada                    0             1           3      0    4
+Western South America             0             0           3      0    3
+All                               3             9          37      9   58
+
+World-religion part by depth/branch: {'Islam:deep': 6, 'Christianity:superficial': 6, 'Christianity:deep': 3, 'Islam:superficial': 3, 'Buddhism:Vajrayana': 1, 'Buddhism:Mahayana': 1, 'Buddhism:Hinayana/Theravada': 1}
+
+Pairs among the 58 final traditions by distance band (SCCS coordinates):
+same_family   different family  same family
+band                                       
+<500 km                      2            8
+500-1500 km                 21           55
+1500-3000 km                59           84
+>3000 km                   830          594
+
+Pairs where both traditions carry a world religion:
+same_family   different family  same family
+band                                       
+<500 km                      1            1
+500-1500 km                  3            8
+1500-3000 km                12            8
+>3000 km                   119           58
+
+Different-family world-religion pairs closer than 1500 km: {'Christianity-Islam': 4}

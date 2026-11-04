@@ -1,0 +1,19 @@
+{
+  "raw_records": 1518,
+  "records_excluded_non_narrative": 9,
+  "records_usable": 1509,
+  "exact_duplicate_records_merged": 11,
+  "text_cohort": 1498,
+  "atu_conflicts": 5,
+  "atu_cohort": 1493,
+  "geo_unknown_in_atu_cohort": 360,
+  "geo_conflict_in_atu_cohort": 0,
+  "joint_cohort": 1133,
+  "distance_cohort": 1084,
+  "near_duplicate_pairs": 11,
+  "near_dup_reduced_text_cohort": 1487,
+  "suspected_fragments_text_cohort": 48,
+  "joint_distinct_atu": 164,
+  "joint_distinct_place": 89,
+  "joint_distinct_region": 13
+}

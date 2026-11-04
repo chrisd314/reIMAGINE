@@ -1,0 +1,9 @@
+Berezkin snapshots: macleginn 926 vs Michalopoulos-Xue 958 joined on normalised names: {'both': 853, 'right_only': 105, 'left_only': 73}
+M&X EA groups: 1265; EA names not found in D-PLACE EA by normalised name: 168
+SCCS        route=name:  104 candidate links,  104 traditions,  101 target records
+SCCS        route=ea  :  157 candidate links,  153 traditions,  157 target records
+SCCS        route=near:  364 candidate links,  364 traditions,  154 target records
+Pulotu      route=name:   42 candidate links,   35 traditions,   41 target records
+DRH(eHRAF)  route=name:   95 candidate links,   75 traditions,   93 target records
+SCCS candidate pairs by supporting routes: {'near': 250, 'ea+name+near': 68, 'ea': 38, 'ea+near': 35, 'ea+name': 16, 'name+near': 11, 'name': 9}
+SCCS pairs supported by name or EA route: 177 pairs, 173 traditions, 168 SCCS societies

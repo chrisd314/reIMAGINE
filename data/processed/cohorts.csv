@@ -1,0 +1,1499 @@
+narrative_id,in_text,in_atu,in_joint,in_distance,suspected_fragment,near_dup_representative,exclusion_reasons
+tale-0001,True,True,True,True,False,True,
+tale-0002,True,True,True,True,False,True,
+tale-0003,True,True,True,True,False,True,
+tale-0004,True,True,True,True,False,True,
+tale-0005,True,True,True,True,False,True,
+tale-0006,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0007,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0008,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0009,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0010,True,True,True,True,False,True,
+tale-0011,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0012,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0013,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0014,True,True,True,True,False,True,
+tale-0015,True,True,True,True,False,True,
+tale-0016,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0017,True,True,True,True,False,True,
+tale-0018,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0019,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0020,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0021,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0022,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0023,True,True,True,True,False,True,
+tale-0024,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0025,True,True,False,False,True,True,no defensible place and broad region (author)
+tale-0026,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0027,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0028,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0029,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0030,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0031,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0032,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0033,True,True,True,True,False,True,
+tale-0034,True,True,True,True,False,True,
+tale-0035,True,True,True,True,False,True,
+tale-0036,True,True,True,True,False,True,
+tale-0037,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0038,True,True,True,True,False,True,
+tale-0039,True,True,True,True,False,True,
+tale-0040,True,True,True,True,False,True,
+tale-0041,True,True,True,True,False,True,
+tale-0042,True,True,True,True,False,True,
+tale-0043,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0044,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0045,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0046,True,True,False,False,False,True,no defensible place and broad region (community)
+tale-0047,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0048,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0049,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0050,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0051,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0053,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0054,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0055,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0056,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0057,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0058,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0059,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0060,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0061,True,True,True,True,False,True,
+tale-0062,True,True,True,True,False,True,
+tale-0063,True,True,True,True,False,True,
+tale-0064,True,True,True,True,False,True,
+tale-0065,True,True,True,True,False,True,
+tale-0066,True,True,True,True,False,True,
+tale-0067,True,True,True,True,False,True,
+tale-0068,True,True,True,True,False,True,
+tale-0069,True,True,True,True,False,True,
+tale-0070,True,True,True,True,False,True,
+tale-0071,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0072,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0073,True,True,True,True,False,True,
+tale-0074,True,True,True,True,False,True,
+tale-0075,True,True,True,True,False,True,
+tale-0076,True,True,True,True,False,True,
+tale-0077,True,True,True,True,False,True,
+tale-0078,True,True,True,True,False,True,
+tale-0079,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0080,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0081,True,True,True,True,False,True,
+tale-0082,True,True,True,True,False,True,
+tale-0083,True,True,True,True,False,True,
+tale-0084,True,True,True,True,False,True,
+tale-0085,True,True,True,True,False,True,
+tale-0086,True,True,True,True,False,True,
+tale-0087,True,True,True,True,False,True,
+tale-0088,True,True,True,True,False,True,
+tale-0089,True,True,True,True,False,True,
+tale-0090,True,True,True,True,False,True,
+tale-0091,True,True,True,True,False,True,
+tale-0092,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0093,True,True,True,True,False,True,
+tale-0094,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0095,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0096,True,True,True,True,False,True,
+tale-0097,True,True,True,True,False,True,
+tale-0098,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0099,True,True,True,True,False,True,
+tale-0100,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0101,True,True,True,True,False,True,
+tale-0102,True,True,True,True,False,True,
+tale-0103,True,True,True,True,False,True,
+tale-0104,True,True,True,True,False,True,
+tale-0105,True,True,True,True,False,True,
+tale-0106,True,True,False,False,False,True,no defensible place and broad region (region)
+tale-0107,True,True,True,True,False,True,
+tale-0108,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0109,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0110,True,True,True,True,False,True,
+tale-0111,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0112,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0113,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0114,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0115,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0116,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0117,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0118,True,True,True,True,True,True,
+tale-0119,True,True,True,True,False,True,
+tale-0120,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0121,True,True,True,True,False,True,
+tale-0122,True,True,True,True,False,True,
+tale-0123,True,True,True,True,False,True,
+tale-0124,True,True,True,True,True,True,
+tale-0125,True,True,True,True,False,True,
+tale-0126,True,True,True,True,False,True,
+tale-0127,True,True,True,True,False,True,
+tale-0128,True,True,True,True,False,True,
+tale-0129,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0130,True,True,True,True,False,True,
+tale-0131,True,True,True,True,False,True,
+tale-0132,True,True,True,True,False,True,
+tale-0133,True,True,True,True,False,True,
+tale-0134,True,True,True,True,False,True,
+tale-0135,True,True,True,True,False,True,
+tale-0136,True,True,True,True,False,True,
+tale-0137,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0138,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0139,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0140,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0141,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0142,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0143,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0144,True,True,True,True,False,True,
+tale-0145,True,True,True,True,False,True,
+tale-0146,True,True,True,True,False,True,
+tale-0147,True,True,True,True,False,True,
+tale-0148,True,True,True,True,False,True,
+tale-0149,True,True,True,True,True,True,
+tale-0150,True,True,True,True,True,True,
+tale-0151,True,True,True,True,False,True,
+tale-0152,True,True,True,True,False,True,
+tale-0153,True,True,True,True,False,True,
+tale-0154,True,True,True,True,False,True,
+tale-0155,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0156,True,True,True,True,True,True,
+tale-0157,True,True,True,True,False,True,
+tale-0158,True,True,True,True,False,True,
+tale-0159,True,True,True,True,False,True,
+tale-0160,True,True,True,True,False,True,
+tale-0161,True,True,True,True,False,True,
+tale-0162,True,True,True,True,False,True,
+tale-0163,True,True,True,True,False,True,
+tale-0164,True,True,True,True,False,True,
+tale-0165,True,True,True,True,False,True,
+tale-0166,True,True,True,True,False,True,
+tale-0167,True,True,True,True,False,True,
+tale-0168,True,True,True,True,False,True,
+tale-0169,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0170,True,True,True,True,False,True,
+tale-0171,True,True,True,True,False,True,
+tale-0172,True,True,True,True,False,True,
+tale-0173,True,True,True,True,False,True,
+tale-0174,True,True,True,True,False,True,
+tale-0175,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0176,True,True,True,True,False,True,
+tale-0177,True,True,True,True,False,True,
+tale-0178,True,True,True,True,False,True,
+tale-0179,True,True,True,True,False,True,
+tale-0180,True,True,True,True,False,True,
+tale-0181,True,True,True,True,False,True,
+tale-0182,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0183,True,True,True,True,False,True,
+tale-0184,True,True,True,True,False,True,
+tale-0185,True,True,True,True,False,True,
+tale-0186,True,True,True,True,False,True,
+tale-0187,True,True,True,True,False,True,
+tale-0188,True,True,True,True,False,True,
+tale-0189,True,True,True,True,False,True,
+tale-0190,True,True,True,True,False,True,
+tale-0191,True,True,True,True,False,True,
+tale-0192,True,True,True,True,False,True,
+tale-0193,True,True,True,True,False,True,
+tale-0194,True,True,True,True,False,True,
+tale-0195,True,True,True,True,False,False,
+tale-0196,True,True,True,True,False,True,
+tale-0197,True,True,True,True,False,True,
+tale-0198,True,True,True,True,False,True,
+tale-0199,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0200,True,True,True,True,False,True,
+tale-0201,True,True,False,False,False,True,no defensible place and broad region (region)
+tale-0202,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0203,True,True,True,True,False,True,
+tale-0204,True,True,True,True,False,True,
+tale-0205,True,True,True,True,False,True,
+tale-0206,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0207,True,True,True,True,False,True,
+tale-0208,True,False,False,False,False,True,"ATU labels conflict across identical copies: 1655, 2032"
+tale-0209,True,True,True,True,False,True,
+tale-0210,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0211,True,True,True,True,False,True,
+tale-0212,True,True,True,True,False,True,
+tale-0213,True,True,True,True,False,True,
+tale-0214,True,True,True,True,False,True,
+tale-0215,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0216,True,True,True,True,False,True,
+tale-0217,True,True,True,True,False,True,
+tale-0218,True,True,True,True,False,True,
+tale-0219,True,True,False,False,True,True,no defensible place and broad region (unknown)
+tale-0220,True,True,True,True,False,True,
+tale-0221,True,True,True,True,False,True,
+tale-0222,True,True,False,False,True,True,no defensible place and broad region (collection)
+tale-0223,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0224,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0225,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0226,True,True,True,True,False,True,
+tale-0227,True,True,True,True,False,True,
+tale-0228,True,True,True,True,False,True,
+tale-0229,True,True,True,True,False,True,
+tale-0230,True,True,True,True,False,True,
+tale-0231,True,True,True,True,False,True,
+tale-0232,True,True,True,True,False,True,
+tale-0233,True,True,True,True,False,True,
+tale-0234,True,True,True,True,False,True,
+tale-0235,True,True,True,True,True,True,
+tale-0236,True,True,True,True,False,True,
+tale-0237,True,True,True,True,False,True,
+tale-0238,True,True,True,True,True,True,
+tale-0239,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0240,True,True,True,True,False,True,
+tale-0241,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0242,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0243,True,True,True,True,False,True,
+tale-0244,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0245,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0246,True,True,True,True,False,True,
+tale-0247,True,True,True,True,False,True,
+tale-0248,True,True,True,True,False,True,
+tale-0249,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0250,True,True,True,True,False,True,
+tale-0251,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0252,True,True,True,True,False,True,
+tale-0253,True,True,True,True,False,True,
+tale-0254,True,True,True,True,False,True,
+tale-0255,True,True,True,True,False,True,
+tale-0256,True,True,True,True,True,True,
+tale-0257,True,True,True,True,False,True,
+tale-0258,True,True,True,True,False,True,
+tale-0259,True,True,True,True,False,True,
+tale-0260,True,True,True,True,False,True,
+tale-0261,True,True,True,True,False,True,
+tale-0262,True,True,True,True,False,True,
+tale-0263,True,True,True,True,False,True,
+tale-0264,True,True,True,True,False,True,
+tale-0265,True,True,True,True,False,True,
+tale-0266,True,True,True,True,False,True,
+tale-0267,True,True,True,True,False,True,
+tale-0268,True,True,True,True,False,True,
+tale-0269,True,True,True,True,False,True,
+tale-0272,True,True,True,True,False,True,
+tale-0274,True,True,True,True,False,True,
+tale-0275,True,True,True,True,False,True,
+tale-0276,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0277,True,True,True,True,False,True,
+tale-0278,True,True,True,True,False,True,
+tale-0279,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0280,True,True,True,True,False,True,
+tale-0281,True,True,True,True,False,True,
+tale-0282,True,True,True,True,False,True,
+tale-0283,True,True,True,True,False,True,
+tale-0284,True,True,True,True,False,True,
+tale-0285,True,True,True,True,False,True,
+tale-0286,True,True,True,True,False,True,
+tale-0287,True,True,True,True,False,True,
+tale-0288,True,True,True,True,False,True,
+tale-0289,True,True,True,True,False,True,
+tale-0290,True,True,True,True,False,True,
+tale-0291,True,True,True,True,False,True,
+tale-0292,True,True,True,True,False,True,
+tale-0293,True,True,True,True,False,True,
+tale-0294,True,True,True,True,False,True,
+tale-0295,True,True,True,True,False,True,
+tale-0296,True,True,True,True,False,True,
+tale-0297,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0298,True,True,True,True,False,True,
+tale-0299,True,True,True,True,False,True,
+tale-0300,True,True,True,True,False,True,
+tale-0301,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0302,True,True,True,True,False,True,
+tale-0303,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0304,True,True,True,True,False,True,
+tale-0305,True,True,True,True,False,True,
+tale-0306,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0307,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0308,True,True,True,True,False,True,
+tale-0309,True,True,True,True,False,True,
+tale-0310,True,True,True,True,False,True,
+tale-0311,True,True,True,True,False,True,
+tale-0312,True,True,True,True,False,True,
+tale-0313,True,True,True,True,True,True,
+tale-0314,True,True,True,True,False,True,
+tale-0315,True,True,True,True,False,True,
+tale-0316,True,True,True,True,False,True,
+tale-0317,True,True,True,True,False,True,
+tale-0318,True,True,True,True,False,True,
+tale-0319,True,True,True,True,False,True,
+tale-0320,True,True,True,True,False,True,
+tale-0321,True,True,True,True,False,True,
+tale-0322,True,True,True,True,False,True,
+tale-0323,True,True,True,True,False,True,
+tale-0324,True,True,True,True,False,True,
+tale-0325,True,True,True,True,False,True,
+tale-0326,True,True,True,True,True,True,
+tale-0327,True,True,True,True,False,True,
+tale-0328,True,True,True,True,False,True,
+tale-0329,True,True,True,True,False,True,
+tale-0330,True,True,True,True,True,True,
+tale-0331,True,True,True,True,False,True,
+tale-0332,True,True,True,True,False,True,
+tale-0333,True,True,True,True,False,True,
+tale-0334,True,True,True,True,False,True,
+tale-0335,True,True,True,True,False,True,
+tale-0336,True,True,True,True,False,True,
+tale-0337,True,True,True,True,False,True,
+tale-0338,True,True,True,True,False,True,
+tale-0339,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0340,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0341,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0342,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0343,True,True,True,True,False,True,
+tale-0344,True,True,True,True,False,True,
+tale-0345,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0346,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0347,True,True,True,True,False,True,
+tale-0348,True,True,True,True,False,True,
+tale-0349,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0350,True,True,True,True,False,True,
+tale-0351,True,True,True,True,False,True,
+tale-0352,True,True,True,True,False,True,
+tale-0353,True,True,True,True,False,True,
+tale-0354,True,True,True,True,False,True,
+tale-0355,True,True,True,True,False,True,
+tale-0356,True,True,True,True,False,True,
+tale-0357,True,True,True,True,False,True,
+tale-0358,True,True,True,True,False,True,
+tale-0359,True,True,True,True,False,True,
+tale-0360,True,True,True,True,False,True,
+tale-0361,True,True,True,True,False,True,
+tale-0362,True,False,False,False,False,True,"ATU labels conflict across identical copies: 1174, 1176"
+tale-0363,True,True,True,True,False,True,
+tale-0364,True,True,True,True,False,True,
+tale-0365,True,True,True,True,False,True,
+tale-0366,True,True,True,True,False,True,
+tale-0367,True,True,True,True,False,True,
+tale-0368,True,True,True,True,False,True,
+tale-0369,True,True,True,True,False,True,
+tale-0370,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0372,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0373,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0374,True,True,True,True,False,True,
+tale-0375,True,True,True,True,False,True,
+tale-0376,True,True,True,True,False,True,
+tale-0377,True,True,True,True,False,True,
+tale-0378,True,True,True,True,False,True,
+tale-0379,True,True,True,True,False,True,
+tale-0380,True,True,True,True,False,True,
+tale-0381,True,True,True,True,False,True,
+tale-0382,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0383,True,True,True,True,False,True,
+tale-0384,True,True,True,True,False,False,
+tale-0385,True,True,True,True,False,True,
+tale-0386,True,True,True,True,False,True,
+tale-0387,True,True,True,True,False,True,
+tale-0388,True,True,True,True,False,True,
+tale-0389,True,True,True,True,False,True,
+tale-0390,True,True,True,True,False,True,
+tale-0391,True,True,True,True,False,True,
+tale-0392,True,True,True,True,False,True,
+tale-0393,True,True,True,True,False,True,
+tale-0394,True,True,True,True,False,True,
+tale-0395,True,True,True,True,False,True,
+tale-0396,True,True,True,True,False,True,
+tale-0397,True,True,True,True,False,True,
+tale-0398,True,True,True,True,False,True,
+tale-0399,True,True,True,True,False,True,
+tale-0400,True,True,True,True,False,True,
+tale-0401,True,True,True,True,False,True,
+tale-0402,True,True,True,True,False,True,
+tale-0403,True,True,True,True,False,True,
+tale-0404,True,True,True,True,False,True,
+tale-0405,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0406,True,True,True,True,False,True,
+tale-0407,True,True,True,True,False,True,
+tale-0408,True,True,True,True,False,True,
+tale-0409,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0410,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0411,True,True,True,True,False,True,
+tale-0412,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0413,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0414,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0415,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0416,True,True,True,True,False,True,
+tale-0417,True,True,True,True,False,True,
+tale-0418,True,True,True,True,False,True,
+tale-0419,True,True,True,True,False,True,
+tale-0420,True,True,True,True,False,True,
+tale-0421,True,True,True,True,False,True,
+tale-0422,True,True,True,True,False,True,
+tale-0423,True,True,True,True,False,True,
+tale-0424,True,True,True,True,False,True,
+tale-0425,True,True,True,True,False,True,
+tale-0426,True,True,True,True,False,True,
+tale-0427,True,True,True,True,False,True,
+tale-0428,True,True,True,True,False,True,
+tale-0429,True,True,False,False,True,True,no defensible place and broad region (collection)
+tale-0430,True,True,True,True,False,True,
+tale-0431,True,True,True,True,False,True,
+tale-0432,True,True,True,True,False,True,
+tale-0433,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0434,True,True,True,True,False,True,
+tale-0435,True,True,True,True,False,True,
+tale-0436,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0437,True,True,True,True,False,True,
+tale-0438,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0439,True,True,True,True,False,True,
+tale-0440,True,True,True,True,True,True,
+tale-0441,True,True,True,True,False,True,
+tale-0442,True,True,True,True,False,True,
+tale-0443,True,True,True,True,False,True,
+tale-0444,True,True,True,True,False,True,
+tale-0445,True,True,True,True,False,True,
+tale-0446,True,True,True,True,False,True,
+tale-0447,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0448,True,True,True,True,False,True,
+tale-0449,True,True,True,True,False,True,
+tale-0450,True,True,True,True,False,True,
+tale-0451,True,True,True,True,False,True,
+tale-0452,True,True,True,True,False,True,
+tale-0453,True,True,True,True,False,True,
+tale-0454,True,True,True,True,False,True,
+tale-0455,True,True,True,True,False,True,
+tale-0456,True,True,True,True,False,True,
+tale-0457,True,True,True,True,False,True,
+tale-0458,True,True,True,True,False,True,
+tale-0459,True,True,True,True,False,True,
+tale-0460,True,True,True,True,False,True,
+tale-0461,True,True,True,True,False,True,
+tale-0462,True,True,True,True,False,True,
+tale-0463,True,True,True,True,False,True,
+tale-0464,True,True,True,True,False,True,
+tale-0465,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0466,True,True,True,True,False,True,
+tale-0467,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0468,True,True,True,True,False,True,
+tale-0469,True,True,True,True,False,True,
+tale-0470,True,True,True,True,False,True,
+tale-0471,True,True,True,True,False,True,
+tale-0472,True,True,True,True,False,True,
+tale-0473,True,True,True,True,False,True,
+tale-0474,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0475,True,True,True,True,True,True,
+tale-0476,True,True,True,True,False,True,
+tale-0477,True,True,True,True,False,True,
+tale-0478,True,True,False,False,True,True,no defensible place and broad region (author)
+tale-0479,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0480,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0481,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0482,True,True,True,True,False,True,
+tale-0483,True,True,True,True,False,True,
+tale-0484,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0485,True,True,True,True,False,True,
+tale-0486,True,True,True,True,False,True,
+tale-0487,True,True,True,True,False,True,
+tale-0488,True,True,True,True,False,True,
+tale-0489,True,True,True,True,False,True,
+tale-0490,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0491,True,True,True,True,False,True,
+tale-0492,True,True,True,True,False,True,
+tale-0493,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0494,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0495,True,True,True,True,False,True,
+tale-0496,True,True,True,True,False,True,
+tale-0497,True,True,True,True,False,True,
+tale-0498,True,True,True,True,False,True,
+tale-0499,True,True,True,True,False,True,
+tale-0500,True,True,True,True,False,True,
+tale-0501,True,True,True,True,False,True,
+tale-0502,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0503,True,True,True,True,False,True,
+tale-0504,True,True,True,True,False,True,
+tale-0505,True,True,True,True,False,True,
+tale-0506,True,True,False,False,False,True,no defensible place and broad region (region)
+tale-0507,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0508,True,True,True,True,False,True,
+tale-0509,True,True,True,True,False,True,
+tale-0510,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0511,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0512,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0513,True,True,True,True,False,True,
+tale-0514,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0515,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0516,True,True,True,True,False,True,
+tale-0517,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0518,True,True,True,True,False,True,
+tale-0519,True,True,True,True,False,True,
+tale-0520,True,True,True,True,False,True,
+tale-0521,True,False,False,False,False,True,"ATU labels conflict across identical copies: 63, 68A | geographical labels conflict across identical copies"
+tale-0522,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0523,True,True,True,True,False,True,
+tale-0524,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0525,True,True,True,True,False,True,
+tale-0526,True,True,True,True,False,True,
+tale-0527,True,True,True,True,False,True,
+tale-0528,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0529,True,True,True,True,False,True,
+tale-0530,True,True,True,True,False,True,
+tale-0531,True,True,True,True,False,False,
+tale-0532,True,True,True,True,False,True,
+tale-0533,True,True,True,True,False,True,
+tale-0534,True,True,True,True,False,True,
+tale-0535,True,True,True,True,False,True,
+tale-0536,True,True,True,True,False,True,
+tale-0537,True,True,True,True,True,True,
+tale-0538,True,True,True,True,False,True,
+tale-0539,True,True,True,True,False,True,
+tale-0540,True,True,True,True,False,True,
+tale-0541,True,True,True,True,False,True,
+tale-0542,True,True,True,True,False,True,
+tale-0543,True,True,True,True,False,True,
+tale-0544,True,True,True,True,False,True,
+tale-0545,True,True,True,True,False,True,
+tale-0546,True,True,True,True,False,True,
+tale-0547,True,True,True,True,False,True,
+tale-0548,True,True,True,True,False,True,
+tale-0549,True,True,True,False,True,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0550,True,True,False,False,True,True,no defensible place and broad region (unknown)
+tale-0551,True,True,True,True,False,True,
+tale-0552,True,True,True,True,False,True,
+tale-0553,True,True,True,True,False,True,
+tale-0554,True,True,True,True,False,True,
+tale-0555,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0556,True,True,True,True,False,True,
+tale-0557,True,True,True,True,False,True,
+tale-0558,True,True,True,True,False,True,
+tale-0559,True,True,True,True,False,True,
+tale-0560,True,True,True,True,True,True,
+tale-0561,True,True,True,True,False,True,
+tale-0562,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0563,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0564,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0565,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0566,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0567,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0568,True,True,True,True,False,True,
+tale-0569,True,True,True,True,False,True,
+tale-0570,True,True,True,True,False,True,
+tale-0571,True,True,True,True,False,True,
+tale-0572,True,True,True,True,False,True,
+tale-0573,True,True,True,True,False,True,
+tale-0574,True,True,True,True,False,True,
+tale-0575,True,True,True,True,False,True,
+tale-0576,True,True,True,True,False,True,
+tale-0577,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0578,True,True,True,True,False,True,
+tale-0579,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0580,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0581,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0582,True,True,True,True,False,True,
+tale-0583,True,True,True,True,False,True,
+tale-0584,True,True,True,True,False,True,
+tale-0585,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0586,True,True,True,True,False,True,
+tale-0587,True,True,True,True,False,True,
+tale-0588,True,True,True,True,False,True,
+tale-0589,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0590,True,True,True,True,False,True,
+tale-0591,True,True,True,True,False,True,
+tale-0592,True,True,True,True,False,True,
+tale-0593,True,True,True,True,False,True,
+tale-0594,True,True,True,True,False,True,
+tale-0595,True,True,True,True,False,True,
+tale-0596,True,True,True,True,False,True,
+tale-0597,True,True,True,True,False,True,
+tale-0598,True,True,True,True,False,True,
+tale-0599,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0600,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0601,True,True,True,True,False,True,
+tale-0602,True,True,True,False,True,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0603,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0604,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0605,True,True,True,True,True,True,
+tale-0606,True,True,True,True,False,True,
+tale-0607,True,True,True,True,False,True,
+tale-0608,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0610,True,True,True,True,False,True,
+tale-0611,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0612,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0613,True,True,False,False,True,True,no defensible place and broad region (author)
+tale-0614,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0615,True,True,True,True,False,True,
+tale-0616,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0617,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0618,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0619,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0620,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0621,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0622,True,True,True,True,False,True,
+tale-0623,True,True,True,True,False,True,
+tale-0624,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0625,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0626,True,True,True,True,False,True,
+tale-0627,True,True,True,True,False,True,
+tale-0628,True,True,True,True,False,True,
+tale-0629,True,True,True,True,False,True,
+tale-0630,True,True,True,True,False,True,
+tale-0631,True,True,True,True,False,True,
+tale-0632,True,True,True,True,False,True,
+tale-0633,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0634,True,True,True,True,False,True,
+tale-0635,True,True,True,True,False,True,
+tale-0636,True,True,True,True,False,True,
+tale-0637,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0638,True,True,True,True,False,True,
+tale-0639,True,True,True,True,False,True,
+tale-0640,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0641,True,True,True,True,False,True,
+tale-0642,True,True,True,True,False,True,
+tale-0643,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0644,True,True,True,True,False,True,
+tale-0645,True,True,True,True,False,True,
+tale-0646,True,True,True,True,False,True,
+tale-0647,True,True,True,True,False,True,
+tale-0648,True,True,True,True,False,True,
+tale-0649,True,True,True,True,False,True,
+tale-0650,True,True,True,True,False,True,
+tale-0651,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0652,True,True,True,True,False,True,
+tale-0653,True,True,False,False,False,True,no defensible place and broad region (region)
+tale-0654,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0655,True,True,True,True,False,True,
+tale-0656,True,True,True,True,False,True,
+tale-0657,True,True,True,True,False,True,
+tale-0658,True,True,True,True,False,True,
+tale-0659,True,True,True,True,False,True,
+tale-0660,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0661,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0662,True,True,True,True,False,True,
+tale-0663,True,True,True,True,False,True,
+tale-0664,True,True,True,True,False,True,
+tale-0665,True,True,True,True,False,True,
+tale-0666,True,True,True,True,False,True,
+tale-0667,True,True,True,True,False,True,
+tale-0668,True,True,True,True,False,True,
+tale-0669,True,True,True,True,False,True,
+tale-0670,True,True,True,True,False,True,
+tale-0671,True,True,True,True,False,True,
+tale-0672,True,True,True,True,False,True,
+tale-0673,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0674,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0675,True,True,True,True,False,True,
+tale-0676,True,True,True,True,False,True,
+tale-0677,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0678,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0679,True,True,True,True,False,True,
+tale-0680,True,True,True,True,False,True,
+tale-0681,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0682,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0683,True,True,True,True,False,True,
+tale-0684,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0685,True,True,True,True,False,True,
+tale-0686,True,False,False,False,False,True,"ATU labels conflict across identical copies: 155, 175"
+tale-0687,True,True,True,True,False,True,
+tale-0688,True,True,True,True,False,True,
+tale-0689,True,True,True,True,False,True,
+tale-0690,True,True,True,True,False,True,
+tale-0691,True,True,True,True,False,True,
+tale-0692,True,True,True,True,False,True,
+tale-0693,True,True,True,True,False,True,
+tale-0694,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0695,True,True,True,True,False,True,
+tale-0696,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0697,True,True,True,True,False,True,
+tale-0698,True,True,True,True,False,True,
+tale-0699,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0700,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0701,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0702,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0703,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0704,True,True,True,True,False,True,
+tale-0705,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0706,True,True,True,True,False,True,
+tale-0707,True,True,True,True,False,True,
+tale-0708,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0709,True,True,True,True,False,True,
+tale-0710,True,True,True,True,False,True,
+tale-0711,True,True,True,True,False,True,
+tale-0712,True,True,True,True,False,True,
+tale-0713,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0714,True,True,True,True,False,True,
+tale-0715,True,True,True,True,False,True,
+tale-0716,True,True,True,True,False,True,
+tale-0717,True,True,True,True,True,True,
+tale-0718,True,True,True,True,False,True,
+tale-0719,True,True,True,True,False,True,
+tale-0720,True,True,True,True,True,True,
+tale-0721,True,True,True,True,False,True,
+tale-0722,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0723,True,True,True,True,False,True,
+tale-0724,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0725,True,True,True,True,False,True,
+tale-0726,True,True,True,True,False,True,
+tale-0727,True,True,True,True,True,True,
+tale-0728,True,True,True,True,False,True,
+tale-0729,True,True,True,True,False,True,
+tale-0730,True,True,True,True,False,True,
+tale-0731,True,True,True,True,False,True,
+tale-0732,True,True,True,True,False,True,
+tale-0733,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0734,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0735,True,True,True,True,False,True,
+tale-0736,True,True,True,True,False,True,
+tale-0737,True,True,True,True,False,True,
+tale-0738,True,True,True,True,False,True,
+tale-0739,True,True,True,True,False,True,
+tale-0740,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0741,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0742,True,True,True,True,False,True,
+tale-0743,True,True,True,True,False,True,
+tale-0744,True,True,True,True,False,True,
+tale-0745,True,True,True,True,False,True,
+tale-0746,True,True,True,True,False,True,
+tale-0747,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0748,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0749,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0750,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0751,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0752,True,True,True,True,False,True,
+tale-0753,True,True,True,True,False,True,
+tale-0754,True,True,True,True,False,True,
+tale-0755,True,True,False,False,True,True,no defensible place and broad region (author)
+tale-0756,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0757,True,True,True,True,False,True,
+tale-0758,True,True,True,True,False,True,
+tale-0759,True,True,True,True,False,True,
+tale-0760,True,True,True,True,False,True,
+tale-0761,True,True,True,True,False,True,
+tale-0762,True,True,True,True,False,True,
+tale-0763,True,True,True,True,False,True,
+tale-0764,True,True,True,True,False,True,
+tale-0765,True,True,True,True,False,True,
+tale-0766,True,True,True,True,False,True,
+tale-0767,True,True,True,True,False,True,
+tale-0768,True,True,True,True,False,True,
+tale-0769,True,True,True,True,False,True,
+tale-0770,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0771,True,True,True,True,False,True,
+tale-0772,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0773,True,True,True,True,False,True,
+tale-0774,True,True,True,True,False,True,
+tale-0775,True,True,True,True,False,True,
+tale-0776,True,True,True,True,False,True,
+tale-0777,True,True,True,True,False,True,
+tale-0778,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0779,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0780,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0781,True,True,True,True,False,True,
+tale-0782,True,True,True,True,False,True,
+tale-0783,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0784,True,True,True,True,False,True,
+tale-0785,True,True,True,True,False,True,
+tale-0786,True,True,True,True,False,True,
+tale-0787,True,True,True,True,False,True,
+tale-0788,True,True,True,True,False,False,
+tale-0789,True,True,True,True,False,True,
+tale-0790,True,True,True,True,False,True,
+tale-0791,True,True,True,True,False,True,
+tale-0792,True,True,True,True,False,True,
+tale-0793,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0794,True,True,True,True,False,True,
+tale-0795,True,True,True,True,True,True,
+tale-0796,True,True,True,True,False,True,
+tale-0797,True,True,True,True,False,True,
+tale-0798,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0799,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0800,True,True,True,True,False,True,
+tale-0801,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0802,True,True,True,True,False,True,
+tale-0803,True,True,True,True,False,True,
+tale-0804,True,True,True,True,False,True,
+tale-0805,True,True,True,True,False,True,
+tale-0806,True,True,True,True,False,True,
+tale-0807,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0808,True,True,True,True,False,True,
+tale-0809,True,True,True,True,False,True,
+tale-0810,True,True,True,True,False,True,
+tale-0811,True,True,True,True,False,True,
+tale-0812,True,True,True,True,False,False,
+tale-0813,True,True,True,True,False,True,
+tale-0814,True,True,True,True,False,True,
+tale-0815,True,True,True,True,False,True,
+tale-0816,True,True,True,True,False,True,
+tale-0817,True,True,True,True,False,True,
+tale-0818,True,True,True,True,False,True,
+tale-0819,True,True,True,True,False,True,
+tale-0820,True,True,True,True,False,True,
+tale-0821,True,True,True,True,False,True,
+tale-0822,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0823,True,True,True,True,False,True,
+tale-0824,True,True,True,True,False,True,
+tale-0825,True,True,True,True,False,True,
+tale-0826,True,True,True,True,False,True,
+tale-0827,True,True,True,True,True,True,
+tale-0828,True,True,True,True,True,True,
+tale-0829,True,True,True,True,False,True,
+tale-0830,True,True,True,True,True,True,
+tale-0831,True,True,True,True,True,True,
+tale-0832,True,True,True,True,False,True,
+tale-0833,True,True,True,True,False,True,
+tale-0834,True,True,True,True,False,True,
+tale-0835,True,True,True,True,False,True,
+tale-0836,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0837,True,True,True,True,False,True,
+tale-0838,True,True,True,True,False,True,
+tale-0839,True,False,False,False,False,True,"ATU labels conflict across identical copies: 101, 103"
+tale-0840,True,True,True,True,False,True,
+tale-0841,True,True,True,True,False,True,
+tale-0842,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0843,True,True,True,True,False,True,
+tale-0844,True,True,True,True,False,True,
+tale-0845,True,True,True,True,False,True,
+tale-0846,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0847,True,True,True,True,False,True,
+tale-0848,True,True,True,True,False,True,
+tale-0849,True,True,True,True,False,True,
+tale-0850,True,True,True,True,False,True,
+tale-0851,True,True,True,True,False,True,
+tale-0852,True,True,True,True,False,True,
+tale-0853,True,True,True,True,True,True,
+tale-0854,True,True,True,True,False,True,
+tale-0855,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0856,True,True,True,True,True,True,
+tale-0857,True,True,True,True,False,True,
+tale-0858,True,True,True,True,False,True,
+tale-0859,True,True,True,True,False,True,
+tale-0860,True,True,True,True,False,True,
+tale-0861,True,True,True,True,False,True,
+tale-0862,True,True,True,True,False,True,
+tale-0863,True,True,True,True,False,True,
+tale-0865,True,True,True,True,False,True,
+tale-0866,True,True,True,True,False,True,
+tale-0867,True,True,True,True,False,True,
+tale-0868,True,True,True,True,False,True,
+tale-0869,True,True,True,True,False,True,
+tale-0870,True,True,True,True,False,True,
+tale-0871,True,True,True,True,False,True,
+tale-0872,True,True,True,True,False,True,
+tale-0873,True,True,True,True,False,True,
+tale-0874,True,True,True,True,False,True,
+tale-0875,True,True,True,True,False,True,
+tale-0876,True,True,True,True,False,True,
+tale-0877,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0878,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0879,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0880,True,True,True,True,False,True,
+tale-0881,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0882,True,True,True,True,False,True,
+tale-0883,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0884,True,True,True,True,False,True,
+tale-0885,True,True,True,True,False,True,
+tale-0886,True,True,True,True,False,True,
+tale-0887,True,True,True,True,False,True,
+tale-0888,True,True,True,True,False,True,
+tale-0889,True,True,True,True,False,True,
+tale-0890,True,True,True,True,False,True,
+tale-0891,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0892,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0893,True,True,True,True,False,True,
+tale-0894,True,True,True,True,False,True,
+tale-0895,True,True,True,True,False,True,
+tale-0896,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0897,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0898,True,True,True,True,False,True,
+tale-0899,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0900,True,True,True,True,False,True,
+tale-0901,True,True,True,True,False,True,
+tale-0902,True,True,True,True,False,True,
+tale-0903,True,True,True,True,False,True,
+tale-0904,True,True,True,True,False,True,
+tale-0905,True,True,True,True,False,True,
+tale-0906,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0907,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0908,True,True,True,True,False,True,
+tale-0909,True,True,True,True,False,True,
+tale-0910,True,True,True,True,False,True,
+tale-0911,True,True,True,True,False,True,
+tale-0912,True,True,True,True,False,True,
+tale-0913,True,True,True,True,False,False,
+tale-0914,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0915,True,True,True,True,False,True,
+tale-0916,True,True,True,True,False,True,
+tale-0917,True,True,True,True,False,True,
+tale-0918,True,True,True,True,False,True,
+tale-0919,True,True,True,True,False,True,
+tale-0920,True,True,True,True,True,True,
+tale-0921,True,True,True,True,False,True,
+tale-0922,True,True,True,True,False,True,
+tale-0923,True,True,True,True,False,True,
+tale-0924,True,True,True,True,False,True,
+tale-0925,True,True,True,True,False,True,
+tale-0926,True,True,True,True,False,True,
+tale-0927,True,True,True,True,False,True,
+tale-0928,True,True,True,True,False,True,
+tale-0929,True,True,True,True,False,True,
+tale-0930,True,True,True,True,False,True,
+tale-0931,True,True,True,True,False,True,
+tale-0932,True,True,True,True,False,True,
+tale-0933,True,True,True,True,False,True,
+tale-0934,True,True,True,True,False,True,
+tale-0935,True,True,True,True,False,True,
+tale-0936,True,True,True,True,False,True,
+tale-0937,True,True,True,True,False,True,
+tale-0938,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0939,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0940,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0941,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0942,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0943,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0944,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0945,True,True,True,True,False,True,
+tale-0946,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0947,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0948,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0949,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0950,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0951,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0952,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0953,True,True,True,True,False,True,
+tale-0954,True,True,True,True,False,True,
+tale-0955,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0956,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0957,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-0958,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0959,True,True,True,True,False,True,
+tale-0960,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0961,True,True,True,True,False,True,
+tale-0962,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0963,True,True,True,True,False,True,
+tale-0964,True,True,True,True,False,True,
+tale-0965,True,True,True,True,False,True,
+tale-0966,True,True,True,True,False,True,
+tale-0967,True,True,True,True,False,True,
+tale-0968,True,True,True,True,False,True,
+tale-0969,True,True,True,True,False,True,
+tale-0970,True,True,True,True,False,True,
+tale-0971,True,True,True,True,False,True,
+tale-0972,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0973,True,True,True,True,False,True,
+tale-0974,True,True,True,True,False,True,
+tale-0975,True,True,True,True,False,True,
+tale-0976,True,True,True,True,False,True,
+tale-0977,True,True,True,True,False,True,
+tale-0978,True,True,True,True,False,True,
+tale-0979,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-0980,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-0981,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0982,True,True,True,True,False,True,
+tale-0983,True,True,True,True,False,True,
+tale-0984,True,True,True,True,False,True,
+tale-0985,True,True,True,True,False,True,
+tale-0986,True,True,True,True,False,True,
+tale-0987,True,True,True,True,False,True,
+tale-0988,True,True,True,True,False,True,
+tale-0989,True,True,True,True,False,True,
+tale-0990,True,True,True,True,False,True,
+tale-0991,True,True,True,True,False,True,
+tale-0992,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-0993,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-0994,True,True,True,True,False,True,
+tale-0995,True,True,True,True,False,True,
+tale-0996,True,True,True,True,True,True,
+tale-0997,True,True,True,True,False,True,
+tale-0999,True,True,True,True,False,True,
+tale-1000,True,True,True,True,True,True,
+tale-1001,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1002,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1003,True,True,True,True,False,True,
+tale-1004,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1005,True,True,True,True,False,True,
+tale-1006,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1007,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1008,True,True,True,True,False,True,
+tale-1009,True,True,True,True,False,True,
+tale-1010,True,True,True,True,False,True,
+tale-1011,True,True,True,True,False,True,
+tale-1012,True,True,True,True,False,True,
+tale-1013,True,True,True,True,False,True,
+tale-1014,True,True,True,True,False,True,
+tale-1015,True,True,True,True,False,True,
+tale-1016,True,True,True,True,False,True,
+tale-1017,True,True,True,True,False,True,
+tale-1018,True,True,True,True,False,True,
+tale-1019,True,True,True,True,False,True,
+tale-1020,True,True,True,True,False,True,
+tale-1021,True,True,True,True,False,True,
+tale-1022,True,True,True,True,False,True,
+tale-1023,True,True,True,True,False,True,
+tale-1024,True,True,True,True,False,True,
+tale-1025,True,True,True,True,False,True,
+tale-1026,True,True,True,True,False,True,
+tale-1027,True,True,True,True,False,True,
+tale-1028,True,True,True,True,False,True,
+tale-1029,True,True,True,True,False,True,
+tale-1030,True,True,True,True,False,True,
+tale-1031,True,True,True,True,False,True,
+tale-1032,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1033,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1034,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1035,True,True,True,True,False,True,
+tale-1036,True,True,True,True,False,True,
+tale-1037,True,True,True,True,False,True,
+tale-1038,True,True,True,True,False,True,
+tale-1039,True,True,True,True,False,True,
+tale-1040,True,True,True,True,False,True,
+tale-1041,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1042,True,True,True,True,False,True,
+tale-1043,True,True,True,True,False,True,
+tale-1044,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1045,True,True,True,True,False,True,
+tale-1046,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1047,True,True,True,True,False,True,
+tale-1048,True,True,True,True,False,True,
+tale-1049,True,True,True,True,False,True,
+tale-1050,True,True,True,True,False,True,
+tale-1051,True,True,True,True,False,True,
+tale-1052,True,True,True,True,False,True,
+tale-1053,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1054,True,True,True,True,False,True,
+tale-1055,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1056,True,True,True,True,False,True,
+tale-1057,True,True,True,True,False,True,
+tale-1058,True,True,True,True,False,True,
+tale-1059,True,True,True,True,False,True,
+tale-1060,True,True,True,True,False,True,
+tale-1061,True,True,True,True,False,True,
+tale-1062,True,True,True,True,False,True,
+tale-1063,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1064,True,True,True,True,False,True,
+tale-1065,True,True,True,True,False,True,
+tale-1066,True,True,True,True,False,True,
+tale-1067,True,True,True,True,False,True,
+tale-1068,True,True,True,True,False,True,
+tale-1069,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1070,True,True,True,True,False,True,
+tale-1071,True,True,True,True,False,True,
+tale-1072,True,True,True,True,False,True,
+tale-1073,True,True,True,True,False,True,
+tale-1074,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1075,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1076,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1077,True,True,True,True,False,True,
+tale-1078,True,True,True,True,False,True,
+tale-1079,True,True,True,True,False,True,
+tale-1080,True,True,True,True,False,True,
+tale-1081,True,True,True,True,False,True,
+tale-1082,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1083,True,True,True,True,False,True,
+tale-1084,True,True,True,True,False,True,
+tale-1085,True,True,True,True,False,True,
+tale-1086,True,True,True,True,False,True,
+tale-1087,True,True,True,True,False,True,
+tale-1088,True,True,True,True,False,True,
+tale-1089,True,True,False,False,True,True,no defensible place and broad region (author)
+tale-1090,True,True,True,True,False,True,
+tale-1091,True,True,True,True,False,True,
+tale-1092,True,True,True,True,False,True,
+tale-1093,True,True,True,True,False,True,
+tale-1094,True,True,True,True,False,True,
+tale-1095,True,True,True,True,False,True,
+tale-1096,True,True,True,True,False,True,
+tale-1097,True,True,True,True,False,True,
+tale-1098,True,True,True,True,False,True,
+tale-1099,True,True,True,True,False,True,
+tale-1100,True,True,False,False,False,True,no defensible place and broad region (community)
+tale-1101,True,True,True,True,False,True,
+tale-1102,True,True,True,True,False,True,
+tale-1103,True,True,True,True,False,True,
+tale-1104,True,True,True,True,False,True,
+tale-1105,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1106,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1107,True,True,True,True,False,True,
+tale-1108,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1109,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1110,True,True,True,True,False,True,
+tale-1111,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1113,True,True,True,True,False,True,
+tale-1114,True,True,True,True,False,True,
+tale-1115,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1116,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1117,True,True,True,True,False,True,
+tale-1118,True,True,True,True,False,True,
+tale-1119,True,True,True,True,False,True,
+tale-1120,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1121,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1122,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1123,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1124,True,True,True,True,False,True,
+tale-1125,True,True,True,True,False,True,
+tale-1126,True,True,True,True,False,True,
+tale-1127,True,True,True,True,False,True,
+tale-1128,True,True,True,True,False,True,
+tale-1129,True,True,True,True,False,True,
+tale-1130,True,True,True,True,False,True,
+tale-1131,True,True,True,True,False,True,
+tale-1132,True,True,True,True,False,True,
+tale-1133,True,True,True,True,False,True,
+tale-1134,True,True,True,True,False,True,
+tale-1135,True,True,True,True,False,True,
+tale-1136,True,True,True,True,False,True,
+tale-1137,True,True,True,True,False,True,
+tale-1138,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1139,True,True,True,True,False,True,
+tale-1140,True,True,True,True,False,True,
+tale-1141,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1142,True,True,True,True,False,True,
+tale-1143,True,True,True,True,False,True,
+tale-1144,True,True,True,True,False,True,
+tale-1146,True,True,True,True,False,True,
+tale-1147,True,True,True,True,False,True,
+tale-1148,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1149,True,True,True,True,False,True,
+tale-1150,True,True,True,True,False,True,
+tale-1151,True,True,True,True,False,True,
+tale-1152,True,True,True,True,False,True,
+tale-1153,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1154,True,True,True,True,False,True,
+tale-1155,True,True,True,True,False,True,
+tale-1156,True,True,True,True,False,True,
+tale-1157,True,True,True,True,False,True,
+tale-1158,True,True,True,True,False,True,
+tale-1159,True,True,True,True,False,True,
+tale-1160,True,True,True,True,False,True,
+tale-1161,True,True,True,True,False,True,
+tale-1162,True,True,True,True,False,True,
+tale-1163,True,True,True,True,False,True,
+tale-1164,True,True,True,True,False,True,
+tale-1165,True,True,True,True,False,True,
+tale-1166,True,True,True,True,False,True,
+tale-1167,True,True,True,True,False,True,
+tale-1168,True,True,True,True,False,True,
+tale-1169,True,True,True,True,False,True,
+tale-1170,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1171,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1172,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1173,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1174,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1175,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1176,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1177,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1178,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1179,True,True,True,True,False,True,
+tale-1180,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1181,True,True,True,True,True,True,
+tale-1182,True,True,True,True,False,True,
+tale-1183,True,True,True,True,False,True,
+tale-1184,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1185,True,True,True,True,False,True,
+tale-1186,True,True,True,True,False,True,
+tale-1187,True,True,True,True,False,True,
+tale-1188,True,True,True,True,False,True,
+tale-1189,True,True,True,True,False,True,
+tale-1190,True,True,True,True,False,True,
+tale-1191,True,True,True,True,False,True,
+tale-1192,True,True,True,True,False,True,
+tale-1193,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1194,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1195,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1196,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1197,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1198,True,True,True,True,False,True,
+tale-1199,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1200,True,True,True,True,True,True,
+tale-1201,True,True,False,False,False,True,no defensible place and broad region (community)
+tale-1202,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1203,True,True,True,True,False,True,
+tale-1204,True,True,True,True,False,True,
+tale-1205,True,True,True,True,False,True,
+tale-1206,True,True,False,False,False,True,no defensible place and broad region (region)
+tale-1207,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1208,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1209,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1210,True,True,True,True,False,True,
+tale-1211,True,True,True,True,False,True,
+tale-1212,True,True,True,True,False,True,
+tale-1213,True,True,True,True,False,True,
+tale-1214,True,True,True,True,False,True,
+tale-1215,True,True,True,True,False,True,
+tale-1216,True,True,True,True,False,True,
+tale-1217,True,True,True,True,False,True,
+tale-1218,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1219,True,True,True,True,False,True,
+tale-1220,True,True,False,False,False,True,no defensible place and broad region (community)
+tale-1221,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1223,True,True,True,True,False,True,
+tale-1224,True,True,True,True,False,True,
+tale-1225,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1226,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1227,True,True,True,True,False,True,
+tale-1228,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1229,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1230,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1231,True,True,True,True,False,True,
+tale-1232,True,True,True,True,False,True,
+tale-1233,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1234,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1235,True,True,True,True,False,True,
+tale-1236,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1237,True,True,True,True,False,True,
+tale-1238,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1239,True,True,True,True,False,True,
+tale-1240,True,True,True,True,False,True,
+tale-1241,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1242,True,True,True,True,False,True,
+tale-1243,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1244,True,True,True,True,False,True,
+tale-1245,True,True,False,False,False,False,no defensible place and broad region (unknown)
+tale-1246,True,True,True,True,False,True,
+tale-1247,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1248,True,True,True,True,False,True,
+tale-1249,True,True,True,True,False,True,
+tale-1250,True,True,True,True,False,True,
+tale-1251,True,True,True,True,False,True,
+tale-1252,True,True,True,True,False,True,
+tale-1253,True,True,True,True,False,True,
+tale-1254,True,True,True,True,False,True,
+tale-1255,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1256,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1257,True,True,True,True,False,True,
+tale-1258,True,True,True,True,False,True,
+tale-1259,True,True,True,True,False,True,
+tale-1260,True,True,False,False,False,True,no defensible place and broad region (region)
+tale-1261,True,True,True,True,False,True,
+tale-1262,True,True,True,True,True,True,
+tale-1263,True,True,True,True,False,True,
+tale-1264,True,True,True,True,False,True,
+tale-1265,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1266,True,True,True,True,False,True,
+tale-1267,True,True,True,True,False,True,
+tale-1268,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1269,True,True,True,True,False,True,
+tale-1270,True,True,True,True,False,True,
+tale-1271,True,True,True,True,False,True,
+tale-1272,True,True,True,True,False,True,
+tale-1273,True,True,True,True,False,True,
+tale-1274,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1275,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1276,True,True,True,True,False,True,
+tale-1277,True,True,True,True,False,True,
+tale-1278,True,True,True,True,False,True,
+tale-1279,True,True,True,True,False,True,
+tale-1281,True,True,True,True,False,False,
+tale-1282,True,True,True,True,False,True,
+tale-1283,True,True,True,True,False,True,
+tale-1284,True,True,True,True,True,True,
+tale-1285,True,True,True,True,False,True,
+tale-1286,True,True,True,True,False,True,
+tale-1287,True,True,True,True,False,True,
+tale-1288,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1289,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1290,True,True,True,True,False,True,
+tale-1291,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1292,True,True,True,True,False,True,
+tale-1293,True,True,True,True,False,True,
+tale-1294,True,True,True,True,False,True,
+tale-1295,True,True,True,True,False,True,
+tale-1296,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1297,True,True,True,True,False,True,
+tale-1298,True,True,True,True,False,True,
+tale-1299,True,True,True,True,False,True,
+tale-1300,True,True,True,True,False,True,
+tale-1301,True,True,True,True,False,True,
+tale-1302,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1303,True,True,True,True,False,True,
+tale-1304,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1305,True,True,True,True,False,True,
+tale-1306,True,True,True,True,False,True,
+tale-1307,True,True,True,True,False,True,
+tale-1308,True,True,True,True,False,True,
+tale-1309,True,True,True,True,False,True,
+tale-1310,True,True,True,True,False,True,
+tale-1311,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1312,True,True,True,True,False,True,
+tale-1313,True,True,True,True,False,True,
+tale-1314,True,True,True,True,False,True,
+tale-1315,True,True,True,True,True,True,
+tale-1316,True,True,True,True,False,True,
+tale-1317,True,True,True,True,False,True,
+tale-1318,True,True,True,True,False,True,
+tale-1319,True,True,True,True,False,True,
+tale-1320,True,True,True,True,False,True,
+tale-1321,True,True,True,True,False,True,
+tale-1322,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1323,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1324,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1325,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1326,True,True,True,True,False,True,
+tale-1327,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1328,True,True,True,True,False,True,
+tale-1329,True,True,True,True,False,True,
+tale-1330,True,True,True,True,True,True,
+tale-1331,True,True,True,True,False,True,
+tale-1332,True,True,True,True,False,True,
+tale-1333,True,True,True,True,False,True,
+tale-1334,True,True,True,True,False,True,
+tale-1335,True,True,True,True,False,True,
+tale-1336,True,True,True,True,True,True,
+tale-1337,True,True,True,True,False,True,
+tale-1338,True,True,True,True,False,True,
+tale-1339,True,True,True,True,False,True,
+tale-1340,True,True,True,True,False,True,
+tale-1341,True,True,True,True,False,True,
+tale-1342,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1344,True,True,True,True,False,False,
+tale-1345,True,True,True,True,False,True,
+tale-1346,True,True,True,True,False,True,
+tale-1347,True,True,True,True,False,True,
+tale-1348,True,True,True,True,False,True,
+tale-1349,True,True,True,True,False,True,
+tale-1350,True,True,True,True,False,True,
+tale-1351,True,True,True,True,False,True,
+tale-1352,True,True,True,True,False,True,
+tale-1353,True,True,True,True,True,True,
+tale-1354,True,True,True,True,False,True,
+tale-1355,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1356,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1357,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1358,True,True,True,True,False,True,
+tale-1359,True,True,True,True,False,True,
+tale-1360,True,True,True,True,False,True,
+tale-1361,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1362,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1363,True,True,True,True,False,True,
+tale-1365,True,True,True,True,False,True,
+tale-1366,True,True,True,True,False,True,
+tale-1367,True,True,True,True,False,True,
+tale-1369,True,True,True,True,False,True,
+tale-1370,True,True,True,True,False,True,
+tale-1371,True,True,True,True,False,True,
+tale-1372,True,True,True,True,False,True,
+tale-1373,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1375,True,True,True,True,False,True,
+tale-1376,True,True,True,True,False,True,
+tale-1378,True,True,True,True,False,True,
+tale-1379,True,True,True,True,False,True,
+tale-1380,True,True,True,True,False,True,
+tale-1381,True,True,True,True,False,True,
+tale-1382,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1383,True,True,True,True,False,True,
+tale-1384,True,True,True,True,False,True,
+tale-1385,True,True,True,True,False,True,
+tale-1386,True,True,True,True,False,True,
+tale-1387,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1388,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1389,True,True,True,True,False,True,
+tale-1390,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1391,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1392,True,True,True,True,False,True,
+tale-1393,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1394,True,True,True,True,False,True,
+tale-1395,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1396,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1397,True,True,False,False,False,True,no defensible place and broad region (collection)
+tale-1398,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1399,True,True,True,True,False,True,
+tale-1400,True,True,True,True,False,True,
+tale-1401,True,True,True,True,False,True,
+tale-1402,True,True,True,True,False,True,
+tale-1403,True,True,True,True,False,True,
+tale-1404,True,True,True,True,False,True,
+tale-1405,True,True,True,True,False,True,
+tale-1406,True,True,True,True,False,True,
+tale-1407,True,True,True,True,False,True,
+tale-1408,True,True,True,True,False,True,
+tale-1409,True,True,True,True,False,True,
+tale-1410,True,True,True,True,False,True,
+tale-1411,True,True,True,True,False,True,
+tale-1412,True,True,True,True,False,True,
+tale-1413,True,True,True,True,False,True,
+tale-1414,True,True,True,True,False,True,
+tale-1415,True,True,True,True,False,True,
+tale-1417,True,True,True,True,False,True,
+tale-1418,True,True,False,False,False,False,no defensible place and broad region (unknown)
+tale-1419,True,True,True,True,False,True,
+tale-1420,True,True,True,True,False,True,
+tale-1421,True,True,True,True,False,True,
+tale-1422,True,True,True,True,False,True,
+tale-1424,True,True,True,True,False,True,
+tale-1425,True,True,True,True,False,True,
+tale-1426,True,True,True,True,False,True,
+tale-1427,True,True,True,True,False,True,
+tale-1428,True,True,True,True,False,True,
+tale-1429,True,True,True,True,False,True,
+tale-1430,True,True,True,True,False,True,
+tale-1431,True,True,True,True,False,False,
+tale-1432,True,True,True,True,False,True,
+tale-1433,True,True,True,True,False,True,
+tale-1434,True,True,True,True,False,True,
+tale-1435,True,True,True,True,False,True,
+tale-1436,True,True,True,True,False,True,
+tale-1437,True,True,True,True,False,True,
+tale-1438,True,True,True,True,False,True,
+tale-1439,True,True,True,True,False,True,
+tale-1440,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1441,True,True,True,True,False,True,
+tale-1442,True,True,True,True,False,True,
+tale-1443,True,True,True,True,False,True,
+tale-1444,True,True,True,True,False,True,
+tale-1445,True,True,True,True,False,True,
+tale-1446,True,True,True,True,False,True,
+tale-1447,True,True,True,True,False,True,
+tale-1448,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1449,True,True,True,True,False,True,
+tale-1450,True,True,True,True,False,True,
+tale-1451,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1453,True,True,True,True,False,True,
+tale-1454,True,True,True,True,False,True,
+tale-1455,True,True,True,True,False,True,
+tale-1456,True,True,True,True,False,True,
+tale-1457,True,True,True,True,False,True,
+tale-1458,True,True,True,True,False,True,
+tale-1459,True,True,True,True,False,True,
+tale-1460,True,True,True,True,False,True,
+tale-1461,True,True,True,True,False,True,
+tale-1462,True,True,True,True,False,True,
+tale-1463,True,True,True,True,False,True,
+tale-1464,True,True,True,True,False,True,
+tale-1465,True,True,False,False,False,True,no defensible place and broad region (community)
+tale-1466,True,True,True,True,False,True,
+tale-1467,True,True,True,True,False,True,
+tale-1468,True,True,True,True,False,True,
+tale-1469,True,True,True,True,False,True,
+tale-1470,True,True,True,True,False,True,
+tale-1471,True,True,True,True,False,True,
+tale-1472,True,True,True,True,False,True,
+tale-1473,True,True,True,True,False,True,
+tale-1474,True,True,True,True,False,True,
+tale-1475,True,True,True,True,False,True,
+tale-1476,True,True,True,True,False,True,
+tale-1477,True,True,True,True,False,True,
+tale-1478,True,True,True,True,False,True,
+tale-1479,True,True,True,True,False,True,
+tale-1480,True,True,True,True,False,True,
+tale-1481,True,True,True,True,False,True,
+tale-1482,True,True,True,True,False,True,
+tale-1483,True,True,True,False,False,True,place has no documented coordinates (e.g. community or multi-country region)
+tale-1484,True,True,True,True,False,True,
+tale-1485,True,True,True,True,False,True,
+tale-1486,True,True,False,False,False,True,no defensible place and broad region (unknown)
+tale-1487,True,True,True,True,False,True,
+tale-1488,True,True,True,True,False,True,
+tale-1489,True,True,False,False,False,True,no defensible place and broad region (mixed)
+tale-1490,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1491,True,True,True,True,False,True,
+tale-1492,True,True,False,False,False,True,no defensible place and broad region (community)
+tale-1493,True,True,True,True,False,True,
+tale-1494,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1495,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1496,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1497,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1498,True,True,True,True,False,True,
+tale-1499,True,True,True,True,False,True,
+tale-1500,True,True,True,True,False,True,
+tale-1501,True,True,True,True,False,True,
+tale-1502,True,True,True,True,False,True,
+tale-1503,True,True,True,True,False,True,
+tale-1504,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1505,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1506,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1507,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1508,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1509,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1510,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1511,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1512,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1513,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1514,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1515,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1516,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1517,True,True,False,False,False,True,no defensible place and broad region (author)
+tale-1518,True,True,True,True,False,True,

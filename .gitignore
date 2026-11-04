@@ -1,0 +1,38 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local toolchains and caches (re-creatable)
+.tools/
+.cache/
+data/interim/cache/
+
+# Large intermediate artefacts (re-creatable from pinned sources + scripts)
+data/interim/*.npy
+data/interim/*.npz
+data/interim/*.parquet
+data/interim/graphs/
+data/processed/*.parquet
+
+# Generated website payloads (python -m analysis export). They contain full tale texts;
+# do not publish them until the questions in LICENSE_NOTES.md are resolved.
+web/public/data/
+
+# Pipeline bookkeeping and logs
+outputs/.stamps/
+outputs/metrics/_*.txt
+
+# Frontend
+web/node_modules/
+web/dist/
+web/.vite/
+
+# Browser-check artefacts
+outputs/browser/*.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

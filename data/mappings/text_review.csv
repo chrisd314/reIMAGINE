@@ -1,0 +1,41 @@
+record_id,action,pattern,reason,reviewer,reviewed_on
+aft-d57c2ce-0052,exclude,,"Non-narrative remnant: only the appended moral ('The Moral: ...') survives; the fable itself is missing from the dataset.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0270,exclude,,"Non-narrative: a bibliography of related versions (titles and page references), not a tale text.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0271,exclude,,"Non-narrative: a bibliography of related versions (titles and page references), not a tale text.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0273,exclude,,"Non-narrative: an editorial note pointing to a literary treatment by Gottfried Keller.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0998,exclude,,"Non-narrative placeholder: 'An English translation of this tale will be posted here in the near future.'",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1112,exclude,,"Non-narrative: a one-sentence proverb with its citation, not a tale.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1368,exclude,,"Non-narrative: collector/informant metadata only (Schools' Collection).",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1374,exclude,,"Non-narrative: an editorial note about numbering in Grimm's text.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1452,exclude,,"Non-narrative: collector metadata only (Schools' Collection).",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0050,trim_before,"There was a village, and the men decided to go on a warpath.","Text merged three items: a Thompson version (also present as its own record, row 49), its citation and Teit's note, then this record's Skidi Pawnee tale. Kept only the Pawnee tale.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0219,trim_before,This is the malt,"Leading editorial fragment ('an English nursery rhyme of folktale type 2035 edited by') removed; it also leaked the tale-type number.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0219,flag_fragment,,"The rhyme's first line ('This is the house that Jack built') and its ending are missing in the dataset.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0269,trim_before,His lady's again in the way,"Leading 'Note by D. L. Ashliman' (editorial, names the tale type) removed; the verse tale starts here.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1304,trim_before,Once there was a wealthy merchant,"Leading label 'a folktale of Aarne-Thompson type 882 retold by D. L. Ashliman' removed (leaks the tale type).",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0222,trim_from,Solomon's wise judgments (including many,Trailing editorial comment by the site editor removed.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0041,trim_from,Maiden and the Mermaid Wife groups.,Trailing residue of an editorial note (the rest was removed by the automatic tail rule).,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0141,strip_suffix,Tale.' Retold and shortened.,Trailing residue of a source note.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0500,strip_suffix,Company.,Trailing residue of a publisher name.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0512,strip_suffix,"Bücher indischer Fabeln, Märchen und Erzählungen.",Trailing residue of a book title (citation).,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0522,strip_suffix,(1787-1819) in Kassel.,Trailing residue of an editorial note.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0704,strip_suffix,"ille lønnet, Norske Folkeeventyr.",Trailing residue of a book title (citation).,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0948,strip_suffix,"from the Tibetan of the Kaygyur [Kanjur] by F. Anton von Schiefner, and from the German into English by W. R. S. Ralston (London: George Routledge and Sons, 1926.",Trailing citation residue (unclosed parenthesis escaped the automatic rule).,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1005,strip_suffix,"mère-grand, from a website sponsored by the Bibliothèque nationale de France.",Trailing residue of a link description.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1177,strip_suffix,"verse by Walter Thornbury, book 10, (1868), fable 3.",Trailing residue of a citation.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1182,strip_suffix,357.,Trailing page number residue.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1192,strip_suffix,268-69.,Trailing page number residue.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1253,strip_suffix,"det rare i, Norske Folkeeventyr.",Trailing residue of a book title (citation).,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1308,strip_suffix,"Grimm, vol. 1 (1912).",Trailing citation residue.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0717,flag_fragment,,"After removing an exact duplicate copy, the text still begins mid-story ('Now one day he was listening...').",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0920,flag_fragment,,"After removing an exact duplicate copy, the text still begins mid-story ('When he recovered...').",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0683,keep,,"Automatic tail cut verified: the removed tail is a different version (beginning 'Once upon a time, a tiger was caught in a trap') that followed this tale's Deccan Days citation.",agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0260,keep,,Opening 'This story the Master told...' is the canonical Jataka frame and part of the source text.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1233,keep,,Opening 'This story was told by the Master...' is the canonical Jataka frame and part of the source text.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0411,keep,,Opening 'The following verses ... were communicated to me' is the original collector's framing within the source text.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1182,keep,,Opening 'The following variant ... was obtained from the Rev. T. H. Philpott' is the original collector's framing within the source text.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1193,keep,,Opening 'This story was actually made up' is the storyteller's own framing.,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0744,strip_suffix,Elgarda Zobell Ashliman in Idaho in the 1940's.,Trailing informant/recording credit (source note).,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-1111,strip_suffix,Folklore.,Trailing residue of a link title ('Aging and Death in Folklore').,agent (Claude); human check pending,2026-10-29
+aft-d57c2ce-0592,keep,,"Opening bracketed note is H. Rink's own framing in the published translation (part of the cited source text, not Ashliman's editorial apparatus); it does not name a tale type.",agent (Claude); human check pending,2026-10-30
+aft-d57c2ce-1274,keep,,"'See also' occurs inside T. Percy's own introduction in the published Reliques item (source text), not in site navigation.",agent (Claude); human check pending,2026-10-30

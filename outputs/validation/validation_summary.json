@@ -1,0 +1,44 @@
+{
+  "generated": "2026-10-30T08:23:33Z",
+  "items": 84,
+  "development_items": 24,
+  "final_items": 60,
+  "strata": {
+    "high|different ATU|different region": 7,
+    "high|different ATU|same region": 7,
+    "high|same ATU|different region": 7,
+    "high|same ATU|same region": 7,
+    "low|different ATU|different region": 7,
+    "low|different ATU|same region": 7,
+    "low|same ATU|different region": 7,
+    "low|same ATU|same region": 7,
+    "medium|different ATU|different region": 7,
+    "medium|different ATU|same region": 7,
+    "medium|same ATU|different region": 7,
+    "medium|same ATU|same region": 7
+  },
+  "aspects": [
+    "shared_vocabulary",
+    "shared_topic",
+    "shared_plot",
+    "different_outcome",
+    "insufficient_evidence"
+  ],
+  "values": [
+    "yes",
+    "no",
+    "unsure"
+  ],
+  "rubric": {
+    "shared_vocabulary": "The two texts use several of the same distinctive words or names (not just common words).",
+    "shared_topic": "Both texts are broadly about the same kind of thing (e.g. a trickster animal, a ghost, a clever servant).",
+    "shared_plot": "Both texts contain at least one recognisably shared narrative event or sequence (e.g. an impossible task solved with animal help).",
+    "different_outcome": "Despite any similarity, the outcome, moral or the role of a main character clearly differs.",
+    "insufficient_evidence": "You cannot judge from what you read (too short, fragmentary, or unclear)."
+  },
+  "annotations": {
+    "status": "pending",
+    "note": "No human annotation files found in outputs/validation/annotations/. Validation statistics are not computed until real annotations exist.",
+    "files": []
+  }
+}

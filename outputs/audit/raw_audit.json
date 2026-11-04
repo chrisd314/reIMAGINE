@@ -1,0 +1,338 @@
+{
+  "source_file": {
+    "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/data/aft.csv",
+    "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
+    "sha256": "5214f213b2ef99dded16fcd4f5fca9b1e2c0675aff99ea475b1839c21f441ba1",
+    "bytes": 7160269,
+    "retrieved_at": "2026-10-29T19:14:00Z"
+  },
+  "brief_diagnostics": {
+    "rows": {
+      "expected": 1518,
+      "measured": 1518,
+      "match": true
+    },
+    "distinct_texts_ws": {
+      "expected": 1511,
+      "measured": 1511,
+      "match": true
+    },
+    "distinct_atu": {
+      "expected": 182,
+      "measured": 182,
+      "match": true
+    },
+    "nonmissing_provenance": {
+      "expected": 1502,
+      "measured": 1502,
+      "match": true
+    },
+    "nonmissing_source": {
+      "expected": 1336,
+      "measured": 1336,
+      "match": true
+    },
+    "atu_with_5plus": {
+      "expected": 133,
+      "measured": 133,
+      "match": true
+    },
+    "median_words": {
+      "expected": 543,
+      "measured": 543.0,
+      "match": true
+    }
+  },
+  "missing_values_note": "The R export writes missing values as the literal string 'NA'; counts above treat it as missing.",
+  "missingness": {
+    "atu_id": {
+      "literal_NA": 0,
+      "empty": 0
+    },
+    "tale_title": {
+      "literal_NA": 0,
+      "empty": 0
+    },
+    "provenance": {
+      "literal_NA": 16,
+      "empty": 0
+    },
+    "notes": {
+      "literal_NA": 687,
+      "empty": 0
+    },
+    "source": {
+      "literal_NA": 182,
+      "empty": 0
+    },
+    "text": {
+      "literal_NA": 0,
+      "empty": 0
+    },
+    "data_source": {
+      "literal_NA": 0,
+      "empty": 0
+    },
+    "date_obtained": {
+      "literal_NA": 0,
+      "empty": 0
+    }
+  },
+  "length": {
+    "quantiles_words": {
+      "0": 6.0,
+      "0.01": 41.0,
+      "0.05": 96.0,
+      "0.25": 248.25,
+      "0.5": 543.0,
+      "0.75": 1080.75,
+      "0.95": 2588.099999999998,
+      "0.99": 4054.83,
+      "1": 11088.0
+    },
+    "under_30_words": 10,
+    "under_100_words": 81,
+    "over_5000_words": 8
+  },
+  "exact_duplicate_groups_raw": [
+    {
+      "source_rows": [
+        839,
+        1280
+      ],
+      "atu_ids": [
+        "101",
+        "103"
+      ],
+      "provenance": [
+        "Germany"
+      ],
+      "titles": [
+        "Old Sultan",
+        "Old Sultan"
+      ],
+      "label_conflict": true
+    },
+    {
+      "source_rows": [
+        208,
+        1222
+      ],
+      "atu_ids": [
+        "1655",
+        "2032"
+      ],
+      "provenance": [
+        "Italy"
+      ],
+      "titles": [
+        "The Sexton's Nose",
+        "The Sexton's Nose"
+      ],
+      "label_conflict": true
+    },
+    {
+      "source_rows": [
+        595,
+        1416
+      ],
+      "atu_ids": [
+        "332"
+      ],
+      "provenance": [
+        "Germany"
+      ],
+      "titles": [
+        "Godfather Death",
+        "Godfather Death (Grimm)"
+      ],
+      "label_conflict": false
+    },
+    {
+      "source_rows": [
+        863,
+        864
+      ],
+      "atu_ids": [
+        "980"
+      ],
+      "provenance": [
+        "England"
+      ],
+      "titles": [
+        "Of the Old Man That Put Himself in His Son's Hands (Hundredtales)",
+        "Of the Old Man That Put Himself in His Son's Hands (Shakspearestales)"
+      ],
+      "label_conflict": false
+    },
+    {
+      "source_rows": [
+        686,
+        1145
+      ],
+      "atu_ids": [
+        "155",
+        "175"
+      ],
+      "provenance": [
+        "Pakistan"
+      ],
+      "titles": [
+        "The Farmer, the Crocodile, and the Jackal",
+        "The Farmer, the Crocodile, and the Jackal"
+      ],
+      "label_conflict": true
+    },
+    {
+      "source_rows": [
+        1342,
+        1343
+      ],
+      "atu_ids": [
+        "20C"
+      ],
+      "provenance": [
+        "Aesop"
+      ],
+      "titles": [
+        "The Hares and the Frogs (Berwick)",
+        "The Hares and the Frogs (Croxall)"
+      ],
+      "label_conflict": false
+    },
+    {
+      "source_rows": [
+        416,
+        1377
+      ],
+      "atu_ids": [
+        "1645"
+      ],
+      "provenance": [
+        "England"
+      ],
+      "titles": [
+        "A Cobbler in Someretshire",
+        "A Cobbler in Somersetshire"
+      ],
+      "label_conflict": false
+    }
+  ],
+  "atu": {
+    "distinct": 182,
+    "types_with_5plus": 133,
+    "largest": {
+      "275": 31,
+      "777": 30,
+      "510B": 26,
+      "1645": 26,
+      "500": 23,
+      "510A": 21,
+      "700": 21,
+      "155": 20,
+      "980": 20,
+      "545B": 20
+    }
+  },
+  "provenance": {
+    "distinct_strings_including_NA": 406,
+    "distinct_nonmissing": 405,
+    "top": {
+      "Germany": 147,
+      "England": 96,
+      "India": 70,
+      "Scotland": 56,
+      "Italy": 55,
+      "Ireland": 49,
+      "Norway": 40,
+      "Russia": 32,
+      "Aesop": 29,
+      "Denmark": 28,
+      "Philippines": 22,
+      "Switzerland": 20,
+      "Jacob and Wilhelm Grimm": 19,
+      "Romania": 19,
+      "NA": 16
+    }
+  },
+  "date_obtained": {
+    "values": {
+      "2021-03-10": 1337,
+      "2022-05-15": 136,
+      "2022-05-16": 45
+    },
+    "meaning": "Date the dataset authors scraped the record; not a collection, publication or origin date."
+  },
+  "data_source": {
+    "Ashliman's Folktexts": 1518
+  },
+  "cleaning": {
+    "removals_by_rule": {
+      "tail_cut:citation": 149,
+      "tail_cut:page_reference": 79,
+      "tail_cut:translator_credit": 34,
+      "navigation": 25,
+      "tail_cut:navigation": 15,
+      "manual_strip_suffix": 14,
+      "tail_cut:classification": 11,
+      "tail_cut:source_line": 9,
+      "revised_stamp": 8,
+      "tail_cut:editorial_notes": 5,
+      "manual_trim_before": 4,
+      "footnote_block": 4,
+      "manual_trim_from": 2,
+      "footnote_marker": 2,
+      "tail_cut:translator_note": 2,
+      "exact_repetition": 2
+    },
+    "records_with_removals": 345,
+    "words_removed": 12294,
+    "mojibake_repaired_texts": 216,
+    "excluded_non_narrative": [
+      {
+        "record_id": "aft-d57c2ce-0052",
+        "excluded_reason": "Non-narrative remnant: only the appended moral ('The Moral: ...') survives; the fable itself is missing from the dataset."
+      },
+      {
+        "record_id": "aft-d57c2ce-0270",
+        "excluded_reason": "Non-narrative: a bibliography of related versions (titles and page references), not a tale text."
+      },
+      {
+        "record_id": "aft-d57c2ce-0271",
+        "excluded_reason": "Non-narrative: a bibliography of related versions (titles and page references), not a tale text."
+      },
+      {
+        "record_id": "aft-d57c2ce-0273",
+        "excluded_reason": "Non-narrative: an editorial note pointing to a literary treatment by Gottfried Keller."
+      },
+      {
+        "record_id": "aft-d57c2ce-0998",
+        "excluded_reason": "Non-narrative placeholder: 'An English translation of this tale will be posted here in the near future.'"
+      },
+      {
+        "record_id": "aft-d57c2ce-1112",
+        "excluded_reason": "Non-narrative: a one-sentence proverb with its citation, not a tale."
+      },
+      {
+        "record_id": "aft-d57c2ce-1368",
+        "excluded_reason": "Non-narrative: collector/informant metadata only (Schools' Collection)."
+      },
+      {
+        "record_id": "aft-d57c2ce-1374",
+        "excluded_reason": "Non-narrative: an editorial note about numbering in Grimm's text."
+      },
+      {
+        "record_id": "aft-d57c2ce-1452",
+        "excluded_reason": "Non-narrative: collector metadata only (Schools' Collection)."
+      }
+    ],
+    "flags": {
+      "suspected_truncated_start": 48,
+      "suspected_truncated_end": 37,
+      "short_text": 12,
+      "residual_marker": 3,
+      "repetition_collapsed": 2,
+      "tail_contains_new_tale": 1
+    }
+  }
+}
