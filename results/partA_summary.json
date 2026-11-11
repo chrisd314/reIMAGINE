@@ -1,0 +1,64 @@
+{
+  "per_representation": {
+    "tfidf": {
+      "rep": "tfidf",
+      "n": 1462,
+      "communities": 20,
+      "communities_major": 9,
+      "tales_in_major": 1450,
+      "tales_in_small": 12,
+      "lda": {
+        "k": 9,
+        "nmi": {
+          "observed": 0.24256279697638555,
+          "null_mean": 0.011878887149486806,
+          "null_sd": 0.0020025683769951917,
+          "z": 115.19402407274337,
+          "p_upper": 0.000999000999000999,
+          "n_null": 1000
+        },
+        "tales": 1450
+      },
+      "backbone": {
+        "method": "each tale's 5 strongest edges",
+        "disparity_edges_at_alpha": 73,
+        "alpha": 0.05,
+        "edges_drawn": 5363
+      }
+    },
+    "embedding": {
+      "rep": "embedding",
+      "n": 1462,
+      "communities": 133,
+      "communities_major": 5,
+      "tales_in_major": 1294,
+      "tales_in_small": 168,
+      "lda": {
+        "k": 5,
+        "nmi": {
+          "observed": 0.22216238527011622,
+          "null_mean": 0.004150826422013931,
+          "null_sd": 0.0014808178273398814,
+          "z": 147.22375353876913,
+          "p_upper": 0.000999000999000999,
+          "n_null": 1000
+        },
+        "tales": 1294
+      },
+      "backbone": {
+        "method": "each tale's 5 strongest edges",
+        "disparity_edges_at_alpha": 0,
+        "alpha": 0.05,
+        "edges_drawn": 5178
+      }
+    }
+  },
+  "between_representations": {
+    "reps": [
+      "tfidf",
+      "embedding"
+    ],
+    "nmi_between_partitions": 0.34530611188148325
+  },
+  "name_like_words_excluded_from_word_lists": 3056
+}

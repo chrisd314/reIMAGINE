@@ -1,0 +1,27 @@
+{
+  "name_like_words": 4024,
+  "formulae": [
+    "when Brahmadatta was (?:reigning|king) in Benares",
+    "Once (?:up)?on a time",
+    "There (?:was|lived) once(?: upon a time)?",
+    "Once there (?:was|were|lived)",
+    "(?:Most certainly|Most assuredly|Verily),? I (?:tell|say un?to) (?:you|thee)",
+    "He who has ears(?: to hear)?, let him hear",
+    "The Kingdom of (?:Heaven|God) is like",
+    "He spoke (?:another|this|a) parable(?: to them)?,? saying",
+    "the Holy One,? blessed be He",
+    "blessed be He",
+    "as it is (?:written|said)",
+    "lived happily ever after"
+  ],
+  "placeholder": "",
+  "share_of_tokens_masked": 0.03549455632100478,
+  "share_of_tokens_masked_by_tradition": {
+    "Christian": 0.006942732360316628,
+    "Buddhist": 0.02694807127756784,
+    "Jewish": 0.05561103670139277,
+    "Sufi": 0.03970180232239298,
+    "Taoist": 0.04701614567786931
+  },
+  "share_of_tokens_masked_folktales": 0.020506741845340806
+}

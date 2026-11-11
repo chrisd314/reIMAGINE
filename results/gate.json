@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "rule": "recall@10 of the 36 calibration versions is clearly above chance for at least one representation: the bootstrap 95% interval lies above the analytic chance rate and the chance of that many hits is below 0.001",
+  "representations_passing": [
+    "tfidf",
+    "embedding"
+  ],
+  "recall_at_10": {
+    "tfidf": 0.6944444444444444,
+    "tfidf_masked": 0.6944444444444444,
+    "embedding": 0.6111111111111112,
+    "embedding_masked": 0.6111111111111112
+  },
+  "chance_at_10": 0.0545457082174443
+}

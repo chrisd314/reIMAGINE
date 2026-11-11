@@ -1,0 +1,7 @@
+scope,n,spearman_folk_closeness,mean_jaccard_top10,share_with_no_shared_neighbour,same_nearest_folktale,representations
+all parables,281,0.58294,0.084943,0.30961,0.049822,tfidf vs embedding
+Christian,40,0.51764,0.046053,0.425,0.025,tfidf vs embedding
+Buddhist,81,0.74106,0.11965,0.17284,0.098765,tfidf vs embedding
+Jewish,50,0.19481,0.059051,0.38,0.06,tfidf vs embedding
+Sufi,60,0.5247,0.11913,0.23333,0.016667,tfidf vs embedding
+Taoist,50,0.29998,0.044699,0.46,0.02,tfidf vs embedding

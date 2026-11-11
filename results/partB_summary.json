@@ -1,0 +1,9 @@
+{
+  "queries": {
+    "baseline": 168,
+    "calibration": 36,
+    "parable": 281
+  },
+  "closeness_k": 5,
+  "attach_k": 10
+}

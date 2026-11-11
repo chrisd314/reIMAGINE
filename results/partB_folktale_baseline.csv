@@ -1,0 +1,5 @@
+rep,candidates,n,q05,q25,q50,q75,q95
+tfidf,all other folktales,1462,0.11272,0.15174,0.18617,0.22695,0.30439
+tfidf,other folktales of a different tale type,1462,0.095692,0.12539,0.15488,0.18862,0.24763
+embedding,all other folktales,1462,0.5853,0.68387,0.74868,0.80673,0.86504
+embedding,other folktales of a different tale type,1462,0.54512,0.65988,0.72869,0.78971,0.85299

@@ -1,0 +1,15 @@
+rep,topic,tales,top_words
+tfidf,0,307,said man not no old went asked son good shall
+tfidf,1,40,says not dance farmer day lady night did went pig
+tfidf,2,174,devil not soldier door man night gold time saw went
+tfidf,3,238,wife not husband woman no good said old poor time
+tfidf,4,207,king not said princess prince daughter father queen palace went
+tfidf,5,30,jackal en giant not say dat come did water ye
+tfidf,6,160,said not fox wolf cat bear went dog time going
+tfidf,7,267,said not little went came girl old got home house
+tfidf,8,39,thou thee thy not came no shall ye place art
+embedding,0,430,said not man no went old asked good wife did
+embedding,1,318,king not said daughter prince came princess went father girl
+embedding,2,336,not thou man wife no time place having thee great
+embedding,3,227,not said little house went old woman did got came
+embedding,4,151,said not went fox came cat dog bear got home

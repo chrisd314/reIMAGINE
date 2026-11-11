@@ -1,0 +1,16 @@
+# Parables of the Lotus Sutra in H. Kern's translation (Sacred Books of the East 21, 1884).
+#
+# Each parable starts at the prose paragraph that begins with `start` and runs until the speaker
+# turns to its application: the first sentence that begins "In the same manner", "Even so",
+# "Such, ..., is the parable" or "Now, ..., what is thy/your opinion". The verse retelling that
+# follows each prose parable in the sutra is not used.
+parables:
+  - {chapter: 3,  title: "The Burning House",          start: "Let us suppose the following case"}
+  - {chapter: 4,  title: "The Lost Son",               start: "It is a case, O Lord, as if a certain man went away from his father"}
+  - {chapter: 5,  title: "The Rain Cloud",             start: "It is a case, Kâsyapa, similar to that of a great cloud"}
+  - {chapter: 5,  title: "The Man Born Blind",         start: "It is a case, Kâsyapa, similar to that of a certain blind-born man"}
+  - {chapter: 7,  title: "The Phantom City",           start: "By way of example, monks, suppose there is some dense forest"}
+  - {chapter: 8,  title: "The Jewel in the Garment",   start: "It is, O Lord, as if some man having come to a friend's house"}
+  - {chapter: 10, title: "Digging for Water",          start: "It is a case, Bhaishagyarâga, similar to that of a certain man"}
+  - {chapter: 13, title: "The Crown Jewel",            start: "It is a case, Mañgusrî, similar to that of a king"}
+  - {chapter: 15, title: "The Physician and His Sons", start: "Let us suppose an analogous case"}

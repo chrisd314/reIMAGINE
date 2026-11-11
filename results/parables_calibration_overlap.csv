@@ -1,0 +1,16 @@
+parable_id,parable_title,calibration_id,calibration_title,tfidf_cosine
+bud-p003,Vānarinda-Jātaka (Jātaka 57),tale-0774,The Monkey's Heart,0.33156
+bud-p016,Kosiya-Jātaka (Jātaka 130),tale-0939,How a Parrot Told Tales of His Mistress and Had His Neck Wrung,0.27428
+bud-p002,Rohiṇī-Jātaka (Jātaka 45),tale-0484,The Mosquito and the Carpenter,0.24634
+bud-p016,Kosiya-Jātaka (Jātaka 130),tale-0938,A Brahmin Asks Two Parrots to Keep an Eye on His Wife,0.24412
+bud-p063,Sutano-Jātaka (Jātaka 398),tale-1019,Sulasa and Sattuka,0.22105
+bud-p057,Laṭukika-Jātaka (Jātaka 357),tale-1019,Sulasa and Sattuka,0.21873
+bud-p065,Sattubhasta-Jātaka (Jātaka 402),tale-0713,The Language of Animals (Jataka),0.21675
+bud-p028,Pabbatūpatthara-Jātaka (Jātaka 195),tale-0939,How a Parrot Told Tales of His Mistress and Had His Neck Wrung,0.21545
+bud-p065,Sattubhasta-Jātaka (Jātaka 402),tale-1140,How Prince Five-Weapons Fought the Ogre Hairy-Grip,0.21506
+bud-p063,Sutano-Jātaka (Jātaka 398),tale-1144,The Demon with the Matted Hair,0.21009
+bud-p001,Matakabhatta-Jātaka (Jātaka 18),tale-1140,How Prince Five-Weapons Fought the Ogre Hairy-Grip,0.20986
+bud-p022,Sūkara-Jātaka (Jātaka 153),tale-0218,The Timid Hare and the Flight of the Beasts (Jataka),0.20664
+bud-p065,Sattubhasta-Jātaka (Jātaka 402),tale-1233,Vedabbha-Jataka: Misguided Effort,0.20637
+bud-p063,Sutano-Jātaka (Jātaka 398),tale-1140,How Prince Five-Weapons Fought the Ogre Hairy-Grip,0.20614
+bud-p040,Mudu-Pāṇi-Jātaka (Jātaka 262),tale-0858,How an Ungrateful Son Planned to Murder His Old Father,0.20614

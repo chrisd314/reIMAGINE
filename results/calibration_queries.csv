@@ -1,0 +1,37 @@
+id,title,tradition,atu_id,n_tokens,rank_tfidf,chance_at_k,same_type_folktales,rank_tfidf_masked,rank_embedding,rank_embedding_masked
+tale-0011,"Story of an Old Woman, Carrying Milk to Market in an Earthen Vessel.",Christian,1430,164,1,0.11686,18,1,13,28
+tale-0029,Of the Remembrance of Benefits,Christian,156,378,1,0.033781,5,1,3,1
+tale-0094,"Of the Vicissitude of Everything Good, and Especially of a Right Justice (Gestaromanorum)",Christian,207C,459,1,0.020394,3,1,6,1
+tale-0098,Of Hearing Good Counsel,Christian,150,343,1,0.0068399,1,1,1,1
+tale-0218,The Timid Hare and the Flight of the Beasts (Jataka),Buddhist,20C,897,1,0.085698,13,1,11,12
+tale-0224,The Future Buddha as a Wise Judge,Buddhist,926,486,1,0.013638,2,3,9,5
+tale-0225,The Question Regarding the Son,Buddhist,926,615,7,0.013638,2,5,1,3
+tale-0260,Seggu-Jataka: How a Pious Greengrocer Tested His Daughter's Virtue (Jataka217),Buddhist,510B,297,5,0.14706,23,6,23,16
+tale-0296,The Cruel Crane Outwitted,Buddhist,231,1034,1,0.07296,11,1,1,1
+tale-0345,The Old Man and the Physician,Islamic (Sufi),335,145,13,0.040412,6,21,6,9
+tale-0410,Of the Deceits of the Devil,Christian,1626,527,1,0.027108,4,1,1,1
+tale-0413,The Three Travelers,Islamic (Sufi),1626,435,1,0.027108,4,1,1,2
+tale-0417,A Man of Baghdad,Islamic (Sufi),1645,182,1,0.15299,24,1,1,1
+tale-0465,Of Chastity,Christian,888,692,4,0.033781,5,1,147,39
+tale-0484,The Mosquito and the Carpenter,Buddhist,1586,252,8,0.092008,14,9,133,35
+tale-0562,How a Tortoise Came to Grief Because He Loved His Home Too Much,Buddhist,278A,584,833,0.027108,4,851,166,153
+tale-0563,The Three Fishes,Islamic (Sufi),278A,158,364,0.027108,4,388,42,58
+tale-0599,Of Ingratitude,Christian,160,1138,1,0.040412,6,1,1,1
+tale-0682,Of Nature and the Returns of Ingratitude,Christian,155,386,2,0.11686,18,2,1,1
+tale-0713,The Language of Animals (Jataka),Buddhist,670,1379,1,0.098279,15,1,1,1
+tale-0736,Folliculus and His Greyhound,Christian,178A,432,1,0.040412,6,1,1,1
+tale-0747,Of Good Advice,Christian,285A,512,1,0.020394,3,1,67,37
+tale-0774,The Monkey's Heart,Buddhist,91,563,1,0.040412,6,1,1,1
+tale-0855,A Wicked Man,Christian,980,109,1,0.1107,17,1,1,1
+tale-0858,How an Ungrateful Son Planned to Murder His Old Father,Buddhist,980,1097,55,0.1107,17,55,1,1
+tale-0938,A Brahmin Asks Two Parrots to Keep an Eye on His Wife,Buddhist,243A,488,893,0.0068399,1,925,1112,874
+tale-0939,How a Parrot Told Tales of His Mistress and Had His Neck Wrung,Buddhist,243A,364,999,0.0068399,1,1031,1019,757
+tale-0940,Of Maintaining Truth to the Last,Christian,243A,315,2,0.0068399,1,2,418,109
+tale-1019,Sulasa and Sattuka,Buddhist,955,902,175,0.079349,12,175,31,101
+tale-1109,The Seven Stages of Human Life,Jewish,173,363,31,0.040412,6,27,1,1
+tale-1140,How Prince Five-Weapons Fought the Ogre Hairy-Grip,Buddhist,175,1269,54,0.079349,12,60,381,72
+tale-1144,The Demon with the Matted Hair,Buddhist,175,1270,8,0.079349,12,8,329,106
+tale-1171,Of the Triple State of the World,Christian,920E,196,1,0.013638,2,1,1,1
+tale-1175,The Talkative Tortoise,Buddhist,225,710,1,0.040412,6,1,1,1
+tale-1221,The Dead Mouse,Buddhist,1655,910,85,0.040412,6,69,6,8
+tale-1233,Vedabbha-Jataka: Misguided Effort,Buddhist,763,1559,12,0.053553,8,14,5,5

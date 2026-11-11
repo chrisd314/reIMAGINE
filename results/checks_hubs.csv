@@ -1,0 +1,21 @@
+rep,rank,folktale_id,title,atu_id,community,n_tokens,times_a_neighbour,share_of_parables
+tfidf,1,tale-1320,The Wild Man,502,C1,5009,60,0.21352
+tfidf,2,tale-0579,Biancabella,706,C1,6088,46,0.1637
+tfidf,3,tale-1312,Guerrino and the Savage Man,502,C1,6685,44,0.15658
+tfidf,4,tale-0694,The Snake's Thanks,155,C1,1713,37,0.13167
+tfidf,5,tale-0025,Ali Baba and the Forty Thieves,954,C1,11088,34,0.121
+tfidf,6,tale-0665,The Enchanted Pig,441,C1,4588,33,0.11744
+tfidf,7,tale-0589,The Girl without Hands (Schneller),706,C1,2471,25,0.088968
+tfidf,8,tale-0581,Penta the Handless,706,C1,4255,24,0.085409
+tfidf,9,tale-0421,Numan's Dream,1645,C1,1415,21,0.074733
+tfidf,10,tale-0667,"The Hedgehog, the Merchant, the King, and the Poor Man",441,C1,7246,21,0.074733
+embedding,1,tale-0025,Ali Baba and the Forty Thieves,954,C3,11088,69,0.24555
+embedding,2,tale-0600,Story of the Grateful Animals and the Ungrateful Woman,160,C2,1691,68,0.24199
+embedding,3,tale-0867,The Divided Horse-Blanket,980,C3,2857,64,0.22776
+embedding,4,tale-1227,The Hermit and the Three Ruffians,763,C3,786,60,0.21352
+embedding,5,tale-1320,The Wild Man,502,C3,5009,55,0.19573
+embedding,6,tale-0581,Penta the Handless,706,C2,4255,52,0.18505
+embedding,7,tale-0656,The Raja's Son and the Kotwal's Son,571B,C2,1446,48,0.17082
+embedding,8,tale-1239,Honesty and Dishonesty,613,C3,2258,48,0.17082
+embedding,9,tale-1248,The Two Peasants,613,C2,1489,45,0.16014
+embedding,10,tale-1505,Peruonto,675,C2,2880,43,0.15302
