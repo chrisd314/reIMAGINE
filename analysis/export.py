@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import base64
 import json
+import os
+import re
 import shutil
 
 import numpy as np
@@ -39,12 +41,41 @@ def none_if_nan(v):
     return v
 
 
+EXCERPT_WORDS = 120
+
+
+def public_build() -> bool:
+    """True when OUAW_PUBLIC_BUILD is set: the export is meant for a public deployment.
+
+    A public build never contains full texts, whatever `export.include_full_texts` says
+    (see LICENSE_NOTES.md). The deployment workflow sets this variable.
+    """
+    return os.environ.get("OUAW_PUBLIC_BUILD", "").strip().lower() in {"1", "true", "yes"}
+
+
+def excerpt_of(text: str, words: int = EXCERPT_WORDS) -> str:
+    """Verbatim opening of a text (its first `words` words).
+
+    The cut is a prefix of the original string, so passage offsets into the full text
+    stay valid for the part that is kept. Texts no longer than the limit are returned whole.
+    """
+    ends = [m.end() for m in re.finditer(r"\S+", text)]
+    return text if len(ends) <= words else text[:ends[words - 1]]
+
+
 def run() -> dict:
     cfg = load_config()
     run_meta = read_json(OUTPUTS / "metrics" / "run.json")
     run_id = run_meta["run_id"]
     stamp = dict(run_id=run_id, schema_version=SCHEMA_VERSION)
-    full_text = cfg.get("export", {}).get("include_full_texts", True)
+    full_text = bool(cfg.get("export", {}).get("include_full_texts", True)) and not public_build()
+    # Passages quoted by the story's opening scene. An excerpt-only build ships these two
+    # passages in addition to each tale's opening, so the scene still works.
+    quoted: dict[str, set[int]] = {}
+    op = cfg.get("export", {}).get("opening_pair")
+    if op:
+        quoted.setdefault(op["a"], set()).add(int(op["a_chunk"]))
+        quoted.setdefault(op["b"], set()).add(int(op["b_chunk"]))
     nar, reps = load_inputs()
     nar = nar.reset_index(drop=True)
     pos = {k: i for i, k in enumerate(nar["narrative_id"])}
@@ -146,7 +177,6 @@ def run() -> dict:
     X = sp.load_npz(INTERIM / "lexical_tfidf.npz").tocsr()
     vocab = pd.read_parquet(INTERIM / "lexical_vocab.parquet")["term"].to_numpy()
     from .lexical import preprocess
-    import re
     tok = re.compile(cfg["lexical"]["token_pattern"])
     sem = reps["semantic"][1]
     for i, r in nar.iterrows():
@@ -156,10 +186,15 @@ def run() -> dict:
         terms = sorted(((vocab[j], float(v)) for j, v in zip(row.indices, row.data)), key=lambda t: -t[1])
         toks = tok.findall(preprocess(r["text"], cfg["lexical"]))
         freq = pd.Series(toks).value_counts()
+        shown = r["text"] if full_text else excerpt_of(r["text"])
+        is_excerpt = len(shown) < len(r["text"])
+        spans = list(zip(ch["char_start"], ch["char_end"]))
         payload = dict(
             **stamp, id=nid, title=r["title"], titles=clean_list(r["titles"]), record_ids=clean_list(r["record_ids"]),
-            text=r["text"] if full_text else " ".join(r["text"].split()[:120]) + " …",
-            text_is_excerpt=not full_text, n_words=int(r["n_words"]),
+            text=shown, text_is_excerpt=is_excerpt,
+            passages={str(c): r["text"][int(spans[c][0]):int(spans[c][1])] for c in sorted(quoted.get(nid, ()))
+                      if c < len(spans)} if is_excerpt else {},
+            n_words=int(r["n_words"]),
             atu=dict(id=r["atu_id"], ids=clean_list(r["atu_ids"]), name=r["atu_name"], chapter=r["atu_chapter"],
                      status=r["atu_status"]),
             provenance=dict(raw=clean_list(r["provenance_raw"]), label=clean_list(r["provenance_label"]),
@@ -230,14 +265,17 @@ def run() -> dict:
                                permutations=cfg["evaluation"]["permutations"],
                                balanced_cap=cfg["evaluation"]["balanced_subset"]["cap"]),
                    layouts=lay_meta, validation_status=vsum["annotations"]["status"],
-                   full_texts_included=full_text, opening=cfg.get("export", {}).get("opening_pair"),
+                   full_texts_included=full_text, excerpt_words=EXCERPT_WORDS, public_build=public_build(),
+                   opening=cfg.get("export", {}).get("opening_pair"),
                    story_pairs=cfg.get("export", {}).get("story_pairs", {}))
     write_json(WEB_DATA / "summary.json", summary)
     files = {p.relative_to(WEB_DATA).as_posix(): dict(bytes=p.stat().st_size)
              for p in sorted(WEB_DATA.rglob("*")) if p.is_file() and "tales/" not in p.relative_to(WEB_DATA).as_posix()}
-    write_json(WEB_DATA / "manifest.json", dict(**stamp, generated=utc_now(), tales=len(nar), files=files))
+    write_json(WEB_DATA / "manifest.json", dict(**stamp, generated=utc_now(), tales=len(nar),
+                                                full_texts_included=full_text, public_build=public_build(), files=files))
     total = sum(p.stat().st_size for p in WEB_DATA.rglob("*") if p.is_file())
-    print(f"  exported run {run_id}: {len(nar)} tale files, {len(exported_graphs)} graphs, {total / 1e6:.1f} MB total")
+    print(f"  exported run {run_id}: {len(nar)} tale files, {len(exported_graphs)} graphs, {total / 1e6:.1f} MB total "
+          f"({'full texts' if full_text else f'excerpts only, first {EXCERPT_WORDS} words'})")
     return summary
 
 

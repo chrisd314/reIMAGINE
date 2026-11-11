@@ -202,8 +202,8 @@ validation:
   max_pairs_per_tale: 2
 
 export:
-  # Local preview includes full texts. Set to false before any public deployment
-  # until the publication questions in LICENSE_NOTES.md are resolved.
+  # Local preview includes full texts. Public builds (OUAW_PUBLIC_BUILD=1, set by the
+  # deployment workflow) are always excerpt-only, whatever this says; see LICENSE_NOTES.md.
   include_full_texts: true
   # Story examples, chosen after inspecting computed neighbours (presentation only;
   # never used in any statistic). One example is not evidence of migration.

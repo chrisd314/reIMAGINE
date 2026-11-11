@@ -41,6 +41,19 @@ Browser checks (with a server running): `uv run python tests/browser/journey.py 
 
 Typical timings on a laptop CPU: embedding about 5 minutes on the first run (cached afterwards), graphs and label shuffles about 4 minutes, modularity null a few minutes, layouts about 5 minutes.
 
+## Public website (GitHub Pages)
+
+The site is published at <https://chrisd314.github.io/reIMAGINE/> by `.github/workflows/deploy-pages.yml`. On every push to `master` that touches the analysis, the data or the site (or on a manual run from the Actions tab), the workflow runs the pipeline, runs the tests, builds `web/` and deploys `web/dist`. Nothing else in the repository is published.
+
+The public build is **excerpt-only**: the workflow sets `OUAW_PUBLIC_BUILD=1`, which makes the export ship the first 120 words of each tale (plus the two passages quoted in the opening scene) instead of full texts, whatever `export.include_full_texts` says. The reasons are in LICENSE_NOTES.md. To reproduce the public build locally:
+
+```bash
+OUAW_PUBLIC_BUILD=1 uv run python -m analysis export      # PowerShell: $env:OUAW_PUBLIC_BUILD = "1"; uv run ...
+cd web && npm run build && npm run preview
+```
+
+Run the export again without the variable to get the full-text local preview back. The first workflow run takes a while (it computes the embeddings); later runs reuse a cache of the pipeline state unless the analysis code, settings or inputs changed. The numbers of the deployed run are printed in the workflow's summary; the run was computed on Linux, so compare them with STATUS.md before quoting.
+
 ## What the pipeline does
 
 | Stage | Module | Main outputs |
@@ -88,4 +101,4 @@ The Validation page is a blind annotation tool. Export its CSVs to `outputs/vali
 
 ## Licence
 
-The dataset terms are CC BY-NC-SA 4.0 by the more restrictive reading of a README/LICENSE discrepancy; see LICENSE_NOTES.md. Full texts are shown only in the local preview. The code licence is not yet chosen.
+The dataset terms are CC BY-NC-SA 4.0 by the more restrictive reading of a README/LICENSE discrepancy; see LICENSE_NOTES.md. Full texts are shown only in the local preview; the public site shows short excerpts with source citations. The code licence is not yet chosen.

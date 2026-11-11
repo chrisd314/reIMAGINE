@@ -44,6 +44,27 @@ export function sharedTerms(a: TalePayload, b: TalePayload, limit = 30): { term:
   return out.slice(0, limit);
 }
 
+/**
+ * Text of one passage (chunk), or null when this build does not contain it.
+ * Excerpt-only builds carry the opening of each tale plus the few passages the story quotes;
+ * a passage cut off by the excerpt ends with an ellipsis.
+ */
+export function passageText(t: TalePayload, chunk: number): string | null {
+  const quoted = t.passages?.[String(chunk)];
+  if (quoted !== undefined) return quoted;
+  const span = t.chunks[chunk];
+  if (!span) return null;
+  const [s, e] = span;
+  if (!t.text_is_excerpt) return t.text.slice(s, e);
+  if (s >= t.text.length) return null;
+  return e > t.text.length ? `${t.text.slice(s)} …` : t.text.slice(s, e);
+}
+
+/** The text a build may show for a tale: all of it, or its opening followed by an ellipsis. */
+export function shownText(t: TalePayload): string {
+  return t.text_is_excerpt ? `${t.text} …` : t.text;
+}
+
 export interface PassageMatch { a: number; b: number; score: number }
 
 /** Best-matching chunk pairs between two tales (cosine of chunk vectors), greedy distinct chunks. */

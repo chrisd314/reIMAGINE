@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { load, taleUrl, useData } from "../data/load";
 import type { TalePayload, ValidationPayload } from "../data/types";
+import { shownText } from "../data/vectors";
 import { ErrorState, Loading, Segmented, downloadText, toCsv, toast } from "../components/ui";
 
 type Ann = Record<string, string> & { item_id: string; reviewer_id: string; note: string; timestamp: string };
@@ -85,11 +86,16 @@ export function Validation() {
               <strong>Item {item.item_id}</strong> <span className="muted">({pos + 1} of {items.length})</span>
               <button className="btn small" disabled={pos >= items.length - 1} onClick={() => setPos((p) => p + 1)}>Next →</button>
             </div>
+            {texts?.some((t) => t.text_is_excerpt) && (
+              <div className="callout warn sans small" role="note">
+                <strong>Not for annotation.</strong> This public build shows only the opening of each tale, so the pairs below cannot be judged properly. Annotate in the local preview, which shows the full texts (see the project README).
+              </div>
+            )}
             <div className="review-grid">
               {!texts ? <Loading what="the two texts" /> : texts.map((t, k) => (
                 <div key={k}>
                   <h3 style={{ marginBottom: 4 }}>Tale {k === 0 ? "A" : "B"}</h3>
-                  <div className="review-text" tabIndex={0} aria-label={`Text of tale ${k === 0 ? "A" : "B"}`}>{t.text}</div>
+                  <div className="review-text" tabIndex={0} aria-label={`Text of tale ${k === 0 ? "A" : "B"}`}>{shownText(t)}</div>
                 </div>
               ))}
             </div>

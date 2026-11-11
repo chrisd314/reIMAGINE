@@ -1,0 +1,4 @@
+# Raw inputs are immutable and verified by SHA-256 (data/raw/source_manifest.json).
+# Never convert their line endings: with core.autocrlf a Windows checkout would
+# otherwise fail the hash check and download every file again.
+data/raw/** -text
