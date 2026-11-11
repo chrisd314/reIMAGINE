@@ -1,0 +1,73 @@
+# Settings of the paper pipeline (python -m ouaw.run).
+# Text and graph settings shared with the website pipeline are read from config.yaml:
+#   lexical.*  (TF-IDF, negations kept), semantic.* (MiniLM, 200-token chunks),
+#   graphs.densities, graphs.primary_density, graphs.seeds, graphs.primary_seed, graphs.louvain_resolution.
+# Every judgement call behind a value here is logged in DECISIONS.md.
+
+seed: 0                                    # sampling, bootstrap, hand-label draw, dev sample
+calibration_list: data/mappings/calibration_set.csv
+
+representations: [tfidf, embedding]
+primary_representation: tfidf              # used for the four figures; fixed at the calibration gate (DECISIONS.md)
+
+map:
+  modularity_null:
+    shuffles: 100                          # at the primary density
+    shuffles_other_densities: 20
+    swaps_per_edge: 10
+    seed: 2026
+  label_shuffles: 1000
+  label_shuffle_seed: 20261111
+  top_words: 10
+  lda: {max_iter: 30, max_features: 5000, seed: 0}
+  backbone: {alpha: 0.05, min_mean_degree: 1.0, fallback_k: 5}
+  layout_seed: 42
+  layout_iterations: 300                   # ForceAtlas2 on the whole analysis graph; positions are for drawing only
+  pagerank_top: 10
+
+parables:
+  user_agent: "OnceUponAWorld/1.0 (DTU 02805 student project; one request per second)"
+  seconds_between_requests: 1.0
+  duplicate_cosine: 0.9                    # TF-IDF cosine to a calibration version above which a new story is dropped
+  min_tokens: 40                           # shorter segments are not parables (cross-references, stubs)
+  max_tokens: 3000
+  baseline_per_tradition: 40
+  segmentation_check_per_tradition: 20
+  targets: {christian: all, buddhist_jataka: 72, jewish: 60, sufi: 60, taoist: 50}
+
+partB:
+  closeness_k: 5
+  attach_k: 10
+  bootstrap: 10000
+  placement_shuffles: 1000
+  placement_seed: 20261112
+  distinctive: {quantile: 0.25, top: 15, prior: 0.01}
+
+checks:
+  recall_k: 10
+  hubs_removed: 10
+  long_parable_tokens: 100                 # length check: ranking repeated on parables at least this long
+  hand_labels: {per_tradition: 20, excerpt_words: 120}
+
+masking:
+  placeholder: ""                          # masked words are removed; a visible token such as "X" would itself be shared
+                                           # by every text with names and raise embedding similarity (DECISIONS.md)
+  name_threshold: 0.5                      # word capitalised in more than half of its uses (course week 6)
+  formulae:                                # collection formulae and openings, replaced before names
+    - 'when Brahmadatta was (?:reigning|king) in Benares'
+    - 'Once (?:up)?on a time'
+    - 'There (?:was|lived) once(?: upon a time)?'
+    - 'Once there (?:was|were|lived)'
+    - '(?:Most certainly|Most assuredly|Verily),? I (?:tell|say un?to) (?:you|thee)'
+    - 'He who has ears(?: to hear)?, let him hear'
+    - 'The Kingdom of (?:Heaven|God) is like'
+    - 'He spoke (?:another|this|a) parable(?: to them)?,? saying'
+    - 'the Holy One,? blessed be He'
+    - 'blessed be He'
+    - 'as it is (?:written|said)'
+    - 'lived happily ever after'
+
+figures:
+  dpi: 300
+  single_column_in: 3.42                   # PNAS: 8.7 cm
+  double_column_in: 7.0                    # PNAS: 17.8 cm
