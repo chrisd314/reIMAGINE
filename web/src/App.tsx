@@ -10,9 +10,11 @@ import { Explore } from "./pages/Explore";
 import { DataMethods } from "./pages/DataMethods";
 import { Validation } from "./pages/Validation";
 import { Sources } from "./pages/Sources";
+import { Parables } from "./pages/Parables";
 
 const NAV = [
   { path: "/", label: "Story" },
+  { path: "/parables", label: "Parables" },
   { path: "/explore", label: "Explore" },
   { path: "/data", label: "Data & Methods" },
   { path: "/validation", label: "Validation" },
@@ -41,13 +43,14 @@ export default function App() {
   const motionCtx = useMemo(() => ({ enabled, pref, setPref }), [enabled, pref]);
   const path = route.path === "" ? "/" : route.path;
   useEffect(() => {
-    const titles: Record<string, string> = { "/": "Story", "/explore": "Explore", "/data": "Data & Methods", "/validation": "Validation", "/sources": "Sources" };
+    const titles: Record<string, string> = { "/": "Story", "/parables": "Parables", "/explore": "Explore", "/data": "Data & Methods", "/validation": "Validation", "/sources": "Sources" };
     document.title = `${titles[path] ?? "Story"} · Once Upon a World`;
     window.scrollTo({ top: 0 });
   }, [path]);
 
   let page;
   switch (path) {
+    case "/parables": page = <Parables route={route} navigate={navigate} />; break;
     case "/explore": page = <Explore route={route} navigate={navigate} />; break;
     case "/data": page = <DataMethods route={route} navigate={navigate} />; break;
     case "/validation": page = <Validation />; break;

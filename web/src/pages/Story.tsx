@@ -131,6 +131,9 @@ export function Story({ route, navigate }: { route: Route; navigate: (p: string,
             <p className="small sans muted">Further limitations, including source licensing, truncated texts and source-dependence, are listed in Data &amp; Methods and in LIMITATIONS.md.</p>
           </div>
         </div>
+        <div className="callout neutral" style={{ marginTop: 20 }}>
+          <strong>Next: religious parables on this map.</strong> Do the teaching stories of five religions tell the same kinds of stories as the folktales, and do they land in the same part of the map? <a href="#/parables">Read part two</a>.
+        </div>
         {nav(9)}
       </Chapter>
       {pair && pair.length === 2 && <PairReader a={pair[0]} b={pair[1]} onClose={() => navigate("/", { ...route.params, pair: null }, true)} onSwap={() => openPair(pair[1], pair[0])} />}
