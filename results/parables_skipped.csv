@@ -1,0 +1,17 @@
+tradition,item,reason
+Buddhist,Suruci-Jātaka (Jātaka 489),3044 tokens (outside 40-3000)
+Buddhist,Kusa-Jātaka (Jātaka 531),10916 tokens (outside 40-3000)
+Buddhist,Jātaka 322,same birth story as a calibration version
+Buddhist,Jātaka 44,same birth story as a calibration version
+Buddhist,Mūga-Pakkha Jātaka (Jātaka 538),8252 tokens (outside 40-3000)
+Buddhist,Kosiya-Jātaka (Jātaka 470),11 tokens (outside 40-3000)
+Buddhist,Ghata-Jātaka (Jātaka 454),3337 tokens (outside 40-3000)
+Buddhist,Mātaṅga-Jātaka (Jātaka 497),3890 tokens (outside 40-3000)
+Sufi,"The Old Man and the Physician (Masnavi, Book II, Story XIII)",same story as a calibration version
+Sufi,"The Man who boasted that God did not punish (Masnavi, Book II, Story XV)",prose summary has 0 tokens
+Sufi,"The Young Ducks who were brought up under a Hen (Masnavi, Book II, Story XVIII)",prose summary has 0 tokens
+Sufi,"The Three Fishes (Masnavi, Book IV, Story V)",same title as calibration version tale-0563
+Sufi,"The Three Travelers (Masnavi, Book VI, Story VII)",same story as a calibration version
+Sufi,18 qualifying stories,not drawn (seeded random draw to the target size)
+Taoist,154 sections of the Zhuangzi,"not a story by the action/speech rule (discursive), or outside the length limits"
+Taoist,65 story sections of the Zhuangzi,not drawn (seeded random draw of 50)

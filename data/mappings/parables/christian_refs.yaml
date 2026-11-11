@@ -1,0 +1,59 @@
+# Parables of Jesus in the World English Bible: verse ranges of the story itself.
+#
+# One entry per parable. `versions` lists the parallel tellings (book chapter:first-last, one chapter
+# each; books as in the WEB verse-per-line file: MAT, MAR, LUK). The pipeline keeps the LONGEST
+# version and drops the others, so no parable is counted twice.
+#
+# Judgement calls (please review; edit a range and rerun `python -m ouaw.run --stage parables`):
+#   - Ranges hold the story as told, with its closing saying when that is in the same verses.
+#     Separate explanations are left out (for example Matthew 13:18-23 on the Sower, 13:36-43 on the Weeds).
+#   - Two pairs that the Gospels tell back to back, each half under 40 words, are one text each:
+#     the Mustard Seed with the Leaven, and the Hidden Treasure with the Pearl.
+#   - Wedding Banquet (Matthew 22) and Great Banquet (Luke 14), and Talents (Matthew 25) and
+#     Ten Minas (Luke 19), are kept as different parables.
+#   - Sayings without a story (salt, the blind leading the blind) and the discourses of John 10 and 15
+#     are not included.
+parables:
+  - {title: "The Sower",                              versions: ["MAT 13:3-9", "MAR 4:3-9", "LUK 8:5-8"]}
+  - {title: "The Weeds among the Wheat",              versions: ["MAT 13:24-30"]}
+  - {title: "The Growing Seed",                       versions: ["MAR 4:26-29"]}
+  - {title: "The Mustard Seed and the Leaven",        versions: ["MAT 13:31-33", "LUK 13:18-21", "MAR 4:30-32"]}
+  - {title: "The Hidden Treasure and the Pearl",      versions: ["MAT 13:44-46"]}
+  - {title: "The Net",                                versions: ["MAT 13:47-50"]}
+  - {title: "The Lost Sheep",                         versions: ["MAT 18:12-14", "LUK 15:4-7"]}
+  - {title: "The Unforgiving Servant",                versions: ["MAT 18:23-35"]}
+  - {title: "The Labourers in the Vineyard",          versions: ["MAT 20:1-16"]}
+  - {title: "The Two Sons",                           versions: ["MAT 21:28-32"]}
+  - {title: "The Wicked Tenants",                     versions: ["MAT 21:33-41", "MAR 12:1-9", "LUK 20:9-16"]}
+  - {title: "The Wedding Banquet",                    versions: ["MAT 22:2-14"]}
+  - {title: "The Budding Fig Tree",                   versions: ["MAT 24:32-35", "MAR 13:28-31", "LUK 21:29-33"]}
+  - {title: "The Faithful and the Evil Servant",      versions: ["MAT 24:45-51", "LUK 12:42-48"]}
+  - {title: "The Ten Virgins",                        versions: ["MAT 25:1-13"]}
+  - {title: "The Talents",                            versions: ["MAT 25:14-30"]}
+  - {title: "The Sheep and the Goats",                versions: ["MAT 25:31-46"]}
+  - {title: "The Wise and the Foolish Builders",      versions: ["MAT 7:24-27", "LUK 6:47-49"]}
+  - {title: "New Cloth and New Wineskins",            versions: ["MAT 9:16-17", "MAR 2:21-22", "LUK 5:36-39"]}
+  - {title: "The Lamp under a Basket",                versions: ["MAT 5:14-16", "MAR 4:21-22", "LUK 8:16-17", "LUK 11:33-36"]}
+  - {title: "The Children in the Marketplaces",       versions: ["MAT 11:16-19", "LUK 7:31-35"]}
+  - {title: "The Strong Man",                         versions: ["MAT 12:29", "MAR 3:27", "LUK 11:21-22"]}
+  - {title: "The Return of the Unclean Spirit",       versions: ["MAT 12:43-45", "LUK 11:24-26"]}
+  - {title: "The Watchful Servants",                  versions: ["MAR 13:34-37", "LUK 12:35-40"]}
+  - {title: "The Two Debtors",                        versions: ["LUK 7:41-43"]}
+  - {title: "The Good Samaritan",                     versions: ["LUK 10:30-37"]}
+  - {title: "The Friend at Midnight",                 versions: ["LUK 11:5-8"]}
+  - {title: "The Rich Fool",                          versions: ["LUK 12:16-21"]}
+  - {title: "The Barren Fig Tree",                    versions: ["LUK 13:6-9"]}
+  - {title: "The Lowest Seat",                        versions: ["LUK 14:7-11"]}
+  - {title: "The Great Banquet",                      versions: ["LUK 14:16-24"]}
+  - {title: "Counting the Cost",                      versions: ["LUK 14:28-33"]}
+  - {title: "The Lost Coin",                          versions: ["LUK 15:8-10"]}
+  - {title: "The Prodigal Son",                       versions: ["LUK 15:11-32"]}
+  - {title: "The Shrewd Manager",                     versions: ["LUK 16:1-9"]}
+  - {title: "The Rich Man and Lazarus",               versions: ["LUK 16:19-31"]}
+  - {title: "The Master and the Servant",             versions: ["LUK 17:7-10"]}
+  - {title: "The Persistent Widow",                   versions: ["LUK 18:1-8"]}
+  - {title: "The Pharisee and the Tax Collector",     versions: ["LUK 18:9-14"]}
+  - {title: "The Ten Minas",                          versions: ["LUK 19:12-27"]}
+
+# Non-story teaching text for the style baseline: Proverbs and the Epistles (same translation).
+baseline_books: [PRO, ROM, 1CO, 2CO, GAL, EPH, PHI, COL, 1TH, 2TH, 1TI, 2TI, TIT, PHM, HEB, JAM, 1PE, 2PE, 1JO, 2JO, 3JO, JUD]

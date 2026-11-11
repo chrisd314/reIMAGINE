@@ -1,0 +1,11 @@
+tradition,kind,n,tokens_median,tokens_q25,tokens_q75,tokens_min,tokens_max,whole_text_kept,sources,retrieved
+Christian,parable,40,132.5,93.5,204,38,477,0,"World English Bible (eBible.org, engwebp)",2026-11-11
+Christian,baseline,40,137.5,105.25,211.5,46,442,0,"World English Bible (eBible.org, engwebp)",2026-11-11
+Buddhist,parable,81,399,272,875,114,2709,1,"Saddharma-Puṇḍarīka, or the Lotus of the True Law (Sacred Books of the East 21); The Jātaka, vol. 1 (ed. E. B. Cowell); The Jātaka, vol. 2 (ed. E. B. Cowell); The Jātaka, vol. 3 (ed. E. B. Cowell); The Jātaka, vol. 4 (ed. E. B. Cowell); The Jātaka, vol. 5 (ed. E. B. Cowell)",2026-11-11
+Buddhist,baseline,24,409,288.5,810.5,158,2359,0,The Dhammapada (Sacred Books of the East 10),2026-11-11
+Jewish,parable,50,189.5,114.25,292,62,700,0,Tales and Maxims from the Midrash,2026-11-11
+Jewish,baseline,40,210.5,135.25,321,81,676,0,Sayings of the Jewish Fathers (Pirqe Aboth); Tales and Maxims from the Midrash,2026-11-11
+Sufi,parable,60,317.5,191.25,557.25,106,1803,0,"Masnavi i Ma'navi, abridged",2026-11-11
+Sufi,baseline,40,313.5,187.75,540,55,1632,0,"Masnavi i Ma'navi, abridged",2026-11-11
+Taoist,parable,50,323.5,224,428,94,1515,0,The Writings of Kwang-dze (Sacred Books of the East 39-40),2026-11-11
+Taoist,baseline,24,349,262.25,437.25,126,882,0,The Tâo Teh King (Sacred Books of the East 39),2026-11-11
