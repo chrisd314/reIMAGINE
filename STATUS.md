@@ -44,7 +44,7 @@ Run `ouaw-20261030-ed9feb8a`. Reprint the numbers with `uv run python scripts/su
 
 1. Human review of `data/mappings/provenance_map.csv` (every row says `agent-drafted …; human review pending`) and of `data/mappings/text_review.csv`.
 2. Collect human annotations on the Validation page (two people, overlapping items), then run `uv run python -m analysis validation export`.
-3. Publication: decide on full-text display (`export.include_full_texts`) and resolve the licence questions in LICENSE_NOTES.md before any public deployment.
+3. Publication: the site is deployed to GitHub Pages as an excerpt-only build (2026-11-11; see README.md and LICENSE_NOTES.md §3). Still open: whether to seek permission to publish full texts.
 4. Choose a licence for the code.
 5. Optional extensions not built: a type-level motif reference (the ATU type descriptions have unclear copyright), re-fetching truncated tale openings, and Glottolog points for communities without coordinates.
 

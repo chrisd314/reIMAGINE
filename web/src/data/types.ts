@@ -46,7 +46,11 @@ export interface CataloguePayload extends Stamp {
 }
 
 export interface TalePayload extends Stamp {
-  id: string; title: string; titles: string[]; record_ids: string[]; text: string; text_is_excerpt: boolean; n_words: number;
+  id: string; title: string; titles: string[]; record_ids: string[]; n_words: number;
+  /** Full text, or (excerpt-only builds) a verbatim prefix of it, so `chunks` offsets stay valid for the part kept. */
+  text: string; text_is_excerpt: boolean;
+  /** Excerpt-only builds: full text of the few passages the story quotes, keyed by chunk index. */
+  passages?: Record<string, string>;
   atu: { id: string | null; ids: string[]; name: string | null; chapter: string | null; status: string };
   provenance: {
     raw: string[]; label: string[]; kinds: string[]; status: string; place: string | null; place_kind: string | null;
@@ -106,7 +110,7 @@ export interface SummaryPayload extends Stamp {
   primary: { density: number; seed: number };
   config: { densities: number[]; seeds: number[]; permutations: number; balanced_cap: number };
   layouts: Record<string, { pca_explained_variance: number[]; backbone_edges: Record<string, number>; shared_edges: number }>;
-  validation_status: string; full_texts_included: boolean;
+  validation_status: string; full_texts_included: boolean; excerpt_words?: number; public_build?: boolean;
   opening: null | { a: string; b: string; a_chunk: number; b_chunk: number; note: string };
   story_pairs: Record<string, { a: string; b: string; note: string }>;
 }
@@ -118,4 +122,7 @@ export interface SourcesPayload extends Stamp {
 }
 export interface NullsPayload extends Stamp { nmi: Record<string, number[]> }
 export interface AgreementPayload extends Stamp { rows: AgreementRow[] }
-export interface ManifestPayload extends Stamp { generated: string; tales: number; files: Record<string, { bytes: number }> }
+export interface ManifestPayload extends Stamp {
+  generated: string; tales: number; files: Record<string, { bytes: number }>;
+  full_texts_included?: boolean; public_build?: boolean;
+}

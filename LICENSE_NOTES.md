@@ -26,11 +26,11 @@ These are notes for a noncommercial educational project (DTU 02805). They are no
 ## 3. What this means for the website
 
 - **The local preview shows full texts for private study and annotation.** This is controlled by `export.include_full_texts` in `config.yaml`.
-- **Before any public deployment**, which has not been done and was not authorised, the authors should:
-  1. set `include_full_texts: false` (pages then show a short excerpt plus the source citation), **or**
-  2. obtain confirmation from the rights holders that republication is covered.
+- **The public deployment (GitHub Pages, from 2026-11-11) is excerpt-only.** The deployment workflow sets `OUAW_PUBLIC_BUILD=1`, which overrides `include_full_texts`: each tale page shows the first 120 words plus the source citation, and the opening scene quotes one further passage (at most 200 tokens) from each of its two tales. The workflow refuses to deploy an export that contains more. Derived data that cannot reconstruct a text (TF–IDF weights, embedding vectors, similarity scores) are published for every tale.
+- **Publishing full texts** would require confirmation from the rights holders that republication is covered. That has not been obtained, so do not remove the override without it.
 
   Either way, the CC BY-NC-SA attribution and share-alike terms apply to the derived data.
+- The repository itself contains the full dataset (`data/raw/trilogy/aft.csv`) and is private. Making it public would redistribute the dataset; that is a separate decision under the same CC BY-NC-SA terms.
 - Maps use Natural Earth (public domain) via world-atlas (ISC). Fonts are Source Serif 4 and Inter (SIL Open Font License, via @fontsource).
 
 ## 4. The model

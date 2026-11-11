@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { load, taleUrl } from "../../data/load";
 import type { SummaryPayload, TalePayload } from "../../data/types";
-import { lexicalCosine, passageMatches, semanticCosine } from "../../data/vectors";
+import { lexicalCosine, passageMatches, passageText, semanticCosine } from "../../data/vectors";
 import { CoverageMap } from "../../components/charts";
 import { useLand } from "../../components/useGraphModel";
 import { HowMade, Loading } from "../../components/ui";
@@ -24,7 +24,7 @@ export function OpeningScene({ summary, onRead }: { summary: SummaryPayload; onR
   const scores = useMemo(() => (a && b ? { sem: semanticCosine(a, b), lex: lexicalCosine(a, b), pass: passageMatches(a, b, 1).best[0] } : null), [a, b]);
   if (!op) return <p className="muted">No opening pair configured in this run.</p>;
   if (!a || !b || !scores) return <Loading what="two excerpts" />;
-  const excerpt = (t: TalePayload, chunk: number) => t.text.slice(t.chunks[chunk][0], t.chunks[chunk][1]);
+  const excerpt = (t: TalePayload, chunk: number) => passageText(t, chunk) ?? "[this passage is not included in this build]";
   const revealed = choice !== null;
   const km = a.provenance.lat != null && b.provenance.lat != null ? haversineKm(a.provenance.lat, a.provenance.lon!, b.provenance.lat, b.provenance.lon!) : null;
   const response: Record<Choice, string> = {

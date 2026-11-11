@@ -77,7 +77,7 @@ export default function App() {
             <div>
               <strong>Once Upon a World</strong> — a DTU 02805 course project. Texts and labels: Annotated Folktales (Hagedorn &amp; Darányi 2022) from D. L. Ashliman's Folktexts, CC BY-NC-SA 4.0 per the repository LICENSE.md. Noncommercial, educational use with attribution. See <a href="#/sources">Sources</a>.
             </div>
-            <div className="mono">run {manifest.data?.run_id ?? "…"} · schema {manifest.data?.schema_version ?? "…"} · local preview</div>
+            <div className="mono">run {manifest.data?.run_id ?? "…"} · schema {manifest.data?.schema_version ?? "…"} · {manifest.data?.public_build ? "public build, excerpts only" : "local preview"}</div>
           </div>
         </footer>
       )}

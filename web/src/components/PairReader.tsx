@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { load, taleUrl } from "../data/load";
 import type { TalePayload } from "../data/types";
-import { lexicalCosine, passageMatches, semanticCosine, sharedTerms, chunkVectors } from "../data/vectors";
+import { lexicalCosine, passageMatches, passageText, semanticCosine, sharedTerms, shownText, chunkVectors } from "../data/vectors";
 import { fmt } from "../lib/format";
 import { useMotion } from "../lib/motion";
 import { ErrorState, Loading, Segmented } from "./ui";
@@ -94,24 +94,33 @@ export function PairReader({ a, b, onClose, onSwap }: { a: string; b: string; on
     if (mode === "words" && scores) {
       const terms = new Map(scores.shared.map((s) => [s.term, s.contribution]));
       const maxC = scores.shared[0]?.contribution ?? 1;
-      return <p>{wordSpans(t.text, terms, maxC)}</p>;
+      return <p>{wordSpans(shownText(t), terms, maxC)}</p>;
     }
     const best = scores?.pm.best ?? [];
     const rankOf = (c: number) => best.findIndex((m) => (which === "a" ? m.a : m.b) === c);
     const isActive = (c: number) => active && ((active.side === which && active.chunk === c) || (activeMatch && active.side !== which && activeMatch.chunk === c));
     const refs = which === "a" ? refsA : refsB;
+    let inGap = false; // consecutive passages that this build does not contain collapse into one mark
     return (
       <p>
-        {t.chunks.map(([s, e], c) => {
+        {t.chunks.map((_, c) => {
           const r = rankOf(c);
-          if (compact && r < 0 && !isActive(c)) return <span key={c} className="muted"> […] </span>;
+          const txt = passageText(t, c);
+          const plain = r < 0 && !isActive(c);
+          if (txt === null && plain) {
+            const first = !inGap;
+            inGap = true;
+            return first ? <span key={c} className="muted"> […] </span> : null;
+          }
+          inGap = false;
+          if (compact && plain) return <span key={c} className="muted"> […] </span>;
           const cls = ["passage", r >= 0 ? `match rank${r}` : "", isActive(c) ? "active" : ""].join(" ");
           return (
             <span key={c} ref={(el) => { refs.current[c] = el; }} className={cls} role="button" tabIndex={0}
-              aria-label={`Passage ${c + 1}${r >= 0 ? `, best match rank ${r + 1}` : ""}. Activate to find its closest passage in the other tale.`}
+              aria-label={`Passage ${c + 1}${r >= 0 ? `, best match rank ${r + 1}` : ""}${txt === null ? ", text not shown in this build" : ""}. Activate to find its closest passage in the other tale.`}
               onClick={() => setActive({ side: which, chunk: c })}
               onKeyDown={(ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); setActive({ side: which, chunk: c }); } }}>
-              {t.text.slice(s, e)}{" "}
+              {txt ?? <em className="sans small">[passage {c + 1} of {t.chunks.length}: text not shown in this public build]</em>}{" "}
             </span>
           );
         })}
@@ -166,7 +175,7 @@ export function PairReader({ a, b, onClose, onSwap }: { a: string; b: string; on
                         {t.frequencies.slice(0, 8).map(([term, f]) => `${term} ${(f * 100).toFixed(1)}%`).join(" · ")}
                       </div>
                     )}
-                    {t.text_is_excerpt && <div className="callout warn sans small">Only an excerpt is shown in this build (full-text publication disabled).</div>}
+                    {t.text_is_excerpt && <div className="callout warn sans small">This public build shows only the opening of each tale; follow the source citation above for the full text. The scores are computed from the whole tale, and matched passages further in are marked but not shown.</div>}
                     {renderText(t, w)}
                   </div>
                 );

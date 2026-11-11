@@ -89,10 +89,11 @@ export function toCsv(rows: (string | number | boolean | null | undefined)[][]):
 }
 
 export async function copyLink(url: string) {
+  const local = ["localhost", "127.0.0.1", "[::1]", ""].includes(window.location.hostname);
   try {
     await navigator.clipboard.writeText(url);
-    toast("View link copied. It points to this local preview.");
+    toast(local ? "View link copied. It points to this local preview." : "View link copied.");
   } catch {
-    window.prompt("Copy this link (local preview URL):", url);
+    window.prompt(local ? "Copy this link (local preview URL):" : "Copy this link:", url);
   }
 }

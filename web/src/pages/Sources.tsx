@@ -1,9 +1,10 @@
 import { useData } from "../data/load";
-import type { SourcesPayload } from "../data/types";
+import type { SourcesPayload, SummaryPayload } from "../data/types";
 import { ErrorState, Loading } from "../components/ui";
 
 export function Sources() {
   const s = useData<SourcesPayload>("sources.json");
+  const summary = useData<SummaryPayload>("summary.json");
   if (s.error) return <div className="page"><ErrorState message={s.error} /></div>;
   if (!s.data) return <div className="page"><Loading /></div>;
   const m = s.data.manifest;
@@ -24,7 +25,9 @@ export function Sources() {
         <h2>Licences and publication questions</h2>
         <div className="callout warn">
           <p><strong>Discrepancy.</strong> The repository README says CC BY-SA 4.0, but its LICENSE.md contains CC BY-NC-SA 4.0. We follow the more restrictive terms: noncommercial, educational use with attribution, and share-alike for adapted data. Zenodo records the archived release as “other-open”.</p>
-          <p>The texts come from Ashliman's site (© D. L. Ashliman, 1996–2026), including his own translations. Some tales from the Irish Schools' Collection (dúchas.ie) are separately CC BY-NC 4.0. This local preview shows full texts for study. Before any public deployment, set <span className="mono">include_full_texts: false</span> or obtain permission (see LICENSE_NOTES.md). The software code is licensed separately from the data.</p>
+          <p>The texts come from Ashliman's site (© D. L. Ashliman, 1996–2026), including his own translations. Some tales from the Irish Schools' Collection (dúchas.ie) are separately CC BY-NC 4.0. {summary.data && !summary.data.full_texts_included
+            ? <>This public build therefore does not republish the tales: it shows only the first {summary.data.excerpt_words ?? 120} words of each one with its source citation, plus the two passages quoted in the opening scene. Full texts are shown only in the local preview used for study and annotation (see LICENSE_NOTES.md).</>
+            : <>This local preview shows full texts for study. Before any public deployment, set <span className="mono">include_full_texts: false</span> or obtain permission (see LICENSE_NOTES.md).</>} The software code is licensed separately from the data.</p>
         </div>
         <h2>Source manifest</h2>
       </div>

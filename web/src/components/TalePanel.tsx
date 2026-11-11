@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import type { CatalogueRow, Rep, TalePayload } from "../data/types";
+import { shownText } from "../data/vectors";
 import { DUR, useMotion } from "../lib/motion";
 import { fmt, repLabel } from "../lib/format";
 import { Loading } from "./ui";
@@ -76,8 +77,9 @@ export function TaleDetails({ tale, row }: { tale: TalePayload | null; row: Cata
           : "it is a usable narrative, but: " + (tale.exclusion_reasons || "—")}
       </div>
       <details>
-        <summary className="sans small" style={{ cursor: "pointer", color: "var(--teal)", fontWeight: 600 }}>Read the tale</summary>
-        <p style={{ fontSize: 16, whiteSpace: "pre-wrap" }}>{tale.text}</p>
+        <summary className="sans small" style={{ cursor: "pointer", color: "var(--teal)", fontWeight: 600 }}>{tale.text_is_excerpt ? "Read the opening" : "Read the tale"}</summary>
+        <p style={{ fontSize: 16, whiteSpace: "pre-wrap" }}>{shownText(tale)}</p>
+        {tale.text_is_excerpt && <p className="sans small muted">This public build shows only the opening of each tale. The full text is in the source cited above.</p>}
       </details>
     </div>
   );
