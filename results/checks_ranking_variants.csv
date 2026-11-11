@@ -1,0 +1,71 @@
+rep,variant,tradition,n,median,rank
+tfidf,as reported,Buddhist,81,0.12549,1
+tfidf,as reported,Christian,40,0.1098,2
+tfidf,as reported,Jewish,50,0.10866,3
+tfidf,as reported,Sufi,60,0.1076,4
+tfidf,as reported,Taoist,50,0.10118,5
+tfidf,names and formulae masked,Buddhist,81,0.12991,1
+tfidf,names and formulae masked,Christian,40,0.1115,2
+tfidf,names and formulae masked,Sufi,60,0.10889,3
+tfidf,names and formulae masked,Taoist,50,0.10374,4
+tfidf,names and formulae masked,Jewish,50,0.10333,5
+tfidf,without the 10 most frequent neighbours,Buddhist,81,0.12169,1
+tfidf,without the 10 most frequent neighbours,Christian,40,0.1098,2
+tfidf,without the 10 most frequent neighbours,Jewish,50,0.10598,3
+tfidf,without the 10 most frequent neighbours,Sufi,60,0.10499,4
+tfidf,without the 10 most frequent neighbours,Taoist,50,0.101,5
+tfidf,parables of at least 100 tokens,Buddhist,81,0.12549,1
+tfidf,parables of at least 100 tokens,Christian,27,0.1211,2
+tfidf,parables of at least 100 tokens,Jewish,42,0.10868,3
+tfidf,parables of at least 100 tokens,Sufi,60,0.1076,4
+tfidf,parables of at least 100 tokens,Taoist,49,0.10119,5
+tfidf,minus folktales of the same length,Christian,40,-0.045385,1
+tfidf,minus folktales of the same length,Buddhist,81,-0.053105,2
+tfidf,minus folktales of the same length,Jewish,50,-0.058312,3
+tfidf,minus folktales of the same length,Sufi,60,-0.067804,4
+tfidf,minus folktales of the same length,Taoist,50,-0.073006,5
+tfidf,nearest folktale only (k = 1),Buddhist,81,0.14852,1
+tfidf,nearest folktale only (k = 1),Christian,40,0.12887,2
+tfidf,nearest folktale only (k = 1),Jewish,50,0.12665,3
+tfidf,nearest folktale only (k = 1),Sufi,60,0.12515,4
+tfidf,nearest folktale only (k = 1),Taoist,50,0.1133,5
+tfidf,10 nearest folktales (k = 10),Buddhist,81,0.11591,1
+tfidf,10 nearest folktales (k = 10),Christian,40,0.1016,2
+tfidf,10 nearest folktales (k = 10),Jewish,50,0.097792,3
+tfidf,10 nearest folktales (k = 10),Sufi,60,0.097629,4
+tfidf,10 nearest folktales (k = 10),Taoist,50,0.093197,5
+embedding,as reported,Buddhist,81,0.66369,1
+embedding,as reported,Sufi,60,0.63493,2
+embedding,as reported,Christian,40,0.59449,3
+embedding,as reported,Jewish,50,0.54628,4
+embedding,as reported,Taoist,50,0.54345,5
+embedding,names and formulae masked,Buddhist,81,0.71267,1
+embedding,names and formulae masked,Sufi,60,0.67002,2
+embedding,names and formulae masked,Christian,40,0.6211,3
+embedding,names and formulae masked,Taoist,50,0.62008,4
+embedding,names and formulae masked,Jewish,50,0.61665,5
+embedding,without the 10 most frequent neighbours,Buddhist,81,0.64704,1
+embedding,without the 10 most frequent neighbours,Sufi,60,0.62939,2
+embedding,without the 10 most frequent neighbours,Christian,40,0.58544,3
+embedding,without the 10 most frequent neighbours,Jewish,50,0.54147,4
+embedding,without the 10 most frequent neighbours,Taoist,50,0.53732,5
+embedding,parables of at least 100 tokens,Buddhist,81,0.66369,1
+embedding,parables of at least 100 tokens,Christian,27,0.63855,2
+embedding,parables of at least 100 tokens,Sufi,60,0.63493,3
+embedding,parables of at least 100 tokens,Jewish,42,0.55196,4
+embedding,parables of at least 100 tokens,Taoist,49,0.54466,5
+embedding,minus folktales of the same length,Christian,40,-0.062506,1
+embedding,minus folktales of the same length,Buddhist,81,-0.088232,2
+embedding,minus folktales of the same length,Sufi,60,-0.091803,3
+embedding,minus folktales of the same length,Jewish,50,-0.13744,4
+embedding,minus folktales of the same length,Taoist,50,-0.18,5
+embedding,nearest folktale only (k = 1),Buddhist,81,0.68869,1
+embedding,nearest folktale only (k = 1),Sufi,60,0.66514,2
+embedding,nearest folktale only (k = 1),Christian,40,0.62829,3
+embedding,nearest folktale only (k = 1),Jewish,50,0.57824,4
+embedding,nearest folktale only (k = 1),Taoist,50,0.5604,5
+embedding,10 nearest folktales (k = 10),Buddhist,81,0.64105,1
+embedding,10 nearest folktales (k = 10),Sufi,60,0.62141,2
+embedding,10 nearest folktales (k = 10),Christian,40,0.58058,3
+embedding,10 nearest folktales (k = 10),Taoist,50,0.53438,4
+embedding,10 nearest folktales (k = 10),Jewish,50,0.53001,5

@@ -1,0 +1,1463 @@
+id,title,atu_id,region,n_tokens,community_tfidf,lda_topic_tfidf,community_embedding,lda_topic_embedding
+tale-0001,The Highlander Takes Three Advices from the English Farmer,910B,Northern Europe,1092,C3,0,C3,0
+tale-0002,The Prince Who Acquired Wisdom,910B,Southern Asia,1102,C1,0,C2,0
+tale-0003,The Three Admonitions,910B,Southern Europe,667,C3,3,C3,0
+tale-0004,The Three Advices,910B,Northern Europe,2739,C3,0,C3,0
+tale-0005,The Three Advices Which the King with the Red Soles Gave to His Son,910B,Northern Europe,1579,C1,3,C2,2
+tale-0006,Buttermilk Jack,1430,,170,C3,7,small,3
+tale-0007,Day-Dreaming,1430,,1428,C1,8,C2,2
+tale-0008,Lazy Heinz,1430,,974,C3,7,C1,0
+tale-0009,Lean Lisa,1430,,414,C3,7,C1,3
+tale-0010,Sheik Chilli,1430,Southern Asia,235,C3,0,C1,0
+tale-0012,The Barber's Tale of His Fifth Brother,1430,,422,C1,8,C3,1
+tale-0013,The Broken Pot,1430,,380,C1,0,C3,0
+tale-0014,The Dairywoman and the Pot of Milk,1430,Western Europe,320,C3,0,C1,2
+tale-0015,The Daydreamer,1430,Southern Asia,320,C3,7,C1,0
+tale-0016,The Fakir and His Jar of Butter,1430,,413,C6,8,C3,2
+tale-0017,The Lad and the Fox,1430,Northern Europe,243,C2,6,C1,4
+tale-0018,The Milkmaid and Her Bucket,1430,,125,small,0,small,2
+tale-0019,The Milkmaid and Her Pail,1430,,194,C3,7,C1,3
+tale-0020,The Peasant and the Cucumbers,1430,,180,C3,0,C1,0
+tale-0021,The Poor Man and the Flask of Oil,1430,,198,C6,0,C3,0
+tale-0022,The Story of the Devotee Who Spilt the Jar of Honey and Oil,1430,,467,C6,0,C3,2
+tale-0023,What Happened to a Woman Called Truhana,1430,Southern Europe,175,C3,3,C2,2
+tale-0024,What Happened to the Ascetic When He Lost His Honey and Oil,1430,,249,C6,0,C3,0
+tale-0025,Ali Baba and the Forty Thieves,954,,11088,C1,8,C3,2
+tale-0026,The Forty Thieves,954,,3579,C1,2,C3,2
+tale-0027,Androcles,156,,269,C2,2,C1,0
+tale-0028,Androcles and the Lion,156,,623,C2,2,C1,0
+tale-0030,The Lion and the Saint,156,,727,C2,2,C1,0
+tale-0031,The Lion and the Thorn,156,,96,C2,0,C1,0
+tale-0032,The Slave and the Lion,156,,343,C2,3,C1,2
+tale-0033,Chonguita the Monkey Wife (Fansler),402,South-Eastern Asia,820,C1,4,C2,1
+tale-0034,Doll i' the Grass (Norway),402,Northern Europe,754,C4,7,C2,4
+tale-0035,The Cat Who Became a Queen (Knowles),402,Southern Asia,925,C1,4,C2,1
+tale-0036,The Dog Bride (Bompas),402,Southern Asia,624,C1,4,C1,1
+tale-0037,The Frog (Schneller),402,,606,C1,4,C2,1
+tale-0038,The Frog's Bridegroom (Jungbauer),402,Western Europe,787,C1,4,C2,1
+tale-0039,The Frog's Skin (Wardrop),402,Western Asia,1945,C1,4,C3,0
+tale-0040,The Mouse Maiden (Parker),402,Southern Asia,845,C1,7,C2,1
+tale-0041,The She-Wolf (Shewolf),402,Southern Europe,374,C2,7,C1,1
+tale-0042,The Tsarevna Frog (Tsarevna),402,Eastern Europe,2272,C1,4,C2,1
+tale-0043,Of the Woman Who Loved a Serpent Who Lived in a Lake,402,Northern America,353,C1,3,C2,2
+tale-0044,The Bear Who Married a Woman,402,Northern America,287,C1,4,C2,1
+tale-0045,The Bear Woman,402,Northern America,984,C1,2,C1,4
+tale-0046,The Fish-Man,402,,372,C1,4,C5,1
+tale-0047,The Girl Who Married the Crow,402,Northern America,690,C1,3,C4,1
+tale-0048,The Man Who Married a Bear,402,Northern America,916,C1,1,C1,1
+tale-0049,The Woman Who Became a Horse (Horse),402,Northern America,298,C3,3,C2,1
+tale-0050,The Woman Who Became a Horse (Horse2),402,Northern America,449,C3,7,C1,0
+tale-0051,An Ant and a Grasshopper,280A,,532,C8,0,small,0
+tale-0053,The Ant and the Grasshopper (Bewick),280A,,293,C8,0,small,0
+tale-0054,The Ant and the Grasshopper (Croxall),280A,,340,C8,0,small,0
+tale-0055,The Ant and the Grasshopper (Jacobs),280A,,113,C8,0,small,0
+tale-0056,The Ant and the Grasshopper (James),280A,,52,C8,1,small,0
+tale-0057,The Ants and the Grasshopper,280A,,97,small,0,small,0
+tale-0058,"The Fable of the Ant and of the Sygalle [Cigala, Grasshopper]",280A,,163,C7,8,C3,2
+tale-0059,The Grasshopper and the Ant,280A,,38,C8,0,small,0
+tale-0060,The Grasshopper and the Ants,280A,,126,C8,0,small,0
+tale-0061,The Story of the Little Red Hen,280A,Northern America,348,C2,6,C1,4
+tale-0062,Peer Gynt and the Trolls,1161,Northern Europe,589,C2,7,C1,4
+tale-0063,The Cat Mill,1161,Western Europe,118,C2,2,small,4
+tale-0064,The Cat of Norrhult,1161,Northern Europe,566,C2,0,C1,0
+tale-0065,The Cat on the Dovrefjell,1161,Northern Europe,415,C2,7,C1,4
+tale-0066,The Kelpie and the Boar,1161,Northern Europe,107,C2,2,small,2
+tale-0067,The Kobold and the Polar Bear,1161,Western Europe,400,C2,6,small,2
+tale-0068,The Troll and the Bear,1161,Northern Europe,412,C2,7,C1,4
+tale-0069,The Water-Man,1161,Eastern Europe,473,C2,6,C1,4
+tale-0070,The Water Nix in the Oil Mill near Frauendorf,1161,Western Europe,359,C2,6,C1,4
+tale-0071,Bearskin (Grimm),361,,1885,C1,2,C3,1
+tale-0072,Bearskin (Grimmelshausen),361,,414,C1,2,C2,2
+tale-0073,Don Giovanni de la Fortuna,361,Southern Europe,1364,C1,4,C3,1
+tale-0074,Hell's Gatekeeper,361,Western Europe,291,C6,3,C3,1
+tale-0075,Never-Wash,361,Eastern Europe,1232,C1,4,C3,0
+tale-0076,The Devil as Partner,361,Western Europe,803,C3,2,C3,1
+tale-0077,The King's Tabernacle,361,Northern Europe,320,C1,4,C2,2
+tale-0078,The Reward of Kindness,361,South-Eastern Asia,1084,C1,0,C2,0
+tale-0079,Beauty and the Beast (Basque),425C,Western Europe,1763,C1,1,C2,1
+tale-0080,Beauty and the Beast (Jacobs),425C,,1370,C1,4,C2,1
+tale-0081,Beauty and the Horse,425C,Northern Europe,1599,C1,4,C2,1
+tale-0082,Little Broomstick,425C,Western Europe,1755,C1,4,C2,1
+tale-0083,Rose,425C,Northern America,667,C1,4,C2,1
+tale-0084,The Bear Prince,425C,Western Europe,1005,C1,4,C2,1
+tale-0085,The Clinking Clanking Lowesleaf,425C,Western Europe,2130,C1,4,C2,1
+tale-0086,The Enchanted Tsarévich,425C,Eastern Europe,1109,C1,4,C2,1
+tale-0087,The Fairy Serpent,425C,Eastern Asia,871,C1,4,C2,1
+tale-0088,The Little Nut Twig,425C,Western Europe,1357,C1,2,C2,1
+tale-0089,The Singing Rose,425C,Western Europe,1469,C1,4,C2,1
+tale-0090,The Small-Tooth Dog,425C,Northern Europe,960,C4,7,C1,4
+tale-0091,The Snake-Prince,425C,Southern Europe,1675,C1,8,C2,1
+tale-0092,The Summer and Winter Garden,425C,,1044,C1,4,C2,1
+tale-0093,Zelinda and the Monster,425C,Southern Europe,1311,C1,3,C2,1
+tale-0095,The Bell of Atri (Longfellow),207C,,898,C1,8,C3,2
+tale-0096,The Dumb Plaintiff (Eckhardtsberg),207C,Western Europe,273,C1,0,C3,2
+tale-0097,The Emperor Charlemagne and the Serpent (Zurich),207C,Western Europe,1015,C1,2,C2,2
+tale-0099,The Three Proverbs,150,Eastern Europe,633,C3,3,C1,0
+tale-0100,The Emperor's Daughter and the Swineherd,850,,1080,C1,4,C2,1
+tale-0101,The Enchanted Lambs,850,Eastern Europe,1034,C1,3,C2,1
+tale-0102,The Nobleman's Daughter and the Shepherd,850,Western Europe,294,C5,1,C2,1
+tale-0103,The Pearl Queen,850,Western Europe,1097,C1,4,C2,1
+tale-0104,The Pig-Boy and the Princess,850,Western Europe,1301,C1,1,C2,1
+tale-0105,The Princess's Birthmarks,850,Northern Europe,1333,C1,4,C2,1
+tale-0106,The Rivals,850,,626,C1,4,C2,1
+tale-0107,The Shepherd and the King's Daughter,850,Southern Europe,3405,C1,0,C2,1
+tale-0108,The Swineherd,850,,1541,C1,7,C2,1
+tale-0109,The Swineherd Who Married a Princess,850,,915,C1,4,C2,1
+tale-0110,The Youngest Prince and the Youngest Princess,850,Eastern Europe,1660,C1,4,C2,1
+tale-0111,Three Golden Hairs,850,Western Europe,1040,C5,1,C4,1
+tale-0112,All Faiths Lead to God: Four Blind Men and an Elephant,1317,,188,C8,0,small,0
+tale-0113,On the Blind Men and the Affair of the Elephant,1317,,312,C8,0,small,2
+tale-0114,The Blind Men and the Elephant,1317,,918,C8,0,small,0
+tale-0115,The Blind Men and the Elephant: A Hindoo Fable,1317,,296,C8,5,small,0
+tale-0116,The King and the Elephants,1317,,225,C8,5,small,0
+tale-0117,The Blood Brothers,303,,1018,C1,4,C2,1
+tale-0118,"Lars, My Lad!",562,Northern Europe,5014,C3,4,C2,1
+tale-0119,Sir Buzz,562,Southern Asia,2796,C1,3,C3,2
+tale-0120,The Blue Light,562,,1678,C1,2,C3,1
+tale-0121,The Deserter with the Tinderbox,562,Western Europe,1065,C1,2,C1,4
+tale-0122,The Giants and the Tinderbox,562,Western Europe,503,C1,2,C2,1
+tale-0123,The Iron Man,562,Western Europe,1609,C1,2,C3,2
+tale-0124,The Soldier and the Tinderbox,562,Western Europe,1992,C1,2,C2,1
+tale-0125,The Three Dogs,562,Western Europe,713,C1,2,C2,1
+tale-0126,The Tinderbox,562,Northern Europe,2723,C3,7,C1,4
+tale-0127,The Transverse Flute,562,Western Europe,616,C5,4,C1,1
+tale-0128,Blue-Beard,312,Northern America,214,C4,7,C4,3
+tale-0129,Bluebeard,312,,1913,C1,3,C2,2
+tale-0130,Don Firriulieddu,312,Southern Europe,427,C4,7,C1,1
+tale-0131,King,312,Western Europe,840,C1,4,C2,1
+tale-0132,The Brahman Girl That Married a Tiger,312,Southern Asia,2761,C1,0,C2,0
+tale-0133,The Chosen Suitor,312,Latin America and the Caribbean,651,C2,5,C1,3
+tale-0134,The Little Boy and His Dogs,312,Northern America,2874,C2,7,C1,3
+tale-0135,A Young Monk Wanted to Have a Goose,1678,Western Europe,157,C8,1,C4,1
+tale-0136,An Inexperienced Youth,1678,Southern Europe,241,C3,3,C3,2
+tale-0137,Filippo Balducci and His Son,1678,,314,C6,0,C3,0
+tale-0138,"Husband, Wife, Lover, and Mango Tree",1423,,204,C3,3,C4,0
+tale-0139,Story of the Credulous Husband,1423,,613,C7,3,C2,2
+tale-0140,"The Fourth Lady, Her Husband, and the Brahmin",1423,,585,C7,3,C2,2
+tale-0141,The Merchant's Tale,1423,,1020,C1,3,C2,2
+tale-0142,The Story of Lydia and Pyrrhus,1423,,392,C6,3,small,1
+tale-0143,The Story of the Simpleton Husband,1423,,630,C7,3,C2,2
+tale-0144,The Twenty-Ninth Vizier's Story,1423,Western Asia,454,C3,3,C4,0
+tale-0145,The Vibhîtaka Tree,1423,Southern Asia,294,C3,3,C4,0
+tale-0146,Benibaire,130,Southern Europe,572,C4,7,C1,3
+tale-0147,How Jack Went to Seek His Fortune (Usa),130,Northern America,682,C4,7,C1,4
+tale-0148,How Jack Went to Seek His Fortune (Usatwo),130,Northern America,956,C4,7,C1,4
+tale-0149,Jack and His Comrades,130,Northern Europe,2479,C3,7,C1,3
+tale-0150,The Animals and the Devil,130,Northern Europe,484,C2,6,C1,4
+tale-0151,The Bremen Town Musicians,130,Western Europe,1280,C4,6,C1,4
+tale-0152,"The Bull, the Tup, the Cock, and the Steg",130,Northern Europe,235,C4,7,C1,3
+tale-0153,The Choristers of St. Gudule,130,Western Europe,2051,C3,3,C1,0
+tale-0154,"The Dog, the Cat, the Ass, and the Cock",130,Northern America,1138,C4,6,C1,4
+tale-0155,The Robber and the Farm Animals,130,,1088,C4,2,C1,4
+tale-0156,The Sheep and the Pig Who Set Up House,130,Northern Europe,1490,C3,6,C1,3
+tale-0157,The Story of the White Pet,130,Northern Europe,1115,C4,6,C1,4
+tale-0158,The World's Reward,130,Sub-Saharan Africa,830,C4,6,C1,4
+tale-0159,Choosing a Bride,1451,Western Europe,162,C2,0,C2,1
+tale-0160,The Cheese Test,1451,Western Europe,229,C2,1,C4,1
+tale-0161,The Hurds,1451,Western Europe,229,C4,7,C2,1
+tale-0162,The Storehouse Key in the Distaff,1451,Northern Europe,494,C4,7,C3,3
+tale-0163,The Suitor,1451,Northern Europe,1175,C1,3,C4,1
+tale-0164,The Bewitched Brothers,451,Eastern Europe,1652,C4,7,C4,1
+tale-0165,The Curse of the Seven Children,451,Southern Europe,1561,C1,4,C2,1
+tale-0166,The Little Sister: The Story of Suyettar and the Nine Brothers,451,Northern Europe,3493,C4,7,C2,1
+tale-0167,The Seven Doves,451,Southern Europe,4391,C1,3,C2,2
+tale-0168,The Seven Ravens,451,Western Europe,913,C4,7,C2,1
+tale-0169,The Sister and Her Seven Brothers,451,Western Europe,1257,C1,1,C2,1
+tale-0170,The Six Swans,451,Western Europe,1873,C1,4,C2,1
+tale-0171,The Twelve Brothers,451,Western Europe,1264,C1,4,C2,1
+tale-0172,The Twelve Wild Ducks,451,Northern Europe,2533,C1,7,C2,1
+tale-0173,The Twelve Wild Geese,451,Northern Europe,2312,C1,4,C2,1
+tale-0174,Cattarinetta,333,Southern Europe,283,C4,7,C4,3
+tale-0175,Nanny Who Wouldn't Go Home to Supper,2015,,1690,C2,6,C1,4
+tale-0176,Little Louse and Little Flea,2022,Western Europe,470,C4,7,C4,3
+tale-0177,The Cat and the Mouse,2022,Southern Europe,662,C4,7,C1,4
+tale-0178,The Cock Who Fell into the Brewing Vat,2022,Northern Europe,1056,C4,7,C1,4
+tale-0179,The Death and Burial of Poor Hen-Sparrow,2022,Southern Asia,1527,C1,3,C2,1
+tale-0180,Titty Mouse and Tatty Mouse,2022,Northern Europe,732,C4,7,C1,3
+tale-0181,Dathera Dad (Addy),2025,Northern Europe,131,C3,7,C4,3
+tale-0182,Johnny-Cake (#Johnnycake),2025,,416,C2,7,C1,3
+tale-0183,Johnny-Cake (Johnnycake),2025,Northern America,819,C2,7,C1,3
+tale-0184,The Devil in the Dough-Pan (Russia),2025,Eastern Europe,194,C4,7,C1,4
+tale-0185,The Fox and the Little Bonnach (Campbell),2025,Northern Europe,319,C2,6,C1,4
+tale-0186,The Gingerbread Boy (Gingerbread),2025,Northern America,388,C2,7,C1,3
+tale-0187,The Pancake (Norway),2025,Northern Europe,1073,C2,6,C1,3
+tale-0188,The Runaway Pancake (Gander),2025,Western Europe,278,C2,6,C1,3
+tale-0189,"The Thick, Fat Pancake (Colshorn)",2025,Western Europe,361,C2,6,C1,3
+tale-0190,The Wee Bannock (Chambers2),2025,Northern Europe,189,C2,5,C1,3
+tale-0191,The Wee Bannock (Chambers3),2025,Northern Europe,253,C2,5,C1,3
+tale-0192,The Wee Bunnock (Chambers1),2025,Northern Europe,1300,C2,5,C1,3
+tale-0193,The Wonderful Cake (Kennedy),2025,Northern Europe,508,C2,7,C1,3
+tale-0194,Moorachug and Meenachug,2030,Northern Europe,1173,C2,5,C1,4
+tale-0195,Nanny Who Wouldn't Go Home to Supper,2030,Northern Europe,1688,C2,6,C1,4
+tale-0196,The Old Woman and Her Pig,2030,Northern Europe,687,C2,6,C1,4
+tale-0197,The Wife and Her Bush of Berries,2030,Northern Europe,574,C2,5,C1,4
+tale-0198,The Wifie an Her Kidie,2030,Northern Europe,411,C2,5,C1,4
+tale-0199,A Bridegroom for Miss Mole (Korea),2031C,Eastern Asia,1208,C1,4,C2,1
+tale-0200,A Story on Caste (Bompas),2031C,Southern Asia,603,C8,0,C4,0
+tale-0201,The Most Powerful Husband in the World (Northafrica),2031C,,492,C8,4,C4,0
+tale-0202,The Mouse Metamorphosed into a Maid (Lafontaine),2031C,,657,C8,8,C2,2
+tale-0203,The Rats and Their Daughter (Japan),2031C,Eastern Asia,671,C8,4,C4,0
+tale-0204,The Story of the Rat and Her Journey to God (Romania),2031C,Eastern Europe,215,C8,6,C1,0
+tale-0205,The Transformed Mouse Seeks a Bridegroom (Panchatantra),2031C,Southern Asia,816,C8,0,C2,0
+tale-0206,The Vole Who Sought a Wife (Marie),2031C,,307,C8,6,C4,0
+tale-0207,The Cock and the Mouse,2032,Southern Europe,457,C4,7,C1,3
+tale-0208,The Sexton's Nose,,Southern Europe,911,C3,7,C1,3
+tale-0209,Brother Rabbit Takes Some Exercise (Harris),20C,Northern America,1303,C2,6,C1,3
+tale-0210,Henny-Penny (Jacobs),20C,,673,C2,6,C1,4
+tale-0211,Henny-Penny and Her Fellow Travelers (Chambers),20C,Northern Europe,281,C2,6,C1,4
+tale-0212,The Cock and the Hen That Went to Dovrefjell (Norway),20C,Northern Europe,749,C2,6,C1,4
+tale-0213,The End of the World (Flanders),20C,Western Europe,1425,C2,6,C1,4
+tale-0214,The End of the World (Kennedy),20C,Northern Europe,303,C2,6,C1,4
+tale-0215,The Flight of the Beasts (Schiefner),20C,Eastern Asia,740,C2,0,C1,0
+tale-0216,The Little Chicken Kluk and His Companions (Thorpe),20C,Northern Europe,428,C2,6,C1,4
+tale-0217,The Story of Chicken-Licken (Halliwell),20C,Northern Europe,606,C2,6,C1,4
+tale-0219,The House That Jack Built,2035,,157,C2,7,C1,3
+tale-0220,Club Fist,2043,Northern America,286,C2,6,C1,4
+tale-0221,What Have You Got There?,2043,Northern Europe,149,C2,7,C1,3
+tale-0222,Solomon and the Two Women,926,,374,C1,4,C2,1
+tale-0223,The Brahman and His Two Wives,926,Southern Asia,261,C1,4,C2,1
+tale-0226,Ashey Pelt,510A,Northern Europe,289,C2,1,C2,1
+tale-0227,Cinderella (Grimm),510A,Western Europe,2635,C1,7,C2,1
+tale-0228,Cinderella (Italy),510A,Southern Europe,2008,C1,4,C2,1
+tale-0229,"Cinderella; or, The Little Glass Slipper",510A,Western Europe,2358,C1,4,C2,1
+tale-0230,"Conkiajgharuna, the Little Rag Girl",510A,Western Asia,1561,C4,7,C4,1
+tale-0231,"Fair, Brown, and Trembling",510A,Northern Europe,3456,C1,7,C2,1
+tale-0232,Katie Woodencloak,510A,Northern Europe,4605,C1,7,C2,1
+tale-0233,Little Saddleslut,510A,Southern Europe,1408,C1,7,C2,1
+tale-0234,Maria and the Golden Slipper,510A,South-Eastern Asia,983,C1,4,C2,1
+tale-0235,Pepelyouga,510A,Southern Europe,1665,C1,7,C2,1
+tale-0236,Rashin-Coatie,510A,Northern Europe,952,C1,7,C2,1
+tale-0237,The Baba Yaga,510A,Eastern Europe,1093,C4,7,C1,4
+tale-0238,The Broken Pitcher,510A,Northern Europe,273,C7,7,C2,3
+tale-0239,The Cinder Maid,510A,,1871,C1,4,C2,1
+tale-0240,The Hearth-Cat,510A,Southern Europe,1634,C1,4,C2,1
+tale-0241,The Indian Cinderella,510A,,830,C1,4,C2,1
+tale-0242,The Poor Turkey Girl,510A,Northern America,2428,C1,3,C2,1
+tale-0243,The Sharp Grey Sheep,510A,Northern Europe,1012,C1,7,C2,1
+tale-0244,The Turkey Herd,510A,Northern America,347,C4,7,C4,1
+tale-0245,The Wicked Stepmother,510A,Southern Asia,714,C1,7,C2,1
+tale-0246,The Wonderful Birch,510A,Eastern Europe,3448,C4,7,C2,1
+tale-0247,All-Kinds-of-Fur (Grimm),510B,Western Europe,1868,C1,4,C2,1
+tale-0248,All-Kinds-of-Fur (Hahn),510B,Southern Europe,616,C1,4,C2,1
+tale-0249,Ass'-Skin (Webster),510B,Western Europe,2146,C1,1,C2,1
+tale-0250,"Broomthrow, Brushthrow, Combthrow (Vernaleken)",510B,Western Europe,1309,C1,4,C2,1
+tale-0251,Cinder Blower (Bartsch),510B,,728,C1,4,C2,1
+tale-0252,Doralice (Straparola),510B,Southern Europe,3918,C1,4,C2,1
+tale-0253,Emperor Heinrich in Sudemer Mountain (Kuhn),510B,Western Europe,352,C1,2,C2,1
+tale-0254,Fair Maria Wood (Crane),510B,Southern Europe,1635,C1,1,C2,1
+tale-0255,Kniaz Danila Govorila (Ralston2),510B,Eastern Europe,252,C1,1,small,1
+tale-0256,Maria Wood (Busk),510B,Southern Europe,1838,C1,4,C2,1
+tale-0257,Morag a Chota Bhain -- Margery White Coats (Campbell2),510B,Northern Europe,742,C1,4,C2,1
+tale-0258,Pigskin (Ralston1),510B,Eastern Europe,137,C1,1,small,2
+tale-0259,Rashen Coatie (Buchan),510B,Northern Europe,1617,C1,4,C2,1
+tale-0261,The Beautiful Princess (Schleicher),510B,Northern Europe,622,C1,4,C2,1
+tale-0262,The Emperor's Daughter in the Pig Stall (Schott),510B,Eastern Europe,1413,C1,4,C2,1
+tale-0263,The Horse's Skin (Coelho),510B,Southern Europe,2274,C1,4,C2,1
+tale-0264,The King Who Wished to Marry His Daughter (Campbell),510B,Northern Europe,1068,C1,7,C2,1
+tale-0265,The Princess and the Golden Cow (Barclay),510B,Northern Europe,273,C1,4,C2,1
+tale-0266,The Princess in the Cat-Skins (Kennedy),510B,Northern Europe,2838,C1,4,C2,1
+tale-0267,The Princess Who Would Not Marry Her Father (Pedroso),510B,Southern Europe,2353,C1,4,C2,1
+tale-0268,The She-Bear (Basile),510B,Southern Europe,2942,C1,3,C2,1
+tale-0269,The Story of Catskin (Halliwell),510B,Northern Europe,1393,C1,3,C2,1
+tale-0272,"Eat, My Clothes!",1558,Southern Europe,198,C6,3,C1,2
+tale-0274,Nasreddin Hodja at a Bridal Festival,1558,Western Asia,156,C6,3,C3,2
+tale-0275,The Brahman's Clothes,1558,Southern Asia,209,C2,0,C3,0
+tale-0276,A Ghost Story,366,,1539,C3,7,C1,3
+tale-0277,Ahlemann,366,Western Europe,241,C3,7,C4,3
+tale-0278,Give Me My Teeth,366,Northern Europe,201,C4,2,small,3
+tale-0279,How to Tell a Story: The Golden Arm,366,,620,C2,5,C1,3
+tale-0280,Saddaedda,366,Southern Europe,330,C4,7,C4,2
+tale-0281,Teeny-Tiny,366,Northern Europe,330,C4,7,C4,3
+tale-0282,The Audacious Girl,366,Western Europe,504,C4,7,C4,1
+tale-0283,The Burial Dress,366,Western Europe,93,C1,3,small,1
+tale-0284,The Golden Arm,366,Northern Europe,272,C7,3,C4,1
+tale-0285,The Golden Cup,366,Northern Europe,312,C4,7,C4,1
+tale-0286,The Little Golden Leg,366,Western Europe,394,C4,7,C4,3
+tale-0287,The Man from the Gallows,366,Western Europe,55,C3,7,C1,3
+tale-0288,The Old Man at the White House,366,Northern Europe,368,C7,7,C4,3
+tale-0289,The Shroud,366,Eastern Europe,657,C4,7,C4,2
+tale-0290,The Stolen Liver,366,Eastern Europe,391,C3,3,C1,3
+tale-0291,White Cap,366,Northern Europe,409,C4,7,C2,2
+tale-0292,The Booby and the Crab,231,Southern Asia,545,C2,0,C5,2
+tale-0293,The Crane and the Fish,231,Southern Asia,631,C2,0,C5,0
+tale-0294,The Crane and the Makara,231,Southern Asia,319,C2,0,C5,0
+tale-0295,"The Crane, the Crab, and the Fish",231,Southern Asia,254,C2,0,C5,0
+tale-0297,The Fishes and the Cormorant,231,,404,C2,0,C5,2
+tale-0298,The Heron and the Crab (Bidpai),231,Southern Asia,659,C2,0,C5,0
+tale-0299,The Heron and the Crab (Parker),231,Southern Asia,138,C2,0,C5,0
+tale-0300,The Heron That Liked Crab-Meat,231,Southern Asia,848,C2,0,C5,0
+tale-0301,"The Heron, the Fishes, and the Crab",231,,277,C2,0,C5,0
+tale-0302,The Pelican's Punishment,231,South-Eastern Asia,156,C2,0,small,0
+tale-0303,The Story of a Fish in the Pond,231,,292,C2,0,C5,0
+tale-0304,Above the Ground and under the Ground,1030,Northern America,76,C2,6,C1,0
+tale-0305,Jack o' Kent and the Devil: The Tops and the Butts,1030,Northern Europe,225,C5,1,C3,0
+tale-0306,Mercury and the Traveller,1030,,89,C6,7,small,3
+tale-0307,Saint John and the Devil,1030,,267,C5,2,C3,0
+tale-0308,The Bear and the Fox Go into Partnership,1030,Northern Europe,161,C2,6,C1,4
+tale-0309,The Bogie and the Farmer,1030,Northern Europe,313,C5,0,C3,0
+tale-0310,The Farmer and the Boggart,1030,Northern Europe,260,C5,1,C1,3
+tale-0311,The Farmer and the Devil on Island of the Popefigs,1030,Western Europe,919,C5,0,C3,0
+tale-0312,The Fox and the Wolf Plant Oats and Potatoes,1030,Northern Europe,128,C2,6,C1,4
+tale-0313,The Peasant and the Bear,1030,Eastern Europe,269,C2,0,C3,0
+tale-0314,The Peasant and the Devil,1030,Western Europe,366,C5,0,C3,0
+tale-0315,"Cecilio, the Servant of Emilio",592,South-Eastern Asia,1352,C3,0,C3,0
+tale-0316,Cochinango,592,South-Eastern Asia,968,C1,4,C2,0
+tale-0317,Jack Horner's Magic Pipes,592,Northern Europe,724,C3,1,C3,2
+tale-0318,Little Freddy and His Fiddle,592,Northern Europe,2395,C3,7,C3,0
+tale-0319,The Friar and the Boy,592,Northern Europe,2079,C3,8,C3,2
+tale-0320,The Gifts of the Magician,592,Northern Europe,2510,C3,4,C3,1
+tale-0321,The Golden Harp,592,Northern Europe,1548,C3,3,C3,3
+tale-0322,The Jew in the Thorns,592,Western Europe,1764,C3,0,C3,0
+tale-0323,They Dance to the Pipe,592,Western Europe,867,C1,2,C3,1
+tale-0324,"Dildrum, King of the Cats",113A,Northern Europe,112,C3,2,small,2
+tale-0325,Hübel and Habel,113A,Western Europe,76,C5,3,small,2
+tale-0326,Johnny Reed's Cat,113A,Northern Europe,1127,C3,3,C1,3
+tale-0327,King Pippe Is Dead!,113A,Northern Europe,183,C3,7,small,2
+tale-0328,Le Petit Colin,113A,Northern Europe,319,C3,0,C3,2
+tale-0329,Mally Dixon,113A,Northern Europe,118,C4,3,small,3
+tale-0330,Pingel Is Dead!,113A,Western Europe,32,C4,3,small,3
+tale-0331,Prilling and Pralling Is Dead,113A,Western Europe,149,C4,2,small,2
+tale-0332,The Cat of the Carman's Stage,113A,Northern Europe,170,C3,3,C1,3
+tale-0333,The King o' the Cats,113A,Northern Europe,532,C3,7,C1,3
+tale-0334,The King of the Cats (Kingcat),113A,Northern Europe,1087,C4,3,C1,2
+tale-0335,The King of the Cats (Wildecat),113A,Northern Europe,533,C4,7,C1,3
+tale-0336,The Troll Turned Cat,113A,Northern Europe,408,C3,3,C1,2
+tale-0337,The Unknown Girl,113A,Western Europe,111,C4,0,C2,0
+tale-0338,Torke's Child Is Dead / Kilian's Child Is Dead,113A,Western Europe,378,C3,7,C3,4
+tale-0339,An Old Man That Was Willing to Put off Death,335,,430,C2,0,C3,2
+tale-0340,Death's Messengers (Ashliman),335,,77,C6,4,C3,0
+tale-0341,Death's Messengers (Grimm),335,,557,C6,0,C3,0
+tale-0342,Death's Messengers (Wendunmuth),335,,198,C6,0,C3,2
+tale-0343,Our Lord and the Church Father,335,Eastern Europe,333,C6,0,C3,0
+tale-0344,Spanish Moss,335,Northern America,521,C6,0,C3,3
+tale-0346,Fitcher's Bird,311,,832,C4,7,C2,1
+tale-0347,How the Devil Married Three Sisters,311,Southern Europe,1185,C1,3,C2,1
+tale-0348,Peerifool,311,Northern Europe,1184,C4,7,C2,3
+tale-0349,The Cobbler and His Three Daughters (Blue Beard),311,Western Europe,894,C1,1,C4,1
+tale-0350,The Secret Room,311,Northern America,848,C4,7,C1,1
+tale-0351,The Three Chests: The Story of the Wicked Old Man of the Sea,311,Northern Europe,2917,C4,7,C4,3
+tale-0352,The Three Sisters Who Were Taken into the Mountain,311,Northern Europe,2148,C4,7,C4,4
+tale-0353,The Tiger's Bride,311,Southern Asia,437,C4,7,C4,0
+tale-0354,The Widow and Her Daughters,311,Northern Europe,1790,C4,7,C2,4
+tale-0355,Zerendac,311,Western Asia,1631,C1,3,C2,1
+tale-0356,How the Devil Played the Flute,1157,Western Europe,375,C5,6,C1,0
+tale-0357,The Origin of the Jack-o'-Lantern,1157,Northern Europe,478,C5,0,C3,0
+tale-0358,A Wild Legend,1174,Northern Europe,83,C5,2,small,2
+tale-0359,Donald Duival and the Devil,1174,Northern Europe,131,C5,6,small,2
+tale-0360,Michael Scott,1174,Northern Europe,109,C5,2,small,2
+tale-0361,Mitchell Scott,1174,Northern Europe,108,C5,3,small,2
+tale-0362,The Cheated Devil,,Western Europe,387,C5,2,C3,2
+tale-0363,The Devil and the Schoolmaster at Cockerham,1174,Northern Europe,163,C5,2,small,2
+tale-0364,"The Shoemaker, the Tailor, and the Sailor",1174,Western Europe,212,C5,2,C3,2
+tale-0365,Tapai and the Brahman,1175,Southern Asia,589,C1,3,C2,2
+tale-0366,The Brahmarâkshas and the Hair,1175,Southern Asia,994,C3,0,C3,0
+tale-0367,The Devil and the Farmer,1175,Northern Europe,1108,C3,1,C1,0
+tale-0368,Tricking the Devil,1175,Western Europe,394,C5,2,C3,0
+tale-0369,Deceiving the Devil,1176,Western Europe,225,C5,2,C3,0
+tale-0370,Ridiculing the Devil,1176,,512,C5,2,C3,0
+tale-0372,The Peasant and the Devil,1176,,365,C5,0,C3,0
+tale-0373,The Square Knot,1176,,960,C5,2,C3,4
+tale-0374,Timmermann's Fart,1176,Western Europe,105,C5,2,small,2
+tale-0375,Kilgrim Bridge,1191,Northern Europe,143,C5,2,C3,2
+tale-0376,The Bamberg Cathedral and Bridge,1191,Western Europe,124,C5,2,C3,2
+tale-0377,The Bridge at Kentchurch,1191,Northern Europe,78,C5,2,C3,2
+tale-0378,The Devil's Bridge (Grimm337),1191,Western Europe,151,C5,2,C3,2
+tale-0379,The Devil's Bridge (Parkinson121),1191,Northern Europe,874,C5,2,C3,2
+tale-0380,The Devil's Bridge (Thomas286),1191,Northern Europe,804,C3,6,C4,0
+tale-0381,The Devil's Bridge (Tyrol),1191,Western Europe,439,C5,2,C3,2
+tale-0382,The Devil's Bridge (Wintemberg),1191,,93,C5,2,C3,2
+tale-0383,The Devil's Bridge at Kirkby,1191,Northern Europe,410,C5,2,C3,2
+tale-0384,The Devil's Bridge in Cardiganshire,1191,Northern Europe,1458,C3,2,C4,2
+tale-0385,The Devil's Bridge in Lake Galenbeck,1191,Western Europe,190,C5,2,C3,0
+tale-0386,The Devil's Bridge in Martorell,1191,Southern Europe,153,C5,2,C3,2
+tale-0387,The Legend of the Devil's Bridge,1191,Southern Europe,271,C5,2,C3,2
+tale-0388,The Sachsenhäuser Bridge at Frankfurt,1191,Western Europe,244,C5,2,C3,2
+tale-0389,The Taugl Bridge,1191,Western Europe,178,C5,2,C3,2
+tale-0390,Dividing the Souls (Parsons177),1791,Northern America,145,C2,0,C1,3
+tale-0391,Dividing the Souls (Parsons215),1791,Northern America,181,C4,0,C1,0
+tale-0392,Mother Elston's Bag of Nuts,1791,Northern Europe,391,C3,7,C3,3
+tale-0393,The Bag of Nuts,1791,Northern Europe,321,C3,7,C1,3
+tale-0394,The Miller and the Tailor,1791,Northern Europe,1163,C3,3,C3,2
+tale-0395,Tom Daly and the Nut-Eating Ghost,1791,Northern Europe,883,C3,0,C1,0
+tale-0396,Black Robin,1641,Northern Europe,742,C1,3,C3,2
+tale-0397,Crab,1641,Southern Europe,810,C1,0,small,1
+tale-0398,Doctor and Detective,1641,Northern Europe,1998,C1,0,C3,0
+tale-0399,Doctor Cure-All,1641,Northern Europe,1115,C3,0,C3,3
+tale-0400,Doctor Know-All,1641,Western Europe,730,C3,0,C3,0
+tale-0401,Harisarman,1641,Southern Asia,1215,C1,0,C3,2
+tale-0402,John the Conjurer,1641,Southern Europe,698,C1,4,C3,1
+tale-0403,Suan's Good Luck,1641,South-Eastern Asia,600,C1,4,C2,1
+tale-0404,The Charcoal Burner,1641,Northern Europe,2872,C3,7,C3,0
+tale-0405,The Cobbler Turned Doctor,1641,,172,C5,4,C3,2
+tale-0406,The Four Jogis,1641,Southern Asia,664,C9,7,C3,2
+tale-0407,The Stolen Treasure,1641,Southern Asia,642,C1,2,C3,2
+tale-0408,Comical History of Three Dreamers,1626,Southern Europe,395,C5,2,C3,2
+tale-0409,"Jesus, Peter, and Judas",1626,,160,C5,6,small,2
+tale-0411,"The ""Dream-Bread"" Story Once More",1626,Northern America,284,C5,0,C1,0
+tale-0412,The Three Dreams,1626,,282,C5,2,C3,2
+tale-0414,A Man Who Found Gold During His Sleep,1645B,,210,C5,3,C3,2
+tale-0415,The Hodja Dreams That He Had Found a Treasure,1645B,,71,C5,2,C3,2
+tale-0416,A Cobbler in Someretshire,1645,Northern Europe,310,C5,2,C3,2
+tale-0418,Dreaming Tim Jarvis,1645,Northern Europe,2793,C3,3,C3,3
+tale-0419,Dundonald Castle,1645,Northern Europe,476,C5,2,small,2
+tale-0420,How the Junkman Traveled to Find Treasure in His Own Yard,1645,Western Asia,1281,C1,3,C3,2
+tale-0421,Numan's Dream,1645,Western Asia,1415,C1,8,C3,2
+tale-0422,The Bridge of the Kist,1645,Northern Europe,1180,C5,2,C3,2
+tale-0423,The Church at Erritsø,1645,Northern Europe,182,C5,2,C3,2
+tale-0424,The Dream of the Treasure on the Bridge,1645,Western Europe,266,C5,2,C3,2
+tale-0425,The Dream of the Zirl Bridge,1645,Western Europe,405,C5,2,C3,4
+tale-0426,The Dream of Treasure,1645,Western Europe,326,C5,2,C3,2
+tale-0427,The Dream of Treasure under the Bridge at Limerick,1645,Northern Europe,78,C5,2,C3,2
+tale-0428,The Peddler of Swaffham,1645,Northern Europe,390,C5,2,C3,2
+tale-0429,The Ruined Man Who Became Rich Again Through a Dream,1645,,334,C7,8,C3,2
+tale-0430,The Swaffham Legend,1645,Northern Europe,396,C5,3,C3,2
+tale-0431,Themselves,1645,Northern Europe,316,C5,2,C3,3
+tale-0432,Upsall Castle,1645,Northern Europe,351,C5,2,C3,2
+tale-0433,East of the Sun and West of the Moon,402,,4093,C3,7,C2,1
+tale-0434,Mr. Hawk and Brother Rabbit,122F,Northern America,426,C2,6,C1,3
+tale-0435,The Dog and the Wolf,122F,Eastern Europe,1140,C2,6,C1,0
+tale-0436,The Fisher and the Little Fish,122F,,86,C2,0,C5,0
+tale-0437,The Lambikin,122F,Southern Asia,580,C2,7,C1,3
+tale-0438,"The Sheep, the Lamb, the Wolf, and the Hare",122F,Eastern Asia,847,C2,6,C1,0
+tale-0439,Fine Thread,1620,Eastern Europe,64,C1,0,small,4
+tale-0440,How Eulenspiegel Painted the Forbears of the Landgrave of Hessen,1620,Western Europe,1640,C1,8,small,2
+tale-0441,The Emperor's New Clothes,1620,Northern Europe,1199,C1,3,C2,1
+tale-0442,The Invisible Cloth,1620,Southern Europe,1042,C1,4,C2,1
+tale-0443,The Invisible Silk Robe,1620,Southern Asia,711,C1,4,C2,1
+tale-0444,The King's New Turban,1620,Western Asia,367,C1,4,small,1
+tale-0445,The King and the Clever Girl,1620,Southern Asia,1086,C1,4,C2,1
+tale-0446,The Miller with the Golden Thumb,1620,Northern Europe,115,C6,0,small,2
+tale-0447,A Fairy Tale in the Ancient English Style,503,,1138,C1,8,C3,2
+tale-0448,"Billy Beg, Tom Beg, and the Fairies",503,Northern Europe,981,C3,7,C1,3
+tale-0449,How an Old Man Lost His Wen,503,Eastern Asia,633,C3,3,C3,2
+tale-0450,The Elves and the Envious Neighbor,503,Eastern Asia,368,C3,0,C3,0
+tale-0451,The Fairies and the Hump-Back,503,Northern Europe,120,C3,3,C3,1
+tale-0452,The Fairies and the Two Hunchbacks: A Story of Picardy,503,Western Europe,244,C3,3,C3,1
+tale-0453,The Gifts of the Little People,503,Western Europe,815,C5,2,C3,2
+tale-0454,The Gifts of the Mountain Spirits,503,Western Europe,850,C5,2,C3,2
+tale-0455,The Hunchback of Willow Brake,503,Northern Europe,1142,C1,1,C2,1
+tale-0456,The Legend of Knockgrafton,503,Northern Europe,1428,C3,3,C3,3
+tale-0457,The Old Man with the Wen,503,Eastern Asia,1302,C3,0,C3,0
+tale-0458,The Palace in the Rath,503,Northern Europe,78,C2,3,small,0
+tale-0459,The Story of Hok Lee and the Dwarfs,503,Eastern Asia,1633,C3,0,C3,0
+tale-0460,The Tailor on the Brocken,503,Western Europe,241,C3,7,C4,1
+tale-0461,The Two Humpbacks,503,Southern Europe,624,C3,3,C1,0
+tale-0462,The Two Hunchbacked Brothers,503,Southern Europe,616,C3,3,C3,1
+tale-0463,A Story Told by a Hindu,888,Southern Asia,917,C1,4,C2,1
+tale-0464,Conrad von Tannenberg,888,Western Europe,580,C1,4,C2,2
+tale-0466,The Lute Player,888,Eastern Europe,1468,C1,4,C2,1
+tale-0467,The Man Hitched to a Plow,888,,620,C1,3,C2,2
+tale-0468,The Tsaritsa Harpist,888,Eastern Europe,958,C1,4,C2,1
+tale-0469,Hanns Dudeldee,555,Western Europe,2190,C1,4,C2,0
+tale-0470,The Bullock's Balls,555,Southern Asia,567,C2,0,C1,0
+tale-0471,The Fisherman and His Wife,555,Western Europe,1786,C3,0,C4,0
+tale-0472,"The Old Man, His Wife, and the Fish",555,Eastern Europe,1477,C3,0,C4,0
+tale-0473,The Stonecutter,555,Eastern Asia,1065,C1,3,C3,0
+tale-0474,Foolish Hans,1586,,424,C3,0,C1,0
+tale-0475,Fortunio,1586,Southern Europe,823,C1,3,C3,2
+tale-0476,Giufà and the Judge,1586,Southern Europe,296,C3,0,C1,0
+tale-0477,"Permission Granted, but Probably Regreted",1586,Western Europe,140,C3,0,C1,0
+tale-0478,The Bald Man and the Fly,1586,,85,C3,0,small,0
+tale-0479,The Bear and the Amateur of Gardening,1586,,442,C2,0,C3,0
+tale-0480,The Foolish Friend,1586,,388,C9,4,C2,1
+tale-0481,The Gardener and the Bear,1586,,237,C6,8,C1,2
+tale-0482,The Little Omelet,1586,Southern Europe,119,C3,7,C1,3
+tale-0483,The Monkeys and the Dragonflies,1586,South-Eastern Asia,378,C9,4,C5,0
+tale-0485,The Seven Crazy Fellows,1586,South-Eastern Asia,992,C3,7,C4,0
+tale-0486,The Seven Wise Men of Buneyr,1586,Southern Asia,692,C6,0,C1,0
+tale-0487,The Stupid Boy,1586,Southern Asia,117,C3,0,C1,3
+tale-0488,The Tale of a Butter Tub,1586,Northern Europe,893,C3,7,C4,3
+tale-0489,Loppi and Lappi,750A,Northern Europe,1030,C3,3,C3,0
+tale-0490,The Ridiculous Wishes,750A,,1091,C1,3,C2,2
+tale-0491,The Sausage,750A,Northern Europe,918,C3,3,C4,3
+tale-0492,The Three Wishes (England),750A,Northern Europe,616,C3,7,C3,3
+tale-0493,The Three Wishes (Nights),750A,,401,C7,8,C3,2
+tale-0494,The Two-Headed Weaver,750A,,861,C1,0,C3,0
+tale-0495,The Wishes,750A,Eastern Europe,1076,C3,3,C4,3
+tale-0496,The Woodman's Three Wishes,750A,Northern Europe,257,C3,3,C3,2
+tale-0497,Johha Fails to Count the Donkey He Is Riding,1288A,Western Asia,216,C6,2,C1,0
+tale-0498,The Hodja and His Eight Donkeys,1288A,Western Asia,26,C6,0,small,0
+tale-0499,The Simpleton with Ten Asses,1288A,Western Asia,161,C6,0,C3,0
+tale-0500,How the Kadambawa Men Counted Themselves,1287,Southern Asia,203,C6,0,C3,0
+tale-0501,The Five Traveling Journeymen,1287,Western Europe,155,C6,2,C3,0
+tale-0502,The Lost Peasant,1287,Southern Asia,131,C6,0,C3,0
+tale-0503,The Seven Wise Men of Buneyr,1287,Southern Asia,207,C6,0,C1,0
+tale-0504,The Twelve Men of Gotham,1287,Northern Europe,370,C6,0,small,0
+tale-0505,Tannhäuser,756,Western Europe,448,C5,2,small,2
+tale-0506,The Woman Who Had No Shadow,756,,341,C4,3,C4,2
+tale-0507,A Fox and a Cat,105,,119,C2,1,C1,4
+tale-0508,Can You Swim?,105,Northern Europe,115,C6,0,C4,0
+tale-0509,The Bear as Judge,105,Northern Europe,279,C2,6,C1,4
+tale-0510,The Cat and Fox,105,,263,C2,6,C1,2
+tale-0511,The Crow and the Swan,105,,1655,C1,8,C5,2
+tale-0512,The Fish That Were Too Clever,105,,504,C2,0,C5,0
+tale-0513,The Fox and His Bagful of Wits and the One-Witted Hedgehog,105,Eastern Europe,579,C2,6,C1,4
+tale-0514,The Fox and the Cat (Aesop),105,,151,C2,6,C1,4
+tale-0515,The Fox and the Cat (Grimm),105,,285,C2,6,C1,4
+tale-0516,The Fox and the Hedgehog (Hahn),105,Southern Europe,394,C2,6,C1,4
+tale-0517,The Fox and the Hedgehog (Krauss),105,,137,C2,6,C1,4
+tale-0518,The Seven-Witted Fox and the One-Witted Owl,105,Eastern Europe,426,C2,6,C1,0
+tale-0519,Two Losses,105,Western Asia,156,C7,0,C4,0
+tale-0520,The Fox and the Fleas,63,Northern Europe,96,C2,6,C1,4
+tale-0521,The Jackal and the Flees,,,76,C9,2,small,2
+tale-0522,Cat and Mouse in Partnership,15,,983,C3,6,C1,4
+tale-0523,Mr. Rabbit Nibbles up the Butter,15,Northern America,1311,C2,6,C1,3
+tale-0524,Reynard and Bruin,15,,447,C2,0,C1,0
+tale-0525,The Fox and the Wolf,15,Western Europe,651,C2,6,C1,4
+tale-0526,The Fox Cheats the Bear out of His Christmas Fare,15,Northern Europe,496,C2,6,C1,4
+tale-0527,The Keg of Butter,15,Northern Europe,427,C2,6,C1,4
+tale-0528,"The Fox, the Wolf, and the Horse",47B,,254,C2,6,C1,0
+tale-0529,The Wolf and the Tailor,47B,Eastern Europe,705,C2,6,C1,3
+tale-0530,Two Foxes and a Horse,47B,Northern Europe,63,C2,7,C1,4
+tale-0531,"Conkiajgharuna, the Little Rag-Girl",480,Western Asia,1494,C4,7,C4,1
+tale-0532,Frau Holle,480,Western Europe,948,C4,7,C4,1
+tale-0533,Frau Holle and the Distaff,480,Western Europe,321,C4,7,C2,1
+tale-0534,Lazy Maria,480,Northern America,1164,C4,7,C4,3
+tale-0535,Mangita and Larina,480,South-Eastern Asia,975,C1,3,C2,1
+tale-0536,Morozko (Jack Frost),480,Eastern Europe,984,C4,7,C4,1
+tale-0537,Saint Joseph in the Woods,480,Western Europe,1023,C4,7,C4,1
+tale-0538,The Bald Wife,480,Southern Asia,1204,C1,4,C2,1
+tale-0539,The Bucket,480,Southern Europe,834,C4,7,C4,1
+tale-0540,The Fairies,480,Western Europe,969,C1,4,C2,1
+tale-0541,The Old Witch,480,Northern Europe,884,C4,7,C4,4
+tale-0542,The Old Woman and the Two Servant Girls,480,Northern Europe,396,C4,7,C1,3
+tale-0543,The Three Gifts,480,Eastern Europe,3048,C1,4,C2,1
+tale-0544,The Three Heads of the Well,480,Northern Europe,1549,C1,4,C2,1
+tale-0545,The Twelve Months,480,Eastern Europe,1429,C4,7,C2,1
+tale-0546,The Two Girls and the Angel,480,Western Europe,270,C4,7,C4,4
+tale-0547,The Two Stepsisters (Asbjornsen),480,Northern Europe,3220,C4,7,C1,4
+tale-0548,The Two Stepsisters (Kremnitz),480,Eastern Europe,2478,C4,7,C2,1
+tale-0549,A Frog for a Husband,440,Eastern Asia,2660,C1,3,C2,1
+tale-0550,Bola,440,,500,C1,4,C2,1
+tale-0551,The Enchanted Frog,440,Western Europe,581,C1,4,C2,1
+tale-0552,"The Frog King; or, Iron Heinrich",440,Western Europe,792,C1,4,C2,1
+tale-0553,The Frog Prince (Grimm2),440,Western Europe,247,C1,4,C2,1
+tale-0554,The Frog Prince (Parker),440,Southern Asia,698,C1,4,C2,1
+tale-0555,The Frog Prince (Taylor),440,,1046,C1,4,C2,1
+tale-0556,The Kind Stepdaughter and the Frog,440,Northern Europe,219,C1,7,C2,1
+tale-0557,The Maiden and the Frog,440,Northern Europe,432,C4,3,C2,2
+tale-0558,The Paddo,440,Northern Europe,213,C2,7,C1,3
+tale-0559,The Queen Who Sought a Drink from a Certain Well,440,Northern Europe,1034,C1,4,C2,2
+tale-0560,The Well of the World's End,440,Northern Europe,861,C4,7,C4,1
+tale-0561,The Wonderful Frog,440,Eastern Europe,731,C1,4,C2,1
+tale-0564,The Two Frogs,278A,,76,C2,6,C4,2
+tale-0565,The Two Frogs Who Were Neighbours,278A,,88,C2,3,small,0
+tale-0566,Two Frogs That Wanted Water,278A,,47,C2,0,small,3
+tale-0567,Two Neighbour-Frogs,278A,,112,C2,0,small,4
+tale-0568,A Ghostly Council Meeting,1676,Western Europe,64,C6,2,C1,1
+tale-0569,Do Not Disturb the Rest of the Dead,1676,Western Europe,194,C4,2,small,2
+tale-0570,Meg of Meldon,1676,Northern Europe,616,C5,2,C4,2
+tale-0571,The Chivalrous Devil,1676,Northern Europe,1170,C1,3,C3,2
+tale-0572,The Death Shroud,1676,Western Europe,87,C4,2,small,2
+tale-0573,The Peasant and the Owls,1676,Western Europe,65,C5,7,C5,0
+tale-0574,The Preacher and the Ghost,1676,Northern Europe,146,C4,0,C3,0
+tale-0575,The Scoffer of Herzberg,1676,Western Europe,26,C6,0,small,0
+tale-0576,Two Spirits,1676,Western Europe,267,C3,3,C4,3
+tale-0577,Anecdote of a Charitable Woman,706,,620,C1,8,C2,2
+tale-0578,Beautiful Magdalene,706,Western Europe,1362,C1,4,C2,1
+tale-0579,Biancabella,706,,6088,C1,4,C2,1
+tale-0580,Blessing or Property,706,Sub-Saharan Africa,2809,C1,7,C4,1
+tale-0581,Penta the Handless,706,,4255,C1,8,C2,2
+tale-0582,Sun and Moon,706,Northern America,174,C3,2,C2,2
+tale-0583,The Bad Stepmother,706,Northern Europe,2020,C1,4,C2,1
+tale-0584,The Cruel Stepmother,706,Northern Europe,1754,C1,3,C2,2
+tale-0585,The Daughter Who Was Promised to the Devil,706,,3292,C1,4,C2,1
+tale-0586,The Girl without Hands (Grimm1812),706,Western Europe,1321,C1,4,C2,1
+tale-0587,The Girl without Hands (Grimm1857),706,Western Europe,2282,C6,4,C2,1
+tale-0588,The Girl without Hands (Jones),706,Eastern Europe,2274,C1,4,C2,1
+tale-0589,The Girl without Hands (Schneller),706,,2471,C1,4,C2,1
+tale-0590,The Girl without Legs,706,Sub-Saharan Africa,567,C4,7,C2,1
+tale-0591,The Innkeeper's Beautiful Daughter,706,Southern Europe,1883,C1,4,C2,1
+tale-0592,The Sun and the Moon,706,Northern America,535,C1,3,C2,2
+tale-0593,William of the Tree,706,Northern Europe,788,C1,4,C2,1
+tale-0594,"Dr. Urssenbeck, Physician of Death",332,Western Europe,635,C6,0,C3,0
+tale-0595,Godfather Death,332,Western Europe,559,C6,0,C3,0
+tale-0596,The Boy with the Ale Keg,332,Northern Europe,1284,C3,0,C3,0
+tale-0597,The Just Man,332,Southern Europe,396,C6,0,C3,0
+tale-0598,Adrian and Bardus,160,Northern Europe,217,C2,0,small,0
+tale-0600,Story of the Grateful Animals and the Ungrateful Woman,160,,1691,C1,0,C2,0
+tale-0601,The Grateful Animals and the Ungrateful Man (Panchatantra),160,Southern Asia,1125,C1,0,C3,0
+tale-0602,The Grateful Animals and the Ungrateful Man (Schiefner),160,Eastern Asia,527,C2,4,C1,0
+tale-0603,The Traveler and the Goldsmith,160,,1350,C1,0,C3,0
+tale-0604,Vitalis and the Woodcutter,160,,869,C2,0,C1,2
+tale-0605,Sila Tsarevich and Ivashka with the White Smock,505,Eastern Europe,1812,C1,4,C2,1
+tale-0606,The Three Pennies,505,Northern Europe,1040,C1,2,C3,2
+tale-0607,Capturing Monkeys,68A,Southern Asia,143,C9,0,small,4
+tale-0608,The Boy and the Filberts,68A,,111,C9,2,small,2
+tale-0610,The Monkey and the Nuts,68A,Northern America,96,small,0,small,2
+tale-0611,A Child's Hand That Wrongly Attacked a Mother Grows Out of the Grave,779,,1030,C1,3,C2,2
+tale-0612,A Hand Grows from the Grave (Baader),779,,99,C6,2,small,2
+tale-0613,A Hand Grows from the Grave (Kuhn),779,,57,C6,2,small,2
+tale-0614,A Hand Grows from the Grave: Three Legends from Mecklenburg,779,,96,C6,2,C4,2
+tale-0615,A Mother Disciplines Her Deceased Child,779,Western Europe,149,C6,3,small,1
+tale-0616,The Hand in Mellenthin,779,,72,C6,2,small,1
+tale-0617,The Hand on the Grave,779,,424,C6,2,small,2
+tale-0618,The Hand That Grew from the Grave,779,,71,C6,2,small,2
+tale-0619,The Parent Murderer of Salzwedel,779,,187,C6,2,small,2
+tale-0620,The Willful Child,779,,135,C6,3,C3,1
+tale-0621,The Withered Hand in the Church at Bergen,779,,75,C6,2,small,2
+tale-0622,Spell and Counter-Spell,958E*,Western Europe,307,C4,2,C4,3
+tale-0623,The Finger of Sin,958E*,Eastern Europe,102,C6,2,small,2
+tale-0624,The Hand of Glory (Baring-Gould),958E*,,595,C4,2,C3,2
+tale-0625,The Hand of Glory (Grose),958E*,,257,C4,2,C3,2
+tale-0626,The Hand of Glory (Hartland),958E*,Northern Europe,1000,C4,2,C2,2
+tale-0627,The Hands of Unbaptized Children,958E*,Western Europe,100,C4,2,small,2
+tale-0628,The Inn of Spital on Stanmore,958E*,Northern Europe,941,C4,2,C2,2
+tale-0629,Thief's Foot -- Thief's Hand -- Thief's Finger,958E*,Western Europe,408,C4,2,C2,2
+tale-0630,Thieves' Lights (Arndt),958E*,Western Europe,424,C4,3,small,2
+tale-0631,Thieves' Lights (Bartsch),958E*,Western Europe,577,C4,2,C2,2
+tale-0632,Thieves' Thumbs,958E*,Western Europe,28,C4,2,small,3
+tale-0633,Boys Try Beheading,1343,,232,C3,7,C1,0
+tale-0634,Playing at Hanging,1343,Eastern Asia,199,C3,3,C3,0
+tale-0635,The Hanging Game (Gutch),1343,Northern Europe,113,C3,2,C3,0
+tale-0636,The Hanging Game (Herzog),1343,Western Europe,65,C3,7,C1,3
+tale-0637,Hansel and Gretel,327,,2600,C4,7,C1,3
+tale-0638,Jan and Hanna,327,Eastern Europe,560,C4,7,C4,3
+tale-0639,Juan and Maria,327,South-Eastern Asia,776,C1,4,C2,1
+tale-0640,Little Thumb,327,,3590,C3,3,C3,3
+tale-0641,Magic Flight,327,Northern America,349,C4,7,C4,3
+tale-0642,Molly Whuppie,327,Northern Europe,1386,C4,7,C1,3
+tale-0643,Nennillo and Nennella,327,,2037,C1,3,C2,1
+tale-0644,Old Grule,327,Eastern Europe,1092,C4,7,C4,3
+tale-0645,The Little Boy and the Wicked tepmother,327,Eastern Europe,771,C4,7,C4,3
+tale-0646,The Witch,327,Eastern Europe,1817,C4,7,C4,4
+tale-0647,"Heyo, House!",66A,Northern America,714,C2,5,C1,3
+tale-0648,The Alligator and the Jackal,66A,Southern Asia,534,C2,7,C1,0
+tale-0649,The Hare and the Lion,66A,Sub-Saharan Africa,328,C2,6,C1,0
+tale-0650,Jack Horner and the Innkeeper's Wife,571B,Northern Europe,1220,C3,0,C3,2
+tale-0651,Stupid Hans,571B,,764,C1,2,C1,2
+tale-0652,The Count and the Smith,571B,Eastern Europe,228,C5,2,C3,4
+tale-0653,The Himphamp,571B,,537,C3,7,C2,4
+tale-0654,The Love of Ares and Aphrodite,571B,,1126,C1,8,C2,2
+tale-0655,The Plaisham,571B,Northern Europe,3873,C3,1,C2,3
+tale-0656,The Raja's Son and the Kotwal's Son,571B,Southern Asia,1446,C1,0,C2,0
+tale-0657,The Smith and the Priest,571B,Western Europe,1314,C3,3,C3,0
+tale-0658,The Story of the Himphamp,571B,Western Europe,1649,C3,3,C3,0
+tale-0659,The Tale of the Basin,571B,Northern Europe,455,C3,3,C3,2
+tale-0660,"Vulcan, Mars, and Venus (Ovid)",571B,,157,small,3,C2,2
+tale-0661,"Vulcan, Mars, and Venus (Rose)",571B,,616,C1,8,C2,2
+tale-0662,Hans-My-Hedgehog,441,Western Europe,2006,C1,4,C1,1
+tale-0663,King Pig,441,Southern Europe,3027,C1,4,C2,1
+tale-0664,Prince Hedgehog,441,Eastern Europe,1017,C1,4,C2,1
+tale-0665,The Enchanted Pig,441,Eastern Europe,4588,C1,4,C2,1
+tale-0666,The Hedgehog That Married the King's Daughter,441,Northern Europe,792,C1,4,C1,1
+tale-0667,"The Hedgehog, the Merchant, the King, and the Poor Man",441,Eastern Europe,7246,C1,4,C2,1
+tale-0668,The Wild Pig,441,Western Europe,1507,C1,4,C2,1
+tale-0669,Brother Fox Catches Mr. Horse,47A,Northern America,920,C2,6,C1,4
+tale-0670,Fox and Wolf,47A,Western Europe,114,C2,6,C1,4
+tale-0671,Reynard Wants to Taste Horseflesh,47A,Northern Europe,349,C2,6,C1,4
+tale-0672,The Fox and the Horse,47A,Western Europe,512,C2,6,C1,0
+tale-0673,The Fox and the Wolf,47A,Northern America,357,C2,6,C1,4
+tale-0674,The Man and the Satyr,1342,,143,C4,6,C3,0
+tale-0675,The Peasant and the Satyrs,1342,Western Europe,625,C4,7,C3,3
+tale-0676,The Peasant and the Student,1342,Western Europe,123,C4,6,C3,0
+tale-0677,The Satyr and the Traveler,1342,,160,C4,3,C3,3
+tale-0678,The Husband Who Was to Mind the House,1408,,810,C3,7,C1,3
+tale-0679,Brother Wolf Still in Trouble,155,Northern America,1145,C2,6,C1,3
+tale-0680,Ingratitude Is the World's Reward,155,Eastern Europe,700,C2,0,C1,0
+tale-0681,Inside Again,155,,951,C2,0,C1,0
+tale-0683,"The Brahman, the Tiger, and the Six Judges",155,Southern Asia,1237,C2,0,C1,0
+tale-0684,The Camel Driver and the Adder,155,,955,C2,0,C1,0
+tale-0685,"The Crocodile, the Brahman, and the Fox",155,Southern Asia,263,C2,0,C1,0
+tale-0686,"The Farmer, the Crocodile, and the Jackal",,Southern Asia,1362,C2,0,C1,0
+tale-0687,The Ingrates,155,Southern Europe,497,C2,0,C1,0
+tale-0688,The Jackal's Judgment,155,Southern Asia,525,C2,0,C1,0
+tale-0689,"The Lion, the Horse, and the Fox",155,Southern Europe,332,C2,6,C1,0
+tale-0690,"The Man, the Serpent, and the Fox",155,Southern Europe,371,C2,0,C1,0
+tale-0691,"The Peasant, the Snake, and King Solomon",155,Eastern Europe,439,C5,0,C1,0
+tale-0692,The Reward of Good Deeds,155,Northern Europe,809,C2,0,C1,0
+tale-0693,The Reward of Kindness,155,Northern Europe,817,C2,0,C1,0
+tale-0694,The Snake's Thanks,155,,1713,C1,0,C3,0
+tale-0695,"The Tiger, the Brahman, and the Jackal",155,Southern Asia,883,C2,0,C1,0
+tale-0696,The Unmannerly Tiger,155,Eastern Asia,1099,C2,0,C1,0
+tale-0697,The World's Reward,155,Eastern Europe,1012,C2,0,C1,0
+tale-0698,The Young Man and the Snake,155,Southern Asia,2102,C1,0,C3,0
+tale-0699,Jack and the Bean-Pole,328,,737,C3,7,C1,4
+tale-0700,Jack and the Beanstalk (Hartland),328,,2222,C1,3,C1,2
+tale-0701,Jack and the Beanstalk (Jacobs),328,,2406,C3,7,C1,3
+tale-0702,Jack and the Beanstalk (Lang),328,,3442,C3,3,C1,3
+tale-0703,The Jackal and the Farmer,154,Northern Africa,805,C2,6,C1,0
+tale-0704,Well Done and Ill Paid,154,Northern Europe,949,C2,6,C1,4
+tale-0705,Frederigo da Pozzuolo Is Pressed by His Wife to Tell a Secret,670,,1014,C1,3,C2,2
+tale-0706,Ramai and the Bonga,670,Southern Asia,555,C5,0,C4,0
+tale-0707,The Billy Goat and the King,670,Southern Asia,1179,C1,0,C2,0
+tale-0708,"The Bull, the Donkey, and the Husbandman",670,,701,C5,3,C1,0
+tale-0709,The Dog and the Cock,670,Northern Europe,291,C5,6,C4,0
+tale-0710,The King and His Inquisitive Queen,670,Southern Asia,856,C1,0,C2,0
+tale-0711,The King Who Learnt the Speech of Animals,670,Southern Asia,794,C1,0,C1,0
+tale-0712,The Language of Animals (Bulgaria),670,Eastern Europe,1504,C5,0,C1,0
+tale-0714,The Language of Beasts,670,Eastern Europe,1706,C5,0,C1,0
+tale-0715,The Merchant Who Knew the Language of Beasts,670,Western Asia,497,C5,0,C3,0
+tale-0716,The Snake's Gift: Language of Animals,670,Southern Europe,1506,C5,0,C1,0
+tale-0717,The Wicked Wife,670,Western Europe,330,C5,3,C4,0
+tale-0718,Woman's Curiosity,670,Eastern Europe,286,C5,0,C1,0
+tale-0719,Brother Rabbit Conquers Brother Lion,92,Northern America,1055,C2,6,C1,3
+tale-0720,Lion Brooks No Rival,92,Northern America,239,C2,6,C1,0
+tale-0721,Singh Rajah and the Cunning Little Jackals,92,Southern Asia,755,C2,6,C1,0
+tale-0722,The Hare and the Lions,92,Eastern Asia,1091,C2,6,C1,0
+tale-0723,The Killing of the Rakhas,92,Southern Asia,820,C1,0,small,0
+tale-0724,The Lion and the Hare (Bidpai),92,,639,C2,6,C1,0
+tale-0725,The Lion and the Hare (Crooke),92,Southern Asia,214,C2,6,C1,0
+tale-0726,The Lion and the Hare (Panchatantra),92,Southern Asia,1069,C2,2,C1,0
+tale-0727,The Lion Whose Name Was Pingala,92,Southern Asia,170,C2,6,C1,0
+tale-0728,The Tiger and the Fox,92,Southern Asia,520,C2,0,C1,0
+tale-0729,The Tiger and the Hare,92,Southern Asia,735,C2,0,C1,0
+tale-0730,The Tiger and the Shadow,92,South-Eastern Asia,225,C2,0,C1,0
+tale-0731,The Hyena Outwitted,50,Southern Asia,594,C2,0,C1,0
+tale-0732,The King of the Tigers Is Sick,50,South-Eastern Asia,218,C2,4,C1,1
+tale-0733,"The Lion, the Wolf, and the Fox",50,,231,C2,6,C1,0
+tale-0734,"The Lion, Wolf, and Fox",50,,318,C2,8,C1,2
+tale-0735,Beth Gellert,178A,Northern Europe,475,C2,4,C2,1
+tale-0737,The Brahman's Wife and the Mongoose (Kingscote),178A,Southern Asia,445,C1,3,C2,1
+tale-0738,The Brahman's Wife and the Mongoose (Panchatantra),178A,Southern Asia,379,C1,3,C2,0
+tale-0739,The Dog Gellert,178A,Northern Europe,297,C2,7,C2,1
+tale-0740,The Farmer and His Dog,178A,,162,C2,3,C1,2
+tale-0741,"The Greyhound, the Serpent, and the Child",178A,,623,C1,3,C2,1
+tale-0742,Knoist and His Three Sons,1965,Western Europe,151,C3,0,C3,0
+tale-0743,Lying Tale,1965,Northern Europe,83,C3,0,small,0
+tale-0744,One Dark Night,1965,Northern America,44,C3,7,small,3
+tale-0745,Sir Gammer Vans,1965,Northern Europe,543,C3,7,C1,4
+tale-0746,The Three Brothers,1965,Southern Europe,438,C3,7,C1,0
+tale-0748,The Gold-Giving Snake,285A,,659,C2,0,C3,2
+tale-0749,The Man and the Serpent,285A,,155,C2,0,C1,0
+tale-0750,The Rattlesnake's Vengeance,285A,Northern America,416,C4,7,C1,3
+tale-0751,An Unusual Ride,1215,,227,C3,0,C1,0
+tale-0752,It Is Difficult to Please Everyone,1215,Western Asia,349,C6,0,C1,0
+tale-0753,Of the Olde Man and His Sonne That Brought His Asse to the Towne to Sylle,1215,Northern Europe,352,C7,0,C3,0
+tale-0754,The Lady's Nineteenth Story,1215,Western Asia,203,C6,0,C3,0
+tale-0755,"The Man, the Boy, and the Donkey",1215,,247,C3,0,C1,0
+tale-0756,Mastermaid,313,,5753,C3,7,C2,4
+tale-0757,March's Ears (1),782,Northern Europe,142,C9,0,C2,2
+tale-0758,March's Ears (2),782,Northern Europe,629,C9,0,C2,0
+tale-0759,Midas,782,Southern Europe,743,C1,4,C3,2
+tale-0760,The Child with the Ears of an Ox,782,Southern Asia,284,C9,0,C3,0
+tale-0761,The Goat's Ears of the Emperor Trojan,782,Southern Europe,865,C1,0,C3,0
+tale-0762,The King with the Horse's Ears,782,Northern Europe,1091,C1,4,C2,1
+tale-0763,The Presidente Who Had Horns,782,South-Eastern Asia,461,C3,0,C1,0
+tale-0764,Juan Wearing a Monkey's Skin,441,South-Eastern Asia,1607,C1,4,C2,1
+tale-0765,"Mr. Monkey, the Bridegroom",441,Northern America,214,C9,4,C5,1
+tale-0766,The Enchanted Prince,441,South-Eastern Asia,640,C1,4,C2,1
+tale-0767,The Monkey and the Girl,441,Southern Asia,360,C9,7,C4,1
+tale-0768,The Monkey Boy,441,Southern Asia,1463,C1,4,C5,0
+tale-0769,The Monkey Husband,441,Southern Asia,625,C4,7,C5,4
+tale-0770,Brother Rabbit and the Gizzard-Eater,91,,2982,C2,6,C1,3
+tale-0771,The Foolish Dragon,91,Eastern Asia,318,C9,4,C5,4
+tale-0772,The Heart of a Monkey,91,Sub-Saharan Africa,3090,C2,6,C1,0
+tale-0773,The Jellyfish and the Monkey,91,Eastern Asia,3051,C1,4,C5,1
+tale-0775,The Monkey and the Crocodile,91,Southern Asia,692,C9,4,C5,0
+tale-0776,The Monkey and the Jellyfish,91,Eastern Asia,1281,C1,3,C5,2
+tale-0777,Nasreddin Hodja Rescues the Moon,1335A,Western Asia,98,C6,2,small,2
+tale-0778,The Monkeys and the Moon,1335A,Eastern Asia,214,C9,1,C5,4
+tale-0779,Jupiter and the Baby Show,247,,73,C9,4,small,2
+tale-0780,Jupiter and the Monkey,247,,89,C9,4,small,1
+tale-0781,One's Own Children Are Always Prettiest,247,Northern Europe,139,C3,6,small,4
+tale-0782,The Crow and Its Ugly Fledglings,247,Eastern Europe,357,C6,3,C4,1
+tale-0783,The Eagle and the Owl,247,,359,C2,1,C5,0
+tale-0784,Why Is There Enmity Between the Crow and the Hawk?,247,Eastern Europe,831,C4,3,C1,0
+tale-0785,The Crow's Nest,720,Eastern Europe,809,C4,7,C1,3
+tale-0786,The Girl and the Boy,720,Western Europe,979,C4,7,C4,3
+tale-0787,The Juniper Tree,720,Western Europe,2744,C4,7,C4,3
+tale-0788,The Little Boy and the Wicked Stepmother,720,Eastern Europe,754,C4,7,C4,3
+tale-0789,The Milk-White Doo [Dove],720,Northern Europe,474,C4,7,C1,3
+tale-0790,The Rose Tree,720,Northern Europe,894,C4,7,C1,3
+tale-0791,The Satin Frock,720,Northern Europe,356,C4,7,C4,3
+tale-0792,Miracle upon Miracle,1592,Southern Asia,616,C6,0,C3,0
+tale-0793,The Faithless Depositary,1592,,319,C6,0,C3,0
+tale-0794,The Iron Weights and Scales Which Were Eaten by Mice,1592,Southern Asia,407,C6,0,C3,0
+tale-0795,The Mice That Ate an Iron Balance,1592,Southern Asia,280,C6,0,C3,0
+tale-0796,The Two Merchants,1592,Eastern Europe,288,C6,0,C1,0
+tale-0797,The Story of the Town Mouse and the Field Mouse,112,Eastern Europe,560,C3,6,C1,0
+tale-0798,The Town Mouse and the Country Mouse (Aesop),112,,291,C3,6,C1,0
+tale-0799,The Town Mouse and the Country Mouse (Horace),112,,333,C3,3,C3,2
+tale-0800,The Town Mouse and the Country Mouse (Norway),112,Northern Europe,1065,C3,6,C1,0
+tale-0801,The Town Rat and the Country Rat,112,,173,C8,3,C1,2
+tale-0802,Doubleturk,500,Western Europe,230,C5,4,C2,1
+tale-0803,Duffy and the Devil,500,Northern Europe,3231,C3,3,C3,2
+tale-0804,Dwarf Holzrührlein Bonneführlein,500,Western Europe,507,C5,1,C2,1
+tale-0805,Gwarwyn-a-throt,500,Northern Europe,600,C4,7,C2,3
+tale-0806,Hoppetînken,500,Western Europe,44,C5,7,small,1
+tale-0807,Kinkach Martinko,500,,1389,C1,3,C2,1
+tale-0808,Kruzimugeli,500,Western Europe,629,C1,4,C2,1
+tale-0809,Kugerl,500,Western Europe,667,C5,7,C2,1
+tale-0810,Mistress Beautiful,500,Western Europe,212,C5,2,C2,1
+tale-0811,Nägendümer,500,Western Europe,144,C4,7,C1,1
+tale-0812,Peerie Fool [Peerifool],500,Northern Europe,1179,C4,7,C2,3
+tale-0813,Penelop,500,Northern Europe,1086,C1,3,C2,2
+tale-0814,Purzinigele,500,Western Europe,1952,C1,2,C2,1
+tale-0815,Rumpelstiltskin,500,Western Europe,492,C1,4,C2,1
+tale-0816,Silly go Dwt,500,Northern Europe,136,C4,3,C3,3
+tale-0817,Tarandandò,500,Southern Europe,1588,C4,7,C1,1
+tale-0818,The Girl Who Could Spin Gold from Clay and Long Straw,500,Northern Europe,963,C1,3,C2,1
+tale-0819,The Rival Kempers,500,Northern Europe,2325,C3,3,C2,3
+tale-0820,Tom Tit Tot,500,Northern Europe,1662,C4,7,C1,3
+tale-0821,Whuppity Stoorie,500,Northern Europe,1608,C3,3,C2,3
+tale-0822,Winterkölbl,500,,852,C1,4,C2,1
+tale-0823,Zirkzirk,500,Western Europe,140,C5,3,small,1
+tale-0824,Enigmas,1562A,Southern Asia,345,C3,0,C4,0
+tale-0825,Master of All Masters,1562A,Northern Europe,293,C5,2,C4,2
+tale-0826,The Clever Apprentice,1562A,Northern Europe,416,C5,3,C3,2
+tale-0827,Binnorie (England),780,Northern Europe,582,C1,4,C2,1
+tale-0828,Little Anklebone (Anklebone),780,Southern Asia,932,C2,0,C1,0
+tale-0829,Murder Will Out (Iceland),780,Northern Europe,175,C4,2,C2,2
+tale-0830,The Blue Lily (Caballero),780,Southern Europe,286,C5,4,C2,1
+tale-0831,The Dead Girl's Bone (Switzerland1),780,Western Europe,251,C5,4,C2,1
+tale-0832,The Griffin (Italy),780,Southern Europe,433,C5,4,C2,0
+tale-0833,The Little Bone (Switzerland2),780,Western Europe,196,C2,7,C3,3
+tale-0834,The Magic Fiddle (India),780,Southern Asia,1053,C1,3,C4,0
+tale-0835,The Silver Plate and the Transparent Apple (Russia),780,Eastern Europe,1757,C1,4,C2,1
+tale-0836,The Singing Bone (Grimm),780,,353,C1,2,C1,1
+tale-0837,The Singing Bones (Louisiana),780,Northern America,308,C4,7,C4,0
+tale-0838,Under the Green Old Oak-Tree (Antigua),780,Latin America and the Caribbean,247,C2,5,C1,3
+tale-0839,Old Sultan,,Western Europe,836,C2,6,C1,0
+tale-0840,"The Bear, the Dog, and the Cat",101,Eastern Europe,1044,C2,6,C1,4
+tale-0841,The Dog and the Wolf,101,Eastern Europe,1180,C2,6,C1,4
+tale-0842,The Old Hound,101,,120,C2,0,C1,0
+tale-0843,The Sagacious Monkey and the Boar,101,Eastern Asia,946,C3,3,C1,0
+tale-0844,Harry Jenkins,726,Northern Europe,512,C3,0,C3,0
+tale-0845,Old Age,726,Western Europe,153,C6,0,C3,0
+tale-0846,Searching for the Kingdom of the Green Mountains (#Macinnes),726,,102,C6,0,small,0
+tale-0847,Searching for the Kingdom of the Green Mountains (Macinnes),726,Northern Europe,552,C6,0,C3,0
+tale-0848,The Dwarf of Folkared's Cliff,726,Northern Europe,282,C5,2,C3,2
+tale-0849,The Seventh Father of the House,726,Northern Europe,670,C3,7,C3,0
+tale-0850,The Three Old Men,726,Western Europe,260,C4,2,C3,2
+tale-0851,The Three Old Men of Painswick,726,Northern Europe,480,C3,3,C3,3
+tale-0852,Three Generations,726,Northern America,151,C6,0,small,0
+tale-0853,A Child's Thankfulness and Unthankfulness,980,Western Europe,135,C6,0,C3,1
+tale-0854,A Lesson for Fathers,980,Southern Asia,106,C6,0,C3,0
+tale-0856,Don't Beat Grandfather,980,Southern Asia,54,C6,0,C3,0
+tale-0857,Half a Blanket,980,Western Europe,221,C6,0,C3,0
+tale-0859,La Housse Partie [The Divided Horse-Blanket],980,Western Europe,124,C6,0,C3,0
+tale-0860,Let Him That Does Evil Expect Evil in Return,980,Southern Europe,599,C6,3,C3,2
+tale-0861,Of an Unnatural Son Who Fed His Aged Father upon Oats and Offal.,980,Northern Europe,21,C2,8,small,2
+tale-0862,Of the Old Man of Monmouth That Gave His Son All His Goods in His Lifetime,980,Northern Europe,115,C6,0,C3,2
+tale-0863,Of the Old Man That Put Himself in His Son's Hands (Hundredtales),980,Northern Europe,452,C6,0,C3,2
+tale-0865,Old Frühling,980,Western Europe,547,C6,7,C3,3
+tale-0866,Respect Old Age,980,South-Eastern Asia,127,C6,0,C3,0
+tale-0867,The Divided Horse-Blanket,980,Western Europe,2857,C1,8,C3,2
+tale-0868,The Golden Rule,980,South-Eastern Asia,108,C6,7,C3,1
+tale-0869,The Old Grandfather and His Grandson,980,Western Europe,253,C6,7,C4,3
+tale-0870,"The Old Man, His Son, and His Grandson",980,South-Eastern Asia,271,C6,0,C3,0
+tale-0871,The Son Forgave His Father,980,Southern Europe,157,C6,0,C3,0
+tale-0872,Two Ells of Cloth,980,Western Europe,165,C6,0,C4,1
+tale-0873,A Terrifying Judgment of God,980D,Southern Europe,284,C6,0,C3,0
+tale-0874,The Origin of the Turtle,980D,Eastern Europe,110,C2,7,C5,1
+tale-0875,The Snake around His Neck,980D,Western Europe,302,C4,7,C4,0
+tale-0876,The Ungrateful Daughter,980D,Eastern Europe,98,C2,7,C5,1
+tale-0877,The Ungrateful Son (Ashliman),980D,,185,C6,0,C1,0
+tale-0878,The Ungrateful Son (Luther),980D,,120,C6,0,C4,0
+tale-0879,A Blessed and Happie People,981,,131,C2,3,small,2
+tale-0880,A Story from the Time of the Romans,981,Eastern Europe,574,C6,0,C3,0
+tale-0881,A Wendish Legend,981,,105,C5,0,small,0
+tale-0882,An Irish Deathbed Scene,981,Northern Europe,179,C2,3,small,2
+tale-0883,"Duck Under, Duck Under",981,,79,C6,3,small,2
+tale-0884,Gillings Bluff,981,Northern Europe,133,C6,3,small,2
+tale-0885,Grandfather and Grandson,981,Southern Europe,486,C6,2,C3,2
+tale-0886,How the Killing of the Old Men Was Stopped,981,Southern Europe,207,C6,0,C3,0
+tale-0887,Killing of the Old Men,981,Eastern Europe,760,C1,0,C3,0
+tale-0888,Kith-Rocks and Kith-Clubs,981,Northern Europe,144,small,0,small,2
+tale-0889,The Man with the Hatchet,981,Northern Europe,465,C4,2,small,2
+tale-0890,The Old Heathens,981,Western Europe,73,C6,2,small,2
+tale-0891,The Old Man Who Solved Riddles,981,,285,C6,0,C3,0
+tale-0892,Why People Today Die Their Own Death,981,,237,C6,0,C3,0
+tale-0893,A Clever Stratagem,982,Southern Asia,620,C1,3,C2,2
+tale-0894,Grandfather's Bag of Gold,982,Northern Europe,419,C6,7,C3,3
+tale-0895,How the Daughter-in-Law Got the Coins,982,Southern Asia,413,C1,3,C2,1
+tale-0896,How the Wicked Sons Were Duped,982,Southern Asia,334,C1,0,C3,0
+tale-0897,No Father Should Transfer All His Property to His Children While He Is Still Alive,982,,134,C4,0,C3,3
+tale-0898,Old Mr. Lacy and His Three Sons,982,Northern Europe,489,C1,0,C3,2
+tale-0899,The Borrowed Guilder,982,,123,C4,3,C3,2
+tale-0900,The Cudgel,982,Western Europe,353,C4,2,C3,1
+tale-0901,The Cudgel on the Gate at Jüterbog,982,Western Europe,164,C4,2,small,2
+tale-0902,Dummburg Castle,954,Western Europe,1837,C1,2,C3,2
+tale-0903,How Black Snake Caught the Wolf,954,Northern America,1511,C2,5,C1,3
+tale-0904,Open Simson!,954,Western Europe,174,C1,2,C2,1
+tale-0905,Simeli Mountain,954,Western Europe,782,C3,2,C3,4
+tale-0906,The Robbers Robbed,954,Southern Asia,1512,C1,2,C2,2
+tale-0907,The Two Brothers,954,,1140,C1,0,C3,2
+tale-0908,The Two Brothers and the Forty-Nine Dragons,954,Southern Europe,3361,C3,7,C3,3
+tale-0909,How an Ox Became Mayor,1675,Western Europe,747,C3,0,C3,0
+tale-0910,How the Washerman's Ass Became a Qazi,1675,Southern Asia,1954,C1,3,C3,0
+tale-0911,Peter Ox,1675,Northern Europe,1810,C3,0,C3,0
+tale-0912,Pope Ox,1675,Western Europe,801,C5,0,C3,0
+tale-0913,"The Priest, the Washerman, and the Ass",1675,Southern Asia,1403,C1,3,C3,0
+tale-0914,A Visitor from Paradise,1540,,916,C3,7,C1,0
+tale-0915,All Women Are Alike,1540,Northern Europe,2006,C3,7,C1,3
+tale-0916,Elova Gohin Melova Ava,1540,Southern Asia,749,C1,3,C2,2
+tale-0917,Jack Hannaford,1540,Northern Europe,670,C3,0,C1,0
+tale-0918,My Son Ali,1540,Northern America,1586,C4,7,C2,1
+tale-0919,On an Old Woman,1540,Western Europe,68,C3,0,small,0
+tale-0920,Shaikh Chilli and the Fakir,1540,Southern Asia,324,C3,0,small,0
+tale-0921,Stupid Gretel,1540,Western Europe,587,C3,7,C4,0
+tale-0922,The Beggar from Paris,1540,Northern Europe,410,C3,3,C3,2
+tale-0923,The Clever People,1540,Western Europe,1581,C3,0,C3,0
+tale-0924,The Era [Peasant] from the Other World,1540,Southern Europe,569,C3,0,C3,0
+tale-0925,The Good Wife and the Bad Husband,1540,Southern Asia,1076,C1,3,C2,0
+tale-0926,The Man Who Fell from Heaven,1540,Western Europe,521,C3,0,C4,0
+tale-0927,The Millet Trader,1540,Southern Asia,503,C1,0,C4,0
+tale-0928,The Roguish Peasant,1540,Eastern Europe,1578,C3,0,C3,0
+tale-0929,The Simple Wife,1540,Southern Europe,1909,C3,7,C4,3
+tale-0930,The Story of the Messenger from Heaven,1540,Eastern Europe,562,C3,7,C3,0
+tale-0931,The Traveler from Heaven,1540,Western Europe,844,C3,0,C3,0
+tale-0932,The Travelling Scholar from Paradise,1540,Western Europe,2646,C3,3,C3,2
+tale-0933,Count Fiesco's Parrot,237,Southern Europe,83,C7,7,C1,3
+tale-0934,Of the Woman Who Stole Her Husband's Eel,237,Western Europe,227,C7,3,C1,3
+tale-0935,The Indiscrete Magpie,237,Western Europe,190,C7,7,C1,0
+tale-0936,The Parrot,237,Northern Europe,468,C7,3,C1,3
+tale-0937,The Parrot and the Oilman,237,Southern Asia,156,C7,3,small,2
+tale-0941,The Three Roosters,243A,,155,C4,2,small,1
+tale-0942,Example of the Man and the Woman and the Parrot and Their Maidservant,1422,,398,C7,3,C4,2
+tale-0943,"Story of the Confectioner, His Wife, and the Parrot",1422,,630,C7,3,C4,2
+tale-0944,"The Burgess, His Wife, and the Magpie",1422,,646,C1,3,C2,2
+tale-0945,The Second Vezir's Story,1422,Western Asia,529,C7,3,C4,2
+tale-0946,The Tale of the Husband and the Parrot,1422,,460,C7,3,C4,2
+tale-0947,Jupiter and the Birds,244,,82,C9,3,small,1
+tale-0948,The Blue Jackal,244,Eastern Asia,639,C2,3,C1,0
+tale-0949,The Jackal King,244,Southern Asia,299,C2,4,C1,0
+tale-0950,The Jackdaw and the Pigeons,244,,141,C1,3,C1,0
+tale-0951,The Jay and the Peacock,244,,106,C9,3,small,4
+tale-0952,The Jay in the Feathers of the Peacock,244,,109,C2,5,small,3
+tale-0953,The Painted Jackal (Dracott),244,Southern Asia,194,C2,2,C1,0
+tale-0954,The Painted Jackal (Pakistan),244,Southern Asia,171,C2,3,C1,0
+tale-0955,The Vain Jackdaw,244,,178,C9,4,C1,1
+tale-0956,How Brother Fox Was Too Smart,1,,604,C2,6,C1,4
+tale-0957,Mantharaka's,1,,225,C2,6,C1,4
+tale-0958,"Mr. Fox Goes a-Hunting, but Mr. Rabbit Bags the Game",1,,486,C2,6,C1,4
+tale-0959,Playing Dead Twice in the Road,1,Northern America,853,C2,6,C1,4
+tale-0960,Reynard Steals Fish,1,,170,C2,7,C1,4
+tale-0961,The Fox,1,Western Asia,321,C2,6,C1,0
+tale-0962,The Fox and the Lapp,1,,580,C2,6,C1,4
+tale-0963,Two Foxes Steal Herrings,1,Northern Europe,135,C2,6,C1,4
+tale-0964,Nasreddin Hodja Borrows a Cauldron,1592B,Western Asia,289,C6,3,small,0
+tale-0965,The Cauldron That Died,1592B,Western Asia,272,C6,3,small,0
+tale-0966,The Cogia Borrowed a Cauldron,1592B,Western Asia,140,C6,3,small,0
+tale-0967,The Most Sensitive Woman,704,Southern Europe,315,C1,7,C2,1
+tale-0968,The Princess on the Pea,704,Northern Europe,363,C1,4,C2,1
+tale-0969,The Three Delicate Wives of King Virtue-Banner: Which Is the Most Delicate?,704,Southern Asia,665,C1,4,C2,1
+tale-0970,Andres the Trapper,545B,South-Eastern Asia,1069,C3,4,C5,4
+tale-0971,Boroltai Ku,545B,Eastern Asia,585,C2,4,small,2
+tale-0972,Count Martin of the Cat,545B,,845,C1,4,C2,4
+tale-0973,Don Joseph Pear,545B,Southern Europe,1529,C1,4,C1,4
+tale-0974,Helge-Hal in the Blue Hill,545B,Northern Europe,2764,C1,4,C1,4
+tale-0975,Jogeshwar's Marriage,545B,Southern Asia,1071,C1,4,C3,0
+tale-0976,Lord Peter,545B,Northern Europe,2002,C3,4,C1,4
+tale-0977,Mighty Mikko,545B,Northern Europe,3295,C1,4,C1,1
+tale-0978,Prince Csihan (Nettles),545B,Eastern Europe,2133,C1,4,C1,1
+tale-0979,Puss in Boots,545B,,1649,C1,4,C1,4
+tale-0980,The Clever Jackal,545B,Southern Asia,924,C1,4,C3,0
+tale-0981,The Earl of Cattenborough,545B,,1624,C1,4,C2,1
+tale-0982,The Feather King,545B,Eastern Europe,1392,C1,4,C2,1
+tale-0983,The Match-Making Jackal,545B,Southern Asia,2484,C1,4,C2,1
+tale-0984,The Monkey and Juan Pusong Tambi-Tambi,545B,South-Eastern Asia,2729,C1,4,C5,0
+tale-0985,The Palace That Stood on Golden Pillars,545B,Northern Europe,2766,C1,4,C2,1
+tale-0986,The Weaver,545B,Southern Asia,1239,C1,0,C3,0
+tale-0987,Jesper the Hare Herder,570,Northern Europe,2991,C3,4,C2,0
+tale-0988,The Flute,570,Eastern Europe,426,C5,7,C4,1
+tale-0989,The Green Fig,570,Western Europe,948,C1,4,C1,1
+tale-0990,The Hare Herder,570,Western Europe,1249,C5,4,C1,1
+tale-0991,The King's Hares,570,Northern Europe,2874,C3,0,C2,0
+tale-0992,The Magic Fife,570,,839,C3,0,C1,0
+tale-0993,The Rabbit Herd,570,,1147,C1,4,C2,1
+tale-0994,Blond Beauty,310,Western Europe,423,C1,4,C2,1
+tale-0995,Juan and Clotilde,310,South-Eastern Asia,1174,C1,4,C2,2
+tale-0996,Parsillette,310,Western Europe,1006,C1,3,C2,1
+tale-0997,Parsley [Petrosinella],310,Southern Europe,1465,C1,3,C2,2
+tale-0999,Prunella,310,Southern Europe,1720,C4,7,C2,1
+tale-1000,The Fair Angiola,310,Southern Europe,1441,C1,7,C2,1
+tale-1001,Little Red Cap,333,,1177,C2,7,C1,3
+tale-1002,Little Red Hat,333,,549,C4,7,C1,3
+tale-1003,Little Red Hood,333,Western Europe,1045,C2,7,C1,3
+tale-1004,Little Red Riding Hood,333,,743,C2,7,C1,3
+tale-1005,The Grandmother,333,Western Europe,508,C4,7,C1,3
+tale-1006,The Tale of Jemima Puddle-Duck,333,,1267,C2,7,C1,3
+tale-1007,The True History of Little Golden-Hood,333,,1289,C2,7,C1,3
+tale-1008,A Ghoul-Like Deed,990,Northern Europe,327,C4,2,C2,2
+tale-1009,A Sign from God,990,Western Europe,248,C4,2,C2,2
+tale-1010,A Terrible Experience,990,Northern Europe,504,C4,3,C2,2
+tale-1011,Buried in a Trance,990,Northern Europe,198,C4,2,C2,2
+tale-1012,Lady Mount Edgcumbe Buried Alive,990,Northern Europe,169,C4,2,C4,2
+tale-1013,Lady Restored to Life,990,Northern Europe,75,small,2,small,2
+tale-1014,Bloody Baker,955,Northern Europe,761,C1,2,C2,2
+tale-1015,Bobby Rag,955,Northern Europe,903,C2,5,C1,3
+tale-1016,Captain Murderer,955,Northern Europe,1295,C1,7,C2,1
+tale-1017,Greenbeard,955,Northern Europe,1011,C4,2,C4,1
+tale-1018,Laula,955,Northern Europe,237,C4,1,C2,3
+tale-1020,The Cannibal Innkeeper,955,Eastern Europe,456,C4,2,C2,1
+tale-1021,The Girl Who Got Up the Tree,955,Northern Europe,140,C4,7,C4,4
+tale-1022,The History of Mr. Greenwood,955,Northern Europe,1705,C1,2,C2,2
+tale-1023,The Oxford Student,955,Northern Europe,280,C4,2,C2,2
+tale-1024,The Robber's Bride,955,Western Europe,1226,C1,7,C4,1
+tale-1025,The Story of Mr. Fox,955,Northern Europe,383,C2,2,C4,2
+tale-1026,The Sweetheart in the Wood,955,Northern Europe,1655,C4,7,C4,3
+tale-1027,Frodi's Mill,565,Northern Europe,266,C3,8,C3,2
+tale-1028,The Coffee Mill Which Grinds Salt,565,Northern Europe,530,C3,0,C1,0
+tale-1029,Why Sea Water Is Salty,565,Western Europe,709,C3,7,C3,3
+tale-1030,Why the Ocean Is Salty,565,South-Eastern Asia,327,C4,1,small,2
+tale-1031,Why the Sea Is Salt,565,Northern Europe,1829,C3,7,C3,0
+tale-1032,The Frog and the Rat,278,,303,C2,3,small,2
+tale-1033,"The Mouse, the Frog, and the Hawk",278,,159,C2,6,C1,4
+tale-1034,The Scorpion and the Tortoise,278,,210,C2,3,C1,0
+tale-1035,A Donegal Fairy,1137,Northern Europe,121,C2,7,C1,3
+tale-1036,Issi Teggi (Self Did It),1137,Northern Europe,293,C5,2,C3,0
+tale-1037,Legends of the Mill: The Beggar Woman and the Fairy,1137,Northern Europe,265,C4,7,C4,3
+tale-1038,My Ainsel,1137,Northern Europe,301,C4,7,C2,3
+tale-1039,My Own Self,1137,Northern Europe,988,C4,7,C2,3
+tale-1040,Mysel' i' da Mill,1137,Northern Europe,270,C3,3,C1,3
+tale-1041,The Fairy in the House,1137,Western Europe,325,C3,1,C2,3
+tale-1042,The Miller and the Ourisk,1137,Northern Europe,273,C2,2,small,2
+tale-1043,The Story of Tam M'Kechan,1137,Northern Europe,1610,C3,3,C3,2
+tale-1044,Dorani,306,Southern Asia,2182,C1,4,C2,1
+tale-1045,"Hildur, the Queen of the Elves",306,Northern Europe,2751,C1,3,C2,2
+tale-1046,The Invisible Shepherd Boy,306,,875,C1,4,C2,1
+tale-1047,The Midnight Dance,306,Eastern Europe,884,C1,1,C2,1
+tale-1048,The Princess with the Twelve Pair of Golden Shoes,306,Northern Europe,1982,C1,4,C2,1
+tale-1049,The Seven Iron Slippers,306,Southern Europe,2035,C1,4,C2,1
+tale-1050,The Shoes That Were Danced to Pieces (Grimm),306,Western Europe,1184,C1,1,C2,1
+tale-1051,The Shoes That Were Danced to Pieces (Schambach),306,Western Europe,641,C1,1,C2,1
+tale-1052,The Slippers of the Twelve Princesses,306,Eastern Europe,4044,C1,4,C2,1
+tale-1053,The Three Girls,306,Eastern Europe,785,C1,1,C2,1
+tale-1054,The Twelve Dancing Princesses,306,Western Europe,3741,C1,4,C2,1
+tale-1055,Gutmann und Gutweib,1351,,241,C4,5,small,3
+tale-1056,Johnie Blunt,1351,Northern Europe,178,C2,5,C1,3
+tale-1057,Sennuccio and Bedovina,1351,Southern Europe,670,C3,3,C2,2
+tale-1058,Story of the Third Brahman,1351,Southern Asia,858,C1,3,C2,2
+tale-1059,The Barring of the Door,1351,Northern Europe,282,C2,7,C1,3
+tale-1060,The Beggar and the Five Muffins,1351,Southern Asia,1157,C3,3,C4,2
+tale-1061,"The Farmer, His Wife, and the Open Door",1351,Southern Asia,334,C3,3,C1,0
+tale-1062,The Hashish Eater and His Bride,1351,Northern Africa,607,C1,3,C2,2
+tale-1063,The Husband and the Wife Who Made a Wager as to Who Would Eat the Pancake,1351,,127,C3,3,C1,3
+tale-1064,The Obstinate Shoemaker,1351,Northern Europe,715,C3,3,C3,3
+tale-1065,The Opium Eaters and the Open Gate,1351,Western Asia,406,C5,6,small,0
+tale-1066,The Porridge Pot,1351,Western Europe,324,C3,7,C1,0
+tale-1067,The Silent Couple,1351,Western Asia,314,C3,0,C3,0
+tale-1068,The Wager,1351,Southern Europe,391,C3,3,C1,3
+tale-1069,The Ass as Singer,214A,Eastern Asia,355,C2,3,C3,2
+tale-1070,The Four Associates,214A,Southern Asia,604,C2,0,C1,0
+tale-1071,The Musical Donkey,214A,Southern Asia,601,C2,3,C3,0
+tale-1072,The Turtle and the Lizard,214A,South-Eastern Asia,335,C2,6,C5,4
+tale-1073,Tit for Tat,214A,Southern Asia,528,C2,0,C1,0
+tale-1074,Little Brier-Rose,410,,847,C1,4,C2,1
+tale-1075,"Sun, Moon, and Talia",410,,2000,C1,3,C2,1
+tale-1076,The Sleeping Beauty in the Wood,410,,3754,C1,4,C2,1
+tale-1077,A Poor Mariner of Gaeta,1362,Southern Europe,337,C6,3,C2,2
+tale-1078,A Twelve-Month Child,1362,Southern Europe,128,C6,3,C2,0
+tale-1079,Ten Cradles,1362,Northern Europe,57,C2,3,small,2
+tale-1080,The Child of Snow,1362,Western Europe,1329,C1,3,C2,2
+tale-1081,The Ice Child,1362,Western Europe,318,C3,0,C4,0
+tale-1082,The Snow Child (Ashliman),1362,,253,C6,3,C2,1
+tale-1083,The Snow Child (North),1362,Northern Europe,814,C1,3,C2,2
+tale-1084,Gold-Tree and Silver-Tree,709,Northern Europe,1152,C1,4,C2,1
+tale-1085,Little Snow-White,709,Western Europe,2512,C4,7,C2,1
+tale-1086,"Maria, the Wicked Stepmother, and the Seven Robbers",709,Southern Europe,1413,C4,7,C2,1
+tale-1087,The Crystal Casket,709,Southern Europe,2576,C1,4,C2,1
+tale-1088,The Young Slave,709,Southern Europe,1814,C1,3,C2,1
+tale-1089,"Eucrates and Pancrates, the Egyptian Miracle Worker",325,,523,C3,0,C2,2
+tale-1090,Magic Book,325,Western Europe,96,C4,2,small,2
+tale-1091,The Book of Magic,325,Eastern Europe,643,C1,0,C3,2
+tale-1092,The Farmer's Wife of Deloraine,325,Northern Europe,431,C2,7,C3,3
+tale-1093,The Magic Whistle,325,Northern Europe,169,C5,2,C2,1
+tale-1094,The Master and His Pupil,325,Northern Europe,776,C1,2,C3,2
+tale-1095,The Schoolmaster at Bury,325,Northern Europe,153,C5,2,small,2
+tale-1096,Siegfried and Chriemhilt,365,Northern America,217,C1,2,C2,2
+tale-1097,Sweet William's Ghost,365,Northern Europe,360,C7,8,C2,2
+tale-1098,The Abbess and the Devil,365,Western Europe,505,C1,2,C2,2
+tale-1099,The Deacon of Myrká,365,Northern Europe,1041,C4,2,C2,2
+tale-1100,The Ghost Husband,365,,184,C7,3,C2,2
+tale-1101,The Girls and Their Suitors,365,Northern Europe,406,C4,7,C4,1
+tale-1102,The Lover's Ghost,365,Eastern Europe,1588,C1,7,C3,1
+tale-1103,The Lovers of Porthangwartha,365,Northern Europe,544,C1,3,C2,2
+tale-1104,The Specter Bridegroom,365,Northern Europe,1723,C1,3,C2,2
+tale-1105,The Duration of Life,173,,584,C6,0,C1,0
+tale-1106,"The Man, the Horse, the Ox, and the Dog",173,,188,C2,0,small,0
+tale-1107,The Riddle of the Sphinx,173,Southern Europe,172,small,0,small,2
+tale-1108,The Seven Ages of Man,173,,213,small,3,small,2
+tale-1110,The Story of Man and His Years,173,Eastern Europe,881,C6,0,C1,0
+tale-1111,There Is No Difference between Youth and Old Age,173,,92,C6,0,small,0
+tale-1113,Limestone Broth,1548,Northern Europe,211,C3,3,C4,0
+tale-1114,Stone Soup (Hunter),1548,Northern America,871,C3,7,C3,0
+tale-1115,Stone Soup (Stonesoup),1548,,430,C3,7,C1,0
+tale-1116,The Clever Pilgrim,1548,,604,C3,7,C3,0
+tale-1117,The Old Woman and the Tramp,1548,Northern Europe,1641,C3,7,C4,0
+tale-1118,"Mouse, You Go First!",295,Western Europe,1044,C5,5,C1,3
+tale-1119,"Someone's Misfortune, Someone's Ridicule",295,Eastern Europe,129,C5,2,C1,3
+tale-1120,"Straw, Coal, and Bean",295,,526,C5,2,C1,3
+tale-1121,"Straw, Coal, and Bean Go Traveling",295,,252,C5,2,C1,3
+tale-1122,The Entrapped Suitors,1730,,662,C3,3,C2,2
+tale-1123,The Lady and Her Five Suitors,1730,,432,C3,3,C2,2
+tale-1124,A Spanish Cavalryman,800,Western Europe,370,C3,3,C3,3
+tale-1125,How a Tailor Came to Heaven and Threw Our Lord God's Footstool at an Old Woman,800,Western Europe,598,C3,3,C3,3
+tale-1126,The Tailor in Heaven (Grimm),800,Western Europe,680,C3,3,C3,3
+tale-1127,The Tailor in Heaven (Meier),800,Western Europe,167,C3,3,C3,3
+tale-1128,Cannetella,900,Southern Europe,2464,C1,4,C2,1
+tale-1129,Greyfoot,900,Northern Europe,2840,C1,4,C2,1
+tale-1130,Haaken Grizzlebeard,900,Northern Europe,2710,C3,7,C2,1
+tale-1131,King Thrushbeard,900,Western Europe,1563,C1,4,C2,1
+tale-1132,Peter Redhat,900,Northern Europe,2937,C1,4,C2,1
+tale-1133,The Crumb in the Beard,900,Southern Europe,1829,C1,4,C2,1
+tale-1134,The Haughty Princess,900,Northern Europe,1184,C1,7,C2,1
+tale-1135,The Hunchback,900,Southern Europe,1103,C1,4,C2,1
+tale-1136,B' Rabby an' B' Tar-Baby,175,Latin America and the Caribbean,896,C2,5,C1,3
+tale-1137,"Buh Wolf, Buh Rabbit, an de Tar-Baby",175,Northern America,1036,C2,5,C1,3
+tale-1138,Coyote and Pitch,175,Northern America,237,C2,6,C1,4
+tale-1139,How Mr. Rabbit Was Too Sharp for Mr. Fox,175,Northern America,692,C2,5,C1,3
+tale-1141,King Robin,175,,970,C1,3,C2,2
+tale-1142,Playing Godfather: Tar-Baby: Mock Plea,175,Northern America,436,C2,6,C1,4
+tale-1143,"The Dance for Water; or, Rabbit's Triumph",175,Sub-Saharan Africa,785,C2,6,C1,0
+tale-1146,The Jackal and the Chickens,175,Southern Asia,1299,C2,7,C1,0
+tale-1147,The Monkey and Juan Puson Tambi-Tambi,175,South-Eastern Asia,753,C9,0,C5,0
+tale-1148,The Rabbit and the Frenchman,175,Northern America,596,C2,0,C1,0
+tale-1149,The Story of a Dam,175,Sub-Saharan Africa,1172,C2,6,C1,0
+tale-1150,The Wonderful Tar-Baby Story,175,Northern America,642,C2,5,C1,3
+tale-1151,How the Goats Came to Hessen,122E,Western Europe,305,C2,6,C1,0
+tale-1152,The Three Billy Goats Gruff,122E,Northern Europe,463,C3,7,C1,4
+tale-1153,The Three Goats,122E,,222,C2,6,C1,4
+tale-1154,How Come the Pigs Can See the Wind,124,Northern America,578,C2,1,C1,3
+tale-1155,Little Pig and Wolf,124,Northern America,1053,C2,6,C1,3
+tale-1156,The Awful Fate of Mr. Wolf,124,Northern America,800,C2,6,C1,3
+tale-1157,The Fox and the Geese,124,Northern Europe,1341,C2,3,C1,3
+tale-1158,The Fox and the Pixies,124,Northern Europe,455,C2,6,C1,2
+tale-1159,The Story of the Pigs,124,Northern America,1231,C2,6,C1,3
+tale-1160,The Story of the Three Little Pigs,124,Northern Europe,968,C2,7,C1,3
+tale-1161,The Three Goslings,124,Southern Europe,1311,C2,7,C1,3
+tale-1162,The Three Little Pigs,124,Northern Europe,1892,C2,7,C1,3
+tale-1163,"Table-Be-Set, Gold-Donkey, and Cudgel-out-of-the-Sack",563,Western Europe,3641,C3,0,C3,0
+tale-1164,The Adventures of Juan,563,South-Eastern Asia,842,C1,0,C2,0
+tale-1165,The Ass That Lays Money,563,Southern Europe,1264,C3,0,C3,0
+tale-1166,The Good-for-Nothing,563,Western Asia,1357,C3,3,C3,1
+tale-1167,The Lad Who Went to the North Wind,563,Northern Europe,1133,C3,6,C3,3
+tale-1168,The Story of the Ogre,563,Southern Europe,2866,C3,3,C3,0
+tale-1169,"The Wish Rag, the Gold-Goat, and the Hat Soldiers",563,Western Europe,1433,C1,2,C3,2
+tale-1170,Melchizedek Avoids a Trap,920E,,417,small,0,small,2
+tale-1172,The Parable of the Three Rings,920E,,618,small,0,small,2
+tale-1173,An Eagle and a Tortoise,225,,176,C2,6,C5,0
+tale-1174,The Disobedient Tortoise,225,,422,C2,0,C5,0
+tale-1176,The Tortoise and the Birds,225,,110,C2,6,C5,0
+tale-1177,The Tortoise and the Two Ducks,225,,268,C2,3,C5,2
+tale-1178,The Tortoise and the Two Swans,225,,237,C2,6,C5,0
+tale-1179,When Mr. Terrapin Went Riding on the Clouds,225,Northern America,748,C2,5,C1,3
+tale-1180,A Hare and a Tortoise,275,,261,C2,6,C1,0
+tale-1181,"An Unequal Match; Or, Why the Carabao's Hoof Is Split",275,South-Eastern Asia,401,C2,6,C5,4
+tale-1182,How the Hedgehog Ran the Devil to Death,275,Northern Europe,159,C2,2,C1,4
+tale-1183,Keeping Pace,275,Northern America,91,C2,6,C1,4
+tale-1184,Mister Rabbit Finds His Match at Last,275,,836,C2,6,C1,3
+tale-1185,Old Nick and the Girl,275,Northern Europe,1418,C3,1,C4,0
+tale-1186,The Butterfly and the Crane,275,Melanesia,37,C3,2,small,0
+tale-1187,The Carabao and the Shell,275,South-Eastern Asia,146,C2,6,C5,4
+tale-1188,The Crane and the Crab,275,Melanesia,119,C2,0,C5,2
+tale-1189,The Elephant and the Ants,275,Southern Asia,364,C8,0,small,0
+tale-1190,The Fox and the Snail,275,Western Europe,197,C2,6,C1,4
+tale-1191,The Frog and the Snail,275,Western Europe,144,C2,6,C5,4
+tale-1192,The Frog and the Wild Hog,275,Sub-Saharan Africa,273,C2,6,C1,4
+tale-1193,The Hare and the Hedgehog,275,,1265,C3,6,C1,0
+tale-1194,The Hare and the Tortoise (Clouston),275,,138,C2,6,C1,0
+tale-1195,The Hare and the Tortoise (Jacobs),275,,147,C2,6,C1,0
+tale-1196,The Hare and The Tortoise (Croxall),275,,448,C2,6,small,0
+tale-1197,The Hare and The Tortoise (Jones),275,,113,C2,6,C1,0
+tale-1198,The Hare and the Tortoise [1],275,Northern America,121,C2,6,C1,2
+tale-1199,The Hare and Tortoise,275,,253,C2,6,C1,0
+tale-1200,The Race (Parsons2),275,Northern America,210,C2,6,C1,4
+tale-1201,The Race (Parsons3),275,,470,C2,6,C1,0
+tale-1202,The Race Between Turtle and Frog,275,Northern America,150,C2,6,C5,4
+tale-1203,The Snail and the Deer,275,South-Eastern Asia,254,C2,6,C5,4
+tale-1204,The The King Crow and the Water Snail,275,South-Eastern Asia,362,C2,6,C5,4
+tale-1205,The Tortoise and the Stag,275,Latin America and the Caribbean,315,C2,6,C1,0
+tale-1206,Tortoise in a Race,275,,1075,C2,6,C1,0
+tale-1207,Turtle's Race,275,Northern America,316,C2,6,C5,4
+tale-1208,"Turtle's Race, Second Version",275,Northern America,252,C2,6,C5,4
+tale-1209,Two Fast Runners,275,Northern America,341,C2,6,small,4
+tale-1210,Why Does the Buffalo Walk Slowly and Tread Gently?,275,Eastern Europe,293,C2,6,C1,0
+tale-1211,Gudbrand on the Hillside,1415,Northern Europe,1609,C3,7,C1,0
+tale-1212,Hans in Luck,1415,Western Europe,2039,C3,7,C1,0
+tale-1213,The Story of Mr. Vinegar,1415,Northern Europe,1114,C3,3,C1,0
+tale-1214,What the Old Man Does Is Always Right,1415,Northern Europe,2083,C3,0,C1,0
+tale-1215,The Monkey with the Tom-Tom,2034F,Southern Asia,573,C9,7,C1,3
+tale-1216,The Rat's Wedding,2034F,Southern Asia,2428,C3,6,C1,0
+tale-1217,The Story of a Monkey,2034F,South-Eastern Asia,360,C9,7,C1,3
+tale-1218,All Change,1655,,1320,C3,0,C1,0
+tale-1219,How the King Recruited His Army,1655,Northern America,2195,C3,7,C1,3
+tale-1220,The Boy Who Was Called Thick-Head,1655,,1696,C2,4,C1,4
+tale-1223,The Story of Hlakanyana,1655,Sub-Saharan Africa,651,C3,7,C1,4
+tale-1224,With One Centavo Juan Marries a Princess,1655,South-Eastern Asia,686,C9,0,C2,0
+tale-1225,Jesus and the Three Blocks of Gold,763,,466,C7,2,C3,2
+tale-1226,Story of the Three Men and Our Lord Jesus,763,,196,C7,8,C3,2
+tale-1227,The Hermit and the Three Ruffians,763,Southern Europe,786,C1,0,C3,0
+tale-1228,The Merchant and the Two Sharpers,763,,194,C6,2,C3,2
+tale-1229,The Pardoner's Tale,763,,1002,C3,0,C3,0
+tale-1230,The Punishment of Avarice,763,Eastern Asia,362,C2,0,C1,0
+tale-1231,The Reward of Covetousness,763,Southern Asia,564,C1,0,C3,2
+tale-1232,The Three Crosses,763,Western Europe,134,C6,2,small,2
+tale-1234,Clever Gretel,1741,,909,C3,7,C1,0
+tale-1235,The Good Husband and the Bad Wife,1741,Southern Asia,691,C3,3,C3,2
+tale-1236,The Woman Who Humored Her Lover at Her Husband's Expense,1741,,746,C3,0,C1,0
+tale-1237,"Twigmuntus, Cowbelliantus, Perchnosius",1641C,Northern Europe,1555,C1,0,C3,0
+tale-1238,Dharmabuddhi and Pâpabuddhi,613,,961,C1,0,C3,0
+tale-1239,Honesty and Dishonesty,613,Eastern Europe,2258,C1,0,C3,0
+tale-1240,Justice or Injustice? Which Is Best?,613,Southern Europe,889,C1,4,C2,1
+tale-1241,Right Always Remains Right,613,,1535,C1,0,C3,0
+tale-1242,The Grateful Beasts,613,Eastern Europe,3635,C1,4,C2,1
+tale-1243,The Heathen and the Jew,613,,620,C1,0,C3,0
+tale-1244,The Travels of Truth and Falsehood,613,Eastern Europe,1173,C1,0,C3,0
+tale-1245,The Two Brothers (Chodsko),613,,1030,C1,0,C3,2
+tale-1246,The Two Brothers (Georgia),613,Western Asia,936,C1,0,C1,0
+tale-1247,The Two Brothers (Schiefner),613,Eastern Asia,2069,C1,4,C2,2
+tale-1248,The Two Peasants,613,Southern Asia,1489,C1,0,C2,0
+tale-1249,The Two Travelers,613,Western Europe,4054,C3,3,C3,3
+tale-1250,True and Untrue,613,Northern Europe,2032,C2,0,C3,4
+tale-1251,A Storyteller of Messer Azzolino,2250,Southern Europe,196,C5,2,C3,2
+tale-1252,Mary Morey,2250,Northern America,11,C5,8,small,2
+tale-1253,The Chest With Something Rare In It,2250,Northern Europe,173,C4,7,C1,3
+tale-1254,The Endless Tale,2250,Northern Europe,246,C1,0,C3,1
+tale-1255,The Golden Key,2250,,254,C4,2,C3,2
+tale-1256,The King and His Storyteller,2250,,205,C5,2,C3,2
+tale-1257,The Little Story,2250,Eastern Europe,61,C4,2,C1,3
+tale-1258,The Narrow Bridge,2250,Western Europe,147,C5,2,C1,4
+tale-1259,The Shepherd,2250,Southern Europe,51,C5,7,C1,0
+tale-1260,The Story That Never Ends,2250,,184,C5,5,C1,0
+tale-1261,The Tail,2250,Northern Europe,138,C5,7,C1,4
+tale-1262,The Treasure,2250,Southern Europe,87,C8,0,small,0
+tale-1263,Buttadeu,777,Southern Europe,181,C6,0,C3,0
+tale-1264,Malchus at the Column,777,Southern Europe,185,C6,3,small,2
+tale-1265,Of the Jew Joseph Who Is Still Alive Awaiting the Last Coming of Christ,777,,780,C7,0,C3,2
+tale-1266,Shoemakers Are a Poor Slobbering Race,777,Northern Europe,267,C7,7,C3,2
+tale-1267,The Eternal Jew,777,Western Europe,115,C7,2,small,2
+tale-1268,The Eternal Jew in Vogtland,777,,210,C7,2,small,2
+tale-1269,The Eternal Jew on the Matterhorn,777,Western Europe,95,C7,2,small,2
+tale-1270,"The Jerusalem Shoemaker, or Wandering Jew, in Jutland",777,Northern Europe,398,C7,0,C3,0
+tale-1271,The Lost Jew,777,Western Europe,96,C7,3,small,2
+tale-1272,The Mysterious Stranger,777,Northern Europe,211,C6,0,C3,2
+tale-1273,The Story of Judas,777,Southern Europe,286,C5,3,small,2
+tale-1274,The Wandering Jew (Reliques),777,,1028,C7,8,C3,2
+tale-1275,The Wandering Jew (Scudder),777,,501,C7,3,C3,2
+tale-1276,"The Wandering Jew in Harts Corners, New York",777,Northern America,573,C7,3,C3,2
+tale-1277,The Wandering Jew in New York City,777,Northern America,187,C7,0,C3,2
+tale-1278,The Wandering Jew on the Grimsel Pass,777,Western Europe,974,C7,2,C3,2
+tale-1279,Wodan as the Wandering Jew,777,Western Europe,242,C7,2,small,2
+tale-1281,The Dog and the Wolf,103,Eastern Europe,1140,C2,6,C1,0
+tale-1282,"A City Is Captured, from Which the Women Carry Their Husbands and Children",875,Western Europe,116,C1,3,small,2
+tale-1283,The Siege of Gelsterburg Castle,875,Western Europe,200,C5,2,C2,2
+tale-1284,The Siege of Weidelburg Castle,875,Western Europe,207,C1,2,C2,1
+tale-1285,The Women of Weinsberg,875,Western Europe,113,C5,4,C2,1
+tale-1286,Weibertreue Castle,875,Western Europe,100,C5,2,small,2
+tale-1287,A Tyrannical Husband,1377,Northern Europe,259,small,3,C2,2
+tale-1288,Dschoha's Wife Locks Him Out,1377,,169,C3,3,C2,2
+tale-1289,The Ancient Knight Who Married a Beautiful Young Wife,1377,,1551,C1,3,C2,2
+tale-1290,The Unfaithful Wife,1377,Southern Asia,964,C3,3,C2,2
+tale-1291,Tofano Shuts His Wife Out of Doors,1377,,1326,C1,3,C2,2
+tale-1292,"How Madde Coomes, When His Wife Was Drowned, Sought Her against the Streame",1365,Northern Europe,103,C7,0,C3,0
+tale-1293,"Mary, Mary, So Contrary [The Pig-Headed Wife]",1365,Northern Europe,833,C3,0,C1,0
+tale-1294,Of a Woman Who Persisted in Calling Her Husband Lousy,1365,Southern Europe,243,C6,3,C4,2
+tale-1295,Of Hym That Sought His Wyfe against the Streme,1365,Northern Europe,94,C7,0,C3,2
+tale-1296,Scissors,1365,,437,C3,7,C4,0
+tale-1297,Scissors or Knife?,1365,Eastern Europe,366,C3,3,small,2
+tale-1298,Scissors They Were,1365,Southern Europe,468,C3,3,C4,3
+tale-1299,The Baneyrwal and His Drowned Wife,1365,Southern Asia,131,C3,3,C3,2
+tale-1300,The Contrary Wife,1365,Southern Europe,138,C3,3,C4,0
+tale-1301,The Contrary Woman,1365,Northern Europe,703,C3,0,C4,0
+tale-1302,The Woman Drowned,1365,,211,C3,3,C4,2
+tale-1303,The Woman Who Called Her Husband a Louse-Cracker,1365,Western Europe,106,C6,3,C4,0
+tale-1304,The Falsely Accused Wife,882,,891,C1,3,C2,2
+tale-1305,How a Fish Swam in the Air and a Hare in the Water,1381,Eastern Europe,1401,C3,0,C1,0
+tale-1306,How a Woman Could Not Keep a Secret,1381,Southern Asia,997,C3,3,C3,0
+tale-1307,The Found Money,1381,Western Europe,536,C3,0,C1,0
+tale-1308,The Iron Chest,1381,Western Europe,1270,C3,0,C4,0
+tale-1309,The Treasure,1381,Northern Europe,1159,C3,0,C3,0
+tale-1310,The Wife Who Could Not Keep a Secret,1381,Southern Asia,737,C3,0,C3,0
+tale-1311,"Of Women, Who Not Only Betray Secrets, but Lie Fearfully",1381D,,439,C1,3,C3,2
+tale-1312,Guerrino and the Savage Man,502,Southern Europe,6685,C1,4,C2,2
+tale-1313,Iron Hans,502,Western Europe,3200,C1,4,C3,1
+tale-1314,One Good Turn Deserves Another,502,Southern Europe,2840,C1,4,C2,1
+tale-1315,Story of Bulat the Brave Companion,502,Eastern Europe,2205,C1,4,C2,1
+tale-1316,The Hairy Man,502,Eastern Europe,1486,C1,4,C2,1
+tale-1317,The Iron Man,502,Western Europe,1404,C1,4,C2,1
+tale-1318,The King's Wild Man,502,Western Europe,827,C1,4,C2,1
+tale-1319,The Tsarevich and Dyad'ka,502,Eastern Europe,2272,C1,4,C2,1
+tale-1320,The Wild Man,502,Southern Europe,5009,C1,4,C3,2
+tale-1321,The Wild Man of the Marsh,502,Northern Europe,5100,C1,4,C2,1
+tale-1322,Brer Rabbit Treats the Creatures to a Race,298,,790,C2,6,C1,3
+tale-1323,Phœbus and Boreas,298,,237,C8,6,small,2
+tale-1324,The North Wind and the Sun,298,,57,C8,6,small,0
+tale-1325,The Wind and the Sun (Aesop),298,,131,C8,6,small,0
+tale-1326,The Wind and the Sun (India),298,Southern Asia,205,C8,0,small,0
+tale-1327,An Old Woman Worse Than the Devil,1353,,312,C3,3,C4,3
+tale-1328,Katie Grey,1353,Northern Europe,1656,C3,3,C2,0
+tale-1329,The Devil's Tyranny Against a Married Couple,1353,Western Europe,299,C3,3,C4,3
+tale-1330,Admann and His Wife,1383,Western Europe,70,C6,3,C4,3
+tale-1331,All Women Are Alike,1383,Northern Europe,1853,C3,7,C1,0
+tale-1332,Clever Elsie,1383,Western Europe,1297,C3,7,C4,3
+tale-1333,Gidske,1383,Northern Europe,1759,C3,6,C1,0
+tale-1334,Hans's Katie,1383,Western Europe,248,C3,7,small,4
+tale-1335,How the Shoemaker Got Rid of His Hussy,1383,Northern Europe,1570,C3,7,C4,3
+tale-1336,Lazy Catherine,1383,Western Europe,487,C3,7,C4,3
+tale-1337,There Was an Old Woman,1383,Northern Europe,181,C3,7,C1,3
+tale-1338,Three Pieces of Advice,910B,Latin America and the Caribbean,453,C2,0,C1,3
+tale-1339,Man-Snake as Bridegroom,312,Latin America and the Caribbean,325,C2,5,C1,3
+tale-1340,Chickie Birdie (Gate),20C,Northern Europe,246,C2,6,C1,4
+tale-1341,The Dumb Little Animals (Stoeber),20C,Western Europe,392,C2,7,C1,4
+tale-1342,The Hares and the Frogs (Berwick),20C,,509,small,3,C5,2
+tale-1344,The Hen That Went to Dovrefjell to Keep the Whole World from Coming to an End (Norway),20C,Northern Europe,693,C2,6,C1,4
+tale-1345,The Princess with a Golden Star on Her Forehead (Nemkova),510B,Eastern Europe,572,C1,4,C2,1
+tale-1346,A Mery Geste of the Frere and the Boye,592,Northern Europe,2822,C7,8,C3,2
+tale-1347,A Witch Rescues a Man,592,Northern Europe,126,C3,0,C2,0
+tale-1348,Shortboot and His Flute,592,Western Europe,831,C3,1,C3,0
+tale-1349,The Fiddler and the Minister,592,Northern Europe,234,C3,0,C3,0
+tale-1350,The Little Flute,592,Southern Europe,539,C5,1,C1,0
+tale-1351,The Magic Flute,592,Southern Europe,245,C5,4,C3,1
+tale-1352,The Magic Violin,592,Western Europe,387,C3,0,C3,0
+tale-1353,The Man Who Could Make People Dance,592,Northern Europe,29,C6,1,small,1
+tale-1354,Tom Clancy,592,Northern Europe,134,C3,7,small,1
+tale-1355,Death and an Old Man,845,,85,C2,0,C3,0
+tale-1356,Death and the Negro Man,845,,956,C2,5,C1,3
+tale-1357,Death and the Unfortunate,845,,145,C6,0,C3,2
+tale-1358,God and Moses,845,Northern America,167,C2,6,small,3
+tale-1359,The Lord and Langton,845,Northern America,157,C6,7,C3,3
+tale-1360,The Lord and Toby,845,Northern America,76,C2,0,small,3
+tale-1361,The Old Man and Death (Jacobs),845,,41,C2,8,C1,2
+tale-1362,The Old Man and Death (Tolstoy),845,,39,C6,7,C3,0
+tale-1363,The Devil's Mill,1174,Northern Europe,823,C5,2,C3,0
+tale-1365,A Funny Story,1176,Northern Europe,232,C5,2,C3,0
+tale-1366,A Story,1176,Northern Europe,322,C5,0,C3,0
+tale-1367,A Story,737,Northern Europe,273,C2,2,C2,2
+tale-1369,Hallowe'en Customs,737,Northern Europe,366,C7,3,C2,2
+tale-1370,Halloween,737,Northern Europe,1066,C7,3,C2,2
+tale-1371,Midsummer Superstitious Customs,737,Northern Europe,482,C7,3,C2,2
+tale-1372,"Rhamanta, or Romantic Divination",737,Northern Europe,895,C7,3,C2,2
+tale-1373,Saint Andrew's Eve,737,,365,C1,2,C2,2
+tale-1375,The Bible and Key Trial,737,Northern Europe,405,C7,3,small,2
+tale-1376,The Spell,737,Northern Europe,1077,C7,1,C3,2
+tale-1378,A Good Dream,1645,Western Europe,174,C5,2,C3,0
+tale-1379,A Kerry Man,1645,Northern Europe,65,C5,7,C3,4
+tale-1380,Digging Up Snakes,1645,Western Europe,94,C3,7,small,4
+tale-1381,Dreams Should Not Be Ignored,1645,Western Europe,390,C5,2,C3,2
+tale-1382,The Golden Fox,1645,,105,C5,2,C3,4
+tale-1383,The Pine Tree of Steltzen,1645,Western Europe,244,C3,0,C3,0
+tale-1384,The Treasure in Tanslet,1645,Northern Europe,135,C5,2,C3,2
+tale-1385,Treasure at Ardnaveagh,1645,Northern Europe,156,C5,2,small,2
+tale-1386,A Common Superstition of Mariners,777,Northern Europe,110,C7,8,small,2
+tale-1387,The Dæmon-Frigate,777,,188,C7,8,small,2
+tale-1388,The Fable of the Flying Dutchman,777,,589,C7,8,small,2
+tale-1389,The Flying Dutchman,777,Sub-Saharan Africa,843,C7,3,small,2
+tale-1390,The Flying Dutchman of the Tappan Sea,777,,259,C7,2,small,2
+tale-1391,The Phantom Ship,777,,2231,C7,8,small,2
+tale-1392,The Rotterdam,777,Northern Europe,183,C7,8,small,2
+tale-1393,The Sailors Said They Saw the Flying Dutchman,777,,74,C7,6,small,2
+tale-1394,The Spectre Ship of Porthcurno,777,Northern Europe,767,C7,2,small,2
+tale-1395,The Story of the Flying Dutchman,777,,605,C7,6,small,2
+tale-1396,Vanderdecken's Message Home,777,,2976,C7,3,small,2
+tale-1397,We Meet the Flying Dutchman,777,,270,C7,8,small,2
+tale-1398,Written on Passing Dead-Man's Island*,777,,243,C7,8,small,2
+tale-1399,Buying a Pumpkin Instead of a Mule,1319,Northern Africa,168,C6,0,C1,0
+tale-1400,Donkey Seed,1319,Southern Europe,154,C2,0,C1,0
+tale-1401,Kleinenberg Horse Eggs,1319,Western Europe,184,C2,0,C1,0
+tale-1402,Nasreddin Hodja and the Mule's Egg,1319,Western Asia,131,C6,4,C1,4
+tale-1403,Racehorse Eggs,1319,Northern America,124,C2,7,C1,4
+tale-1404,The Irishman and the Mare's Egg,1319,Northern America,89,C2,6,C1,4
+tale-1405,The Irishman and the Pumpkin,1319,Northern America,182,C2,7,C1,3
+tale-1406,The McAndrew Family,1319,Northern Europe,606,C3,0,C1,0
+tale-1407,The Men from Ried Hatch a Donkey,1319,Western Europe,255,C2,2,C1,0
+tale-1408,The People of Sainte-Dode,1319,Western Europe,405,C3,0,C1,0
+tale-1409,The Pumpkin,1319,Southern Europe,351,C2,0,C1,0
+tale-1410,The Purchase of the Horse's Egg,1319,Southern Asia,1797,C1,8,C1,2
+tale-1411,The Two Cockneys and the Mare's Egg,1319,Northern Europe,642,C2,0,C3,0
+tale-1412,The Weaver and the Watermelon,1319,Southern Asia,696,C3,0,C1,0
+tale-1413,The Blacksmith,1676,Northern Europe,372,C3,7,C3,0
+tale-1414,Godfather Charon,332,Southern Europe,292,C6,0,small,0
+tale-1415,Godfather Death (Gonzenbach),332,Southern Europe,538,C6,0,C3,0
+tale-1417,Godmother Death,332,Eastern Europe,1317,C6,0,C3,0
+tale-1418,Gossip,332,,1131,C6,0,C3,0
+tale-1419,Juan Holgado and Death,332,Southern Europe,1869,C3,3,C3,0
+tale-1420,Story,332,Northern Europe,598,C6,0,C3,0
+tale-1421,The Doctor and Death,332,Northern Europe,766,C6,0,C3,0
+tale-1422,The Godson of Death,332,Western Europe,396,C6,0,C2,0
+tale-1424,The Just Man (Luzel),332,Western Europe,1502,C6,0,C3,0
+tale-1425,The Poor Man and Death,332,Eastern Europe,729,C6,0,C3,0
+tale-1426,An Old Story,327,Northern Europe,105,C4,7,small,1
+tale-1427,The Children and the Witch,327,Latin America and the Caribbean,516,C4,7,C4,3
+tale-1428,The House of Candy,327,Eastern Europe,1623,C4,7,C4,3
+tale-1429,Jack and the Bean-Stalk,328,Latin America and the Caribbean,297,C3,7,C1,3
+tale-1430,The Language of Beasts (Beckwith),670,Latin America and the Caribbean,504,C2,5,C1,3
+tale-1431,The Language of Beasts (Langcrimson),670,Eastern Europe,1617,C5,0,C1,0
+tale-1432,Tríopla Trúpla,500,Northern Europe,275,C4,7,C4,3
+tale-1433,The Stingy Daughter,980D,Southern Asia,342,C4,7,C4,0
+tale-1434,Ali Baba and Kissem,954,Latin America and the Caribbean,486,C3,2,C3,2
+tale-1435,Red Riding Hood,333,Northern Europe,186,C2,7,C1,3
+tale-1436,Red Ridinghood,333,Northern Europe,238,C2,7,C1,3
+tale-1437,The Little Girl and Her Grandmother,333,Northern Europe,145,C2,7,C1,3
+tale-1438,The Old Man and the Wolf,333,Eastern Europe,332,C2,7,C1,3
+tale-1439,Benedict,650A,Western Europe,957,C3,0,C3,0
+tale-1440,Fourteen,650A,Western Europe,1457,C3,1,C3,0
+tale-1441,Strong Jack,650A,Northern Europe,1294,C3,1,C1,3
+tale-1442,The Bear's Son,650A,Southern Europe,2093,C4,0,C1,0
+tale-1443,The Dwarf Who Grew Up,650A,Northern Europe,454,C3,0,C1,0
+tale-1444,The Hairy Boy,650A,Western Europe,978,C1,4,C2,1
+tale-1445,The Story of Carancal,650A,South-Eastern Asia,2624,C1,0,C2,0
+tale-1446,The Strong Man,650A,Southern Asia,1096,C3,0,C3,0
+tale-1447,The Young Giant,650A,Western Europe,2921,C3,0,C1,4
+tale-1448,Baron Munchausen and the Wolf,1889B,,151,C2,6,small,2
+tale-1449,Cougar Tamers,1889B,Northern America,156,C2,6,small,4
+tale-1450,The Smith of Cannstatt and the Wolf,1889B,Western Europe,64,C2,6,small,4
+tale-1451,A Man Who Was Only a Finger and a Half in Stature,700,,1790,C1,4,C2,2
+tale-1453,"A Story about Palecek, ""Little Thumb""",700,Eastern Europe,1251,C3,0,C3,0
+tale-1454,I Had a Little Husband,700,Northern Europe,41,C3,7,small,3
+tale-1455,Jean des Pois Verts,700,Western Europe,399,C1,2,C2,1
+tale-1456,John Bit-of-a-Man,700,Western Europe,879,C2,0,C1,0
+tale-1457,Little Blue Riding Hood,700,Western Europe,446,C3,7,C1,3
+tale-1458,Little Chick-Pea,700,Southern Europe,1879,C3,0,C1,0
+tale-1459,Little Lasse,700,Northern Europe,2578,C4,7,C1,4
+tale-1460,New History of the Life and Adventures of Tom Thumb,700,Northern America,1355,C1,3,C3,1
+tale-1461,Robber Nut,700,Southern Europe,281,C3,0,C3,0
+tale-1462,Svend Tomling,700,Northern Europe,760,C3,7,C1,3
+tale-1463,The Comical and Merry Tricks of Tom Thumb,700,Northern Europe,2774,C1,4,C2,1
+tale-1464,The Famous History of Tom Thumb,700,Northern Europe,2193,C1,8,C3,2
+tale-1465,"The Little Spirit, or Boy-Man",700,,2400,C4,7,C3,2
+tale-1466,The Transformation of Issunboshi,700,Eastern Asia,830,C1,3,C2,1
+tale-1467,Thomas of the Thumb,700,Northern Europe,476,C2,7,C3,4
+tale-1468,Thumbikin,700,Northern Europe,650,C3,7,C2,4
+tale-1469,Thumbling's Travels,700,Western Europe,1519,C3,7,C1,0
+tale-1470,Thumbthick,700,Western Europe,2075,C2,7,C1,3
+tale-1471,Tom Thumb,700,Northern Europe,527,C3,7,C1,3
+tale-1472,The Pea That Made a Fortune,1655,Latin America and the Caribbean,214,C3,7,C1,4
+tale-1473,Clever Molly May,1741,Latin America and the Caribbean,304,C3,7,C4,3
+tale-1474,Going Traveling,1696,Western Europe,386,C3,0,C1,0
+tale-1475,What You Deserve,1696,Western Europe,626,C3,7,C1,4
+tale-1476,Silly Matt,1696,Northern Europe,4791,C3,7,C1,4
+tale-1477,Stupid's Mistaken Cries,1696,Northern Europe,607,C3,3,C3,3
+tale-1478,The Forgetful Boy,1696,Northern America,515,C5,3,C1,3
+tale-1479,Lazy Jack,1696,Northern Europe,699,C3,7,C1,0
+tale-1480,Jock and His Mother,1696,Northern Europe,933,C2,5,C1,3
+tale-1481,I'll Be Wiser the Next Time,1696,Northern Europe,1103,C3,7,C1,3
+tale-1482,The Fool's Good Fortune,1696,Western Asia,869,C1,3,C3,2
+tale-1483,A Stupid Boy,1696,Southern Asia,430,C3,0,C1,0
+tale-1484,Why the Bear Is Stumpy-Tailed,2,Northern Europe,210,C2,6,C1,4
+tale-1485,How the Wolf Lost His Tail,2,Northern Europe,259,C2,6,C1,3
+tale-1486,Reynard and Bruin,2,,1928,C2,6,C1,0
+tale-1487,Why the Bear Has a Stumpy Tail,2,Western Europe,848,C2,6,C1,4
+tale-1488,The Hare and the Fox,2,Western Europe,423,C2,6,C1,4
+tale-1489,The Wolf's Unfortunate Fishing Trip,2,,428,C2,6,C1,4
+tale-1490,How Mr. Rabbit Lost His Fine Bushy Tail,2,,773,C2,5,C1,3
+tale-1491,The Frozen Tail,2,Northern America,107,C2,6,C1,4
+tale-1492,Fox and Wolf,2,,1478,C2,6,C1,4
+tale-1493,Why Rabbit Has a Short Tail,2,Latin America and the Caribbean,242,C2,5,C1,3
+tale-1494,Costantino and His Cat,545B,,1951,C1,4,C2,2
+tale-1495,Gagliuso,545B,,1826,C1,4,C2,1
+tale-1496,"The Master Cat; or, Puss in Boots",545B,,1786,C1,4,C2,1
+tale-1497,The Fox and the Crow,57,,136,C2,3,C1,4
+tale-1498,Hans Dumb,675,Western Europe,591,C1,4,C2,1
+tale-1499,Stupid Michel,675,Western Europe,933,C1,4,C2,1
+tale-1500,"Lazy Lars, Who Won the Princess",675,Northern Europe,2424,C1,4,C2,1
+tale-1501,Emelyan the Fool,675,Eastern Europe,4098,C1,4,C3,4
+tale-1502,Halfman,675,Southern Europe,2343,C1,4,C2,1
+tale-1503,Juvadi and the Princess,675,Southern Europe,432,C1,4,C2,1
+tale-1504,Peter the Fool,675,,3179,C1,4,C2,1
+tale-1505,Peruonto,675,,2880,C1,4,C2,1
+tale-1506,The Fable of the Old Woman and of the Wulf,75,,137,C2,3,C5,3
+tale-1507,The Wolf and the Nurse,75,,82,C2,3,C1,2
+tale-1508,The Crying Babe,75,,101,C2,4,small,3
+tale-1509,"The Wolf, the Mother, and Her Child (1)",75,,348,C2,3,C1,3
+tale-1510,A Nurse and a Wolfe,75,,307,C2,3,C4,3
+tale-1511,A Nurse and Froward Child,75,,213,C2,3,C4,3
+tale-1512,The Nurse and the Wolf (1),75,,374,C2,3,C5,2
+tale-1513,The Nurse and the Wolf (2),75,,517,C2,3,C4,2
+tale-1514,The Mother and the Wolf,75,,134,C2,3,C1,3
+tale-1515,The Nurse and the Wolf (3),75,,155,C2,7,C1,3
+tale-1516,"The Wolf, the Mother, and Her Child (2)",75,,124,C2,7,C1,3
+tale-1517,The Wolf and the Babe,75,,68,C2,7,C1,3
+tale-1518,Friday,779J*,Eastern Europe,276,C4,7,C4,3

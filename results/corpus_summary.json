@@ -1,0 +1,37 @@
+{
+  "folktales": 1462,
+  "calibration": 36,
+  "calibration_by_collection": {
+    "Gesta Romanorum": 11,
+    "Jacques de Vitry, sermon exempla": 2,
+    "Jātaka": 18,
+    "Rumi, Masnavi": 4,
+    "Talmud": 1
+  },
+  "folktales_with_one_atu_type": 1457,
+  "atu_types": 182,
+  "folktales_with_region": 1127,
+  "regions": 13,
+  "folktales_with_type_and_region": 1123,
+  "folktale_tokens": {
+    "median": 535.5,
+    "q25": 246.25,
+    "q75": 1087.75
+  },
+  "region_counts": {
+    "Northern Europe": 354,
+    "Western Europe": 250,
+    "Southern Asia": 120,
+    "Southern Europe": 111,
+    "Eastern Europe": 96,
+    "Northern America": 81,
+    "South-Eastern Asia": 33,
+    "Western Asia": 28,
+    "Eastern Asia": 26,
+    "Latin America and the Caribbean": 13,
+    "Sub-Saharan Africa": 10,
+    "Northern Africa": 3,
+    "Melanesia": 2
+  },
+  "source": "data/processed/narratives.parquet (existing cleaning; trilogy commit d57c2ce)"
+}

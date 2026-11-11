@@ -1,0 +1,9 @@
+rep,scope,n,spearman_closeness_vs_tokens,p_value
+tfidf,parables,281,0.36015,4.9632e-10
+tfidf,baseline passages,168,0.196,0.010889
+tfidf,folktales (leave-one-out),1462,0.42872,1.9761e-66
+tfidf,parables: masked against unmasked folk_closeness,281,0.94958,
+embedding,parables,281,0.60937,5.8977e-30
+embedding,baseline passages,168,0.66852,4.1184e-23
+embedding,folktales (leave-one-out),1462,0.70846,3.1343e-223
+embedding,parables: masked against unmasked folk_closeness,281,0.87834,

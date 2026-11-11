@@ -1,0 +1,11 @@
+rep,tradition,parables_per_group,closest_quarter,farthest_quarter
+tfidf,Christian,10,came did father vineyard son servant sent servants gave hour saw called come country lamps,like invited parable sit wine manager fell no friends world fruit best men place heaven
+tfidf,Buddhist,20,king day asked went came told said thou wife brahmin monkey way thousand lion home,sleep question brahmadatta poison verses bodhisatta answer parents welfare smell tree grew reigning teacher men
+tfidf,Jewish,12,god moses jacob joseph did life thou people brothers sons law place children thy no,rabbi woman quite taken cause child voyage sage josé went day man returned power hands
+tfidf,Sufi,15,pharaoh moses ass no king lion away fox long faith solomon old lust knew temple,prophet abu evil replied cried outward free discovered answered mosalman faithful prayers buy satan lower
+tfidf,Taoist,12,king kwang round prince dze death yüeh majesty wû state appeared learned replied saw lost,shun people virtue neither lâo tan harmony disciples human mean nor hand lose decay han
+embedding,Christian,10,said lord did came servant servants father talents went son wedding called gave received sent,light wine friend like no say children sit heaven bread having near generation kingdom not
+embedding,Buddhist,20,king said day asked brahmin shall death come lion place fear sakka elephant wife thought,sleep born sea spirit good crow brahmadatta heart water verses blind stanza charity himālayas ascetics
+embedding,Jewish,12,man wife king brought old tongue woman majesty power husband order shall josé wish thing,went asked men place rabbi called means persian food away friend water time alive sage
+embedding,Sufi,15,ass fox said solomon faith ayaz woman king told wife come gold temple shall good,outward voice prophet darvesh abu moses object house hand ground various presence received away lived
+embedding,Taoist,12,king kwang kâu death prince round wû majesty officers did use wished common music hear,tâo dze kung know yâo shun neither carry no wish han perfect marquis not nor
