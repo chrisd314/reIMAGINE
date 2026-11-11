@@ -5,7 +5,9 @@ A DTU 02805 *Social Graphs and Interactions* course project (hand-in 27 November
 | | Command | What it is for |
 | --- | --- | --- |
 | **Paper pipeline** | `python -m ouaw.run --stage all` | Every number and figure of the paper: the folklore map and the parables placed on it |
-| Website pipeline | `python -m analysis all` | The interactive site at <https://chrisd314.github.io/reIMAGINE/> (type versus place on the joint cohort) |
+| Website pipeline | `python -m analysis all` | The interactive site at <https://chrisd314.github.io/reIMAGINE/>: the Story (type versus place) and the **Parables** page |
+
+**The Parables page of the website** shows the paper pipeline's results. `python -m ouaw.site` turns `results/` into the committed file `data/site/parables.json` (titles, labels and openings of at most 40 words, no full texts); the website export copies it into the site. After rerunning the paper pipeline: `python -m ouaw.site`, commit `data/site/parables.json`, and the next deploy publishes it.
 
 This repository holds code and results, not the paper. Read `results/RESULTS.md` for the numbers and DECISIONS.md for every judgement call behind them.
 
