@@ -8,12 +8,43 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+import numpy as np
 import pandas as pd
 
 from .common import PARABLES_CSV, PROCESSED, ROOT, Ctx, n_tokens, write_json
 
 EXPECTED_CALIBRATION = {"Jātaka": 18, "Gesta Romanorum": 11, "Rumi, Masnavi": 4,
                         "Jacques de Vitry, sermon exempla": 2, "Talmud": 1}
+
+
+def check_calibration_exclusion(folk_ids, calib_ids, near_dups: dict | None = None, S: np.ndarray | None = None,
+                                threshold: float = 0.9) -> dict:
+    """The calibration test is circular if a retelling (or a copy of it) is also a folktale it can be matched to.
+
+    Asserts that no calibration ID is in the folktale pool, that no pool folktale is a near-duplicate of a
+    calibration version by the corpus audit (`near_dups`: id -> partner ids, 5-word shingles), and, given
+    `S` (calibration x pool cosines), that no pool folktale has cosine above `threshold` with a calibration
+    version. Every network, ranking, vote and null of the pipeline uses this pool.
+    """
+    folk_ids, calib_ids = [str(x) for x in folk_ids], [str(x) for x in calib_ids]
+    inside = sorted(set(folk_ids) & set(calib_ids))
+    assert not inside, f"calibration versions in the folktale pool: {inside}"
+    pool = set(folk_ids)
+    dup = sorted({(c, p) for c in calib_ids for p in (near_dups or {}).get(c, []) if p in pool})
+    assert not dup, f"near-duplicates of calibration versions in the folktale pool: {dup}"
+    out = dict(calibration_ids=len(calib_ids), pool=len(folk_ids), calibration_ids_in_pool=0,
+               shingle_near_duplicates_in_pool=0, cosine_threshold=threshold)
+    if S is not None:
+        S = np.asarray(S)
+        assert S.shape == (len(calib_ids), len(folk_ids)), S.shape
+        over = np.argwhere(S > threshold)
+        assert not len(over), "folktales above the near-duplicate cosine: " + ", ".join(
+            f"{calib_ids[a]}~{folk_ids[b]} ({S[a, b]:.3f})" for a, b in over)
+        j = S.argmax(axis=1)
+        out.update(pairs_above_threshold=0, max_cosine=float(S.max()),
+                   closest=[dict(calibration_id=calib_ids[a], folktale_id=folk_ids[j[a]], cosine=round(float(S[a, j[a]]), 4))
+                            for a in np.argsort(-S.max(axis=1))[:5]])
+    return out
 
 
 @dataclass
@@ -59,9 +90,31 @@ def load_corpus(ctx: Ctx) -> Corpus:
     calib = calib.drop(columns="narrative_id").sort_values("id").reset_index(drop=True)
     assert calib["atu_id"].notna().all(), "every calibration version needs one ATU type"
     assert calib["atu_id"].isin(folk["atu_id"]).all(), "every calibration type needs a folktale of the same type"
+    near = {k: list(v) for k, v in zip(nar["narrative_id"], nar["near_duplicates"]) if len(v)}
+    check_calibration_exclusion(folk["id"], calib["id"], near)       # cosines are checked in the data and checks stages
     if ctx.sample:
         folk = folk.sample(n=min(ctx.sample, len(folk)), random_state=ctx.seed).sort_values("id").reset_index(drop=True)
     return Corpus(folk=folk, calib=calib)
+
+
+def calibration_exclusion(ctx: Ctx, c: Corpus, spaces: dict | None = None) -> dict:
+    """Step 1 of the TA update: the 36 retellings and their near-copies are outside the folktale pool.
+
+    Checked with both representations (cosine of every calibration version to every pool folktale).
+    `spaces` reuses already-built representation spaces (rep -> space fitted on `c.folk`).
+    """
+    from .reps import build_space
+    thr = float(ctx.paper["calibration_exclusion"]["max_cosine"])
+    out = {}
+    for rep in ctx.reps:
+        sp = (spaces or {}).get(rep) or build_space(rep, c.folk["text"].tolist(), ctx.cfg)
+        S = sp.sim(sp.transform(c.calib["text"].tolist()))
+        out[rep] = check_calibration_exclusion(c.folk["id"], c.calib["id"], None, S, thr)
+    print("  calibration exclusion: no retelling or near-copy in the pool; highest cosine "
+          + ", ".join(f"{rep} {v['max_cosine']:.3f}" for rep, v in out.items()) + f" (limit {thr})")
+    return dict(rule="no calibration ID, no 5-word-shingle near-duplicate (corpus audit) and no folktale with cosine above "
+                     f"{thr} to a calibration version in the pool used for networks, rankings, votes and nulls",
+                passed=True, per_representation=out)
 
 
 def run(ctx: Ctx) -> dict:
@@ -78,6 +131,7 @@ def run(ctx: Ctx) -> dict:
         region_counts=f["region"].value_counts().to_dict(),
         source="data/processed/narratives.parquet (existing cleaning; trilogy commit d57c2ce)")
     write_json(ctx.results / "corpus_summary.json", summary)
+    write_json(ctx.results / "calibration_exclusion.json", calibration_exclusion(ctx, c))
     print(f"  corpus: {summary['folktales']} folktales on the map, {summary['calibration']} calibration versions; "
           f"{summary['folktales_with_type_and_region']} folktales carry both a tale type and a region")
     return summary

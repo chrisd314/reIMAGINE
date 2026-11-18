@@ -10,6 +10,15 @@ Every judgement call made while building the paper pipeline (`python -m ouaw.run
 | N2 | The spec says "1,498 versions with ATU type and place". 1,493 have one ATU type and 1,133 have a mapped place and region. | The map uses all 1,462 folktales. The type-versus-region test uses the 1,123 that carry both labels. The paper should state these numbers. |
 | N3 | A wider screen on 11 November found 28 more versions from religious collections (Pauli, Luther's Table Talk, the Kangyur and others). | They stay on the map, because the spec fixes the calibration set at 36 and the map at 1,462. No sensitivity run without them was made. |
 
+## TA feedback (18 November 2026)
+
+Judgement calls made while applying the TA's feedback (task "apply the TA's feedback", steps 1–9). Numbering T1, T2, … in the order they were made.
+
+| # | Decision | Why |
+| --- | --- | --- |
+| T1 | **Calibration is not circular; no number changed.** The 36 retellings were already outside the pool (`corpus.py` removes them before any map is built). New assertions: no calibration ID in the pool and no 5-word-shingle near-duplicate of one (checked in `load_corpus`, so in every stage), and no pool folktale with cosine above 0.9 to a retelling in either representation (checked in the `data` and `checks` stages). Highest cosines: TF-IDF 0.380, embeddings 0.894 (`results/calibration_exclusion.json`). | Spec step 1. The near-copy limit 0.9 is the same as the parable duplicate rule P3. |
+| T2 | spaCy 3.8 and `en_core_web_sm` 3.8.0 are in a separate dependency group, `paper` (`uv sync --group paper`). | Only the noun-masking check needs them. The website deploy runs `uv sync --locked` and the tests; neither needs spaCy, and the noun-masking tests run on toy tagged tokens. |
+
 ## Structure
 
 | # | Decision | Why |

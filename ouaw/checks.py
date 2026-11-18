@@ -15,7 +15,7 @@ import pandas as pd
 from scipy.stats import skew, spearmanr
 
 from .common import LABELING, TRADITIONS, Ctx, write_csv, write_json
-from .corpus import load_corpus
+from .corpus import check_calibration_exclusion, load_corpus
 from .part_b import bootstrap_median, folk_closeness, length_curve, load_map, nearest, scores, similarities
 from .reps import Masker
 
@@ -109,7 +109,10 @@ def run(ctx: Ctx) -> dict:
             variants[name] = (sim, scores(ctx, sim, folk))
             print(f"    computed {name}")
 
-    # ---- calibration and the gate
+    # ---- calibration and the gate; first make sure the test is not circular (TA feedback, step 1)
+    for rep in ctx.reps:
+        check_calibration_exclusion(folk["id"], queries.loc[cal, "id"], None, variants[rep][0]["S"][cal],
+                                    float(ctx.paper["calibration_exclusion"]["max_cosine"]))
     cal_rows, per_query = [], queries.loc[cal, ["id", "title", "tradition", "atu_id", "n_tokens"]].reset_index(drop=True)
     for name, (sim, _) in variants.items():
         s, ranks, chance = calibration(sim["S"][cal], queries.loc[cal, "atu_id"].to_numpy(dtype=str), folk_atu,

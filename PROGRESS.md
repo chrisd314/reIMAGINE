@@ -1,6 +1,24 @@
 # Progress
 
-**Last updated:** 2026-11-11 · **Branch:** `parables-pipeline` (not merged into `master`; pushing `master` redeploys the website) · **Hand-in:** 27 November 2026
+**Last updated:** 2026-11-18 · **Branch:** `ta-feedback` (from `parables-site`; not merged; pushing `master` redeploys the website) · **Hand-in:** 27 November 2026
+
+## TA feedback update (started 18 November)
+
+Unfinished from the earlier tasks, carried over unchanged: the three decisions under "Needs your decision" and the four tasks under "Work that only you can do" below. Blocked: nothing.
+
+| Step | State |
+| --- | --- |
+| 1 Calibration not circular | Done. No retelling or near-copy in the pool (highest cosine TF-IDF 0.380, embeddings 0.894); assertion in every stage; no number changed (DECISIONS.md T1). |
+| 2 Headline: parables against the same-translation baseline | to do |
+| 3 Length confound | to do |
+| 4 Vocabulary against narrative | to do |
+| 5 Network robustness | to do |
+| 6 Collection and translator | to do |
+| 7 Figures around one headline | to do |
+| 8 Website (reIMAGINE) | to do |
+| 9 Ready for the report | to do |
+
+## Before the TA update (11 November)
 
 **State:** all five phases are done. `python -m ouaw.run --stage all` regenerates every table, the four figures and `results/RESULTS.md` on the full data; the 60 tests pass. The calibration gate of 14 November is already passed.
 

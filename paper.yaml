@@ -6,6 +6,8 @@
 
 seed: 0                                    # sampling, bootstrap, hand-label draw, dev sample
 calibration_list: data/mappings/calibration_set.csv
+calibration_exclusion:
+  max_cosine: 0.9                          # a pool folktale above this cosine to a retelling (either representation) is a near-copy
 
 representations: [tfidf, embedding]
 primary_representation: tfidf              # used for the four figures; fixed at the calibration gate (DECISIONS.md)
