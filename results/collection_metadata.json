@@ -1,0 +1,25 @@
+{
+  "folktales": 1462,
+  "with_source_collection": 1284,
+  "missing_source_collection": 178,
+  "source_collections": 564,
+  "collections_with_5_or_more_tales": 55,
+  "tales_in_collections_with_5_or_more": 576,
+  "single_tale_collections": 383,
+  "with_translator": 168,
+  "missing_translator": 1294,
+  "translators": 69,
+  "with_type_region_and_collection": 978,
+  "largest_collections": {
+    "jacob wilhelm grimm": 55,
+    "joseph jacobs": 39,
+    "thomas frederick crane": 32,
+    "andrew lang": 30,
+    "joel chandler harris": 21,
+    "cecil henry bompas": 18,
+    "dean fansler": 17,
+    "gaster": 15,
+    "peter christen asbjørnsen jørgen moe": 14,
+    "æsop fables": 13
+  }
+}

@@ -11,22 +11,27 @@ import { DataMethods } from "./pages/DataMethods";
 import { Validation } from "./pages/Validation";
 import { Sources } from "./pages/Sources";
 import { Parables } from "./pages/Parables";
+import { Home } from "./pages/Home";
 
 const NAV = [
-  { path: "/", label: "Story" },
+  { path: "/", label: "Overview" },
   { path: "/parables", label: "Parables" },
+  { path: "/story", label: "Folklore map" },
   { path: "/explore", label: "Explore" },
   { path: "/data", label: "Data & Methods" },
   { path: "/validation", label: "Validation" },
   { path: "/sources", label: "Sources" },
 ];
+const TITLES: Record<string, string> = Object.fromEntries(NAV.map((n) => [n.path, n.label]));
 
-function Logo() {
+/** An open storybook with a castle rising from it and a gilt star: the reIMAGINE mark. */
+export function Logo() {
   return (
     <svg viewBox="0 0 32 32" aria-hidden>
-      <circle cx="16" cy="16" r="10.5" fill="none" stroke="#1d2b33" strokeWidth="2" />
-      <path d="M5.5 16h21M16 5.5c3.6 3 3.6 18 0 21M16 5.5c-3.6 3-3.6 18 0 21" fill="none" stroke="#1d2b33" strokeWidth="1.4" />
-      <circle cx="22" cy="11" r="2.6" fill="#b4532a" />
+      <path d="M10.5 13V7.4h1.6v1.5h1.6V6.3h1.3L16 4l1 2.3h1.3v2.6h1.6V7.4h1.6V13z" fill="#9b3a30" />
+      <path d="M16 26c-3.4-2.4-7.4-2.9-12-2.2V12.1c4.6-.7 8.6-.2 12 2.2 3.4-2.4 7.4-2.9 12-2.2v11.7c-4.6-.7-8.6-.2-12 2.2z" fill="#fbf6ea" stroke="#1e2340" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M16 14.3V26" stroke="#1e2340" strokeWidth="1.2" />
+      <path d="M25.5 2.8l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z" fill="#a87b22" />
     </svg>
   );
 }
@@ -43,26 +48,26 @@ export default function App() {
   const motionCtx = useMemo(() => ({ enabled, pref, setPref }), [enabled, pref]);
   const path = route.path === "" ? "/" : route.path;
   useEffect(() => {
-    const titles: Record<string, string> = { "/": "Story", "/parables": "Parables", "/explore": "Explore", "/data": "Data & Methods", "/validation": "Validation", "/sources": "Sources" };
-    document.title = `${titles[path] ?? "Story"} · Once Upon a World`;
+    document.title = path === "/" ? "reIMAGINE · where parables land in the world of folktales" : `${TITLES[path] ?? "Overview"} · reIMAGINE`;
     window.scrollTo({ top: 0 });
   }, [path]);
 
   let page;
   switch (path) {
     case "/parables": page = <Parables route={route} navigate={navigate} />; break;
+    case "/story": page = <Story route={route} navigate={navigate} />; break;
     case "/explore": page = <Explore route={route} navigate={navigate} />; break;
     case "/data": page = <DataMethods route={route} navigate={navigate} />; break;
     case "/validation": page = <Validation />; break;
     case "/sources": page = <Sources />; break;
-    default: page = <Story route={route} navigate={navigate} />;
+    default: page = <Home />;
   }
 
   return (
     <MotionContext.Provider value={motionCtx}>
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById("main")?.focus(); }}>Skip to content</a>
       <header className="site-header">
-        <a className="brand" href="#/" aria-label="Once Upon a World, home"><Logo /><span>Once Upon a World</span></a>
+        <a className="brand" href="#/" aria-label="reIMAGINE, overview"><Logo /><span><span className="re">re</span><span className="imagine">IMAGINE</span></span></a>
         <nav className="site-nav" aria-label="Main">
           {NAV.map((n) => <a key={n.path} href={`#${n.path}`} aria-current={path === n.path ? "page" : undefined}>{n.label}</a>)}
         </nav>
@@ -78,7 +83,7 @@ export default function App() {
         <footer className="site-footer">
           <div className="inner">
             <div>
-              <strong>Once Upon a World</strong> — a DTU 02805 course project. Texts and labels: Annotated Folktales (Hagedorn &amp; Darányi 2022) from D. L. Ashliman's Folktexts, CC BY-NC-SA 4.0 per the repository LICENSE.md. Noncommercial, educational use with attribution. See <a href="#/sources">Sources</a>.
+              <strong>reIMAGINE</strong> — a DTU 02805 course project on where religious parables land in the world of folktales. Folktale texts and labels: Annotated Folktales (Hagedorn &amp; Darányi 2022) from D. L. Ashliman's Folktexts, CC BY-NC-SA 4.0 per the repository LICENSE.md; parables from public-domain translations. Noncommercial, educational use with attribution. See <a href="#/sources">Sources</a>.
             </div>
             <div className="mono">run {manifest.data?.run_id ?? "…"} · schema {manifest.data?.schema_version ?? "…"} · {manifest.data?.public_build ? "public build, excerpts only" : "local preview"}</div>
           </div>

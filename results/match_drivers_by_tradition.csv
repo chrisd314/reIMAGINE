@@ -1,0 +1,11 @@
+tradition,kind,n,top_driver_terms,driver_noun_share,noun_share_of_cosine_median,noun_share_of_text_median,folk_closeness_median,folk_closeness_nouns_masked_median,percentile_among_folktales,percentile_among_folktales_nouns_masked
+Christian,parable,40,lord (7); said (7); not (6); servant (5); seed (4); man (4); went (3); heaven (3); come (3); son (3),0.51833,0.58498,0.15651,0.1098,0.14944,4.3092,19.836
+Christian,baseline,40,christ (16); jesus (15); lord (10); not (8); god (8); man (6); faith (5); law (4); according (3); hearts (3),0.70125,0.82853,0.23214,0.10176,0.12497,2.736,7.0451
+Buddhist,parable,81,king (20); brahmin (10); thou (6); thee (5); thy (5); father (4); free (3); monkey (3); teacher (3); snake (3),0.70741,0.69406,0.2336,0.12549,0.14585,10.739,17.373
+Buddhist,baseline,24,thou (5); law (4); hatred (3); evil (3); man (3); wise (3); thy (3); wilt (3); passion (2); deeds (2),0.55556,0.50956,0.26721,0.093338,0.11493,1.8468,4.104
+Jewish,parable,50,god (11); man (8); said (7); not (6); king (6); thou (4); father (4); moses (4); son (4); friend (3),0.63833,0.81156,0.23746,0.10866,0.12728,4.0356,7.9343
+Jewish,baseline,40,god (11); thy (7); thou (7); not (6); thee (6); lord (5); david (4); israel (4); king (4); said (4),0.6175,0.69846,0.26737,0.097471,0.12157,2.1888,5.4036
+Sufi,parable,60,god (9); lion (5); not (5); thou (5); king (5); prince (4); said (4); man (4); moses (4); no (3),0.68861,0.80861,0.231,0.1076,0.11609,3.6936,4.3092
+Sufi,baseline,40,thou (17); thy (13); thee (8); god (8); not (5); tis (4); art (4); form (4); moses (4); naught (3),0.64292,0.69905,0.28561,0.10255,0.12153,2.8728,5.4036
+Taoist,parable,50,men (6); man (4); said (4); south (3); not (3); master (3); king (3); kingdom (3); duke (3); marquis (3),0.589,0.55268,0.22345,0.10118,0.13718,2.736,12.585
+Taoist,baseline,24,heaven (6); sage (5); state (4); knowledge (3); doing (3); thieves (2); highest (2); favour (2); know (2); sons (2),0.50208,0.54512,0.19499,0.085935,0.11422,0.6156,4.0356

@@ -15,9 +15,11 @@ import pandas as pd
 from scipy.stats import skew, spearmanr
 
 from .common import LABELING, TRADITIONS, Ctx, write_csv, write_json
-from .corpus import load_corpus
+from .corpus import check_calibration_exclusion, load_corpus
+from .headline import type_votes
 from .part_b import bootstrap_median, folk_closeness, length_curve, load_map, nearest, scores, similarities
 from .reps import Masker
+from .vocab import drivers, labels_started
 
 LABELS = ["same_plot", "shared_motif", "theme_only", "unrelated"]
 
@@ -45,6 +47,18 @@ def poisson_binomial_sf(p: np.ndarray, x: int) -> float:
     for pi in p:
         dist = np.convolve(dist, [1 - pi, pi])
     return float(dist[x:].sum())
+
+
+def vote_chance(cal_atu: np.ndarray, folk_atu: np.ndarray, val: np.ndarray, n_draws: int, seed: int) -> tuple[float, float, float]:
+    """Type-vote accuracy if each query's nearest folktales were drawn at random from the pool (the query keeps its
+    own cosines, in rank order). Returns the mean over draws and the middle 95% of the draws."""
+    rng = np.random.default_rng(seed)
+    acc = np.empty(n_draws)
+    n, k = len(folk_atu), val.shape[1]
+    for d in range(n_draws):
+        idx = np.stack([rng.choice(n, size=k, replace=False) for _ in range(len(cal_atu))])
+        acc[d] = np.mean([v == a for v, a in zip(type_votes(idx, val, folk_atu), cal_atu)])
+    return float(acc.mean()), float(np.quantile(acc, 0.025)), float(np.quantile(acc, 0.975))
 
 
 def calibration(S_cal: np.ndarray, cal_atu: np.ndarray, folk_atu: np.ndarray, k: int, n_boot: int, seed: int):
@@ -109,13 +123,30 @@ def run(ctx: Ctx) -> dict:
             variants[name] = (sim, scores(ctx, sim, folk))
             print(f"    computed {name}")
 
-    # ---- calibration and the gate
+    # ---- calibration and the gate; first make sure the test is not circular (feedback update, step 1)
+    for rep in ctx.reps:
+        check_calibration_exclusion(folk["id"], queries.loc[cal, "id"], None, variants[rep][0]["S"][cal],
+                                    float(ctx.paper["calibration_exclusion"]["max_cosine"]))
     cal_rows, per_query = [], queries.loc[cal, ["id", "title", "tradition", "atu_id", "n_tokens"]].reset_index(drop=True)
-    for name, (sim, _) in variants.items():
-        s, ranks, chance = calibration(sim["S"][cal], queries.loc[cal, "atu_id"].to_numpy(dtype=str), folk_atu,
-                                       ck["recall_k"], ctx.shuffles(pb["bootstrap"], cap=1000), ctx.seed)
+    S_cal = {name: sim["S"][cal] for name, (sim, _) in variants.items()}
+    nm = ctx.work / "tfidf_nouns_masked.npz"                       # written by the vocab stage (step 4)
+    if nm.exists():
+        z = np.load(nm, allow_pickle=False)
+        assert z["query_ids"].tolist() == queries["id"].tolist(), "rerun the vocab stage"
+        S_cal["tfidf_nouns_masked"] = z["S_calibration"]
+    cal_atu = queries.loc[cal, "atu_id"].to_numpy(dtype=str)
+    folk_atu_obj = folk["atu_id"].to_numpy(dtype=object)
+    for name, Sc in S_cal.items():
+        s, ranks, chance = calibration(Sc, cal_atu, folk_atu, ck["recall_k"], ctx.shuffles(pb["bootstrap"], cap=1000), ctx.seed)
+        idx10, val10 = nearest(Sc, ck["recall_k"])
+        votes = type_votes(idx10, val10, folk_atu_obj)
+        hit = np.array([v == a for v, a in zip(votes, cal_atu)])
+        vc_mean, vc_lo, vc_hi = vote_chance(cal_atu, folk_atu_obj, val10, ctx.shuffles(ck["vote_chance_draws"]), ctx.seed)
+        s.update(vote_accuracy=float(hit.mean()), vote_hits=int(hit.sum()), vote_chance=vc_mean,
+                 vote_chance_low=vc_lo, vote_chance_high=vc_hi)
         cal_rows.append(dict(representation=name, **s))
         per_query[f"rank_{name}"] = ranks
+        per_query[f"vote_{name}"] = votes
         per_query["chance_at_k"] = chance
         per_query["same_type_folktales"] = (queries.loc[cal, "atu_id"].to_numpy(dtype=str)[:, None] == folk_atu[None, :]).sum(axis=1)
     cal_tab = pd.DataFrame(cal_rows)
@@ -132,7 +163,9 @@ def run(ctx: Ctx) -> dict:
     write_json(ctx.results / "gate.json", gate)
     print("    gate " + ("PASSED" if gate["passed"] else "FAILED") + ": recall@10 "
           + ", ".join(f"{r.representation} {r.recall_at_k:.2f}" for r in cal_tab.itertuples())
-          + f"; chance {gate['chance_at_10']:.3f}")
+          + f"; chance {gate['chance_at_10']:.3f}. Type vote: "
+          + ", ".join(f"{r.representation} {r.vote_accuracy:.2f}" for r in cal_tab.itertuples())
+          + f"; chance {cal_tab['vote_chance'].iloc[0]:.3f}")
 
     # ---- second method
     a, b = ctx.reps[0], ctx.reps[1] if len(ctx.reps) > 1 else ctx.reps[0]
@@ -202,5 +235,21 @@ def run(ctx: Ctx) -> dict:
     out_dir = LABELING if not ctx.sample else ctx.results
     out_dir.mkdir(parents=True, exist_ok=True)
     template = hand_label_template(ctx, folk, queries, variants[ctx.primary][1], ctx.primary)
-    template.to_csv(out_dir / "hand_labels_template.csv", index=False, lineterminator="\n", encoding="utf-8")
+    if ctx.primary == "tfidf":                    # step 4: the 5 terms that carry each pair's cosine
+        space = variants["tfidf"][0]["space"]
+        qpos = {k: i for i, k in enumerate(queries["id"])}
+        fpos = {k: i for i, k in enumerate(folk["id"])}
+        Qt = space.transform(queries.loc[[qpos[p] for p in template["parable_id"]], "text"].tolist())
+        template.insert(template.columns.get_loc("cosine") + 1, "driver_terms",
+                        ["; ".join(w for w, _ in drivers(Qt[r], space.F[fpos[f]], space.vocab, ctx.paper["vocab"]["driver_terms"]))
+                         for r, f in enumerate(template["folktale_id"])])
+    path = out_dir / "hand_labels_template.csv"
+    old = pd.read_csv(path, dtype=str, keep_default_na=False) if path.exists() else None
+    if labels_started(old if not ctx.sample else None):
+        keep = ["parable_id", "folktale_id", "driver_terms"]
+        if "driver_terms" in template:
+            template[keep].to_csv(out_dir / "driver_terms_for_labelled_pairs.csv", index=False, lineterminator="\n", encoding="utf-8")
+        print("    hand labels already started: template left as it is; driver terms in driver_terms_for_labelled_pairs.csv")
+    else:
+        template.to_csv(path, index=False, lineterminator="\n", encoding="utf-8")
     return gate

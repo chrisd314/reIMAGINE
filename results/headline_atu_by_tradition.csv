@@ -1,0 +1,151 @@
+variant,tradition,kind,n_texts,rank,atu_id,atu_name,texts,share
+tfidf,Christian,parable,40,1,650A,Strong John,3,0.075
+tfidf,Christian,parable,40,2,332,Godfather Death,3,0.075
+tfidf,Christian,parable,40,3,981,Wisdom of Hidden Old Man Saves Kingdom,2,0.05
+tfidf,Christian,parable,40,4,1626,Dream Bread,2,0.05
+tfidf,Christian,parable,40,5,1383,The Woman Does Not Know Herself,2,0.05
+tfidf,Christian,baseline,40,1,777,The Wandering Jew,17,0.425
+tfidf,Christian,baseline,40,2,451,The Maiden Who Seeks her Brothers,4,0.1
+tfidf,Christian,baseline,40,3,155,The Ungrateful Snake Returned to Captivity,3,0.075
+tfidf,Christian,baseline,40,4,332,Godfather Death,3,0.075
+tfidf,Christian,baseline,40,5,173,Human and Animal Life Spans Are Readjusted (previously Men and Animals Readjust Span of Life),2,0.05
+tfidf,Buddhist,parable,81,1,502,The Wild Man,17,0.20988
+tfidf,Buddhist,parable,81,2,160,"Grateful Animals, Ungrateful Man [W154",6,0.074074
+tfidf,Buddhist,parable,81,3,91,Heart of Monkey as Medicine (previously Monkey [Cat] who Left his Heart at Home),6,0.074074
+tfidf,Buddhist,parable,81,4,706,The Maiden without Hands,4,0.049383
+tfidf,Buddhist,parable,81,5,954,The Forty Thieves,4,0.049383
+tfidf,Buddhist,baseline,24,1,502,The Wild Man,5,0.20833
+tfidf,Buddhist,baseline,24,2,155,The Ungrateful Snake Returned to Captivity,3,0.125
+tfidf,Buddhist,baseline,24,3,441,Hans my Hedgehog,2,0.083333
+tfidf,Buddhist,baseline,24,4,311,Rescue by the Sister,2,0.083333
+tfidf,Buddhist,baseline,24,5,1641,Doctor Know-All,1,0.041667
+tfidf,Jewish,parable,50,1,706,The Maiden without Hands,7,0.14
+tfidf,Jewish,parable,50,2,845,The Old Man and Death,4,0.08
+tfidf,Jewish,parable,50,3,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),3,0.06
+tfidf,Jewish,parable,50,4,155,The Ungrateful Snake Returned to Captivity,3,0.06
+tfidf,Jewish,parable,50,5,777,The Wandering Jew,2,0.04
+tfidf,Jewish,baseline,40,1,155,The Ungrateful Snake Returned to Captivity,7,0.175
+tfidf,Jewish,baseline,40,2,332,Godfather Death,4,0.1
+tfidf,Jewish,baseline,40,3,706,The Maiden without Hands,4,0.1
+tfidf,Jewish,baseline,40,4,1423,The Enchanted Pear Tree,3,0.075
+tfidf,Jewish,baseline,40,5,440,The Frog King or Iron Henry,2,0.05
+tfidf,Sufi,parable,60,1,706,The Maiden without Hands,12,0.2
+tfidf,Sufi,parable,60,2,332,Godfather Death,6,0.1
+tfidf,Sufi,parable,60,3,1423,The Enchanted Pear Tree,4,0.066667
+tfidf,Sufi,parable,60,4,92,The Lion Dives for his own Reflection,3,0.05
+tfidf,Sufi,parable,60,5,845,The Old Man and Death,3,0.05
+tfidf,Sufi,baseline,40,1,706,The Maiden without Hands,14,0.35
+tfidf,Sufi,baseline,40,2,1423,The Enchanted Pear Tree,5,0.125
+tfidf,Sufi,baseline,40,3,155,The Ungrateful Snake Returned to Captivity,4,0.1
+tfidf,Sufi,baseline,40,4,441,Hans my Hedgehog,2,0.05
+tfidf,Sufi,baseline,40,5,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",1,0.025
+tfidf,Taoist,parable,50,1,706,The Maiden without Hands,5,0.1
+tfidf,Taoist,parable,50,2,502,The Wild Man,4,0.08
+tfidf,Taoist,parable,50,3,545B,Puss in Boots,4,0.08
+tfidf,Taoist,parable,50,4,441,Hans my Hedgehog,3,0.06
+tfidf,Taoist,parable,50,5,1319,Pumpkin Sold as an Donkey's Egg [J1772,2,0.04
+tfidf,Taoist,baseline,24,1,502,The Wild Man,7,0.29167
+tfidf,Taoist,baseline,24,2,1641,Doctor Know-All,4,0.16667
+tfidf,Taoist,baseline,24,3,706,The Maiden without Hands,2,0.083333
+tfidf,Taoist,baseline,24,4,1540,The Student from Paradise (Paris),2,0.083333
+tfidf,Taoist,baseline,24,5,800,The Tailor in Heaven,1,0.041667
+embedding,Christian,parable,40,1,1540,The Student from Paradise (Paris),9,0.225
+embedding,Christian,parable,40,2,613,The Two Travelers,6,0.15
+embedding,Christian,parable,40,3,763,The Treasure Finders who Murder One Another,5,0.125
+embedding,Christian,parable,40,4,332,Godfather Death,4,0.1
+embedding,Christian,parable,40,5,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),3,0.075
+embedding,Christian,baseline,40,1,777,The Wandering Jew,11,0.275
+embedding,Christian,baseline,40,2,613,The Two Travelers,6,0.15
+embedding,Christian,baseline,40,3,335,Death's Messengers,4,0.1
+embedding,Christian,baseline,40,4,1430,The Man and his Wife Build Air Castles,4,0.1
+embedding,Christian,baseline,40,5,332,Godfather Death,3,0.075
+embedding,Buddhist,parable,81,1,160,"Grateful Animals, Ungrateful Man [W154",17,0.20988
+embedding,Buddhist,parable,81,2,613,The Two Travelers,12,0.14815
+embedding,Buddhist,parable,81,3,706,The Maiden without Hands,5,0.061728
+embedding,Buddhist,parable,81,4,92,The Lion Dives for his own Reflection,4,0.049383
+embedding,Buddhist,parable,81,5,502,The Wild Man,4,0.049383
+embedding,Buddhist,baseline,24,1,763,The Treasure Finders who Murder One Another,4,0.16667
+embedding,Buddhist,baseline,24,2,2031C,The Mightiest Being as Husband for the Daughter (previously The Man Seeks the Greatest Being as a Husband for his Daughter),3,0.125
+embedding,Buddhist,baseline,24,3,160,"Grateful Animals, Ungrateful Man [W154",3,0.125
+embedding,Buddhist,baseline,24,4,155,The Ungrateful Snake Returned to Captivity,3,0.125
+embedding,Buddhist,baseline,24,5,613,The Two Travelers,2,0.083333
+embedding,Jewish,parable,50,1,777,The Wandering Jew,10,0.2
+embedding,Jewish,parable,50,2,613,The Two Travelers,5,0.1
+embedding,Jewish,parable,50,3,706,The Maiden without Hands,4,0.08
+embedding,Jewish,parable,50,4,670,The Man who Understands Animal Languages (previously The Animal Languages),3,0.06
+embedding,Jewish,parable,50,5,763,The Treasure Finders who Murder One Another,3,0.06
+embedding,Jewish,baseline,40,1,777,The Wandering Jew,8,0.2
+embedding,Jewish,baseline,40,2,706,The Maiden without Hands,7,0.175
+embedding,Jewish,baseline,40,3,763,The Treasure Finders who Murder One Another,5,0.125
+embedding,Jewish,baseline,40,4,750A,The Three Wishes (previously The Wishes),3,0.075
+embedding,Jewish,baseline,40,5,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),3,0.075
+embedding,Sufi,parable,60,1,613,The Two Travelers,10,0.16667
+embedding,Sufi,parable,60,2,706,The Maiden without Hands,7,0.11667
+embedding,Sufi,parable,60,3,954,The Forty Thieves,7,0.11667
+embedding,Sufi,parable,60,4,1423,The Enchanted Pear Tree,6,0.1
+embedding,Sufi,parable,60,5,763,The Treasure Finders who Murder One Another,5,0.083333
+embedding,Sufi,baseline,40,1,706,The Maiden without Hands,10,0.25
+embedding,Sufi,baseline,40,2,1423,The Enchanted Pear Tree,3,0.075
+embedding,Sufi,baseline,40,3,2031C,The Mightiest Being as Husband for the Daughter (previously The Man Seeks the Greatest Being as a Husband for his Daughter),3,0.075
+embedding,Sufi,baseline,40,4,332,Godfather Death,3,0.075
+embedding,Sufi,baseline,40,5,1430,The Man and his Wife Build Air Castles,3,0.075
+embedding,Taoist,parable,50,1,613,The Two Travelers,7,0.14
+embedding,Taoist,parable,50,2,502,The Wild Man,6,0.12
+embedding,Taoist,parable,50,3,2031C,The Mightiest Being as Husband for the Daughter (previously The Man Seeks the Greatest Being as a Husband for his Daughter),6,0.12
+embedding,Taoist,parable,50,4,954,The Forty Thieves,6,0.12
+embedding,Taoist,parable,50,5,555,The Fisherman and his Wife,3,0.06
+embedding,Taoist,baseline,24,1,1430,The Man and his Wife Build Air Castles,5,0.20833
+embedding,Taoist,baseline,24,2,2031C,The Mightiest Being as Husband for the Daughter (previously The Man Seeks the Greatest Being as a Husband for his Daughter),5,0.20833
+embedding,Taoist,baseline,24,3,763,The Treasure Finders who Murder One Another,2,0.083333
+embedding,Taoist,baseline,24,4,613,The Two Travelers,2,0.083333
+embedding,Taoist,baseline,24,5,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),2,0.083333
+tfidf_nouns_masked,Christian,parable,40,1,545B,Puss in Boots,2,0.05
+tfidf_nouns_masked,Christian,parable,40,2,1540,The Student from Paradise (Paris),2,0.05
+tfidf_nouns_masked,Christian,parable,40,3,1191,Sacrifice on the Bridge (previously The Dog on the Bridge),2,0.05
+tfidf_nouns_masked,Christian,parable,40,4,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),2,0.05
+tfidf_nouns_masked,Christian,parable,40,5,650A,Strong John,2,0.05
+tfidf_nouns_masked,Christian,baseline,40,1,613,The Two Travelers,3,0.075
+tfidf_nouns_masked,Christian,baseline,40,2,777,The Wandering Jew,3,0.075
+tfidf_nouns_masked,Christian,baseline,40,3,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),2,0.05
+tfidf_nouns_masked,Christian,baseline,40,4,1353,The Old Woman as Trouble Maker,2,0.05
+tfidf_nouns_masked,Christian,baseline,40,5,20C,The Animals Flee in Fear of the End of the World,2,0.05
+tfidf_nouns_masked,Buddhist,parable,81,1,502,The Wild Man,11,0.1358
+tfidf_nouns_masked,Buddhist,parable,81,2,954,The Forty Thieves,6,0.074074
+tfidf_nouns_masked,Buddhist,parable,81,3,706,The Maiden without Hands,6,0.074074
+tfidf_nouns_masked,Buddhist,parable,81,4,777,The Wandering Jew,3,0.037037
+tfidf_nouns_masked,Buddhist,parable,81,5,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",3,0.037037
+tfidf_nouns_masked,Buddhist,baseline,24,1,1641,Doctor Know-All,2,0.083333
+tfidf_nouns_masked,Buddhist,baseline,24,2,1696,'What Should I Have Said (Done)' Miscellaneous type,2,0.083333
+tfidf_nouns_masked,Buddhist,baseline,24,3,155,The Ungrateful Snake Returned to Captivity,2,0.083333
+tfidf_nouns_masked,Buddhist,baseline,24,4,1540,The Student from Paradise (Paris),2,0.083333
+tfidf_nouns_masked,Buddhist,baseline,24,5,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",1,0.041667
+tfidf_nouns_masked,Jewish,parable,50,1,1342,Warming Hands and Cooling Soup with Same Breath,2,0.04
+tfidf_nouns_masked,Jewish,parable,50,2,1645,The Treasure at Home,2,0.04
+tfidf_nouns_masked,Jewish,parable,50,3,502,The Wild Man,2,0.04
+tfidf_nouns_masked,Jewish,parable,50,4,1641,Doctor Know-All,2,0.04
+tfidf_nouns_masked,Jewish,parable,50,5,1540,The Student from Paradise (Paris),2,0.04
+tfidf_nouns_masked,Jewish,baseline,40,1,777,The Wandering Jew,5,0.125
+tfidf_nouns_masked,Jewish,baseline,40,2,1423,The Enchanted Pear Tree,5,0.125
+tfidf_nouns_masked,Jewish,baseline,40,3,440,The Frog King or Iron Henry,2,0.05
+tfidf_nouns_masked,Jewish,baseline,40,4,332,Godfather Death,2,0.05
+tfidf_nouns_masked,Jewish,baseline,40,5,613,The Two Travelers,2,0.05
+tfidf_nouns_masked,Sufi,parable,60,1,706,The Maiden without Hands,4,0.066667
+tfidf_nouns_masked,Sufi,parable,60,2,545B,Puss in Boots,4,0.066667
+tfidf_nouns_masked,Sufi,parable,60,3,1317,The Blind Men and the Elephant,4,0.066667
+tfidf_nouns_masked,Sufi,parable,60,4,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",3,0.05
+tfidf_nouns_masked,Sufi,parable,60,5,502,The Wild Man,3,0.05
+tfidf_nouns_masked,Sufi,baseline,40,1,502,The Wild Man,6,0.15
+tfidf_nouns_masked,Sufi,baseline,40,2,1423,The Enchanted Pear Tree,3,0.075
+tfidf_nouns_masked,Sufi,baseline,40,3,278A,The Frog Persists in Living in Puddle on Road,2,0.05
+tfidf_nouns_masked,Sufi,baseline,40,4,20C,The Animals Flee in Fear of the End of the World,2,0.05
+tfidf_nouns_masked,Sufi,baseline,40,5,311,Rescue by the Sister,2,0.05
+tfidf_nouns_masked,Taoist,parable,50,1,545B,Puss in Boots,3,0.06
+tfidf_nouns_masked,Taoist,parable,50,2,402,"The Animal Bride (previously The Mouse [Cat, Frog, etc",2,0.04
+tfidf_nouns_masked,Taoist,parable,50,3,306,The Danced-out Shoes,2,0.04
+tfidf_nouns_masked,Taoist,parable,50,4,958E*,Deep Sleep Brought on by a Robber,2,0.04
+tfidf_nouns_masked,Taoist,parable,50,5,726,The Three Old Men (previously The Oldest on the Farm),2,0.04
+tfidf_nouns_masked,Taoist,baseline,24,1,650A,Strong John,3,0.125
+tfidf_nouns_masked,Taoist,baseline,24,2,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",3,0.125
+tfidf_nouns_masked,Taoist,baseline,24,3,1540,The Student from Paradise (Paris),2,0.083333
+tfidf_nouns_masked,Taoist,baseline,24,4,1641,Doctor Know-All,2,0.083333
+tfidf_nouns_masked,Taoist,baseline,24,5,2250,Unfinished Tales,1,0.041667

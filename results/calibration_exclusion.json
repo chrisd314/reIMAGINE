@@ -1,0 +1,78 @@
+{
+  "rule": "no calibration ID, no 5-word-shingle near-duplicate (corpus audit) and no folktale with cosine above 0.9 to a calibration version in the pool used for networks, rankings, votes and nulls",
+  "passed": true,
+  "per_representation": {
+    "tfidf": {
+      "calibration_ids": 36,
+      "pool": 1462,
+      "calibration_ids_in_pool": 0,
+      "shingle_near_duplicates_in_pool": 0,
+      "cosine_threshold": 0.9,
+      "pairs_above_threshold": 0,
+      "max_cosine": 0.38040350088820374,
+      "closest": [
+        {
+          "calibration_id": "tale-0774",
+          "folktale_id": "tale-0775",
+          "cosine": 0.3804
+        },
+        {
+          "calibration_id": "tale-0296",
+          "folktale_id": "tale-0295",
+          "cosine": 0.3622
+        },
+        {
+          "calibration_id": "tale-0410",
+          "folktale_id": "tale-0408",
+          "cosine": 0.3206
+        },
+        {
+          "calibration_id": "tale-0736",
+          "folktale_id": "tale-0741",
+          "cosine": 0.2995
+        },
+        {
+          "calibration_id": "tale-0218",
+          "folktale_id": "tale-0215",
+          "cosine": 0.2682
+        }
+      ]
+    },
+    "embedding": {
+      "calibration_ids": 36,
+      "pool": 1462,
+      "calibration_ids_in_pool": 0,
+      "shingle_near_duplicates_in_pool": 0,
+      "cosine_threshold": 0.9,
+      "pairs_above_threshold": 0,
+      "max_cosine": 0.8938366659248138,
+      "closest": [
+        {
+          "calibration_id": "tale-0774",
+          "folktale_id": "tale-0775",
+          "cosine": 0.8938
+        },
+        {
+          "calibration_id": "tale-0296",
+          "folktale_id": "tale-0293",
+          "cosine": 0.8896
+        },
+        {
+          "calibration_id": "tale-0713",
+          "folktale_id": "tale-0710",
+          "cosine": 0.8588
+        },
+        {
+          "calibration_id": "tale-0218",
+          "folktale_id": "tale-0726",
+          "cosine": 0.8225
+        },
+        {
+          "calibration_id": "tale-0858",
+          "folktale_id": "tale-0867",
+          "cosine": 0.8219
+        }
+      ]
+    }
+  }
+}

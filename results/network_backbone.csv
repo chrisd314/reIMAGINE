@@ -1,0 +1,9 @@
+rep,filtered,alpha,edges_in,edges_kept,nodes_with_an_edge,nodes,share_of_kept_edges_within_a_community,drawn
+tfidf,10% graph,0.05,106799,73,125,1462,0.93151,False
+tfidf,10% graph,0.01,106799,22,44,1462,0.95455,False
+tfidf,complete similarity graph,0.05,1051545,11272,1452,1462,0.52493,False
+tfidf,complete similarity graph,0.01,1051545,2495,1048,1462,0.75912,True
+embedding,10% graph,0.05,106799,0,0,1462,,False
+embedding,10% graph,0.01,106799,0,0,1462,,False
+embedding,complete similarity graph,0.05,1067958,2,4,1462,0.5,False
+embedding,complete similarity graph,0.01,1067958,0,0,1462,,True

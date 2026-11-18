@@ -269,11 +269,17 @@ def run() -> dict:
                    opening=cfg.get("export", {}).get("opening_pair"),
                    story_pairs=cfg.get("export", {}).get("story_pairs", {}))
     write_json(WEB_DATA / "summary.json", summary)
-    # Parables page: results of the paper pipeline (python -m ouaw.site writes this committed file).
-    # Titles, labels and openings of at most 40 words only; never full texts.
-    parables = DATA / "site" / "parables.json"
-    if parables.exists():
-        write_json(WEB_DATA / "parables.json", {**read_json(parables), **stamp}, compact=True)
+    # Overview and Parables pages: results of the paper pipeline (`python -m ouaw.run --stage site` writes these committed
+    # files, and web-sized copies of the paper's figures). Titles, labels and openings of at most 40 words; never full texts.
+    for name in ("parables.json", "paper.json"):
+        site_file = DATA / "site" / name
+        if site_file.exists():
+            write_json(WEB_DATA / name, {**read_json(site_file), **stamp}, compact=True)
+    site_figures = DATA / "site" / "figures"
+    if site_figures.exists():
+        (WEB_DATA / "figures").mkdir(parents=True, exist_ok=True)
+        for png in sorted(site_figures.glob("*.png")):
+            (WEB_DATA / "figures" / png.name).write_bytes(png.read_bytes())
     files = {p.relative_to(WEB_DATA).as_posix(): dict(bytes=p.stat().st_size)
              for p in sorted(WEB_DATA.rglob("*")) if p.is_file() and "tales/" not in p.relative_to(WEB_DATA).as_posix()}
     write_json(WEB_DATA / "manifest.json", dict(**stamp, generated=utc_now(), tales=len(nar),

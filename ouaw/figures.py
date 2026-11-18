@@ -1,13 +1,22 @@
-"""Stage `figures`: the four figures of the paper (PDF + PNG), then results/RESULTS.md.
+"""Stage `figures`: the paper's figures around one headline (feedback update, step 7), then the report material
+in report/ (RESULTS.md, captions.md, short_update.md, numbers.tex, table1.tex; git-ignored, see ouaw/report.py).
 
-Figures are drawn for the primary representation (paper.yaml), at PNAS column widths, with a
-colour-blind-safe palette. Categories are labelled directly; text is never set in a series colour.
-  fig1  the folklore map (backbone, coloured by community) with the type-vs-region check
-  fig2  folk_closeness of every parable by tradition, with the two baselines
-  fig3  tradition x community: share of links minus the shuffle expectation
-  fig4  calibration recall@10 against chance, and hand-label precision (pending until coded)
+Figures are drawn at PNAS column widths with a colour-blind-safe palette: three categorical hues at most
+(blue, orange, green), greys for everything else, text never set in a series colour, every panel lettered.
+  fig1_map            background: the map of world folklore (disparity backbone, coloured by community), and
+                      what the communities follow: tale type, region, source collection against two nulls
+  fig2_headline       headline: where each tradition's parables land compared with non-story text of the same
+                      translation (community excess, voted tale types), and how much closer they are to
+                      folktales than that baseline and than length-matched folktale excerpts
+  fig3_validity       calibration recall@10 and type-vote accuracy (TF-IDF, embeddings, nouns masked, chance);
+                      hand-label precision and Cohen's kappa (placeholder until coded)
+  figS1_labels        supplementary: tale type, region and source collection across all edge constructions
+  figS2_headline_embeddings  supplementary: Figure 2 with the second representation
+No figure or table title claims anything about morals or lessons: text similarity does not measure them.
 """
 from __future__ import annotations
+
+import textwrap
 
 import matplotlib
 
@@ -17,17 +26,15 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 from matplotlib import patheffects  # noqa: E402
 from matplotlib.collections import LineCollection  # noqa: E402
-from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm  # noqa: E402
+from matplotlib.colors import to_rgba  # noqa: E402
 
 from .common import TRADITIONS, Ctx, read_json  # noqa: E402
 
 BLUE, ORANGE, GREEN = "#2a78d6", "#eb6834", "#1baf7a"
 INK, MUTED, RULE, BAND = "#1f2933", "#6b7785", "#d9dee4", "#e8ebef"
-# the three base hues first, then further colour-blind-safe hues (Okabe-Ito) for maps with more communities
-COMMUNITY = [BLUE, ORANGE, GREEN, "#CC79A7", "#E6B800", "#56B4E9", "#4d4d4d", "#8c564b", "#6a3d9a"]
-SMALL = "#b8c0c8"
-DIVERGING = LinearSegmentedColormap.from_list("ouaw_div", ["#b8491f", ORANGE, "#f6c9b5", "#ffffff", "#cde2fb", "#6da7ec", "#184f95"])
-REP_NAME = {"tfidf": "TF-IDF", "embedding": "Embeddings"}
+OTHER, SMALL = "#9aa5b1", "#cfd5db"            # communities beyond the three largest; groups under 1% of the map
+HUES = [BLUE, ORANGE, GREEN]
+REP_NAME = {"tfidf": "TF-IDF", "embedding": "Embeddings", "tfidf_nouns_masked": "TF-IDF, nouns masked"}
 
 
 def style() -> None:
@@ -42,27 +49,31 @@ def style() -> None:
 
 def save(fig, ctx: Ctx, name: str) -> None:
     for ext in ("pdf", "png"):
-        fig.savefig(ctx.figures / f"{name}.{ext}", dpi=ctx.paper["figures"]["dpi"], bbox_inches="tight", pad_inches=0.02)
+        fig.savefig(ctx.figures / f"{name}.{ext}", dpi=ctx.paper["figures"]["dpi"], bbox_inches="tight", pad_inches=0.03)
     plt.close(fig)
 
 
-def halo(artist, width: float = 1.8) -> None:
+def halo(artist, width: float = 2.0) -> None:
     artist.set_path_effects([patheffects.withStroke(linewidth=width, foreground="white")])
 
 
-def panel_letter(ax, letter: str, dx: float = -16, dy: float = 5) -> None:
-    """Bold panel letter outside the top-left corner of the axes (offsets in points)."""
-    ax.annotate(letter, xy=(0, 1), xycoords="axes fraction", xytext=(dx, dy), textcoords="offset points",
-                fontsize=9, fontweight="bold", va="bottom", ha="right", annotation_clip=False)
+def letter(fig, x: float, y: float, s: str) -> None:
+    fig.text(x, y, s, fontsize=9, fontweight="bold", va="top", ha="left")
 
 
-def tradition_order(ctx: Ctx, rep: str) -> list[str]:
-    t = pd.read_csv(ctx.results / "partB_traditions.csv")
-    return t[t["rep"] == rep].sort_values("median", ascending=False)["tradition"].tolist()
+def community_colour(names: list[str]) -> dict[str, str]:
+    """The three largest communities get the three hues; the others grey (direct labels tell them apart)."""
+    majors = [c for c in names if c != "small"]
+    return {c: (HUES[k] if k < 3 else OTHER) for k, c in enumerate(majors)} | {"small": SMALL}
 
 
-# ----------------------------------------------------------------- figure 1
-def spread(points: np.ndarray, min_dx: float, min_dy: float, rounds: int = 200) -> np.ndarray:
+def short_type(atu: str, name: str, width: int = 26) -> str:
+    name = str(name).split(" (previously")[0].split(" [")[0]
+    name = name[4:] if name.startswith("The ") else name
+    return textwrap.shorten(f"{atu} {name}", width=width, placeholder="…")
+
+
+def spread(points: np.ndarray, min_dx: float, min_dy: float, rounds: int = 300) -> np.ndarray:
     """Push label anchors apart until no two are closer than (min_dx, min_dy). Display only."""
     p = points.astype(float).copy()
     for _ in range(rounds):
@@ -81,236 +92,321 @@ def spread(points: np.ndarray, min_dx: float, min_dy: float, rounds: int = 200) 
     return p
 
 
+def headline_order(ctx: Ctx, variant: str) -> list[str]:
+    hb = pd.read_csv(ctx.results / "headline_by_tradition.csv")
+    return hb[hb["variant"] == variant].sort_values("diff", ascending=False)["tradition"].tolist()
+
+
+# ----------------------------------------------------------------- figure 1: the map of world folklore
+def null_rows(ctx: Ctx, rep: str) -> pd.DataFrame:
+    cc = pd.read_csv(ctx.results / "collection_confound.csv")
+    return cc[(cc["rep"] == rep) & cc["map"].str.startswith("canonical")]
+
+
+def label_panel(ax, rows: pd.DataFrame, measure: str, xlabel: str) -> None:
+    """Observed value (dot) against the middle 95% of the plain label shuffles (dark bar) and of the shuffles within
+    source collection (light bar), for tale type, region and source collection."""
+    labels = [("atu_type", "Tale type"), ("region", "Region"), ("source_collection", "Source collection")]
+    r = rows[rows["measure"] == measure].set_index(["label", "null"])
+    hi = 0.0
+    for y, (key, name) in enumerate(labels):
+        for dy, null, colour, lw in ((-0.13, "label shuffle", MUTED, 3.6), (0.17, "within-collection shuffle", SMALL, 3.6)):
+            if (key, null) not in r.index:
+                continue
+            x = r.loc[(key, null)]
+            ax.plot([x["null_q025"], x["null_q975"]], [y + dy] * 2, color=colour, lw=lw, solid_capstyle="butt", zorder=2)
+            hi = max(hi, x["null_q975"])
+        obs = r.loc[(key, "label shuffle"), "observed"]
+        ax.scatter([obs], [y - 0.13], s=16, c=INK, zorder=4, linewidths=0)
+        ax.annotate(f"{obs:.2f}" if measure == "nmi" else f"{obs:.3f}", (obs, y - 0.13), xytext=(4, 0), textcoords="offset points",
+                    fontsize=6.3, va="center")
+        hi = max(hi, obs)
+    ax.set_yticks(range(len(labels)), [n for _, n in labels])
+    ax.set_ylim(len(labels) - 0.5, -0.6)
+    lo = min(0.0, float(rows[rows["measure"] == measure]["null_q025"].min()) * 1.2)
+    ax.set_xlim(lo, hi + 0.3 * (hi - lo))
+    ax.xaxis.set_major_locator(plt.MaxNLocator(4))
+    ax.set_xlabel(xlabel, labelpad=2)
+    ax.tick_params(axis="y", length=0)
+    ax.spines["left"].set_visible(False)
+    ax.axvline(0, color=RULE, lw=0.6, zorder=1)
+
+
 def fig1(ctx: Ctx, rep: str) -> None:
     z = np.load(ctx.work / f"map_{rep}.npz", allow_pickle=False)
-    xy, group, bb = z["xy"], z["group"], z["backbone"]
-    ei, ej = z["i"][bb], z["j"][bb]
-    comm = pd.read_csv(ctx.results / "partA_communities.csv")
+    xy, group = z["xy"], z["group"]
+    from .network import backbone_path
+    nc = ctx.paper["network"]
+    bbp = backbone_path(ctx, rep, nc["backbone_drawn_from"], nc["backbone_drawn_alpha"])
+    bb = np.load(bbp, allow_pickle=False) if bbp.exists() else None
+    comm = pd.read_csv(ctx.results / "community_table.csv")
     comm = comm[comm["rep"] == rep].set_index("community")
-    agree = pd.read_csv(ctx.results / "partA_type_vs_region.csv")
-    agree = agree[(agree["rep"] == rep) & (agree["node_set"] == "type_and_region") & (agree["measure"] == "nmi")].set_index("label")
-    nulls = read_json(ctx.work / f"map_{rep}_nulls.json")
+    names = list(comm.index)
+    colour = community_colour(names)
     deg = np.bincount(np.concatenate([z["i"], z["j"]]), minlength=len(xy))
-    shown = deg > 0                                               # a tale without any link has no place on the map
-    majors = sorted(set(group[group >= 0].tolist()))
-    colour = {g: COMMUNITY[k % len(COMMUNITY)] for k, g in enumerate(majors)}
+    shown = deg > 0
+    gname = np.array([f"C{g + 1}" if g >= 0 else "small" for g in group])
 
     w = ctx.paper["figures"]["double_column_in"]
-    fig = plt.figure(figsize=(w, w * 0.56))
-
-    # ---- a: the map
-    ax = fig.add_axes([0.0, 0.045, 0.56, 0.93])
-    ax.add_collection(LineCollection(np.stack([xy[ei], xy[ej]], axis=1), colors=MUTED, linewidths=0.1, alpha=0.16, zorder=1))
-    order = np.argsort(-(group < 0).astype(int), kind="stable")   # small communities underneath
+    fig = plt.figure(figsize=(w, w * 0.62))
+    ax = fig.add_axes([0.0, 0.085, 0.57, 0.9])
+    if bb is not None and len(bb["i"]):
+        ax.add_collection(LineCollection(np.stack([xy[bb["i"]], xy[bb["j"]]], axis=1), colors=INK, linewidths=0.3, alpha=0.22, zorder=1))
+    order = np.argsort([0 if c == "small" else (1 if colour[c] == OTHER else 2) for c in gname], kind="stable")
     order = order[shown[order]]
-    ax.scatter(xy[order, 0], xy[order, 1], s=3.4, c=[colour.get(g, SMALL) for g in group[order]], linewidths=0, zorder=2)
+    ax.scatter(xy[order, 0], xy[order, 1], s=3.2, c=[colour[c] for c in gname[order]], linewidths=0, zorder=2)
     lo, hi = np.quantile(xy[shown], 0.003, axis=0), np.quantile(xy[shown], 0.997, axis=0)
     pad = 0.04 * (hi - lo)
     ax.set_xlim(lo[0] - pad[0], hi[0] + pad[0])
     ax.set_ylim(lo[1] - pad[1], hi[1] + pad[1])
-    centres = np.array([[np.median(xy[(group == g) & shown, 0]), np.median(xy[(group == g) & shown, 1])] for g in majors])
-    tags = spread(centres, 0.075 * (hi[0] - lo[0]), 0.06 * (hi[1] - lo[1]))
-    for g, (cx, cy) in zip(majors, tags):
-        ax.text(cx, cy, f"C{g + 1}", fontsize=7, fontweight="bold", ha="center", va="center", zorder=5,
-                bbox=dict(boxstyle="round,pad=0.18", fc="white", ec=colour[g], lw=1.0))
+    majors = [c for c in names if c != "small"]
+    centres = np.array([np.median(xy[(gname == c) & shown], axis=0) for c in majors])
+    tags = spread(centres, 0.16 * (hi[0] - lo[0]), 0.055 * (hi[1] - lo[1]))
+    for c, (cx, cy) in zip(majors, tags):
+        words = ", ".join(str(comm.at[c, "top_words"]).split(", ")[:2])
+        t = ax.text(cx, cy, f"{c} {words}", fontsize=6.4, ha="center", va="center", zorder=5,
+                    bbox=dict(boxstyle="round,pad=0.2", fc="white", ec=colour[c], lw=1.0, alpha=0.92))
     ax.set_aspect("equal")
     ax.axis("off")
-    fig.text(0.0, 0.985, "a", fontsize=9, fontweight="bold", va="top", ha="left")
-    note = (f"{int(shown.sum()):,} of {len(xy):,} folktales, placed by the whole network; each tale's "
-            f"{ctx.paper['map']['backbone']['fallback_k']} strongest links drawn.")
-    fig.text(0.0, 0.012, note, fontsize=6, color=MUTED, va="bottom", ha="left")
+    letter(fig, 0.0, 0.995, "a")
+    n_edges = int(len(bb["i"])) if bb is not None else 0
+    note = (f"{int(shown.sum()):,} folktales placed by the full 10% similarity network (ForceAtlas2); lines: disparity backbone of the "
+            f"complete similarity graph (α = {ctx.paper['network']['backbone_drawn_alpha']}, {n_edges:,} edges). Communities: Louvain on the full network.")
+    fig.text(0.0, 0.0, textwrap.fill(note, 105), fontsize=5.8, color=MUTED, va="bottom", ha="left", linespacing=1.2)
 
-    # ---- legend: what the communities are
-    lx = fig.add_axes([0.585, 0.44, 0.41, 0.54])
+    # ---- b: the communities
+    lx = fig.add_axes([0.6, 0.5, 0.4, 0.48])
     lx.axis("off")
-    rows = [(f"C{g + 1}", colour[g]) for g in majors] + ([("small", SMALL)] if (group < 0).any() else [])
+    rows = names
     lx.set_xlim(0, 1)
-    lx.set_ylim(len(rows) + 0.2, -1.2)
-    lx.text(0.0, -0.75, "Communities and their most distinctive words", fontsize=7.5, va="center")
-    for r, (name, col) in enumerate(rows):
-        lx.scatter([0.025], [r], s=20, c=col, linewidths=0)
-        lx.text(0.07, r, name if name != "small" else "", fontsize=6.8, fontweight="bold", va="center")
-        if name == "small":
-            n_small, n_iso = int((group < 0).sum()), int((~shown).sum())
-            words = f"{n_small} tales in groups under 1% of the map" + (f" ({n_iso} unlinked, not drawn)" if n_iso else "")
-            lx.text(0.07, r, words, fontsize=6.5, va="center", color=MUTED)
+    lx.set_ylim(len(rows) + 0.1, -1.3)
+    lx.text(0.0, -0.85, "Communities: most distinctive words", fontsize=7.3, va="center")
+    lx.text(1.0, -0.85, "tales", fontsize=6.3, va="center", ha="right", color=MUTED)
+    for r, c in enumerate(rows):
+        lx.scatter([0.02], [r], s=18, c=colour[c], linewidths=0)
+        if c == "small":
+            lx.text(0.06, r, "groups under 1% of the map", fontsize=6.4, va="center", color=MUTED)
         else:
-            lx.text(0.17, r, ", ".join(str(comm.at[name, "top_words"]).split()[:3]), fontsize=6.8, va="center")
-            lx.text(1.0, r, f"{int(comm.at[name, 'size'])}", fontsize=6.5, va="center", ha="right", color=MUTED)
-    lx.text(1.0, -0.75, "tales", fontsize=6.5, va="center", ha="right", color=MUTED)
+            lx.text(0.06, r, c, fontsize=6.5, fontweight="bold", va="center")
+            lx.text(0.15, r, ", ".join(str(comm.at[c, "top_words"]).split(", ")[:4]), fontsize=6.4, va="center")
+        lx.text(1.0, r, f"{int(comm.at[c, 'size'])}", fontsize=6.3, va="center", ha="right", color=MUTED)
+    letter(fig, 0.585, 0.995, "b")
 
-    # ---- b: type against region, observed NMI and the range of the label shuffles
-    bx = fig.add_axes([0.70, 0.125, 0.29, 0.165])
-    labels = [("atu_type", "Tale type"), ("region", "Region")]
-    for y, (key, label) in enumerate(labels):
-        null = np.array(nulls[f"type_and_region|{key}"]["nmi"])
-        obs = agree.at[key, "observed"]
-        bx.plot([null.min(), null.max()], [y, y], color=MUTED, lw=4.5, solid_capstyle="butt", zorder=2)
-        bx.plot([null.max(), obs], [y, y], color=RULE, lw=0.7, zorder=1)
-        bx.scatter([obs], [y], s=20, c=BLUE, zorder=3, linewidths=0)
-        bx.annotate(f"{obs:.2f}", (obs, y), xytext=(5, 0), textcoords="offset points", fontsize=6.5, va="center")
-    bx.set_yticks(range(len(labels)), [r[1] for r in labels])
-    bx.set_ylim(len(labels) - 0.45, -0.55)
-    bx.set_xlim(0, float(agree["observed"].max()) * 1.25)
-    bx.set_xlabel("NMI with the communities", labelpad=2)
-    bx.tick_params(axis="y", length=0)
-    bx.spines["left"].set_visible(False)
-    fig.text(0.585, 0.375, "b", fontsize=9, fontweight="bold", va="top", ha="left")
-    fig.text(0.615, 0.372, f"Communities follow tale type more than region\n(n = {int(agree['n'].iloc[0]):,} tales with both labels)",
-             fontsize=7.5, va="top", ha="left", linespacing=1.2)
-    fig.text(0.585, 0.012, "Dot: observed. Grey bar: range of 1,000 label shuffles.", fontsize=6, color=MUTED, va="bottom", ha="left")
+    # ---- c, d: what the communities follow
+    rows_ = null_rows(ctx, rep)
+    cx_ = fig.add_axes([0.715, 0.285, 0.27, 0.12])
+    label_panel(cx_, rows_, "nmi", "NMI with the communities")
+    dx_ = fig.add_axes([0.715, 0.07, 0.27, 0.12])
+    label_panel(dx_, rows_, "assortativity", "Attribute assortativity")
+    letter(fig, 0.585, 0.475, "c")
+    letter(fig, 0.585, 0.215, "d")
+    n_lab = int(rows_["n"].iloc[0])
+    fig.text(0.61, 0.472, f"What the communities follow ({n_lab:,} tales with all three labels)", fontsize=7.3, va="top")
+    fig.text(0.61, 0.447, "dot: observed; dark bar: middle 95% of label shuffles;\nlight bar: same, shuffled within source collection",
+             fontsize=5.8, color=MUTED, va="top", linespacing=1.2)
     save(fig, ctx, "fig1_map")
 
 
-# ----------------------------------------------------------------- figure 2
-def fig2(ctx: Ctx, reps: list[str]) -> None:
-    ranking = pd.read_csv(ctx.results / "partB_ranking.csv")
-    trad = pd.read_csv(ctx.results / "partB_traditions.csv")
-    base = pd.read_csv(ctx.results / "partB_folktale_baseline.csv")
-    order = tradition_order(ctx, reps[0])
+# ----------------------------------------------------------------- figure 2: the headline
+def fig2(ctx: Ctx, variant: str, name: str) -> None:
+    hb = pd.read_csv(ctx.results / "headline_by_tradition.csv")
+    hb = hb[hb["variant"] == variant].set_index("tradition")
+    cells = pd.read_csv(ctx.results / "headline_community_excess.csv")
+    cells = cells[cells["variant"] == variant]
+    types = pd.read_csv(ctx.results / "headline_atu_by_tradition.csv")
+    types = types[(types["variant"] == variant) & (types["kind"] == "parable")]
+    lc = pd.read_csv(ctx.results / "length_control.csv")
+    rep = hb["rep"].iloc[0]
+    lc = lc[(lc["rep"] == rep) & (lc["kind"] == "parable")].set_index("tradition")
+    order = [t for t in headline_order(ctx, variant) if t in hb.index]
+    comms = list(dict.fromkeys(cells["community"]))
+    words = cells.drop_duplicates("community").set_index("community")["community_words"].astype(str)
+
     w = ctx.paper["figures"]["double_column_in"]
-    fig, axes = plt.subplots(1, len(reps), figsize=(w, w * 0.42), squeeze=False)
-    rng = np.random.default_rng(ctx.seed)
-    for k, (ax, rep) in enumerate(zip(axes[0], reps)):
-        r = ranking[ranking["rep"] == rep]
-        t = trad[trad["rep"] == rep].set_index("tradition")
-        f = base[(base["rep"] == rep) & (base["candidates"] == "all other folktales")].iloc[0]
-        ax.axhspan(f["q25"], f["q75"], color=BAND, zorder=0, lw=0)
-        ax.axhline(f["q50"], color=MUTED, lw=0.6, zorder=1)
-        for x, name in enumerate(order):
-            if name not in t.index:
-                continue
-            v = r[(r["kind"] == "parable") & (r["tradition"] == name)]["folk_closeness"].to_numpy()
-            b = r[(r["kind"] == "baseline") & (r["tradition"] == name)]["folk_closeness"].to_numpy()
-            ax.scatter(x - 0.12 + rng.uniform(-0.17, 0.17, len(v)), v, s=5, c=BLUE, alpha=0.55, linewidths=0, zorder=3)
-            ax.plot([x - 0.33, x + 0.09], [np.median(v)] * 2, color=INK, lw=1.3, zorder=5, solid_capstyle="butt")
-            ax.plot([x - 0.12] * 2, [t.at[name, "ci_low"], t.at[name, "ci_high"]], color=INK, lw=0.7, zorder=5)
-            if len(b):
-                ax.plot([x + 0.3] * 2, np.quantile(b, [0.25, 0.75]), color=ORANGE, lw=3.2, alpha=0.55, zorder=2, solid_capstyle="butt")
-                ax.plot([x + 0.22, x + 0.38], [np.median(b)] * 2, color=ORANGE, lw=1.3, zorder=4, solid_capstyle="butt")
-        ax.set_xticks(range(len(order)), [f"{n}\nn = {int(t.at[n, 'n_parables'])}" if n in t.index else n for n in order])
-        ax.tick_params(axis="x", length=0)
-        ax.set_xlim(-0.6, len(order) - 0.4)
-        ax.set_ylabel("Folk-closeness (mean cosine to the 5 nearest folktales)" if k == 0 else "")
-        ax.set_title(f"{REP_NAME[rep]}" + ("" if k == 0 else " (second method)"), loc="left")
-        ax.yaxis.grid(True, color=RULE, lw=0.4)
+    fig = plt.figure(figsize=(w, w * 0.82))
+    left, right, top, h = 0.135, 0.995, 0.875, 0.4
+    gap = 0.012
+    pw = (right - left - gap * (len(order) - 1)) / len(order)
+    lim = float(np.nanmax(np.abs(cells[["excess_ci_low", "excess_ci_high"]].to_numpy()))) * 100 * 1.08
+    for k, t in enumerate(order):
+        ax = fig.add_axes([left + k * (pw + gap), top - h, pw, h])
+        c = cells[cells["tradition"] == t].set_index("community").loc[comms]
+        y = np.arange(len(comms))
+        v = c["excess"].to_numpy() * 100
+        sig = c["significant_bonferroni"].to_numpy(bool)
+        sig05 = c["significant_05"].to_numpy(bool)
+        cols = [to_rgba(BLUE if x >= 0 else ORANGE, 1.0 if s else (0.55 if s5 else 0.25)) for x, s, s5 in zip(v, sig, sig05)]
+        ax.barh(y, v, height=0.62, color=cols, zorder=2)
+        ax.hlines(y, c["excess_ci_low"] * 100, c["excess_ci_high"] * 100, color=INK, lw=0.5, zorder=3)
+        for yy, x, s in zip(y, v, sig):
+            if s:
+                ax.text(x + (1.2 if x >= 0 else -1.2), yy, "*", ha="left" if x >= 0 else "right", va="center", fontsize=8, zorder=4)
+        ax.axvline(0, color=INK, lw=0.6, zorder=1)
+        ax.set_xlim(-lim, lim)
+        ax.set_ylim(len(comms) - 0.5, -0.6)
+        ax.xaxis.grid(True, color=RULE, lw=0.4)
         ax.set_axisbelow(True)
-        panel_letter(ax, "ab"[k])
+        ax.tick_params(axis="y", length=0)
         if k == 0:
-            ax.text(len(order) - 0.45, f["q50"], "folktales to\neach other", fontsize=6, color=MUTED, ha="right", va="bottom",
-                    linespacing=1.0)
-    handles = [plt.Line2D([], [], marker="o", ls="", ms=3, color=BLUE, alpha=0.7, label="parable"),
-               plt.Line2D([], [], color=INK, lw=1.3, label="tradition median, 95% bootstrap interval"),
-               plt.Line2D([], [], color=ORANGE, lw=3, alpha=0.6, label="non-story text of the same translation (middle 50%, median)"),
-               plt.Rectangle((0, 0), 1, 1, color=BAND, label="folktales against the other folktales (middle 50%, median)")]
-    fig.legend(handles=handles, loc="lower center", ncol=2, frameon=False, bbox_to_anchor=(0.5, -0.11), columnspacing=1.6,
-               handlelength=1.6)
-    fig.tight_layout(w_pad=1.6)
-    save(fig, ctx, "fig2_closeness")
+            ax.set_yticks(y, [f"{cm}  {', '.join(str(words.get(cm, '')).split()[:2])}" if cm != "small" else "small groups" for cm in comms])
+        else:
+            ax.set_yticks(y, [""] * len(y))
+        ax.spines["left"].set_visible(False)
+        r = hb.loc[t]
+        ax.set_title(f"{t}\n{int(r['n_parables'])} parables, {int(r['n_baseline'])} baseline", loc="center", fontsize=7, linespacing=1.15)
+        tt = types[types["tradition"] == t].sort_values("rank").head(3)
+        lines = [f"{s:.0%} {short_type(a, n, width=25)}" for a, n, s in zip(tt["atu_id"], tt["atu_name"], tt["share"])]
+        ax.text(0.0, -0.19, "\n".join(lines), transform=ax.transAxes, ha="left", va="top", fontsize=5.4, linespacing=1.3)
+        if k == len(order) // 2:
+            ax.set_xlabel("parable share minus baseline share of links (percentage points)", labelpad=2)
+    fig.text(left - 0.13, top - h - 0.075, "Most voted\ntale types\n(share of\nparables)", fontsize=5.8, color=MUTED, va="top", linespacing=1.15)
+    letter(fig, 0.0, 0.995, "a")
+    fig.text(0.03, 0.995, f"Where parables land, against non-story text of the same translation ({REP_NAME[variant]})", fontsize=7.6, va="top")
+    fig.text(0.03, 0.968, "Blue: more parable links than baseline links; orange: fewer. Solid with *: p < 0.05 after Bonferroni "
+             "correction; medium: p < 0.05; pale: not significant. Lines: 95% bootstrap intervals.", fontsize=5.8, color=MUTED, va="top")
+
+    # ---- b: how much closer to folktales
+    bx = fig.add_axes([left, 0.05, 0.52, 0.19])
+    yb = np.arange(len(order))
+    for dy, label, col, marker, get in (
+            (-0.16, "minus non-story text of the same translation", BLUE, "o",
+             lambda t: (hb.at[t, "diff"], hb.at[t, "diff_ci_low"], hb.at[t, "diff_ci_high"], hb.at[t, "diff_p_upper"] < 0.05)),
+            (0.16, "minus folktale excerpts of the same length", ORANGE, "D",
+             lambda t: (lc.at[t, "diff_median"], lc.at[t, "diff_ci_low"], lc.at[t, "diff_ci_high"], lc.at[t, "diff_ci_high"] < 0 or lc.at[t, "diff_ci_low"] > 0))):
+        for yy, t in zip(yb, order):
+            if t not in hb.index or (col == ORANGE and t not in lc.index):
+                continue
+            d, lo_, hi_, s = get(t)
+            bx.plot([lo_, hi_], [yy + dy] * 2, color=col, lw=1.0, zorder=2)
+            bx.scatter([d], [yy + dy], s=16, marker=marker, facecolors=col if s else "white", edgecolors=col, linewidths=0.9, zorder=3)
+    bx.axvline(0, color=INK, lw=0.6, zorder=1)
+    bx.set_yticks(yb, order)
+    bx.set_ylim(len(order) - 0.5, -0.6)
+    bx.tick_params(axis="y", length=0)
+    bx.xaxis.grid(True, color=RULE, lw=0.4)
+    bx.set_axisbelow(True)
+    bx.set_xlabel(f"difference in folk-closeness, median ({REP_NAME[variant]})", labelpad=2)
+    letter(fig, 0.0, 0.3, "b")
+    fig.text(0.03, 0.3, "How much closer to folktales are the parables?", fontsize=7.6, va="top")
+    handles = [plt.Line2D([], [], color=BLUE, marker="o", lw=1, ms=4, label="parables minus non-story text of the same translation"),
+               plt.Line2D([], [], color=ORANGE, marker="D", lw=1, ms=3.5, label="parables minus folktale excerpts of the same length")]
+    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(left + 0.535, 0.23), frameon=False, fontsize=6.2, handlelength=1.8)
+    fig.text(left + 0.545, 0.125, "Filled: permutation p < 0.05 (within tradition) or\n95% interval excludes 0. Right of 0: parables\n"
+             "closer to folktales than the comparison.", fontsize=5.8, color=MUTED, va="top", linespacing=1.2)
+    save(fig, ctx, name)
 
 
-# ----------------------------------------------------------------- figure 3
-def fig3(ctx: Ctx, rep: str) -> None:
-    cells = pd.read_csv(ctx.results / "partB_attachment.csv")
-    cells = cells[cells["rep"] == rep]
-    comm = pd.read_csv(ctx.results / "partA_communities.csv")
-    comm = comm[comm["rep"] == rep].set_index("community")
-    order = [t for t in tradition_order(ctx, rep) if t in set(cells["tradition"])]
-    cols = [c for c in comm.index if c in set(cells["community"])]
-    val = cells.pivot(index="tradition", columns="community", values="share_minus_expected").loc[order, cols] * 100
-    sig = cells.pivot(index="tradition", columns="community", values="significant_bonferroni").loc[order, cols]
-    exp = cells.groupby("community")["community_share_of_folktales"].first().loc[cols] * 100
-    wide = len(cols) > 6
-    w = ctx.paper["figures"]["double_column_in" if wide else "single_column_in"]
-    fig, ax = plt.subplots(figsize=(w, 0.36 * len(order) + 1.25))
-    lim = max(5.0, float(np.abs(val.to_numpy()).max()))
-    im = ax.imshow(val.to_numpy(), cmap=DIVERGING, norm=TwoSlopeNorm(0, -lim, lim), aspect="auto")
-    for i in range(len(order)):
-        for j in range(len(cols)):
-            v = val.iat[i, j]
-            ax.text(j, i, ("0" if abs(v) < 0.5 else f"{v:+.0f}") + ("*" if bool(sig.iat[i, j]) else ""), ha="center", va="center", fontsize=6.5,
-                    color="white" if abs(v) > 0.62 * lim else INK)
-    labels = [f"{c}\n" + "\n".join(str(comm.at[c, "top_words"]).split()[:3]) if c != "small" else "small\ncommu-\nnities\n"
-              for c in cols]
-    ax.set_xticks(range(len(cols)), labels, linespacing=1.05)
-    ax.xaxis.tick_top()
-    ax.set_yticks(range(len(order)), order)
-    ax.tick_params(length=0)
-    for s in ax.spines.values():
-        s.set_visible(False)
-    ax.set_xticks(np.arange(-0.5, len(cols)), minor=True)
-    ax.set_yticks(np.arange(-0.5, len(order)), minor=True)
-    ax.grid(which="minor", color="white", lw=1.2)
-    ax.tick_params(which="minor", length=0)
-    for j, c in enumerate(cols):
-        ax.text(j, len(order) - 0.42, f"{exp[c]:.0f}%", ha="center", va="top", fontsize=6, color=MUTED)
-    ax.text(-0.55, len(order) - 0.42, "expected", ha="right", va="top", fontsize=6, color=MUTED)
-    cb = fig.colorbar(im, ax=ax, orientation="horizontal", fraction=0.06, pad=0.16, aspect=30)
-    cb.set_label("Share of a tradition's links to the community minus the shuffle expectation (percentage points)", fontsize=6.3)
-    cb.outline.set_visible(False)
-    cb.ax.tick_params(length=2, labelsize=6)
-    if bool(sig.to_numpy().any()):
-        cb.ax.text(0.0, -3.4, "* outside the label shuffles at p < 0.05 after Bonferroni correction", transform=cb.ax.transAxes,
-                   fontsize=6, color=MUTED, va="top")
-    save(fig, ctx, "fig3_placement")
-
-
-# ----------------------------------------------------------------- figure 4
-def fig4(ctx: Ctx, reps: list[str]) -> None:
+# ----------------------------------------------------------------- figure 3: validity
+def fig3(ctx: Ctx) -> None:
     cal = pd.read_csv(ctx.results / "calibration.csv").set_index("representation")
+    variants = [v for v in ("tfidf", "embedding", "tfidf_nouns_masked") if v in cal.index]
     hand = read_json(ctx.results / "hand_label_agreement.json") if (ctx.results / "hand_label_agreement.json").exists() else {"status": "pending"}
-    w = ctx.paper["figures"]["single_column_in"]
-    fig, (ax, bx) = plt.subplots(1, 2, figsize=(w, w * 0.62), gridspec_kw=dict(width_ratios=[1.6, 1], wspace=0.6))
-    xs = [1.5 * k for k in range(len(reps))]
-    for x, rep in zip(xs, reps):
-        r = cal.loc[rep]
-        ax.bar(x, r["recall_at_k"], width=0.7, color=BLUE, zorder=2)
-        ax.plot([x, x], [r["ci_low"], r["ci_high"]], color=INK, lw=0.8, zorder=3)
-        ax.text(x, r["ci_high"] + 0.02, f"{r['recall_at_k']:.2f}", ha="center", va="bottom", fontsize=6.8)
-    chance = float(cal.loc[reps[0], "chance_at_k"])
-    ax.axhline(chance, color=MUTED, lw=0.8, ls=(0, (3, 2)), zorder=4)
-    ax.text(xs[-1] + 0.5, chance + 0.02, f"chance\n{chance:.2f}", fontsize=6.3, color=MUTED, ha="left", va="bottom", linespacing=1.0)
-    ax.set_xticks(xs, [REP_NAME[r] for r in reps])
-    ax.tick_params(axis="x", length=0)
-    ax.set_xlim(-0.65, xs[-1] + 1.35)
-    ax.set_ylim(0, 1)
-    ax.set_ylabel("Recall@10")
-    ax.set_title(f"Known parallels found\n({int(cal.loc[reps[0], 'queries'])} religious retellings)", loc="left")
-    panel_letter(ax, "a")
-
+    w = ctx.paper["figures"]["double_column_in"]
+    fig, axes = plt.subplots(1, 3, figsize=(w, w * 0.3), gridspec_kw=dict(width_ratios=[1.25, 1.25, 1], wspace=0.55))
+    labels = ["TF-IDF", "Embed-\ndings", "TF-IDF,\nnouns\nmasked"]
+    for ax, (col, lo, hi, chance, chance_lo, chance_hi, title) in zip(axes[:2], (
+            ("recall_at_k", "ci_low", "ci_high", "chance_at_k", None, None, "Same-type folktale\namong the 10 nearest"),
+            ("vote_accuracy", None, None, "vote_chance", "vote_chance_low", "vote_chance_high", "Type voted by the\n10 nearest is right"))):
+        xs = np.arange(len(variants))
+        vals = cal.loc[variants, col].to_numpy()
+        ax.bar(xs, vals, width=0.6, color=BLUE, zorder=2)
+        if lo:
+            ax.vlines(xs, cal.loc[variants, lo], cal.loc[variants, hi], color=INK, lw=0.8, zorder=3)
+        for x, v in zip(xs, vals):
+            top = cal.loc[variants[x], hi] if hi else v
+            ax.text(x, top + 0.025, f"{v:.2f}", ha="center", va="bottom", fontsize=6.5)
+        ch = float(cal.loc[variants[0], chance])
+        if chance_lo:
+            ax.axhspan(cal.loc[variants[0], chance_lo], cal.loc[variants[0], chance_hi], color=BAND, zorder=0, lw=0)
+        ax.axhline(ch, color=MUTED, lw=0.8, ls=(0, (3, 2)), zorder=4)
+        ax.text(len(variants) - 0.62, ch + 0.015, f"chance\n{ch:.3f}", fontsize=6, color=MUTED, ha="left", va="bottom", linespacing=1.0)
+        ax.set_xticks(xs, labels[:len(variants)], linespacing=1.0)
+        ax.set_xlim(-0.55, len(variants) - 0.05)
+        ax.tick_params(axis="x", length=0)
+        ax.set_ylim(0, 1)
+        ax.set_title(title, loc="left", fontsize=7, linespacing=1.15)
+    axes[0].set_ylabel(f"Share of the {int(cal.loc[variants[0], 'queries'])} religious retellings")
+    bx = axes[2]
     bx.set_ylim(0, 1)
-    bx.set_title("Top-1 pairs judged\nparallel by hand", loc="left")
-    panel_letter(bx, "b")
+    bx.set_title("Top-1 pairs judged by hand", loc="left", fontsize=7)
     if hand.get("status") in ("complete", "partial") and "precision" in hand:
         vals = [hand["precision"][k].get("both_coders_agree_it_is_a_parallel", np.nan) for k in ("strict", "lenient")]
+        bx.bar([0, 1], vals, width=0.55, color=BLUE, zorder=2)
         for x, v in enumerate(vals):
-            bx.bar(x, v, width=0.56, color=BLUE, zorder=2)
-            bx.text(x, v + 0.02, f"{v:.2f}", ha="center", va="bottom", fontsize=6.8)
+            bx.text(x, v + 0.02, f"{v:.2f}", ha="center", va="bottom", fontsize=6.5)
         bx.set_xticks([0, 1], ["same plot", "plot or\nmotif"])
-        bx.tick_params(axis="x", length=0)
-        bx.set_xlim(-0.55, 1.45)
         bx.set_ylabel("Precision (both coders)")
         if "cohen_kappa" in hand:
-            bx.text(0.98, 0.97, f"κ = {hand['cohen_kappa']:.2f}\nn = {hand['coded_by_both']}", transform=bx.transAxes, fontsize=6.3,
-                    ha="right", va="top", color=MUTED)
+            bx.text(0.98, 0.97, f"Cohen's κ = {hand['cohen_kappa']:.2f}\nn = {hand['coded_by_both']}", transform=bx.transAxes,
+                    fontsize=6.2, ha="right", va="top", color=MUTED)
     else:
         bx.set_xticks([])
         bx.set_yticks([0, 0.5, 1])
         bx.set_ylabel("Precision")
-        bx.text(0.5, 0.5, "pending:\n100 pairs,\ntwo coders", transform=bx.transAxes, ha="center", va="center", fontsize=6.8,
-                color=MUTED, linespacing=1.25)
-    save(fig, ctx, "fig4_calibration")
+        bx.text(0.5, 0.5, "pending\n100 pairs, two coders;\nprecision and Cohen's κ\nappear here when coded", transform=bx.transAxes,
+                ha="center", va="center", fontsize=6.4, color=MUTED, linespacing=1.3)
+    for ax, s in zip(axes, "abc"):
+        ax.annotate(s, xy=(0, 1), xycoords="axes fraction", xytext=(-22, 8), textcoords="offset points", fontsize=9,
+                    fontweight="bold", va="bottom", ha="right", annotation_clip=False)
+    save(fig, ctx, "fig3_validity")
+
+
+# ----------------------------------------------------------------- supplementary S1: labels across edge constructions
+def figS1(ctx: Ctx) -> None:
+    nr = pd.read_csv(ctx.results / "network_robustness.csv")
+    w = ctx.paper["figures"]["double_column_in"]
+    fig, axes = plt.subplots(1, len(ctx.reps), figsize=(w, w * 0.32), sharey=True, squeeze=False)
+    for ax, rep in zip(axes[0], ctx.reps):
+        r = nr[nr["rep"] == rep].reset_index(drop=True)
+        xt = [("10%,\nmasked" if "masked" in str(e) else (f"{v * 100:.0f}%" if e == "density" else f"k = {int(v)}")) for e, v in zip(r["edges_by"], r["value"])]
+        xs = np.arange(len(r))
+        for (label, name), col, dx in zip((("atu_type", "tale type"), ("region", "region"), ("source_collection", "source collection")),
+                                          HUES, (-0.18, 0.0, 0.18)):
+            ex = r[f"{label}_nmi"] - r[f"{label}_nmi_null_mean"]
+            ax.scatter(xs + dx, ex, s=14, c=col, linewidths=0, zorder=3, label=f"{name}, over label shuffles")
+            if f"{label}_nmi_within_collection_null_mean" in r:
+                exw = r[f"{label}_nmi"] - r[f"{label}_nmi_within_collection_null_mean"]
+                ax.scatter(xs + dx, exw, s=14, facecolors="white", edgecolors=col, linewidths=0.9, zorder=3,
+                           label=f"{name}, over shuffles within collection")
+        canon = int(np.flatnonzero(r["canonical"].to_numpy(bool))[0])
+        ax.axvspan(canon - 0.45, canon + 0.45, color=BAND, zorder=0, lw=0)
+        ax.axhline(0, color=INK, lw=0.6, zorder=1)
+        ax.set_xticks(xs, xt, fontsize=6, linespacing=1.0)
+        ax.tick_params(axis="x", length=0)
+        ax.set_title(REP_NAME[rep], loc="left")
+        ax.yaxis.grid(True, color=RULE, lw=0.4)
+        ax.set_axisbelow(True)
+    axes[0][0].set_ylabel("NMI with the communities\nminus the null mean")
+    h, l = axes[0][0].get_legend_handles_labels()
+    fig.legend(h, l, loc="lower center", ncol=3, frameon=False, bbox_to_anchor=(0.5, -0.2), fontsize=6.2, columnspacing=1.4)
+    for ax, s in zip(axes[0], "ab"):
+        ax.annotate(s, xy=(0, 1), xycoords="axes fraction", xytext=(-18, 6), textcoords="offset points", fontsize=9,
+                    fontweight="bold", va="bottom", ha="right", annotation_clip=False)
+    fig.tight_layout(w_pad=1.5)
+    save(fig, ctx, "figS1_labels")
+
+
+def check_primary(ctx: Ctx) -> str:
+    """The main figure uses the representation with the higher calibration recall@10 (DECISIONS.md R3); refuse to
+    draw if paper.yaml says otherwise."""
+    cal = pd.read_csv(ctx.results / "calibration.csv").set_index("representation")
+    best = max(ctx.reps, key=lambda r: cal.at[r, "recall_at_k"])
+    assert best == ctx.primary, f"calibration now favours {best}; update primary_representation in paper.yaml"
+    return best
 
 
 def run(ctx: Ctx) -> dict:
     style()
-    primary = ctx.primary
-    reps = [primary] + [r for r in ctx.reps if r != primary]
+    primary = check_primary(ctx)
     fig1(ctx, primary)
-    fig2(ctx, reps)
-    fig3(ctx, primary)
-    fig4(ctx, ["tfidf", "embedding"] if set(ctx.reps) >= {"tfidf", "embedding"} else reps)
+    fig2(ctx, primary, "fig2_headline")
+    for o in [r for r in ctx.reps if r != primary]:
+        fig2(ctx, o, f"figS2_headline_{o}")
+    fig3(ctx)
+    figS1(ctx)
     from .report import write
     write(ctx)
-    print(f"  figures in {ctx.figures.relative_to(ctx.figures.parents[1 if ctx.sample else 0]).as_posix()}/ ; RESULTS.md written")
+    rel = lambda p: p.relative_to(p.parents[1 if ctx.sample else 0]).as_posix()
+    print(f"  figures in {rel(ctx.figures)}/ ; report material (RESULTS.md, captions.md, short_update.md, numbers.tex, table1.tex) "
+          f"in {rel(ctx.report)}/")
     return dict(primary=primary)

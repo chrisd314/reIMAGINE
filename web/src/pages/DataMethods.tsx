@@ -206,7 +206,7 @@ export function DataMethods({ route, navigate }: { route: Route; navigate: (p: s
 
       <section id="glossary" className="prose-wide">
         <h2>Glossary</h2>
-        <dl className="sans" style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "8px 18px", fontSize: 14.5 }}>
+        <dl className="sans glossary" style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "8px 18px", fontSize: 14.5 }}>
           {GLOSSARY.map(([t, d]) => <Fragment key={t}><dt style={{ fontWeight: 650 }}>{t}</dt><dd style={{ margin: 0 }}>{d}</dd></Fragment>)}
         </dl>
       </section>

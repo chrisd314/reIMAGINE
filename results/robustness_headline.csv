@@ -1,0 +1,56 @@
+variant,tradition,closer,closer_p,where,where_p,diff,top_excess_community
+tfidf (headline),Christian,False,0.071928,True,0.000999,0.0080378,C3
+tfidf (headline),Buddhist,True,0.000999,False,0.45654,0.032148,C2
+tfidf (headline),Jewish,True,0.01998,False,0.58541,0.011187,C1
+tfidf (headline),Sufi,False,0.17682,True,0.003996,0.0050471,C2
+tfidf (headline),Taoist,True,0.000999,True,0.00999,0.015242,C4
+"tfidf, communities of density_0.05",Christian,False,0.071928,True,0.000999,0.0080378,C2
+"tfidf, communities of density_0.05",Buddhist,True,0.000999,False,0.60639,0.032148,C3
+"tfidf, communities of density_0.05",Jewish,True,0.01998,True,0.014985,0.011187,C1
+"tfidf, communities of density_0.05",Sufi,False,0.17682,True,0.000999,0.0050471,C3
+"tfidf, communities of density_0.05",Taoist,True,0.000999,False,0.13387,0.015242,C2
+"tfidf, communities of density_0.15",Christian,False,0.071928,True,0.000999,0.0080378,C2
+"tfidf, communities of density_0.15",Buddhist,True,0.000999,False,0.57642,0.032148,C3
+"tfidf, communities of density_0.15",Jewish,True,0.01998,False,0.99001,0.011187,C2
+"tfidf, communities of density_0.15",Sufi,False,0.17682,True,0.000999,0.0050471,C3
+"tfidf, communities of density_0.15",Taoist,True,0.000999,False,0.11189,0.015242,C2
+"tfidf, communities of knn_5",Christian,False,0.071928,True,0.000999,0.0080378,C3
+"tfidf, communities of knn_5",Buddhist,True,0.000999,True,0.028971,0.032148,C11
+"tfidf, communities of knn_5",Jewish,True,0.01998,True,0.017982,0.011187,C1
+"tfidf, communities of knn_5",Sufi,False,0.17682,True,0.000999,0.0050471,C1
+"tfidf, communities of knn_5",Taoist,True,0.000999,True,0.008991,0.015242,C1
+"tfidf, communities of knn_10",Christian,False,0.071928,True,0.000999,0.0080378,C4
+"tfidf, communities of knn_10",Buddhist,True,0.000999,False,0.46154,0.032148,C10
+"tfidf, communities of knn_10",Jewish,True,0.01998,True,0.02997,0.011187,C3
+"tfidf, communities of knn_10",Sufi,False,0.17682,True,0.000999,0.0050471,C5
+"tfidf, communities of knn_10",Taoist,True,0.000999,False,0.27073,0.015242,C3
+"tfidf, communities of knn_20",Christian,False,0.071928,True,0.000999,0.0080378,C2
+"tfidf, communities of knn_20",Buddhist,True,0.000999,True,0.008991,0.032148,C6
+"tfidf, communities of knn_20",Jewish,True,0.01998,False,0.068931,0.011187,C6
+"tfidf, communities of knn_20",Sufi,False,0.17682,True,0.000999,0.0050471,C4
+"tfidf, communities of knn_20",Taoist,True,0.000999,True,0.000999,0.015242,C3
+embedding,Christian,True,0.000999,True,0.018981,0.10381,C3
+embedding,Buddhist,True,0.000999,True,0.013986,0.10105,C2
+embedding,Jewish,False,0.095904,True,0.01998,0.032232,C1
+embedding,Sufi,True,0.025974,True,0.018981,0.03786,C1
+embedding,Taoist,False,0.13487,True,0.000999,0.019677,C2
+"tfidf, regression at equal length",Christian,True,0.025864,,,0.0082118,
+"tfidf, regression at equal length",Buddhist,True,1.3403e-13,,,0.031828,
+"tfidf, regression at equal length",Jewish,False,0.099685,,,0.0062849,
+"tfidf, regression at equal length",Sufi,False,0.19122,,,0.0052337,
+"tfidf, regression at equal length",Taoist,True,2.9079e-08,,,0.015793,
+tfidf_nouns_masked,Christian,True,0.000999,False,0.66833,0.024474,C3
+tfidf_nouns_masked,Buddhist,True,0.000999,True,0.027972,0.03092,C1
+tfidf_nouns_masked,Jewish,False,0.12587,True,0.006993,0.0057124,C1
+tfidf_nouns_masked,Sufi,False,0.97502,True,0.004995,-0.0054374,C1
+tfidf_nouns_masked,Taoist,True,0.000999,False,0.16484,0.022962,C4
+"tfidf, names and formulae masked",Christian,True,0.000999,True,0.000999,0.020879,C3
+"tfidf, names and formulae masked",Buddhist,True,0.000999,False,0.47652,0.034942,C9
+"tfidf, names and formulae masked",Jewish,False,0.060939,False,0.36763,0.0058296,C1
+"tfidf, names and formulae masked",Sufi,False,0.096903,True,0.001998,0.0062146,C2
+"tfidf, names and formulae masked",Taoist,True,0.000999,True,0.035964,0.014642,C4
+"tfidf, hubs removed",Christian,False,0.054945,True,0.000999,0.0086018,C3
+"tfidf, hubs removed",Buddhist,True,0.000999,False,0.86613,0.030838,C2
+"tfidf, hubs removed",Jewish,True,0.011988,False,0.45954,0.011418,C1
+"tfidf, hubs removed",Sufi,False,0.091908,True,0.004995,0.0054511,C2
+"tfidf, hubs removed",Taoist,True,0.000999,False,0.1029,0.016576,C4

@@ -1,31 +1,33 @@
-# Once Upon a World
+# reIMAGINE
 
-A DTU 02805 *Social Graphs and Interactions* course project (hand-in 27 November 2026). The repository holds two pipelines that share one corpus and one set of core functions:
+A DTU 02805 *Social Graphs and Interactions* course project (hand-in 27 November 2026): where religious parables land in the world of folktales. The repository holds two pipelines that share one corpus and one set of core functions:
 
 | | Command | What it is for |
 | --- | --- | --- |
-| **Paper pipeline** | `python -m ouaw.run --stage all` | Every number and figure of the paper: the folklore map and the parables placed on it |
-| Website pipeline | `python -m analysis all` | The interactive site at <https://chrisd314.github.io/reIMAGINE/>: the Story (type versus place) and the **Parables** page |
+| **Paper pipeline** | `python -m ouaw.run --stage all` | Every number, figure and table of the analysis, the report material in `report/` (not committed), and the website's data and build |
+| Website pipeline | `python -m analysis all` | The interactive site at <https://chrisd314.github.io/reIMAGINE/>: the folklore map story, Explore, Validation, and the export that publishes the paper pipeline's site data |
 
-**The Parables page of the website** shows the paper pipeline's results. `python -m ouaw.site` turns `results/` into the committed file `data/site/parables.json` (titles, labels and openings of at most 40 words, no full texts); the website export copies it into the site. After rerunning the paper pipeline: `python -m ouaw.site`, commit `data/site/parables.json`, and the next deploy publishes it.
+**The website** (reIMAGINE) opens on an Overview of the paper's question and results, then the Parables explorer, the folklore-map story (type against place), Explore, Data & Methods, Validation and Sources. The `site` stage of the paper pipeline turns `results/` into the committed files `data/site/paper.json`, `data/site/parables.json` and `data/site/figures/*.png` (titles, labels and openings of at most 40 words, no full texts) and builds `web/dist` when Node is available; the website export copies the same files into the deployed site. No number on the site is typed by hand.
 
-This repository holds code and results, not the paper. Read `results/RESULTS.md` for the numbers and DECISIONS.md for every judgement call behind them.
+This repository holds code, analysis results and the website, not the paper. Material for the final report (`RESULTS.md`, captions, LaTeX macros, a short update) is written to `report/`, which is git-ignored; run the pipeline to regenerate it. DECISIONS.md holds every judgement call behind the numbers.
 
 ## The paper pipeline
 
-**Question.** Do religious parables tell the same kinds of stories as the world's folktales, and do parables from different religions land in the same part of world folklore?
+**Question.** Do parables from different religious traditions sit inside folktale communities more than non-story text from the same translations does, and which folktale communities and tale types do they land in? ("Are parables just folktales with a moral attached?" is the motivation only: text similarity cannot measure a moral, so it is not tested.)
 
-- **Part A, the map.** A text-similarity network of 1,462 folktales, its communities, what they are, and whether they follow tale type or region.
-- **Part B, parables.** 281 parables from five traditions are each compared with all folktales, scored for how folktale-like they are, and attached to the map.
+- **The map (background).** A text-similarity network of 1,462 folktales: its communities, what they are, what they follow (tale type, region, source collection), and how much of that depends on how edges are built.
+- **The headline.** 281 parables from five traditions against 168 non-story passages cut from the same translations: closer to folktales or not, which communities and tale types, with permutation tests within each tradition.
+- **Validity and robustness.** 36 religious retellings of known type held out as a calibration test; length-matched folktale excerpts; nouns masked; names and formulae masked; hubs removed; other graphs and the other representation (Table 1).
 
 ### Run it
 
 Requirements: [uv](https://docs.astral.sh/uv/) with Python 3.11. About 2 GB of disk for PyTorch and the sentence encoder.
 
 ```bash
-uv sync                                          # environment, versions pinned in uv.lock
+uv sync --group paper                            # environment, versions pinned in uv.lock; the `paper` group adds spaCy
+                                                 # and en_core_web_sm for the noun-masking check
 
-uv run python -m ouaw.run --stage all            # everything, on the full data
+uv run python -m ouaw.run --stage all            # everything, on the full data, including the website build
 uv run python -m ouaw.run --stage partB checks   # single stages, always run in pipeline order
 uv run python -m ouaw.run --stage all --sample 100   # fast development run; writes to results/_sample and figures/_sample
 
@@ -34,12 +36,18 @@ uv run pytest                                    # unit tests and checks on the 
 
 | Stage | Module | What it does | Time on a laptop |
 | --- | --- | --- | --- |
-| `data` | `ouaw/corpus.py` | Splits the cleaned corpus into 1,462 folktales and 36 calibration versions. Nothing is re-cleaned | seconds |
+| `data` | `ouaw/corpus.py` | Splits the cleaned corpus into 1,462 folktales and 36 calibration versions; asserts that no retelling or near-copy is in the pool; adds source collection and translator. Nothing is re-cleaned | seconds |
 | `parables` | `ouaw/parables/` | Segments the parables and cuts length-matched baseline passages; writes `data/processed/parables.csv` | 6 s from the cache |
 | `partA` | `ouaw/part_a.py` | Graphs at 5%, 10%, 15% density; Louvain; modularity against degree-preserving shuffles; community words; LDA; type versus region; PageRank; layout | 15 min first time, 2 min after |
-| `partB` | `ouaw/part_b.py` | Folk-closeness, tradition ranking with bootstrap intervals, both baselines, attachment to communities with shuffle nulls, distinctive words | 1 min |
-| `checks` | `ouaw/checks.py` | Calibration gate, second method, length, hubness, masking, hand-label template | 3 to 20 min first time (masked embeddings), 1 min after |
-| `figures` | `ouaw/figures.py`, `ouaw/report.py` | `figures/fig1`–`fig4` (PDF and PNG) and `results/RESULTS.md` | seconds |
+| `partB` | `ouaw/part_b.py` | Folk-closeness, nearest folktales, tradition ranking, attachment to communities, distinctive words | 1 min |
+| `vocab` | `ouaw/vocab.py` | spaCy part-of-speech tags (cached); nouns masked and TF-IDF refitted; the terms behind every top-1 match | 5 min first time, seconds after |
+| `headline` | `ouaw/headline.py` | The headline: parables against the same-translation baseline, permutation within tradition, community profile, voted tale types, source collections | seconds |
+| `length` | `ouaw/length.py` | Length-matched folktale excerpts, length regression, baseline length matching | 4 min first time (embeddings), seconds after |
+| `network` | `ouaw/network.py` | Edge-construction sweep (densities, kNN), within-collection nulls, masked map, backbones, structure against nulls, community table | 10 min |
+| `checks` | `ouaw/checks.py` | Calibration (recall@10, type vote, noun-masked), second method, length, hubness, masking, hand-label template | 1 min after the first run |
+| `robustness` | `ouaw/robustness.py` | Table 1: the headline under every check, with a fixed yes/partly/no rule | 30 s |
+| `figures` | `ouaw/figures.py`, `ouaw/report.py` | Figures 1–3 and S1–S2 (PDF and PNG); report material in `report/`: `RESULTS.md`, `captions.md`, `short_update.md`, `numbers.tex`, `table1.tex` | seconds |
+| `site` | `ouaw/site.py` | `data/site/paper.json`, `parables.json`, web-sized figures; mirrors them into `web/public/data` and runs `npm run build` | 20 s |
 
 Embeddings and shuffle nulls are cached by content, so a rerun only recomputes what changed. All seeds are fixed (`paper.yaml`, `config.yaml`).
 
@@ -47,9 +55,9 @@ Embeddings and shuffle nulls are cached by content, so a rerun only recomputes w
 
 | Path | Content |
 | --- | --- |
-| `results/RESULTS.md` | Every headline number next to its null or baseline, with the file it came from |
-| `results/*.csv`, `*.json` | All tables: `partA_*` (map), `partB_ranking.csv` (each text with its 10 nearest folktales), `partB_traditions.csv`, `partB_attachment*.csv`, `calibration*.csv`, `checks_*.csv`, `top_pairs.csv`, `parables_*.csv` |
-| `figures/fig1_map`, `fig2_closeness`, `fig3_placement`, `fig4_calibration` | The four figures, PDF and PNG |
+| `report/` (git-ignored) | Report material: `RESULTS.md` (every number in the order of the paper, with its null and source file), `numbers.tex` (a LaTeX macro for each), `table1.tex`, `captions.md`, `short_update.md` |
+| `results/*.csv`, `*.json` | All tables: `headline_*` (the headline), `length_*`, `match_drivers*`, `network_*`, `community_table.csv`, `collection_*`, `table1_robustness.csv`, `robustness_headline.csv`, `partA_*`, `partB_*`, `calibration*.csv`, `checks_*.csv`, `parables_*.csv` |
+| `figures/fig1_map`, `fig2_headline`, `fig3_validity`, `figS1_labels`, `figS2_headline_embedding` | The figures (PDF and PNG) |
 | `data/processed/parables.csv` | The parables and baseline passages: `id, tradition, kind, source, translator, year, title, text, n_tokens, url, retrieved_at, segment_note` |
 | `labeling/segmentation_check.csv` | 20 random parables per tradition with their first and last 30 words, for a hand check of the segmentation |
 | `labeling/hand_labels_template.csv` | The top-1 parable–folktale pair of 100 parables, with empty `coder1` and `coder2` columns |
@@ -59,9 +67,9 @@ Embeddings and shuffle nulls are cached by content, so a rerun only recomputes w
 1. Copy `labeling/hand_labels_template.csv` to `labeling/hand_labels.csv`.
 2. Two people fill `coder1` and `coder2` independently with `same_plot`, `shared_motif`, `theme_only` or `unrelated`.
 3. `uv run python -m ouaw.agreement` writes raw agreement, Cohen's κ, the confusion table and precision to `results/`.
-4. `uv run python -m ouaw.run --stage figures` puts the precision into Figure 4 and RESULTS.md.
+4. `uv run python -m ouaw.run --stage figures site` puts the precision and κ into Figure 3, `report/RESULTS.md` and the website.
 
-The pipeline never fills a label. Until `hand_labels.csv` exists, Figure 4 shows "pending".
+The pipeline never fills a label. Until `hand_labels.csv` exists, Figure 3 shows "pending". The template's `driver_terms` column lists the five terms that carry each pair's cosine; once any coder value is filled, the pipeline leaves the template alone.
 
 ### Data sources
 
@@ -88,18 +96,21 @@ Every downloaded page is logged with its URL, time and SHA-256 in `data/raw/para
 ```text
 paper.yaml             settings of the paper pipeline (seeds, shuffles, targets, masking, figure sizes)
 config.yaml            frozen text and graph settings shared with the website pipeline
-ouaw/                  paper pipeline: run.py, corpus.py, reps.py, part_a.py, part_b.py, checks.py,
-                       agreement.py, figures.py, report.py, parables/ (one module per tradition)
+ouaw/                  paper pipeline: run.py, corpus.py, reps.py, part_a.py, part_b.py, vocab.py, headline.py,
+                       length.py, network.py, checks.py, robustness.py, agreement.py, figures.py, report.py,
+                       site.py, parables/ (one module per tradition)
+report/                report material written by the pipeline (git-ignored; not the paper itself)
+web/                   the website (Vite + React); tests/browser/site_check.py checks every built page
 analysis/              data stages (fetch, clean, cohorts), core functions (TF-IDF, embeddings, networks,
                        metrics) and the website pipeline
 data/mappings/         calibration_set.csv (the 36 versions), parables/*.yaml (verse ranges, anchors)
 data/processed/        narratives.parquet (folktales, git-ignored), parables.csv
 results/, figures/, labeling/   outputs of the paper pipeline
 legacy/                the dropped lesson study (kept, never run)
-tests/                 test_ouaw.py (paper pipeline, toy inputs); the other files test the website pipeline
+tests/                 test_ouaw.py and test_feedback_update.py (paper pipeline, toy inputs); the others test the website pipeline
 ```
 
-Documents: AUDIT.md (state of the repository before this work), DECISIONS.md (every judgement call), PROGRESS.md (status and how to resume), `results/RESULTS.md` (the numbers).
+Documents: AUDIT.md (state of the repository before this work), DECISIONS.md (every judgement call), PROGRESS.md (status and how to resume); `report/RESULTS.md` (the numbers, regenerated, not committed).
 
 ## The website pipeline
 

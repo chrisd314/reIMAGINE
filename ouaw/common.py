@@ -44,6 +44,12 @@ class Ctx:
         return self._dir(ROOT / "figures")
 
     @property
+    def report(self) -> Path:
+        """Material written for the final report (RESULTS.md, captions, LaTeX macros, short update). Git-ignored:
+        it is never committed with the code, the analysis or the website."""
+        return self._dir(ROOT / "report")
+
+    @property
     def work(self) -> Path:
         """Intermediate arrays (graphs, layouts, neighbour lists); git-ignored."""
         return self._dir(INTERIM / "ouaw")
@@ -79,6 +85,20 @@ def top_k(S: np.ndarray, k: int) -> np.ndarray:
     """Column indices of the k largest entries of each row; ties go to the lower column index."""
     k = min(k, S.shape[1])
     return np.argsort(-np.round(S, 12), axis=1, kind="stable")[:, :k]
+
+
+def permute_within(groups, rng: np.random.Generator) -> np.ndarray:
+    """Index permutation that moves items only within their own group (stratified shuffle).
+
+    `labels[permute_within(groups, rng)]` shuffles labels within each group: within a tradition for the
+    headline test (parable vs baseline), within a source collection for the conditional label null.
+    """
+    groups = np.asarray(groups)
+    perm = np.arange(len(groups))
+    for g in pd.unique(groups):
+        pos = np.flatnonzero(groups == g)
+        perm[pos] = pos[rng.permutation(len(pos))]
+    return perm
 
 
 def summarise_null(obs: float, null: np.ndarray) -> dict:

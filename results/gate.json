@@ -9,7 +9,8 @@
     "tfidf": 0.6944444444444444,
     "tfidf_masked": 0.6944444444444444,
     "embedding": 0.6111111111111112,
-    "embedding_masked": 0.6111111111111112
+    "embedding_masked": 0.6111111111111112,
+    "tfidf_nouns_masked": 0.4722222222222222
   },
   "chance_at_10": 0.0545457082174443
 }

@@ -1,6 +1,41 @@
 # Progress
 
-**Last updated:** 2026-11-11 · **Branch:** `parables-pipeline` (not merged into `master`; pushing `master` redeploys the website) · **Hand-in:** 27 November 2026
+**Last updated:** 2026-11-18 · **Branch:** `feedback-update` (from `parables-site`; not merged; pushing `master` redeploys the website) · **Hand-in:** 27 November 2026
+
+## Feedback update (started 18 November)
+
+Unfinished from the earlier tasks, carried over unchanged: the three decisions under "Needs your decision" and the four tasks under "Work that only you can do" below. Blocked: nothing.
+
+| Step | State |
+| --- | --- |
+| 1 Calibration not circular | Done. No retelling or near-copy in the pool (highest cosine TF-IDF 0.380, embeddings 0.894); assertion in every stage; no number changed (DECISIONS.md T1). |
+| 2 Headline: parables against the same-translation baseline | Done (`ouaw/headline.py`, stage `headline`). TF-IDF: Buddhist, Taoist and Jewish parables are closer to folktales than their baseline (permutation p ≤ 0.02); Christian (p = 0.07) and Sufi (p = 0.18) are not. Embeddings: Christian, Buddhist, Sufi closer. The old "king, prince, princess" lean of four traditions is mostly shared with their own baseline; against it, Christian parables lean to C3 (money, husband, woman; +17 points), Sufi to C2 (fox, wolf, lion; +11), Taoist to C4 (+5). Outputs `results/headline_*.csv`. RESULTS.md is rewritten in step 9. |
+| 3 Length confound | Done (`ouaw/length.py`, stage `length`). Baselines are length-matched (Mann-Whitney p ≥ 0.29). Every tradition's parables are *less* folktale-like than folktale excerpts of the same length (TF-IDF −0.04 to −0.06; embeddings −0.05 to −0.18): the gap to folklore is not a length effect. Closeness rises with length (TF-IDF +0.020 per log word). At equal length, parables beat their baseline for Buddhist and Taoist (p < 0.001), Christian borderline (p = 0.05), Jewish and Sufi not. The tradition order at equal length puts Christian first (τ = 0.8 with the raw order). |
+| 4 Vocabulary against narrative | Done (`ouaw/vocab.py`, stage `vocab`; spaCy in group `paper`). With nouns masked, recall@10 0.69 → 0.47 (chance 0.055). Headline with nouns masked: Buddhist and Taoist hold, Christian becomes significant (p = 0.001), Jewish is lost (p = 0.13), Sufi none. Archaic pronouns (thou, thee, thy) are among the top match drivers of Buddhist, Jewish and Sufi texts: translation register. Template has `driver_terms` (no labels were filled). |
+| 5 Network robustness | Done (`ouaw/network.py`, stage `network`). 12 graphs (densities 5–15%, kNN 5/10/20, both representations): tale type beats its shuffles and beats region in all 12; partitions differ (NMI 0.33–0.62 with the canonical one; 7 to 27 communities). Backbone drawn: disparity filter on the complete similarity graph, α = 0.01 (2,495 edges). Community table, degree and clustering against nulls, archetypal tales written. |
+| 6 Collection and translator | Done (same stage). Collection known for 1,284 tales, translator for only 168. Type survives shuffles within collection (NMI 0.396 against 0.245); **region mostly does not** (0.091 against 0.086): the geography signal is largely the source collection. Three translator/editor formulae found and masked; the masked map keeps the type result. No tradition sends more than 12% of its links to one collection. |
+| 7 Figures around one headline | Done (`ouaw/figures.py`, `ouaw/robustness.py`). Figures 1–3, S1, S2, captions, Table 1. |
+| 8 Website (reIMAGINE) | Done. Renamed, storybook theme, new Overview page with every number read from `results/` (stage `site`), Parables explorer on the new test, Story moved to `#/story`. Built locally; `tests/browser/site_check.py` passes on all 7 pages at desktop and phone width (no console errors, images load, links resolve, no sideways scrolling). Not deployed: nothing was pushed. |
+| 9 Ready for the report | Done. In `report/` (git-ignored, never committed): `RESULTS.md` in paper order, `numbers.tex` (every number as a macro), `table1.tex`, `captions.md`, `short_update.md`. The paper itself was not written. |
+
+**Commits.** Steps 1–4 are local commits on `feedback-update` (not pushed). Everything from step 5 on is left uncommitted for you to review and submit. Material for the final report lives only in `report/`, which `.gitignore` excludes; the old `results/RESULTS.md` was moved there, so git shows it as deleted. Tests: 81 pass (21 new in `tests/test_feedback_update.py`).
+
+### What holds and what does not
+
+- **Holds everywhere:** Buddhist parables are closer to folktales than their own translation's non-story text under every check (both representations, length control, nouns masked, names masked, hubs removed). The method finds known parallels (recall@10 0.69; 0.47 with nouns masked; chance 0.055). Tale type organises the map more than region in every graph, and beyond the source collection.
+- **Holds mostly:** Taoist parables are closer than their baseline in every check except embeddings. Christian parables lean toward C3 (money, husband, woman) against their baseline.
+- **Does not hold across representations:** the Christian, Jewish and Sufi verdicts. Christian is closer with embeddings and with nouns masked, not with plain TF-IDF; Jewish only with plain TF-IDF (its resemblance rests on shared nouns); Sufi only with embeddings.
+- **Revised from 11 November:** the lean of four traditions toward the "king, prince, princess" community is shared by their own baseline, so it belongs to the translations. Region's NMI with the communities is mostly source collection.
+- **Never in question:** every tradition's parables are less folktale-like than folktale excerpts of the same length.
+
+### Left for the report
+
+1. Hand labels (100 top-1 pairs, two coders, now with driver terms): Figure 3c and κ are placeholders until then.
+2. Decide on N1–N4 (DECISIONS.md), in particular N4 (editor's notes inside some folktale texts).
+3. Superseded figure files `figures/fig2_closeness.*`, `fig3_placement.*`, `fig4_calibration.*` can be deleted when you commit.
+4. To deploy the site: commit `data/site/`, `web/`, `analysis/export.py` and push to `master`.
+
+## Before the feedback update (11 November)
 
 **State:** all five phases are done. `python -m ouaw.run --stage all` regenerates every table, the four figures and `results/RESULTS.md` on the full data; the 60 tests pass. The calibration gate of 14 November is already passed.
 
@@ -33,7 +68,7 @@ Blocked sources: none. Every page answered with HTTP 200 (`data/raw/parables/fet
 | 5 Figures, report | `figures/fig1`–`fig4` (PDF, PNG), `results/RESULTS.md` |
 | Optional | PageRank z-scores done. Not done: Burlingame's *Buddhist Legends*, a Hindu tradition, a run without the 28 further religious versions |
 
-## Key numbers (full run of 2026-11-11; all in `results/RESULTS.md`)
+## Key numbers (full run of 2026-11-11; the current numbers are in `report/RESULTS.md`)
 
 TF-IDF is the primary representation (higher calibration recall); embeddings are the second method.
 
@@ -75,14 +110,15 @@ Communities follow tale type more than region by NMI. Assortativity is higher fo
 ## How to resume
 
 ```bash
-git checkout parables-pipeline
-uv sync
-uv run pytest                                          # 60 tests
-uv run python -m ouaw.run --stage all --sample 100     # 1 minute; writes to results/_sample
-uv run python -m ouaw.run --stage all                  # full run; about 5 minutes with warm caches
+git checkout feedback-update
+uv sync --group paper                                  # spaCy for the noun-masking check
+uv run pytest                                          # 81 tests
+uv run python -m ouaw.run --stage all --sample 100     # about 2 minutes; writes to results/_sample
+uv run python -m ouaw.run --stage all                  # full run incl. site build; about 20 minutes with warm caches
+cd web && npm run preview                              # then: python tests/browser/site_check.py http://localhost:4173/
 ```
 
-Read in this order: this file, DECISIONS.md, `results/RESULTS.md`. Settings are in `paper.yaml`. The raw source pages are in `data/raw/parables/` on this machine only (git-ignored); without them the `parables` stage keeps the committed `parables.csv`.
+Read in this order: this file, DECISIONS.md, `report/RESULTS.md` (regenerate it with `--stage figures` if `report/` is empty). Settings are in `paper.yaml`. The raw source pages are in `data/raw/parables/` on this machine only (git-ignored); without them the `parables` stage keeps the committed `parables.csv`. Node for the site build is found on PATH or in `.tools/node-*`.
 
 ## Possible next steps
 

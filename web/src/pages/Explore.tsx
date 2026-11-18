@@ -93,6 +93,7 @@ export function Explore({ route, navigate }: { route: Route; navigate: (p: strin
 
   return (
     <div className={`workspace${selected != null ? " has-selection" : ""}`}>
+      <h1 className="visually-hidden">Explore the folktale network</h1>
       <aside className="rail" aria-label="Explore controls">
         <section>
           <label className="control-label" htmlFor="search">Find a tale</label>
