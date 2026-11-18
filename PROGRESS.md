@@ -9,7 +9,7 @@ Unfinished from the earlier tasks, carried over unchanged: the three decisions u
 | Step | State |
 | --- | --- |
 | 1 Calibration not circular | Done. No retelling or near-copy in the pool (highest cosine TF-IDF 0.380, embeddings 0.894); assertion in every stage; no number changed (DECISIONS.md T1). |
-| 2 Headline: parables against the same-translation baseline | to do |
+| 2 Headline: parables against the same-translation baseline | Done (`ouaw/headline.py`, stage `headline`). TF-IDF: Buddhist, Taoist and Jewish parables are closer to folktales than their baseline (permutation p ≤ 0.02); Christian (p = 0.07) and Sufi (p = 0.18) are not. Embeddings: Christian, Buddhist, Sufi closer. The old "king, prince, princess" lean of four traditions is mostly shared with their own baseline; against it, Christian parables lean to C3 (money, husband, woman; +17 points), Sufi to C2 (fox, wolf, lion; +11), Taoist to C4 (+5). Outputs `results/headline_*.csv`. RESULTS.md is rewritten in step 9. |
 | 3 Length confound | to do |
 | 4 Vocabulary against narrative | to do |
 | 5 Network robustness | to do |

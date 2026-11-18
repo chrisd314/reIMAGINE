@@ -45,6 +45,10 @@ partB:
   placement_seed: 20261112
   distinctive: {quantile: 0.25, top: 15, prior: 0.01}
 
+headline:                                  # TA feedback step 2: parables against the same-translation baseline
+  permutations: 1000                       # parable/baseline label shuffled within the tradition (text = unit)
+  seed: 20261118
+
 checks:
   recall_k: 10
   hubs_removed: 10

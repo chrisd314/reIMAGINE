@@ -6,6 +6,7 @@ kept as queries whose correct answer (a folktale of the same ATU type) is known.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 import numpy as np
@@ -15,6 +16,23 @@ from .common import PARABLES_CSV, PROCESSED, ROOT, Ctx, n_tokens, write_json
 
 EXPECTED_CALIBRATION = {"Jātaka": 18, "Gesta Romanorum": 11, "Rumi, Masnavi": 4,
                         "Jacques de Vitry, sermon exempla": 2, "Talmud": 1}
+
+
+_TRANSLATED = re.compile(r"[Tt]ranslated(?: from the [A-Z]\w+)?(?: into [A-Z]\w+)?(?: and edited)?(?: with notes)? by "
+                         r"((?:[A-Z][\w'.-]*\.?\s?){1,6}?(?:and (?:[A-Z][\w'.-]*\.?\s?){1,5})?)(?=[,(;]|\s*$|\s[a-z(])")
+
+
+def translator_of(source, notes) -> str | None:
+    """The translator named in a tale's source reference (or, failing that, its notes): 'translated ... by X'.
+
+    None when no translator is stated; Ashliman's own translations usually state none.
+    """
+    for s in (source, notes):
+        if isinstance(s, str):
+            m = _TRANSLATED.search(s)
+            if m:
+                return re.sub(r"\s+", " ", m.group(1)).strip(" .")
+    return None
 
 
 def check_calibration_exclusion(folk_ids, calib_ids, near_dups: dict | None = None, S: np.ndarray | None = None,
@@ -83,7 +101,9 @@ def load_corpus(ctx: Ctx) -> Corpus:
     tab = pd.DataFrame({
         "id": nar["narrative_id"], "title": nar["title"], "text": nar["text"],
         "atu_id": nar["atu_id"].where(nar["atu_status"] == "unique"), "atu_name": nar["atu_name"],
-        "region": nar["broad_region"], "place": nar["place_label"], "n_tokens": nar["text"].map(n_tokens)})
+        "region": nar["broad_region"], "place": nar["place_label"], "n_tokens": nar["text"].map(n_tokens),
+        "source_collection": nar["source_key"].where(~nar["source_key"].isin(["(no source)", "(unparsed)"])),
+        "translator": [translator_of(s, t) for s, t in zip(nar["source"], nar["notes"])]})
     is_cal = tab["id"].isin(cal["narrative_id"])
     folk = tab[~is_cal].reset_index(drop=True)
     calib = tab[is_cal].merge(cal[["narrative_id", "tradition", "collection"]], left_on="id", right_on="narrative_id")

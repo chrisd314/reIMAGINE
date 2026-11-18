@@ -5,33 +5,25 @@
     python -m ouaw.run --stage all --sample 100    fast development run (100 folktales, a few texts per
                                                    tradition, at most 100 shuffles; writes to results/_sample)
 
-Stages: data -> parables -> partA -> partB -> checks -> figures (figures also writes results/RESULTS.md).
+Stages: data -> parables -> partA -> partB -> headline -> checks -> figures
+(figures also writes results/RESULTS.md).
 """
 from __future__ import annotations
 
 import argparse
+import importlib
 import sys
 import time
 
 from .common import Ctx
 
-ORDER = ["data", "parables", "partA", "partB", "checks", "figures"]
+ORDER = ["data", "parables", "partA", "partB", "headline", "checks", "figures"]
+MODULE = {"data": ".corpus", "parables": ".parables.build", "partA": ".part_a", "partB": ".part_b",
+          "headline": ".headline", "checks": ".checks", "figures": ".figures"}
 
 
 def _stage(name: str):
-    if name == "data":
-        from .corpus import run
-    elif name == "parables":
-        from .parables.build import run
-    elif name == "partA":
-        from .part_a import run
-    elif name == "partB":
-        from .part_b import run
-    elif name == "checks":
-        from .checks import run
-    else:
-        from .figures import run
-    return run
+    return importlib.import_module(MODULE[name], __package__).run
 
 
 def main(argv=None) -> int:

@@ -81,6 +81,20 @@ def top_k(S: np.ndarray, k: int) -> np.ndarray:
     return np.argsort(-np.round(S, 12), axis=1, kind="stable")[:, :k]
 
 
+def permute_within(groups, rng: np.random.Generator) -> np.ndarray:
+    """Index permutation that moves items only within their own group (stratified shuffle).
+
+    `labels[permute_within(groups, rng)]` shuffles labels within each group: within a tradition for the
+    headline test (parable vs baseline), within a source collection for the conditional label null.
+    """
+    groups = np.asarray(groups)
+    perm = np.arange(len(groups))
+    for g in pd.unique(groups):
+        pos = np.flatnonzero(groups == g)
+        perm[pos] = pos[rng.permutation(len(pos))]
+    return perm
+
+
 def summarise_null(obs: float, null: np.ndarray) -> dict:
     """Observed value against a null sample: mean, sd, z and one-sided upper p (1 + #null >= obs) / (1 + N)."""
     null = np.asarray(null, dtype=float)
