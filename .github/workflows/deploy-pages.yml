@@ -1,24 +1,16 @@
 # Builds the public website and deploys it to GitHub Pages.
 #
-# The site's data (web/public/data) is not in git: it is produced by the analysis
-# pipeline. This workflow therefore runs the pipeline, tests its outputs, builds
-# the Vite site and publishes web/dist. Nothing else in the repository is published.
-#
-# OUAW_PUBLIC_BUILD=1 makes the export excerpt-only (see LICENSE_NOTES.md §3):
-# the public site never contains full tale texts, whatever config.yaml says.
+# The site reads three committed files in data/site/ (story.json, network.json, near.json), written by the
+# pipeline (python -m reimagine.run --stage site). The workflow therefore does not rerun the analysis: it checks
+# that they hold only openings of at most 40 words (LICENSE_NOTES.md), builds web/ and publishes web/dist.
 name: Deploy site to GitHub Pages
 
 on:
   push:
     branches: [master]
     paths:
-      - "analysis/**"
-      - "config.yaml"
-      - "data/**"
-      - "pyproject.toml"
-      - "uv.lock"
+      - "data/site/**"
       - "web/**"
-      - "tests/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -34,60 +26,33 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
-    env:
-      OUAW_PUBLIC_BUILD: "1"
-      PYTHONUNBUFFERED: "1"
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
 
-      - uses: astral-sh/setup-uv@v10.3.3
-        with:
-          enable-cache: true
-
-      # Complete pipeline state of an identical earlier run (same code, settings and inputs).
-      # On a hit the expensive stages are skipped by their stamps; there is deliberately no
-      # fallback key, because stamps do not track code changes.
-      - name: Restore pipeline state
-        uses: actions/cache@v6
-        with:
-          path: |
-            data/interim
-            data/processed
-            outputs/.stamps
-            outputs/audit
-            outputs/metrics
-            outputs/validation
-          key: pipeline-${{ runner.os }}-${{ hashFiles('analysis/**', 'config.yaml', 'uv.lock', 'data/raw/**', 'data/mappings/**') }}
-
-      # Chunk embeddings are content-addressed, so an older cache is always safe to reuse.
-      - name: Restore embedding cache and model
-        uses: actions/cache@v6
-        with:
-          path: |
-            data/interim/cache
-            ~/.cache/huggingface
-          key: embeddings-${{ runner.os }}-${{ hashFiles('config.yaml', 'uv.lock') }}
-          restore-keys: |
-            embeddings-${{ runner.os }}-
-
-      - name: Install Python environment
-        run: uv sync --locked
-
-      - name: Run the analysis pipeline (excerpt-only export)
-        run: uv run python -m analysis all
-
-      - name: Test code and pipeline outputs
-        run: uv run pytest
-
-      - name: Headline numbers of this run
+      - name: Refuse to publish full texts
         run: |
-          {
-            echo '### Headline numbers of the deployed run'
-            echo '```text'
-            uv run python scripts/summarise_run.py
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
+          python3 - <<'EOF'
+          import json, pathlib, sys
+
+          def openings(obj, key=""):
+              if isinstance(obj, dict):
+                  for k, v in obj.items():
+                      yield from openings(v, key if "opening" in key.lower() else k)
+              elif isinstance(obj, list):
+                  for v in obj:
+                      yield from openings(v, key)
+              elif isinstance(obj, str) and "opening" in key.lower():
+                  yield obj
+
+          limit = json.load(open("data/site/story.json", encoding="utf-8"))["settings"]["openingWords"]
+          texts = [o for f in sorted(pathlib.Path("data/site").glob("*.json"))
+                   for o in openings(json.loads(f.read_text(encoding="utf-8")))]
+          longest = max(len(t.replace(" …", "").split()) for t in texts)
+          print(f"{len(texts)} openings; longest {longest} words (limit {limit})")
+          if longest > limit:
+              sys.exit("an opening is longer than the excerpt limit; refusing to deploy")
+          EOF
 
       - uses: actions/setup-node@v7
         with:
@@ -100,20 +65,6 @@ jobs:
         run: |
           npm ci
           npm run build
-
-      - name: Refuse to publish full texts
-        run: |
-          python3 - <<'EOF'
-          import json, pathlib, sys
-          data = pathlib.Path("web/dist/data")
-          manifest = json.loads((data / "manifest.json").read_text(encoding="utf-8"))
-          if manifest.get("full_texts_included") is not False or not manifest.get("public_build"):
-              sys.exit("web/dist/data is not an excerpt-only public export; refusing to deploy")
-          longest = max(len(json.loads(p.read_text(encoding="utf-8"))["text"].split()) for p in (data / "tales").glob("*.json"))
-          print(f"public export verified: longest published text is {longest} words")
-          if longest > 120:
-              sys.exit("a tale payload is longer than the excerpt limit; refusing to deploy")
-          EOF
 
       - uses: actions/configure-pages@v6
 

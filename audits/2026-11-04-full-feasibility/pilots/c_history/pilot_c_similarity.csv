@@ -1,9 +1,0 @@
-pair,a,b,words_a,words_b,tfidf,embedding
-C1 case: Sumerian flood vs Genesis flood (different translators),"ETCSL Flood story (t.1.7.4, fragmentary)",Genesis 6:5-9:17 (WEB),697,1875,0.114,0.511
-C1 control: Genesis flood vs unrelated parable (same translation),Genesis 6:5-9:17 (WEB),CONTROL Luke 12:16-20 Rich Fool (WEB),1875,110,0.062,0.498
-C1 control: Sumerian flood vs unrelated parable,"ETCSL Flood story (t.1.7.4, fragmentary)",CONTROL Luke 12:16-20 Rich Fool (WEB),697,110,0.018,0.406
-C2 case: Barlaam apologue vs Boccaccio,Barlaam and Ioasaph: apologue of the king's son (Gutenberg #749),"tale-0137 Boccaccio, Filippo Balducci (1350-55; retold by Ashliman)",411,314,0.075,0.404
-C2 case: Barlaam apologue vs Geiler,Barlaam and Ioasaph: apologue of the king's son (Gutenberg #749),tale-0135 Geiler von Kaysersberg (c. 1510),411,157,0.05,0.414
-C2 case: Barlaam apologue vs Poggio (combines ATU 1678 with 1686),Barlaam and Ioasaph: apologue of the king's son (Gutenberg #749),"tale-0136 Poggio, Facetiae (15th c.)",411,241,0.019,0.521
-C2: Boccaccio vs Geiler (two later versions),"tale-0137 Boccaccio, Filippo Balducci (1350-55; retold by Ashliman)",tale-0135 Geiler von Kaysersberg (c. 1510),314,157,0.1,0.433
-C2 control: Barlaam apologue vs unrelated Christian exemplum (same era of moralised tales),Barlaam and Ioasaph: apologue of the king's son (Gutenberg #749),"CONTROL tale-0029 Gesta Romanorum, Of the Remembrance of Benefits",411,378,0.022,0.578

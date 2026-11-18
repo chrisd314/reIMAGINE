@@ -4,7 +4,7 @@
 # each; books as in the WEB verse-per-line file: MAT, MAR, LUK). The pipeline keeps the LONGEST
 # version and drops the others, so no parable is counted twice.
 #
-# Judgement calls (please review; edit a range and rerun `python -m ouaw.run --stage parables`):
+# Judgement calls (please review; edit a range and rerun `python -m reimagine.run --stage parables`):
 #   - Ranges hold the story as told, with its closing saying when that is in the same verses.
 #     Separate explanations are left out (for example Matthew 13:18-23 on the Sower, 13:36-43 on the Weeds).
 #   - Two pairs that the Gospels tell back to back, each half under 40 words, are one text each:

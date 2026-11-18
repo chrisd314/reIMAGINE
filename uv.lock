@@ -823,61 +823,6 @@ wheels = [
 ]
 
 [[package]]
-name = "once-upon-a-world"
-version = "1.0.0"
-source = { editable = "." }
-dependencies = [
-    { name = "ftfy" },
-    { name = "matplotlib" },
-    { name = "networkx" },
-    { name = "numpy" },
-    { name = "pandas" },
-    { name = "pyarrow" },
-    { name = "pyyaml" },
-    { name = "requests" },
-    { name = "scikit-learn" },
-    { name = "scipy" },
-    { name = "sentence-transformers" },
-    { name = "torch" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "playwright" },
-    { name = "pytest" },
-]
-paper = [
-    { name = "en-core-web-sm" },
-    { name = "spacy" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "ftfy", specifier = ">=6.2" },
-    { name = "matplotlib", specifier = ">=3.8" },
-    { name = "networkx", specifier = ">=3.4" },
-    { name = "numpy", specifier = ">=1.26" },
-    { name = "pandas", specifier = ">=2.2" },
-    { name = "pyarrow", specifier = ">=15" },
-    { name = "pyyaml", specifier = ">=6" },
-    { name = "requests", specifier = ">=2.31" },
-    { name = "scikit-learn", specifier = ">=1.4" },
-    { name = "scipy", specifier = ">=1.12" },
-    { name = "sentence-transformers", specifier = ">=3.0" },
-    { name = "torch", specifier = ">=2.2" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "playwright", specifier = ">=1.45" },
-    { name = "pytest", specifier = ">=8" },
-]
-paper = [
-    { name = "en-core-web-sm", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" },
-    { name = "spacy", specifier = ">=3.8,<3.9" },
-]
-
-[[package]]
 name = "packaging"
 version = "26.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1143,6 +1088,61 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/a1/46ba549e65562ca04608b24179b8a7bb6f146ae0e7c6d7f5e70f3339c8ba/regex-2026.9.29-cp311-cp311-win32.whl", hash = "sha256:18ae8eed4526e35bdb754d61562b90bf5c00a67fdcf3cc1380dd59597486631b", size = 268940, upload-time = "2026-09-29T00:46:34.179Z" },
     { url = "https://files.pythonhosted.org/packages/4d/4a/aab232183c70fdcf77bcf0c51819da02ec522e393e6a0bf00bcf2142e21f/regex-2026.9.29-cp311-cp311-win_amd64.whl", hash = "sha256:1043aedf5917caa861bcb25a9c11460049656bdf0017a90a309fa8f255467725", size = 280641, upload-time = "2026-09-29T00:46:35.484Z" },
     { url = "https://files.pythonhosted.org/packages/33/b1/7c05954af0f51de376df2ba97f7f78a8b79334c7e5b3d2d9f2aead1f4d3d/regex-2026.9.29-cp311-cp311-win_arm64.whl", hash = "sha256:352cf115a810b357caa35193ab656ecf5ef41056855e82f292c99e8514f8d954", size = 279411, upload-time = "2026-09-29T00:46:37.193Z" },
+]
+
+[[package]]
+name = "reimagine"
+version = "1.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "ftfy" },
+    { name = "matplotlib" },
+    { name = "networkx" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "pyarrow" },
+    { name = "pyyaml" },
+    { name = "requests" },
+    { name = "scikit-learn" },
+    { name = "scipy" },
+    { name = "sentence-transformers" },
+    { name = "torch" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "playwright" },
+    { name = "pytest" },
+]
+paper = [
+    { name = "en-core-web-sm" },
+    { name = "spacy" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "ftfy", specifier = ">=6.2" },
+    { name = "matplotlib", specifier = ">=3.8" },
+    { name = "networkx", specifier = ">=3.4" },
+    { name = "numpy", specifier = ">=1.26" },
+    { name = "pandas", specifier = ">=2.2" },
+    { name = "pyarrow", specifier = ">=15" },
+    { name = "pyyaml", specifier = ">=6" },
+    { name = "requests", specifier = ">=2.31" },
+    { name = "scikit-learn", specifier = ">=1.4" },
+    { name = "scipy", specifier = ">=1.12" },
+    { name = "sentence-transformers", specifier = ">=3.0" },
+    { name = "torch", specifier = ">=2.2" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "playwright", specifier = ">=1.45" },
+    { name = "pytest", specifier = ">=8" },
+]
+paper = [
+    { name = "en-core-web-sm", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" },
+    { name = "spacy", specifier = ">=3.8,<3.9" },
 ]
 
 [[package]]

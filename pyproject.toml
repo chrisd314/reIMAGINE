@@ -1,7 +1,7 @@
 [project]
-name = "once-upon-a-world"
+name = "reimagine"
 version = "1.0.0"
-description = "Folktale text-similarity networks compared with ATU tale types and recorded provenance (DTU 02805 course project)."
+description = "reIMAGINE: where religious parables land in a text-similarity network of folktales (DTU 02805 course project)."
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
 license = { text = "Code licence to be decided by the authors; data terms in LICENSE_NOTES.md" }
@@ -32,7 +32,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["analysis", "ouaw"]
+packages = ["reimagine"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

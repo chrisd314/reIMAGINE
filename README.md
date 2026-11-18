@@ -1,81 +1,91 @@
 # reIMAGINE
 
-A DTU 02805 *Social Graphs and Interactions* course project (hand-in 27 November 2026): where religious parables land in the world of folktales. The repository holds two pipelines that share one corpus and one set of core functions:
+A DTU 02805 *Social Graphs and Interactions* course project (hand-in 27 November 2026): where religious parables land in the world of folktales.
 
-| | Command | What it is for |
-| --- | --- | --- |
-| **Paper pipeline** | `python -m ouaw.run --stage all` | Every number, figure and table of the analysis, the report material in `report/` (not committed), and the website's data and build |
-| Website pipeline | `python -m analysis all` | The interactive site at <https://chrisd314.github.io/reIMAGINE/>: the folklore map story, Explore, Validation, and the export that publishes the paper pipeline's site data |
+**Question.** Do parables from different religious traditions fall within folktale communities more than non-story text from the same translations does, and which folktale communities and tale types do they land in? ("Are parables just folktales with a moral attached?" is the motivation only: text similarity cannot measure a moral, so it is not tested.)
 
-**The website** (reIMAGINE) opens on an Overview of the paper's question and results, then the Parables explorer, the folklore-map story (type against place), Explore, Data & Methods, Validation and Sources. The `site` stage of the paper pipeline turns `results/` into the committed files `data/site/paper.json`, `data/site/parables.json` and `data/site/figures/*.png` (titles, labels and openings of at most 40 words, no full texts) and builds `web/dist` when Node is available; the website export copies the same files into the deployed site. No number on the site is typed by hand.
+**Website:** <https://chrisd314.github.io/reIMAGINE/>, five pages, every one of them interactive:
 
-This repository holds code, analysis results and the website, not the paper. Material for the final report (`RESULTS.md`, captions, LaTeX macros, a short update) is written to `report/`, which is git-ignored; run the pipeline to regenerate it. DECISIONS.md holds every judgement call behind the numbers.
+- **Overview:** the question, the three steps, the main result, every check at once, and what can and cannot be answered.
+- **Folktales** (parts 1 and 2):
+  - the corpus and its ATU tale types;
+  - text similarity and the network, with degrees and clustering against random graphs;
+  - Louvain communities, and whether they follow story, place or book;
+  - edge construction as a modelling choice, and PageRank.
+- **Parables** (part 3):
+  - the parables and their same-translation baseline;
+  - a test of the method on 36 held-out retellings;
+  - closeness to folktales, and where the parables land;
+  - what the resemblance rests on, and the robustness checks.
+- **Explore:** the whole network, zoomable. Search any folktale or parable, colour by community, tale type, region or book, size by links or PageRank, put a tradition's parables on the map, switch to embeddings.
+- **Methods & sources:** every method with the course week that teaches it.
 
-## The paper pipeline
+Every map zooms and pans, and every tale opens with its ten nearest folktales and the words behind each match. Two texts can be read side by side, and each links to its full text at the source (the D. L. Ashliman Folktexts page it was taken from; sacred-texts.com or eBible.org for the parables). The label test and the permutation test can be rerun in the browser on the same data as the pipeline. A switch on every section turns the whole site from TF-IDF to embeddings.
 
-**Question.** Do parables from different religious traditions sit inside folktale communities more than non-story text from the same translations does, and which folktale communities and tale types do they land in? ("Are parables just folktales with a moral attached?" is the motivation only: text similarity cannot measure a moral, so it is not tested.)
+## What is in here
 
-- **The map (background).** A text-similarity network of 1,462 folktales: its communities, what they are, what they follow (tale type, region, source collection), and how much of that depends on how edges are built.
-- **The headline.** 281 parables from five traditions against 168 non-story passages cut from the same translations: closer to folktales or not, which communities and tale types, with permutation tests within each tradition.
-- **Validity and robustness.** 36 religious retellings of known type held out as a calibration test; length-matched folktale excerpts; nouns masked; names and formulae masked; hubs removed; other graphs and the other representation (Table 1).
+1. **Folklore: tale types.** 1,462 English folktales, each with its ATU tale type, recorded region and source book.
+2. **Communities.** A text-similarity network (TF-IDF; embeddings as a second method), Louvain communities, and what they follow: tale type, region (location) or source book. Also how much of this depends on how edges are built.
+3. **Parables into the communities.** 281 parables from five traditions against 168 non-story passages cut from the same translations (the baseline), with the parable/passage label shuffled within each tradition as the null. The robustness checks are length-matched folktale excerpts, nouns masked, names and formulae masked, hubs removed, other graphs and the other representation.
 
-### Run it
+One command runs everything: `python -m reimagine.run --stage all`. It writes:
 
-Requirements: [uv](https://docs.astral.sh/uv/) with Python 3.11. About 2 GB of disk for PyTorch and the sentence encoder.
+- every number, table and figure (`results/`, `figures/`);
+- the report material (`report/`);
+- the website's data (`data/site/story.json`, `network.json`, `near.json`).
+
+No number on the site is typed by hand.
+
+## Run it
+
+Requirements: [uv](https://docs.astral.sh/uv/) with Python 3.11 (about 2 GB of disk for PyTorch and the sentence encoder), and Node.js ≥ 20.19 for the website.
 
 ```bash
-uv sync --group paper                            # environment, versions pinned in uv.lock; the `paper` group adds spaCy
-                                                 # and en_core_web_sm for the noun-masking check
+uv sync --group paper                                # environment pinned in uv.lock; `paper` adds spaCy for the noun masking
+uv run python -m reimagine.run --stage all           # everything on the full data, including the website build
+uv run python -m reimagine.run --stage partB checks  # single stages, always run in pipeline order
+uv run python -m reimagine.run --stage all --sample 100   # fast development run into results/_sample, figures/_sample
+uv run pytest                                        # unit tests and checks on the outputs
 
-uv run python -m ouaw.run --stage all            # everything, on the full data, including the website build
-uv run python -m ouaw.run --stage partB checks   # single stages, always run in pipeline order
-uv run python -m ouaw.run --stage all --sample 100   # fast development run; writes to results/_sample and figures/_sample
-
-uv run pytest                                    # unit tests and checks on the website outputs
+cd web && npm ci && npm run dev                      # the website at http://localhost:5173/ (npm run build, npm run preview)
+uv run python tests/browser/site_check.py            # with `npm run preview` running: every page and interaction, desktop and phone
 ```
+
+If Node is not installed system-wide, a portable Node can sit in `.tools/` (git-ignored); the `site` stage finds it.
 
 | Stage | Module | What it does | Time on a laptop |
 | --- | --- | --- | --- |
-| `data` | `ouaw/corpus.py` | Splits the cleaned corpus into 1,462 folktales and 36 calibration versions; asserts that no retelling or near-copy is in the pool; adds source collection and translator. Nothing is re-cleaned | seconds |
-| `parables` | `ouaw/parables/` | Segments the parables and cuts length-matched baseline passages; writes `data/processed/parables.csv` | 6 s from the cache |
-| `partA` | `ouaw/part_a.py` | Graphs at 5%, 10%, 15% density; Louvain; modularity against degree-preserving shuffles; community words; LDA; type versus region; PageRank; layout | 15 min first time, 2 min after |
-| `partB` | `ouaw/part_b.py` | Folk-closeness, nearest folktales, tradition ranking, attachment to communities, distinctive words | 1 min |
-| `vocab` | `ouaw/vocab.py` | spaCy part-of-speech tags (cached); nouns masked and TF-IDF refitted; the terms behind every top-1 match | 5 min first time, seconds after |
-| `headline` | `ouaw/headline.py` | The headline: parables against the same-translation baseline, permutation within tradition, community profile, voted tale types, source collections | seconds |
-| `length` | `ouaw/length.py` | Length-matched folktale excerpts, length regression, baseline length matching | 4 min first time (embeddings), seconds after |
-| `network` | `ouaw/network.py` | Edge-construction sweep (densities, kNN), within-collection nulls, masked map, backbones, structure against nulls, community table | 10 min |
-| `checks` | `ouaw/checks.py` | Calibration (recall@10, type vote, noun-masked), second method, length, hubness, masking, hand-label template | 1 min after the first run |
-| `robustness` | `ouaw/robustness.py` | Table 1: the headline under every check, with a fixed yes/partly/no rule | 30 s |
-| `figures` | `ouaw/figures.py`, `ouaw/report.py` | Figures 1–3 and S1–S2 (PDF and PNG); report material in `report/`: `RESULTS.md`, `captions.md`, `short_update.md`, `numbers.tex`, `table1.tex` | seconds |
-| `site` | `ouaw/site.py` | `data/site/paper.json`, `parables.json`, web-sized figures; mirrors them into `web/public/data` and runs `npm run build` | 20 s |
+| `data` | `reimagine/corpus.py`, `reimagine/core/` | Fetches the pinned corpus, cleans it and builds cohorts when needed (`core.prepare`). Splits the 1,462 folktales from the 36 held-out retellings and asserts no retelling or near-copy is in the pool. Adds source collection and translator | seconds after the first run |
+| `parables` | `reimagine/parables/` | Segments the parables and cuts length-matched baseline passages; writes `data/processed/parables.csv` | 10 s from the cache |
+| `partA` | `reimagine/part_a.py` | Graphs at 5%, 10%, 15% density; Louvain; modularity against degree-preserving shuffles; community words; LDA; type against region; PageRank; layout | 1 min (15 min the first time) |
+| `partB` | `reimagine/part_b.py` | Folk-closeness, nearest folktales, tradition ranking, attachment to communities | seconds |
+| `vocab` | `reimagine/vocab.py` | spaCy part-of-speech tags (cached); nouns masked; the words behind every top-1 match | 20 s (5 min the first time) |
+| `headline` | `reimagine/headline.py` | Parables against the same-translation baseline, permutation within tradition, community profile, voted tale types | seconds |
+| `length` | `reimagine/length.py` | Length-matched folktale excerpts, length regression, baseline length matching | seconds (4 min the first time) |
+| `network` | `reimagine/network.py` | Edge-construction sweep (densities, kNN), within-collection shuffles, masked map, backbones, structure against random graphs, community table | 3–10 min |
+| `checks` | `reimagine/checks.py` | Calibration on the held-out retellings (recall@10, type vote, nouns masked), second method, length, hubness, masking | 20 s |
+| `robustness` | `reimagine/robustness.py` | Table 1: the headline under every check, with a fixed yes/partly/no rule | 20 s |
+| `figures` | `reimagine/figures.py`, `reimagine/report.py` | Figures 1–3 and S1–S2; report material in `report/` | 10 s |
+| `site` | `reimagine/site.py`, `reimagine/folktexts.py` | `data/site/story.json`, `network.json`, `near.json`, then `npm run build` | 15 s |
 
-Embeddings and shuffle nulls are cached by content, so a rerun only recomputes what changed. All seeds are fixed (`paper.yaml`, `config.yaml`).
+Embeddings, part-of-speech tags and shuffle nulls are cached by content, so a rerun only recomputes what changed. All seeds are fixed (`paper.yaml`, `config.yaml`).
 
-### What it writes
+## What it writes
 
 | Path | Content |
 | --- | --- |
-| `report/` (git-ignored) | Report material: `RESULTS.md` (every number in the order of the paper, with its null and source file), `numbers.tex` (a LaTeX macro for each), `table1.tex`, `captions.md`, `short_update.md` |
-| `results/*.csv`, `*.json` | All tables: `headline_*` (the headline), `length_*`, `match_drivers*`, `network_*`, `community_table.csv`, `collection_*`, `table1_robustness.csv`, `robustness_headline.csv`, `partA_*`, `partB_*`, `calibration*.csv`, `checks_*.csv`, `parables_*.csv` |
-| `figures/fig1_map`, `fig2_headline`, `fig3_validity`, `figS1_labels`, `figS2_headline_embedding` | The figures (PDF and PNG) |
-| `data/processed/parables.csv` | The parables and baseline passages: `id, tradition, kind, source, translator, year, title, text, n_tokens, url, retrieved_at, segment_note` |
-| `labeling/segmentation_check.csv` | 20 random parables per tradition with their first and last 30 words, for a hand check of the segmentation |
-| `labeling/hand_labels_template.csv` | The top-1 parable–folktale pair of 100 parables, with empty `coder1` and `coder2` columns |
+| `results/*.csv`, `*.json` | All tables: `headline_*`, `length_*`, `match_drivers*`, `network_*`, `community_table.csv`, `collection_*`, `table1_robustness.csv`, `robustness_headline.csv`, `partA_*`, `partB_*`, `calibration*.csv`, `checks_*.csv`, `parables_*.csv` |
+| `results/corpus_audit/` | Audit of the data preparation: cleaning log, inclusion ledger, near-duplicates, diagnostics of the raw file |
+| `figures/` | `fig1_map`, `fig2_headline`, `fig3_validity`, `figS1_labels`, `figS2_headline_embedding` (PDF and PNG) |
+| `report/` | Material for the paper. Written by the pipeline: `RESULTS.md` (every number in paper order), `numbers.tex` (a LaTeX macro for each), `table1.tex`, `community_table.tex`, `captions.md`, `short_update.md`. Kept by hand: `LIMITATIONS.md` |
+| `data/site/` | The website's data: `story.json` (results of both representations, every parable, passage and retelling), `network.json` (both networks: layout, degrees at each threshold, Louvain seeds, the partitions of all 12 graphs, PageRank and its shuffles, the label-test arrays), `near.json` (the ten nearest folktales of every tale and text, the words behind each match, openings). Openings of at most 40 words, never full texts |
+| `data/processed/parables.csv` | The parables and baseline passages with source, translator, year and URL |
 
-### Hand labels
-
-1. Copy `labeling/hand_labels_template.csv` to `labeling/hand_labels.csv`.
-2. Two people fill `coder1` and `coder2` independently with `same_plot`, `shared_motif`, `theme_only` or `unrelated`.
-3. `uv run python -m ouaw.agreement` writes raw agreement, Cohen's κ, the confusion table and precision to `results/`.
-4. `uv run python -m ouaw.run --stage figures site` puts the precision and κ into Figure 3, `report/RESULTS.md` and the website.
-
-The pipeline never fills a label. Until `hand_labels.csv` exists, Figure 3 shows "pending". The template's `driver_terms` column lists the five terms that carry each pair's cosine; once any coder value is filled, the pipeline leaves the template alone.
-
-### Data sources
+## Data sources
 
 | Data | Edition | Where from | Retrieved | Status |
 | --- | --- | --- | --- | --- |
-| Folktales (1,498 versions) | Hagedorn & Darányi (2022), *Annotated Folktales*, from D. L. Ashliman's *Folktexts* | github.com/j-hagedorn/trilogy, commit `d57c2ce` | 2026-11-11 | CC BY-NC-SA 4.0 by the more restrictive of two statements in the repository (LICENSE_NOTES.md) |
+| Folktales (1,498 versions; 1,462 in the network, 36 held out) | Hagedorn & Darányi (2022), *Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research*, Journal of Open Humanities Data 8: 16, [doi:10.5334/johd.78](https://doi.org/10.5334/johd.78), built on D. L. Ashliman's *Folktexts* (University of Pittsburgh) | github.com/j-hagedorn/trilogy at commit `d57c2ce`: `aft.csv` (the corpus) and `atu_df.csv` (tale-type names); the repository's `README.md` and `LICENSE.md` and the Zenodo record are kept as licence records. Ashliman's two index pages (`folktexts.html`, `folktexts2.html`) are kept as attribution records and to link every tale to the page it was taken from | 2026-11-11 | CC BY-NC-SA 4.0, the more restrictive of two statements in the repository (LICENSE_NOTES.md) |
 | Christian parables and baseline | World English Bible | ebible.org, `engwebp_vpl.zip` | 2026-11-11 | Public domain, as stated in the archive |
 | Buddhist parables | *The Jātaka*, ed. E. B. Cowell, 6 vols (1895–1907); *Saddharma-Puṇḍarīka*, tr. H. Kern, SBE 21 (1884) | sacred-texts.com | 2026-11-11 | Published before 1908; see the note below |
 | Buddhist baseline | *The Dhammapada*, tr. F. Max Müller, SBE 10 (1881) | sacred-texts.com | 2026-11-11 | as above |
@@ -83,7 +93,9 @@ The pipeline never fills a label. Until `hand_labels.csv` exists, Figure 3 shows
 | Sufi parables and baseline | *Masnavi i Ma'navi*, tr. and abridged E. H. Whinfield (1898) | sacred-texts.com | 2026-11-11 | as above |
 | Taoist parables and baseline | *The Texts of Taoism*, tr. J. Legge, SBE 39–40 (1891): the Zhuangzi and the Tao Te Ching | sacred-texts.com | 2026-11-11 | as above |
 
-Every downloaded page is logged with its URL, time and SHA-256 in `data/raw/parables/fetch_log.csv`. The raw pages are cached in `data/raw/parables/` and are not committed.
+Tale types follow Uther (2004), *The Types of International Folktales* (FF Communications 284–286). Regions are UN M49 sub-regions. The mapping from recorded places to regions (`data/mappings/provenance_map.csv`) was drafted once with Natural Earth country points (public domain) and then reviewed row by row; the Natural Earth files are not needed to run anything. The sentence encoder is `sentence-transformers/all-MiniLM-L6-v2` at revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` (Apache-2.0).
+
+Every downloaded file is listed with its URL, version, retrieval time and SHA-256 in `data/raw/source_manifest.json` (folktale corpus) and `data/raw/parables/fetch_log.csv` (parables). The raw parable pages are cached in `data/raw/parables/` and are not committed.
 
 **Note on sacred-texts.com.** The books are public-domain works published between 1881 and 1907 (public domain in the United States; the life-plus-70 status of each translator was not checked). The site's own terms of use ask users "not to … scrape … the service outside its documented interfaces", while its `robots.txt` allows all paths. The pages were collected on 11 November 2026 at one request per second before the terms were read. For that reason:
 
@@ -91,68 +103,32 @@ Every downloaded page is logged with its URL, time and SHA-256 in `data/raw/para
 - `--fetch` switches downloading on. Decide first whether to keep this source, ask the site, or replace it with another copy of the same editions;
 - nothing from the site's own markup, design or commentary is stored in `parables.csv`.
 
-### Settings and layout
+## Layout
 
 ```text
-paper.yaml             settings of the paper pipeline (seeds, shuffles, targets, masking, figure sizes)
-config.yaml            frozen text and graph settings shared with the website pipeline
-ouaw/                  paper pipeline: run.py, corpus.py, reps.py, part_a.py, part_b.py, vocab.py, headline.py,
-                       length.py, network.py, checks.py, robustness.py, agreement.py, figures.py, report.py,
-                       site.py, parables/ (one module per tradition)
-report/                report material written by the pipeline (git-ignored; not the paper itself)
-web/                   the website (Vite + React); tests/browser/site_check.py checks every built page
-analysis/              data stages (fetch, clean, cohorts), core functions (TF-IDF, embeddings, networks,
-                       metrics) and the website pipeline
-data/mappings/         calibration_set.csv (the 36 versions), parables/*.yaml (verse ranges, anchors)
-data/processed/        narratives.parquet (folktales, git-ignored), parables.csv
-results/, figures/, labeling/   outputs of the paper pipeline
-legacy/                the dropped lesson study (kept, never run)
-tests/                 test_ouaw.py and test_feedback_update.py (paper pipeline, toy inputs); the others test the website pipeline
+README.md, LICENSE_NOTES.md   this file; licence notes for the data
+config.yaml            sources, cleaning, cohorts, TF-IDF, embedding and graph settings (fixed 29 October)
+paper.yaml             settings of each analysis stage (seeds, shuffles, masking, figure sizes)
+reimagine/             the pipeline: run.py and one module per stage; parables/ (one module per tradition)
+  core/                data preparation (fetch, clean, audit, cohorts) and core functions (TF-IDF, embeddings,
+                       networks, metrics)
+web/                   the website (Vite + React + TypeScript); scripts/copy-data.mjs copies data/site/ into the build
+data/                  raw (pinned), mappings (reviewed decisions), processed, site
+results/, figures/     analysis outputs
+report/                material for the paper
+proposition/           the submitted project proposal
+tests/                 unit tests on toy inputs, checks on the data and the site's data file, browser/site_check.py
+ai-assist/             everything about the AI coding assistant: decision log, progress notes, AI-use log
 ```
 
-Documents: AUDIT.md (state of the repository before this work), DECISIONS.md (every judgement call), PROGRESS.md (status and how to resume); `report/RESULTS.md` (the numbers, regenerated, not committed).
+**Deployment.** `.github/workflows/deploy-pages.yml` builds the site from the committed `data/site/` files and deploys `web/dist` on every push to `master` that touches `data/site/` or `web/`. It refuses to deploy if any published opening is longer than the excerpt limit.
 
-## The website pipeline
+## Course and credits
 
-*Do folktales form communities around where they were recorded, or around the kind of story they tell?* The site explores this on the 1,133 tales that have both an ATU type and a mapped place. It is not extended any more; it is kept working.
+DTU 02805 *Social Graphs and Interactions* (2026), Sune Lehmann: <https://sunelehmann.com/socialgraphs2026-web/index.html>. The website's Methods & sources page maps every method to the week that teaches it.
 
-```bash
-uv run python -m analysis all      # fetch -> clean -> audit -> cohorts -> TF-IDF -> embeddings -> graphs
-                                   # -> modularity null -> distance -> validation sample -> layouts -> web export
-uv run python scripts/summarise_run.py
-
-cd web
-npm ci
-npm run dev        # development server: http://localhost:5173/
-npm run build      # type-check + production build into web/dist
-npm run preview    # serve the production build: http://localhost:4173/
-```
-
-Node.js ≥ 20.19 is needed for the site (Node 24 LTS was used). If Node is not installed system-wide, a portable Node can be placed in `.tools/` (git-ignored). On Windows: `$env:PATH = "$PWD\.tools\node-v24.22.2-win-x64;$env:PATH"`.
-
-Re-runs skip stages whose inputs (config section and content hashes of upstream files) are unchanged; add `--force` to rerun. Browser checks, with a server running: `uv run python tests/browser/journey.py http://localhost:4173/ outputs/browser/journey-desktop`, plus `--mobile`, `--keyboard`, `--reduced`.
-
-| Stage | Module | Main outputs |
-| --- | --- | --- |
-| fetch | `analysis/fetch.py` | `data/raw/` (immutable) and `data/raw/source_manifest.json` (URL, commit, SHA-256, licence, role) |
-| clean | `analysis/clean.py` | `data/interim/records.parquet`, `outputs/audit/cleaning_log.csv` |
-| audit | `analysis/audit.py` | `outputs/audit/raw_audit.json` |
-| cohorts | `analysis/cohorts.py` | `data/processed/narratives.parquet`, `cohorts.csv`, `outputs/audit/inclusion_ledger.csv` |
-| lexical | `analysis/lexical.py` | one TF-IDF space (negation kept) and a name-masked variant |
-| semantic | `analysis/semantic.py` | MiniLM chunk and tale vectors (chunks of at most 200 tokens, cached by content hash) |
-| analyze | `analysis/analyze.py` | graphs at 5/10/15%, Louvain (seeds 42/7/19), NMI, assortativity and neighbour checks with 1,000 label shuffles |
-| modnull | `analysis/modnull.py` | degree-preserving null for modularity |
-| distance | `analysis/distance.py` | haversine distance against similarity, whole-location shuffles |
-| validation | `analysis/validation.py` | blind stratified review sample; the summary stays *pending* until annotations exist |
-| layouts | `analysis/layouts.py` | display-only layouts and PCA |
-| export | `analysis/export.py` | `web/public/data/` (one `run_id` on every payload) |
-
-**Deployment.** `.github/workflows/deploy-pages.yml` runs the website pipeline and the tests, builds `web/` and deploys `web/dist` on every push to `master` that touches the analysis, the data or the site. The public build is excerpt-only: the workflow sets `OUAW_PUBLIC_BUILD=1`, which ships the first 120 words of each tale instead of full texts (LICENSE_NOTES.md). To reproduce it locally: `OUAW_PUBLIC_BUILD=1 uv run python -m analysis export`, then `cd web && npm run build && npm run preview`.
-
-**Validation page.** A blind annotation tool. Export its CSVs to `outputs/validation/annotations/`, then run `uv run python -m analysis validation export`. Until then the status is *pending*.
-
-Website documents: ANALYSIS_PLAN.md (frozen plan and change log), METHOD_MAP.md, INTERACTION_SPEC.md, LIMITATIONS.md, LICENSE_NOTES.md, SOURCES.md, AI_METHODS.md, STATUS.md.
+Software: Python 3.11 with pandas, NumPy, SciPy, scikit-learn, NetworkX, sentence-transformers, PyTorch, spaCy, ftfy, PyYAML, Matplotlib and Playwright. The website uses Node.js 24 with React 19, Vite 8 and TypeScript 5.9. Exact versions are in `uv.lock` and `web/package-lock.json`.
 
 ## Licence
 
-The folktale dataset is treated as CC BY-NC-SA 4.0 (LICENSE_NOTES.md). Full folktale texts are shown only in the local preview of the site. The code licence is not yet chosen.
+The folktale dataset is treated as CC BY-NC-SA 4.0 (LICENSE_NOTES.md). The website shows only titles, labels and openings of at most 40 words. The code licence is not yet chosen.
