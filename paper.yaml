@@ -49,8 +49,21 @@ headline:                                  # TA feedback step 2: parables agains
   permutations: 1000                       # parable/baseline label shuffled within the tradition (text = unit)
   seed: 20261118
 
+vocab:                                     # TA feedback step 4 (spaCy en_core_web_sm; `uv sync --group paper`)
+  placeholder: "[N]"                       # replaces nouns and proper nouns; one letter, so the TF-IDF tokenizer ignores it
+  noun_share: 0.5                          # a word is a noun if tagged NOUN/PROPN in at least half of its uses
+  driver_terms: 5                          # terms contributing most to a top-1 cosine
+  summary_terms: 10
+
+length:                                    # TA feedback step 3
+  excerpts_per_text: 5                     # contiguous excerpts from random folktales per parable / baseline passage
+  tolerance: 0.10                          # excerpt length within 10% of the text's (eligible tales: at least 90% as long)
+  seed: 20261119
+  matching_alpha: 0.05                     # baseline counts as length-matched if Mann-Whitney p >= this
+
 checks:
   recall_k: 10
+  vote_chance_draws: 1000                  # random 10-folktale draws per query for the chance level of the type vote
   hubs_removed: 10
   long_parable_tokens: 100                 # length check: ranking repeated on parables at least this long
   hand_labels: {per_tradition: 20, excerpt_words: 120}
@@ -72,6 +85,16 @@ masking:
     - 'blessed be He'
     - 'as it is (?:written|said)'
     - 'lived happily ever after'
+  translator_formulae:                     # TA feedback step 6.4: translator and editor formulae found in the folktale texts
+    # (5-word phrases in 3+ tales, at least 60% of them from one source collection; DECISIONS.md T13)
+    - 'In a certain place there lived'     # Panchatantra opening (Benfey's German, Ashliman's English), 5 tales
+    - "Kinder- und Hausm\\w*rchen \\(Children's and Household Tales -- Grimms' Fairy Tales\\)(?:, no\\. \\d+)?"
+    - "One of India's most influential contributions to world literature, The Panchatantra[^.]*?centuries AD\\."
+    - 'It is believed that even then the stories were already ancient\.'
+    - "The tales' self-proclaimed purpose is to educate the sons of royalty\\."
+    - "Although the original author's or compiler's name is unknown, [^']*'court scholar\\.'"
+    - 'The fables of The Panchatantra found their way to Europe[^.]*\.'
+    - 'They substantially influenced medieval writers of fables\.'
 
 figures:
   dpi: 300

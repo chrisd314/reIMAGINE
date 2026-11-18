@@ -897,3 +897,452 @@ embedding,tao-b021,baseline,Taoist,0.54934,335,Death's Messengers,C3
 embedding,tao-b022,baseline,Taoist,0.54207,981,Wisdom of Hidden Old Man Saves Kingdom,C3
 embedding,tao-b023,baseline,Taoist,0.43083,285A,The Man and the Wounded Snake (previously The Dead Child and the Snake's Tail),C2
 embedding,tao-b024,baseline,Taoist,0.51977,1540,The Student from Paradise (Paris),C3
+tfidf_nouns_masked,chr-p001,parable,Christian,0.13767,1353,The Old Woman as Trouble Maker,C3
+tfidf_nouns_masked,chr-p002,parable,Christian,0.18281,510A,Cinderella,C1
+tfidf_nouns_masked,chr-p003,parable,Christian,0.15624,1351,The Silence Wager,C2
+tfidf_nouns_masked,chr-p004,parable,Christian,0.10909,1030,The Crop Division,C2
+tfidf_nouns_masked,chr-p005,parable,Christian,0.15144,763,The Treasure Finders who Murder One Another,C2
+tfidf_nouns_masked,chr-p006,parable,Christian,0.1249,720,The Juniper Tree (previously My Mother Slew Me; My Father Ate Me),C1
+tfidf_nouns_masked,chr-p007,parable,Christian,0.1331,726,The Three Old Men (previously The Oldest on the Farm),C3
+tfidf_nouns_masked,chr-p008,parable,Christian,0.12186,1675,The Ox (Ass) as Mayor,C1
+tfidf_nouns_masked,chr-p009,parable,Christian,0.15819,570,The Rabbit-herd,C1
+tfidf_nouns_masked,chr-p010,parable,Christian,0.21381,779,Miscellaneous Divine Rewards and Punishments,C5
+tfidf_nouns_masked,chr-p011,parable,Christian,0.14159,545B,Puss in Boots,C1
+tfidf_nouns_masked,chr-p012,parable,Christian,0.17358,675,The Lazy Boy,C1
+tfidf_nouns_masked,chr-p013,parable,Christian,0.15835,981,Wisdom of Hidden Old Man Saves Kingdom,C2
+tfidf_nouns_masked,chr-p014,parable,Christian,0.15154,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C3
+tfidf_nouns_masked,chr-p015,parable,Christian,0.16451,1540,The Student from Paradise (Paris),C3
+tfidf_nouns_masked,chr-p016,parable,Christian,0.14948,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),C1
+tfidf_nouns_masked,chr-p017,parable,Christian,0.14785,1965,The Disabled Comrades (previously Knoist and his Three Sons),C3
+tfidf_nouns_masked,chr-p018,parable,Christian,0.16802,1191,Sacrifice on the Bridge (previously The Dog on the Bridge),C2
+tfidf_nouns_masked,chr-p019,parable,Christian,0.13542,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C2
+tfidf_nouns_masked,chr-p020,parable,Christian,0.1619,366,The Man from the Gallows,C1
+tfidf_nouns_masked,chr-p021,parable,Christian,0.15185,335,Death's Messengers,C6
+tfidf_nouns_masked,chr-p022,parable,Christian,0.11799,650A,Strong John,C3
+tfidf_nouns_masked,chr-p023,parable,Christian,0.21262,650A,Strong John,C1
+tfidf_nouns_masked,chr-p024,parable,Christian,0.15585,1540,The Student from Paradise (Paris),C3
+tfidf_nouns_masked,chr-p025,parable,Christian,0.11595,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C1
+tfidf_nouns_masked,chr-p026,parable,Christian,0.16197,160,"Grateful Animals, Ungrateful Man [W154",C1
+tfidf_nouns_masked,chr-p027,parable,Christian,0.14647,280A,The Ant and the Cricket (previously The Ant and the Lazy Cricket),C3
+tfidf_nouns_masked,chr-p028,parable,Christian,0.14429,280A,The Ant and the Cricket (previously The Ant and the Lazy Cricket),C6
+tfidf_nouns_masked,chr-p029,parable,Christian,0.14078,1645,The Treasure at Home,C5
+tfidf_nouns_masked,chr-p030,parable,Christian,0.12706,777,The Wandering Jew,C1
+tfidf_nouns_masked,chr-p031,parable,Christian,0.1494,1362,The Snow-Child,C1
+tfidf_nouns_masked,chr-p032,parable,Christian,0.1724,1191,Sacrifice on the Bridge (previously The Dog on the Bridge),C5
+tfidf_nouns_masked,chr-p033,parable,Christian,0.1148,1430,The Man and his Wife Build Air Castles,C4
+tfidf_nouns_masked,chr-p034,parable,Christian,0.16512,327,The Children and the Ogre,C1
+tfidf_nouns_masked,chr-p035,parable,Christian,0.12588,1641,Doctor Know-All,C1
+tfidf_nouns_masked,chr-p036,parable,Christian,0.16714,545B,Puss in Boots,C1
+tfidf_nouns_masked,chr-p037,parable,Christian,0.13075,563,"The Table, the Donkey and the Stick",C1
+tfidf_nouns_masked,chr-p038,parable,Christian,0.11493,845,The Old Man and Death,C2
+tfidf_nouns_masked,chr-p039,parable,Christian,0.12762,845,The Old Man and Death,C2
+tfidf_nouns_masked,chr-p040,parable,Christian,0.18022,1430,The Man and his Wife Build Air Castles,C3
+tfidf_nouns_masked,chr-b001,baseline,Christian,0.1258,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),C1
+tfidf_nouns_masked,chr-b002,baseline,Christian,0.12829,1137,The Blinded Ogre,C2
+tfidf_nouns_masked,chr-b003,baseline,Christian,0.12783,510A,Cinderella,C1
+tfidf_nouns_masked,chr-b004,baseline,Christian,0.11881,613,The Two Travelers,C2
+tfidf_nouns_masked,chr-b005,baseline,Christian,0.13627,1030,The Crop Division,C1
+tfidf_nouns_masked,chr-b006,baseline,Christian,0.13955,845,The Old Man and Death,C1
+tfidf_nouns_masked,chr-b007,baseline,Christian,0.12247,366,The Man from the Gallows,C4
+tfidf_nouns_masked,chr-b008,baseline,Christian,0.098112,1353,The Old Woman as Trouble Maker,C3
+tfidf_nouns_masked,chr-b009,baseline,Christian,0.12616,20C,The Animals Flee in Fear of the End of the World,C2
+tfidf_nouns_masked,chr-b010,baseline,Christian,0.14458,1430,The Man and his Wife Build Air Castles,C1
+tfidf_nouns_masked,chr-b011,baseline,Christian,0.11894,777,The Wandering Jew,C2
+tfidf_nouns_masked,chr-b012,baseline,Christian,0.11278,613,The Two Travelers,C1
+tfidf_nouns_masked,chr-b013,baseline,Christian,0.11226,155,The Ungrateful Snake Returned to Captivity,C2
+tfidf_nouns_masked,chr-b014,baseline,Christian,0.14706,777,The Wandering Jew,C5
+tfidf_nouns_masked,chr-b015,baseline,Christian,0.13387,650A,Strong John,C3
+tfidf_nouns_masked,chr-b016,baseline,Christian,0.12993,20C,The Animals Flee in Fear of the End of the World,C2
+tfidf_nouns_masked,chr-b017,baseline,Christian,0.13549,613,The Two Travelers,C1
+tfidf_nouns_masked,chr-b018,baseline,Christian,0.13161,1415,Lucky Hans,C1
+tfidf_nouns_masked,chr-b019,baseline,Christian,0.13209,105,The Cat's Only Trick,C6
+tfidf_nouns_masked,chr-b020,baseline,Christian,0.12781,1430,The Man and his Wife Build Air Castles,C2
+tfidf_nouns_masked,chr-b021,baseline,Christian,0.12413,1592,The Iron-eating Mice,C1
+tfidf_nouns_masked,chr-b022,baseline,Christian,0.11914,955,The Robber Bridegroom [K1916],C1
+tfidf_nouns_masked,chr-b023,baseline,Christian,0.13452,1645,The Treasure at Home,C2
+tfidf_nouns_masked,chr-b024,baseline,Christian,0.13017,1423,The Enchanted Pear Tree,C2
+tfidf_nouns_masked,chr-b025,baseline,Christian,0.1304,1641,Doctor Know-All,C1
+tfidf_nouns_masked,chr-b026,baseline,Christian,0.11483,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),C1
+tfidf_nouns_masked,chr-b027,baseline,Christian,0.11834,500,The Name of the Supernatural Helper,C1
+tfidf_nouns_masked,chr-b028,baseline,Christian,0.10689,1351,The Silence Wager,C1
+tfidf_nouns_masked,chr-b029,baseline,Christian,0.11893,1365,The Obstinate Wife,C3
+tfidf_nouns_masked,chr-b030,baseline,Christian,0.12097,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C3
+tfidf_nouns_masked,chr-b031,baseline,Christian,0.11905,777,The Wandering Jew,C6
+tfidf_nouns_masked,chr-b032,baseline,Christian,0.13793,112,Country Mouse Visits Town Mouse,C1
+tfidf_nouns_masked,chr-b033,baseline,Christian,0.11067,332,Godfather Death,C6
+tfidf_nouns_masked,chr-b034,baseline,Christian,0.13529,982,The Pretended Inheritance (previously Supposed Chest of Gold Induces Children to Care for Aged Father),C4
+tfidf_nouns_masked,chr-b035,baseline,Christian,0.11881,105,The Cat's Only Trick,C1
+tfidf_nouns_masked,chr-b036,baseline,Christian,0.14736,155,The Ungrateful Snake Returned to Captivity,C1
+tfidf_nouns_masked,chr-b037,baseline,Christian,0.12015,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C1
+tfidf_nouns_masked,chr-b038,baseline,Christian,0.11109,1592B,The Pot Has a Child and Dies,C6
+tfidf_nouns_masked,chr-b039,baseline,Christian,0.095177,706,The Maiden without Hands,C1
+tfidf_nouns_masked,chr-b040,baseline,Christian,0.12301,1353,The Old Woman as Trouble Maker,C1
+tfidf_nouns_masked,bud-p001,parable,Buddhist,0.14729,981,Wisdom of Hidden Old Man Saves Kingdom,C1
+tfidf_nouns_masked,bud-p002,parable,Buddhist,0.10274,571B,Lover Exposed (previously The Himphamp),C1
+tfidf_nouns_masked,bud-p003,parable,Buddhist,0.14456,954,The Forty Thieves,C2
+tfidf_nouns_masked,bud-p004,parable,Buddhist,0.15263,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C1
+tfidf_nouns_masked,bud-p005,parable,Buddhist,0.10166,75,The Help of the Weak,C1
+tfidf_nouns_masked,bud-p006,parable,Buddhist,0.14406,312,Maiden-killer (Bluebeard) (previously The Giant-killer and his Dog),C1
+tfidf_nouns_masked,bud-p007,parable,Buddhist,0.11466,926,Judgment of Solomon,C1
+tfidf_nouns_masked,bud-p008,parable,Buddhist,0.17409,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p009,parable,Buddhist,0.10051,777,The Wandering Jew,C1
+tfidf_nouns_masked,bud-p010,parable,Buddhist,0.12143,402,"The Animal Bride (previously The Mouse [Cat, Frog, etc",C3
+tfidf_nouns_masked,bud-p011,parable,Buddhist,0.14696,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C2
+tfidf_nouns_masked,bud-p012,parable,Buddhist,0.13427,47A,"The Fox Hangs onto the Horse's Tail (previously The Fox [Bear, etc",C1
+tfidf_nouns_masked,bud-p013,parable,Buddhist,0.1521,706,The Maiden without Hands,C1
+tfidf_nouns_masked,bud-p014,parable,Buddhist,0.17684,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p015,parable,Buddhist,0.17855,1540,The Student from Paradise (Paris),C1
+tfidf_nouns_masked,bud-p016,parable,Buddhist,0.15011,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p017,parable,Buddhist,0.19129,15,The Theft of Food by Playing Godfather (previously The Theft of Butter [Honey] by Playing Godfather),C1
+tfidf_nouns_masked,bud-p018,parable,Buddhist,0.11634,306,The Danced-out Shoes,C1
+tfidf_nouns_masked,bud-p019,parable,Buddhist,0.15428,545B,Puss in Boots,C1
+tfidf_nouns_masked,bud-p020,parable,Buddhist,0.16423,954,The Forty Thieves,C1
+tfidf_nouns_masked,bud-p021,parable,Buddhist,0.19532,706,The Maiden without Hands,C1
+tfidf_nouns_masked,bud-p022,parable,Buddhist,0.15048,510A,Cinderella,C2
+tfidf_nouns_masked,bud-p023,parable,Buddhist,0.11222,777,The Wandering Jew,C1
+tfidf_nouns_masked,bud-p024,parable,Buddhist,0.17106,332,Godfather Death,C3
+tfidf_nouns_masked,bud-p025,parable,Buddhist,0.10534,1645,The Treasure at Home,C3
+tfidf_nouns_masked,bud-p026,parable,Buddhist,0.16083,720,The Juniper Tree (previously My Mother Slew Me; My Father Ate Me),C2
+tfidf_nouns_masked,bud-p027,parable,Buddhist,0.15109,156,Androcles and the Lion (previously Thorn Removed from Lion's Paw [Androcles and the Lion]),C1
+tfidf_nouns_masked,bud-p028,parable,Buddhist,0.13745,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,bud-p029,parable,Buddhist,0.11829,311,Rescue by the Sister,C1
+tfidf_nouns_masked,bud-p030,parable,Buddhist,0.13537,1319,Pumpkin Sold as an Donkey's Egg [J1772,C3
+tfidf_nouns_masked,bud-p031,parable,Buddhist,0.14033,510A,Cinderella,C4
+tfidf_nouns_masked,bud-p032,parable,Buddhist,0.20391,425C,Beauty and the Beast,C1
+tfidf_nouns_masked,bud-p033,parable,Buddhist,0.14104,1335A,Catching the Moon (previously Rescuing the Moon),C1
+tfidf_nouns_masked,bud-p034,parable,Buddhist,0.19557,670,The Man who Understands Animal Languages (previously The Animal Languages),C1
+tfidf_nouns_masked,bud-p035,parable,Buddhist,0.12529,425C,Beauty and the Beast,C1
+tfidf_nouns_masked,bud-p036,parable,Buddhist,0.12102,777,The Wandering Jew,C6
+tfidf_nouns_masked,bud-p037,parable,Buddhist,0.23853,306,The Danced-out Shoes,C1
+tfidf_nouns_masked,bud-p038,parable,Buddhist,0.13517,335,Death's Messengers,C1
+tfidf_nouns_masked,bud-p039,parable,Buddhist,0.15244,328,The Boy Steals the Ogre's Treasure,C1
+tfidf_nouns_masked,bud-p040,parable,Buddhist,0.18232,706,The Maiden without Hands,C1
+tfidf_nouns_masked,bud-p041,parable,Buddhist,0.14192,571B,Lover Exposed (previously The Himphamp),C1
+tfidf_nouns_masked,bud-p042,parable,Buddhist,0.11243,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C2
+tfidf_nouns_masked,bud-p043,parable,Buddhist,0.12615,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,bud-p044,parable,Buddhist,0.11251,231,The Heron and the Fish (previously The Heron [Crane] Transports the Fish),C1
+tfidf_nouns_masked,bud-p045,parable,Buddhist,0.16317,706,The Maiden without Hands,C1
+tfidf_nouns_masked,bud-p046,parable,Buddhist,0.18368,650A,Strong John,C3
+tfidf_nouns_masked,bud-p047,parable,Buddhist,0.12223,500,The Name of the Supernatural Helper,C1
+tfidf_nouns_masked,bud-p048,parable,Buddhist,0.13591,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C1
+tfidf_nouns_masked,bud-p049,parable,Buddhist,0.19685,1645,The Treasure at Home,C1
+tfidf_nouns_masked,bud-p050,parable,Buddhist,0.13906,613,The Two Travelers,C1
+tfidf_nouns_masked,bud-p051,parable,Buddhist,0.13466,545B,Puss in Boots,C1
+tfidf_nouns_masked,bud-p052,parable,Buddhist,0.12071,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,bud-p053,parable,Buddhist,0.127,706,The Maiden without Hands,C1
+tfidf_nouns_masked,bud-p054,parable,Buddhist,0.15009,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p055,parable,Buddhist,0.13182,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p056,parable,Buddhist,0.13186,675,The Lazy Boy,C1
+tfidf_nouns_masked,bud-p057,parable,Buddhist,0.15676,441,Hans my Hedgehog,C1
+tfidf_nouns_masked,bud-p058,parable,Buddhist,0.15297,954,The Forty Thieves,C1
+tfidf_nouns_masked,bud-p059,parable,Buddhist,0.10984,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p060,parable,Buddhist,0.15763,500,The Name of the Supernatural Helper,C1
+tfidf_nouns_masked,bud-p061,parable,Buddhist,0.13165,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p062,parable,Buddhist,0.13128,92,The Lion Dives for his own Reflection,C2
+tfidf_nouns_masked,bud-p063,parable,Buddhist,0.20662,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,bud-p064,parable,Buddhist,0.12902,1675,The Ox (Ass) as Mayor,C1
+tfidf_nouns_masked,bud-p065,parable,Buddhist,0.22006,954,The Forty Thieves,C1
+tfidf_nouns_masked,bud-p066,parable,Buddhist,0.1554,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C2
+tfidf_nouns_masked,bud-p067,parable,Buddhist,0.18381,706,The Maiden without Hands,C1
+tfidf_nouns_masked,bud-p068,parable,Buddhist,0.13401,670,The Man who Understands Animal Languages (previously The Animal Languages),C1
+tfidf_nouns_masked,bud-p069,parable,Buddhist,0.14585,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p070,parable,Buddhist,0.17799,545B,Puss in Boots,C1
+tfidf_nouns_masked,bud-p071,parable,Buddhist,0.16846,954,The Forty Thieves,C1
+tfidf_nouns_masked,bud-p072,parable,Buddhist,0.18855,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p073,parable,Buddhist,0.15509,502,The Wild Man,C1
+tfidf_nouns_masked,bud-p074,parable,Buddhist,0.17726,954,The Forty Thieves,C1
+tfidf_nouns_masked,bud-p075,parable,Buddhist,0.10333,592,The Dance Among Thorns,C2
+tfidf_nouns_masked,bud-p076,parable,Buddhist,0.17439,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,bud-p077,parable,Buddhist,0.14799,592,The Dance Among Thorns,C1
+tfidf_nouns_masked,bud-p078,parable,Buddhist,0.17761,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,bud-p079,parable,Buddhist,0.13766,1645,The Treasure at Home,C5
+tfidf_nouns_masked,bud-p080,parable,Buddhist,0.12395,113A,Pan Is Dead (previously King of the Cats Is Dead),C4
+tfidf_nouns_masked,bud-p081,parable,Buddhist,0.12861,502,The Wild Man,C1
+tfidf_nouns_masked,bud-b001,baseline,Buddhist,0.11463,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,bud-b002,baseline,Buddhist,0.10011,1430,The Man and his Wife Build Air Castles,C1
+tfidf_nouns_masked,bud-b003,baseline,Buddhist,0.13084,1641,Doctor Know-All,C3
+tfidf_nouns_masked,bud-b004,baseline,Buddhist,0.10941,332,Godfather Death,C6
+tfidf_nouns_masked,bud-b005,baseline,Buddhist,0.098323,1696,'What Should I Have Said (Done)' Miscellaneous type,C1
+tfidf_nouns_masked,bud-b006,baseline,Buddhist,0.11524,1586,The Man in Court for Killing a Fly,C1
+tfidf_nouns_masked,bud-b007,baseline,Buddhist,0.11388,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,bud-b008,baseline,Buddhist,0.11947,20C,The Animals Flee in Fear of the End of the World,C1
+tfidf_nouns_masked,bud-b009,baseline,Buddhist,0.14547,502,The Wild Man,C1
+tfidf_nouns_masked,bud-b010,baseline,Buddhist,0.1139,124,Blowing the House In [Z81],C1
+tfidf_nouns_masked,bud-b011,baseline,Buddhist,0.14447,1696,'What Should I Have Said (Done)' Miscellaneous type,C3
+tfidf_nouns_masked,bud-b012,baseline,Buddhist,0.19517,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,bud-b013,baseline,Buddhist,0.18509,311,Rescue by the Sister,C1
+tfidf_nouns_masked,bud-b014,baseline,Buddhist,0.11297,1641,Doctor Know-All,C1
+tfidf_nouns_masked,bud-b015,baseline,Buddhist,0.10722,440,The Frog King or Iron Henry,C2
+tfidf_nouns_masked,bud-b016,baseline,Buddhist,0.15612,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C1
+tfidf_nouns_masked,bud-b017,baseline,Buddhist,0.11188,777,The Wandering Jew,C2
+tfidf_nouns_masked,bud-b018,baseline,Buddhist,0.11784,173,Human and Animal Life Spans Are Readjusted (previously Men and Animals Readjust Span of Life),C3
+tfidf_nouns_masked,bud-b019,baseline,Buddhist,0.11254,155,The Ungrateful Snake Returned to Captivity,C1
+tfidf_nouns_masked,bud-b020,baseline,Buddhist,0.13288,1540,The Student from Paradise (Paris),C1
+tfidf_nouns_masked,bud-b021,baseline,Buddhist,0.10835,737,Who Will Be her Future Husband On New Year's Eve (Christmas Eve) a young woman foresees her future husband [D1825,C3
+tfidf_nouns_masked,bud-b022,baseline,Buddhist,0.10186,779,Miscellaneous Divine Rewards and Punishments,C6
+tfidf_nouns_masked,bud-b023,baseline,Buddhist,0.15557,155,The Ungrateful Snake Returned to Captivity,C3
+tfidf_nouns_masked,bud-b024,baseline,Buddhist,0.12131,1540,The Student from Paradise (Paris),C1
+tfidf_nouns_masked,jew-p001,parable,Jewish,0.12414,243A,The Rooster who Crows about Mistress's Adultery Killed,C4
+tfidf_nouns_masked,jew-p002,parable,Jewish,0.10909,295,"The Bean (Mouse), the Straw, and the Coal",C1
+tfidf_nouns_masked,jew-p003,parable,Jewish,0.14373,1342,Warming Hands and Cooling Soup with Same Breath,C4
+tfidf_nouns_masked,jew-p004,parable,Jewish,0.12864,1342,Warming Hands and Cooling Soup with Same Breath,C2
+tfidf_nouns_masked,jew-p005,parable,Jewish,0.1592,1791,The Sexton Carries the Clergyman,C3
+tfidf_nouns_masked,jew-p006,parable,Jewish,0.12272,613,The Two Travelers,C1
+tfidf_nouns_masked,jew-p007,parable,Jewish,0.12239,1645,The Treasure at Home,C1
+tfidf_nouns_masked,jew-p008,parable,Jewish,0.1268,650A,Strong John,C1
+tfidf_nouns_masked,jew-p009,parable,Jewish,0.12156,1676,The Pretended Ghost (previously Joker Posing as Ghost Punished by Victim),C2
+tfidf_nouns_masked,jew-p010,parable,Jewish,0.13307,1675,The Ox (Ass) as Mayor,C1
+tfidf_nouns_masked,jew-p011,parable,Jewish,0.12808,502,The Wild Man,C1
+tfidf_nouns_masked,jew-p012,parable,Jewish,0.11494,1641,Doctor Know-All,C1
+tfidf_nouns_masked,jew-p013,parable,Jewish,0.11089,113A,Pan Is Dead (previously King of the Cats Is Dead),C1
+tfidf_nouns_masked,jew-p014,parable,Jewish,0.11522,706,The Maiden without Hands,C1
+tfidf_nouns_masked,jew-p015,parable,Jewish,0.13136,675,The Lazy Boy,C1
+tfidf_nouns_masked,jew-p016,parable,Jewish,0.10147,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),C1
+tfidf_nouns_masked,jew-p017,parable,Jewish,0.14401,173,Human and Animal Life Spans Are Readjusted (previously Men and Animals Readjust Span of Life),C5
+tfidf_nouns_masked,jew-p018,parable,Jewish,0.12188,1540,The Student from Paradise (Paris),C3
+tfidf_nouns_masked,jew-p019,parable,Jewish,0.12671,1362,The Snow-Child,C1
+tfidf_nouns_masked,jew-p020,parable,Jewish,0.11534,425C,Beauty and the Beast,C1
+tfidf_nouns_masked,jew-p021,parable,Jewish,0.16205,440,The Frog King or Iron Henry,C6
+tfidf_nouns_masked,jew-p022,parable,Jewish,0.14046,1592,The Iron-eating Mice,C3
+tfidf_nouns_masked,jew-p023,parable,Jewish,0.17262,1641,Doctor Know-All,C1
+tfidf_nouns_masked,jew-p024,parable,Jewish,0.13348,332,Godfather Death,C1
+tfidf_nouns_masked,jew-p025,parable,Jewish,0.12815,709,Snow White,C1
+tfidf_nouns_masked,jew-p026,parable,Jewish,0.15659,670,The Man who Understands Animal Languages (previously The Animal Languages),C1
+tfidf_nouns_masked,jew-p027,parable,Jewish,0.14059,780,The Singing Bone,C1
+tfidf_nouns_masked,jew-p028,parable,Jewish,0.1151,700,Thumbling (previously Tom Thumb),C1
+tfidf_nouns_masked,jew-p029,parable,Jewish,0.15246,726,The Three Old Men (previously The Oldest on the Farm),C6
+tfidf_nouns_masked,jew-p030,parable,Jewish,0.11878,777,The Wandering Jew,C1
+tfidf_nouns_masked,jew-p031,parable,Jewish,0.1293,480,The Kind and the Unkind Girls (previously The Spinning-Women by the Spring,C1
+tfidf_nouns_masked,jew-p032,parable,Jewish,0.14101,954,The Forty Thieves,C1
+tfidf_nouns_masked,jew-p033,parable,Jewish,0.10934,954,The Forty Thieves,C1
+tfidf_nouns_masked,jew-p034,parable,Jewish,0.15483,704,Princess on the Pea,C1
+tfidf_nouns_masked,jew-p035,parable,Jewish,0.13929,425C,Beauty and the Beast,C1
+tfidf_nouns_masked,jew-p036,parable,Jewish,0.15997,480,The Kind and the Unkind Girls (previously The Spinning-Women by the Spring,C3
+tfidf_nouns_masked,jew-p037,parable,Jewish,0.11966,160,"Grateful Animals, Ungrateful Man [W154",C1
+tfidf_nouns_masked,jew-p038,parable,Jewish,0.12067,1317,The Blind Men and the Elephant,C2
+tfidf_nouns_masked,jew-p039,parable,Jewish,0.14133,1540,The Student from Paradise (Paris),C3
+tfidf_nouns_masked,jew-p040,parable,Jewish,0.13231,332,Godfather Death,C1
+tfidf_nouns_masked,jew-p041,parable,Jewish,0.11618,502,The Wild Man,C1
+tfidf_nouns_masked,jew-p042,parable,Jewish,0.12542,1319,Pumpkin Sold as an Donkey's Egg [J1772,C2
+tfidf_nouns_masked,jew-p043,parable,Jewish,0.11529,365,The Dead Bridegroom Carries Off his Bride,C6
+tfidf_nouns_masked,jew-p044,parable,Jewish,0.10228,737,Who Will Be her Future Husband On New Year's Eve (Christmas Eve) a young woman foresees her future husband [D1825,C2
+tfidf_nouns_masked,jew-p045,parable,Jewish,0.13583,850,The Birthmarks of the Princess,C1
+tfidf_nouns_masked,jew-p046,parable,Jewish,0.12566,1645,The Treasure at Home,C5
+tfidf_nouns_masked,jew-p047,parable,Jewish,0.12001,900,King Thrushbeard,C1
+tfidf_nouns_masked,jew-p048,parable,Jewish,0.13419,709,Snow White,C1
+tfidf_nouns_masked,jew-p049,parable,Jewish,0.095066,777,The Wandering Jew,C3
+tfidf_nouns_masked,jew-p050,parable,Jewish,0.12777,500,The Name of the Supernatural Helper,C1
+tfidf_nouns_masked,jew-b001,baseline,Jewish,0.12305,440,The Frog King or Iron Henry,C1
+tfidf_nouns_masked,jew-b002,baseline,Jewish,0.11775,777,The Wandering Jew,C7
+tfidf_nouns_masked,jew-b003,baseline,Jewish,0.11194,231,The Heron and the Fish (previously The Heron [Crane] Transports the Fish),C1
+tfidf_nouns_masked,jew-b004,baseline,Jewish,0.11096,440,The Frog King or Iron Henry,C1
+tfidf_nouns_masked,jew-b005,baseline,Jewish,0.09201,650A,Strong John,C3
+tfidf_nouns_masked,jew-b006,baseline,Jewish,0.10821,777,The Wandering Jew,C1
+tfidf_nouns_masked,jew-b007,baseline,Jewish,0.1058,332,Godfather Death,C3
+tfidf_nouns_masked,jew-b008,baseline,Jewish,0.081449,327,The Children and the Ogre,C6
+tfidf_nouns_masked,jew-b009,baseline,Jewish,0.12721,958E*,Deep Sleep Brought on by a Robber,C1
+tfidf_nouns_masked,jew-b010,baseline,Jewish,0.18266,845,The Old Man and Death,C7
+tfidf_nouns_masked,jew-b011,baseline,Jewish,0.1046,613,The Two Travelers,C1
+tfidf_nouns_masked,jew-b012,baseline,Jewish,0.092293,565,The Magic Mill,C1
+tfidf_nouns_masked,jew-b013,baseline,Jewish,0.10548,311,Rescue by the Sister,C1
+tfidf_nouns_masked,jew-b014,baseline,Jewish,0.098948,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,jew-b015,baseline,Jewish,0.11661,613,The Two Travelers,C1
+tfidf_nouns_masked,jew-b016,baseline,Jewish,0.14474,332,Godfather Death,C1
+tfidf_nouns_masked,jew-b017,baseline,Jewish,0.1201,502,The Wild Man,C1
+tfidf_nouns_masked,jew-b018,baseline,Jewish,0.0924,365,The Dead Bridegroom Carries Off his Bride,C1
+tfidf_nouns_masked,jew-b019,baseline,Jewish,0.1238,1423,The Enchanted Pear Tree,C3
+tfidf_nouns_masked,jew-b020,baseline,Jewish,0.16491,47B,The Horse Kicks the Wolf in the Teeth,C2
+tfidf_nouns_masked,jew-b021,baseline,Jewish,0.11925,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C3
+tfidf_nouns_masked,jew-b022,baseline,Jewish,0.11247,777,The Wandering Jew,C1
+tfidf_nouns_masked,jew-b023,baseline,Jewish,0.11278,225,The Crane Teaches the Fox to Fly,C1
+tfidf_nouns_masked,jew-b024,baseline,Jewish,0.11134,777,The Wandering Jew,C3
+tfidf_nouns_masked,jew-b025,baseline,Jewish,0.18166,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,jew-b026,baseline,Jewish,0.17783,926,Judgment of Solomon,C1
+tfidf_nouns_masked,jew-b027,baseline,Jewish,0.11665,1365,The Obstinate Wife,C3
+tfidf_nouns_masked,jew-b028,baseline,Jewish,0.25149,750A,The Three Wishes (previously The Wishes),C1
+tfidf_nouns_masked,jew-b029,baseline,Jewish,0.14465,91,Heart of Monkey as Medicine (previously Monkey [Cat] who Left his Heart at Home),C1
+tfidf_nouns_masked,jew-b030,baseline,Jewish,0.13702,777,The Wandering Jew,C4
+tfidf_nouns_masked,jew-b031,baseline,Jewish,0.16891,510A,Cinderella,C7
+tfidf_nouns_masked,jew-b032,baseline,Jewish,0.10814,1675,The Ox (Ass) as Mayor,C2
+tfidf_nouns_masked,jew-b033,baseline,Jewish,0.2026,592,The Dance Among Thorns,C7
+tfidf_nouns_masked,jew-b034,baseline,Jewish,0.18856,155,The Ungrateful Snake Returned to Captivity,C1
+tfidf_nouns_masked,jew-b035,baseline,Jewish,0.14937,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C2
+tfidf_nouns_masked,jew-b036,baseline,Jewish,0.13364,63,The Fox Rids himself of Fleas,C3
+tfidf_nouns_masked,jew-b037,baseline,Jewish,0.13565,1423,The Enchanted Pear Tree,C7
+tfidf_nouns_masked,jew-b038,baseline,Jewish,0.21561,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,jew-b039,baseline,Jewish,0.13202,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C6
+tfidf_nouns_masked,jew-b040,baseline,Jewish,0.23749,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,suf-p001,parable,Sufi,0.1042,706,The Maiden without Hands,C1
+tfidf_nouns_masked,suf-p002,parable,Sufi,0.11019,92,The Lion Dives for his own Reflection,C1
+tfidf_nouns_masked,suf-p003,parable,Sufi,0.099636,92,The Lion Dives for his own Reflection,C1
+tfidf_nouns_masked,suf-p004,parable,Sufi,0.088838,545B,Puss in Boots,C1
+tfidf_nouns_masked,suf-p005,parable,Sufi,0.11602,105,The Cat's Only Trick,C1
+tfidf_nouns_masked,suf-p006,parable,Sufi,0.13069,1645,The Treasure at Home,C1
+tfidf_nouns_masked,suf-p007,parable,Sufi,0.12336,480,The Kind and the Unkind Girls (previously The Spinning-Women by the Spring,C2
+tfidf_nouns_masked,suf-p008,parable,Sufi,0.12332,545B,Puss in Boots,C1
+tfidf_nouns_masked,suf-p009,parable,Sufi,0.11686,124,Blowing the House In [Z81],C3
+tfidf_nouns_masked,suf-p010,parable,Sufi,0.11922,298,The Contest of Wind and Sun,C1
+tfidf_nouns_masked,suf-p011,parable,Sufi,0.12826,231,The Heron and the Fish (previously The Heron [Crane] Transports the Fish),C2
+tfidf_nouns_masked,suf-p012,parable,Sufi,0.1094,130,The Animals in Night Quarters,C3
+tfidf_nouns_masked,suf-p013,parable,Sufi,0.10621,1655,The Profitable Exchange,C1
+tfidf_nouns_masked,suf-p014,parable,Sufi,0.11617,1592,The Iron-eating Mice,C1
+tfidf_nouns_masked,suf-p015,parable,Sufi,0.11682,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C1
+tfidf_nouns_masked,suf-p016,parable,Sufi,0.11852,1030,The Crop Division,C1
+tfidf_nouns_masked,suf-p017,parable,Sufi,0.10378,570,The Rabbit-herd,C1
+tfidf_nouns_masked,suf-p018,parable,Sufi,0.10879,178A,The Innocent Dog (previously Llewellyn and His Dog),C2
+tfidf_nouns_masked,suf-p019,parable,Sufi,0.11979,1586,The Man in Court for Killing a Fly,C2
+tfidf_nouns_masked,suf-p020,parable,Sufi,0.11772,704,Princess on the Pea,C3
+tfidf_nouns_masked,suf-p021,parable,Sufi,0.14314,1676,The Pretended Ghost (previously Joker Posing as Ghost Punished by Victim),C3
+tfidf_nouns_masked,suf-p022,parable,Sufi,0.13193,777,The Wandering Jew,C1
+tfidf_nouns_masked,suf-p023,parable,Sufi,0.087889,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,suf-p024,parable,Sufi,0.10887,910B,The Observance of the Master's Precepts (previously The Servant's Good Counsels),C1
+tfidf_nouns_masked,suf-p025,parable,Sufi,0.10478,1317,The Blind Men and the Elephant,C1
+tfidf_nouns_masked,suf-p026,parable,Sufi,0.10712,502,The Wild Man,C1
+tfidf_nouns_masked,suf-p027,parable,Sufi,0.10617,2,The Tail-Fisher,C1
+tfidf_nouns_masked,suf-p028,parable,Sufi,0.14086,1317,The Blind Men and the Elephant,C8
+tfidf_nouns_masked,suf-p029,parable,Sufi,0.12474,298,The Contest of Wind and Sun,C3
+tfidf_nouns_masked,suf-p030,parable,Sufi,0.12132,650A,Strong John,C1
+tfidf_nouns_masked,suf-p031,parable,Sufi,0.10531,1287,Numskulls Unable to Count their own Number,C1
+tfidf_nouns_masked,suf-p032,parable,Sufi,0.1028,1317,The Blind Men and the Elephant,C1
+tfidf_nouns_masked,suf-p033,parable,Sufi,0.11262,1965,The Disabled Comrades (previously Knoist and his Three Sons),C1
+tfidf_nouns_masked,suf-p034,parable,Sufi,0.13171,155,The Ungrateful Snake Returned to Captivity,C2
+tfidf_nouns_masked,suf-p035,parable,Sufi,0.1191,105,The Cat's Only Trick,C1
+tfidf_nouns_masked,suf-p036,parable,Sufi,0.11602,1422,Parrot Reports Wife's Adultery (previously Parrot Unable to Tell Husband Details of Wife's Infidelity),C1
+tfidf_nouns_masked,suf-p037,parable,Sufi,0.095396,737,Who Will Be her Future Husband On New Year's Eve (Christmas Eve) a young woman foresees her future husband [D1825,C2
+tfidf_nouns_masked,suf-p038,parable,Sufi,0.11417,545B,Puss in Boots,C1
+tfidf_nouns_masked,suf-p039,parable,Sufi,0.14687,160,"Grateful Animals, Ungrateful Man [W154",C1
+tfidf_nouns_masked,suf-p040,parable,Sufi,0.10462,1645,The Treasure at Home,C1
+tfidf_nouns_masked,suf-p041,parable,Sufi,0.11767,777,The Wandering Jew,C7
+tfidf_nouns_masked,suf-p042,parable,Sufi,0.12275,706,The Maiden without Hands,C1
+tfidf_nouns_masked,suf-p043,parable,Sufi,0.13406,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,suf-p044,parable,Sufi,0.13337,1423,The Enchanted Pear Tree,C3
+tfidf_nouns_masked,suf-p045,parable,Sufi,0.10629,780,The Singing Bone,C1
+tfidf_nouns_masked,suf-p046,parable,Sufi,0.10072,502,The Wild Man,C1
+tfidf_nouns_masked,suf-p047,parable,Sufi,0.096906,440,The Frog King or Iron Henry,C1
+tfidf_nouns_masked,suf-p048,parable,Sufi,0.13239,670,The Man who Understands Animal Languages (previously The Animal Languages),C1
+tfidf_nouns_masked,suf-p049,parable,Sufi,0.10593,441,Hans my Hedgehog,C1
+tfidf_nouns_masked,suf-p050,parable,Sufi,0.10041,510A,Cinderella,C1
+tfidf_nouns_masked,suf-p051,parable,Sufi,0.15623,502,The Wild Man,C1
+tfidf_nouns_masked,suf-p052,parable,Sufi,0.15729,545B,Puss in Boots,C1
+tfidf_nouns_masked,suf-p053,parable,Sufi,0.10382,1675,The Ox (Ass) as Mayor,C1
+tfidf_nouns_masked,suf-p054,parable,Sufi,0.11914,888,The Faithful Wife,C1
+tfidf_nouns_masked,suf-p055,parable,Sufi,0.12664,706,The Maiden without Hands,C1
+tfidf_nouns_masked,suf-p056,parable,Sufi,0.10863,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,suf-p057,parable,Sufi,0.122,1317,The Blind Men and the Elephant,C1
+tfidf_nouns_masked,suf-p058,parable,Sufi,0.10889,706,The Maiden without Hands,C1
+tfidf_nouns_masked,suf-p059,parable,Sufi,0.13708,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,suf-p060,parable,Sufi,0.11512,1641,Doctor Know-All,C1
+tfidf_nouns_masked,suf-b001,baseline,Sufi,0.097348,1317,The Blind Men and the Elephant,C2
+tfidf_nouns_masked,suf-b002,baseline,Sufi,0.082885,613,The Two Travelers,C1
+tfidf_nouns_masked,suf-b003,baseline,Sufi,0.11092,278A,The Frog Persists in Living in Puddle on Road,C1
+tfidf_nouns_masked,suf-b004,baseline,Sufi,0.12073,20C,The Animals Flee in Fear of the End of the World,C1
+tfidf_nouns_masked,suf-b005,baseline,Sufi,0.1147,275,The Race between Two Animals (previously The Race of the Fox and the Crayfish),C2
+tfidf_nouns_masked,suf-b006,baseline,Sufi,0.12206,75,The Help of the Weak,C2
+tfidf_nouns_masked,suf-b007,baseline,Sufi,0.12162,2031C,The Mightiest Being as Husband for the Daughter (previously The Man Seeks the Greatest Being as a Husband for his Daughter),C8
+tfidf_nouns_masked,suf-b008,baseline,Sufi,0.1417,706,The Maiden without Hands,C1
+tfidf_nouns_masked,suf-b009,baseline,Sufi,0.10316,63,The Fox Rids himself of Fleas,C1
+tfidf_nouns_masked,suf-b010,baseline,Sufi,0.12978,92,The Lion Dives for his own Reflection,C1
+tfidf_nouns_masked,suf-b011,baseline,Sufi,0.1806,311,Rescue by the Sister,C2
+tfidf_nouns_masked,suf-b012,baseline,Sufi,0.12726,2250,Unfinished Tales,C1
+tfidf_nouns_masked,suf-b013,baseline,Sufi,0.13408,2025,The Fleeing Pancake,C2
+tfidf_nouns_masked,suf-b014,baseline,Sufi,0.097311,502,The Wild Man,C1
+tfidf_nouns_masked,suf-b015,baseline,Sufi,0.1202,502,The Wild Man,C1
+tfidf_nouns_masked,suf-b016,baseline,Sufi,0.13621,502,The Wild Man,C1
+tfidf_nouns_masked,suf-b017,baseline,Sufi,0.15254,278A,The Frog Persists in Living in Puddle on Road,C3
+tfidf_nouns_masked,suf-b018,baseline,Sufi,0.21887,502,The Wild Man,C1
+tfidf_nouns_masked,suf-b019,baseline,Sufi,0.10542,2034F,The Clever Animal and the Fortunate Exchanges,C3
+tfidf_nouns_masked,suf-b020,baseline,Sufi,0.13851,737,Who Will Be her Future Husband On New Year's Eve (Christmas Eve) a young woman foresees her future husband [D1825,C7
+tfidf_nouns_masked,suf-b021,baseline,Sufi,0.12145,440,The Frog King or Iron Henry,C1
+tfidf_nouns_masked,suf-b022,baseline,Sufi,0.17594,441,Hans my Hedgehog,C1
+tfidf_nouns_masked,suf-b023,baseline,Sufi,0.10776,545B,Puss in Boots,C1
+tfidf_nouns_masked,suf-b024,baseline,Sufi,0.23669,1423,The Enchanted Pear Tree,C7
+tfidf_nouns_masked,suf-b025,baseline,Sufi,0.098835,780,The Singing Bone,C1
+tfidf_nouns_masked,suf-b026,baseline,Sufi,0.15343,1423,The Enchanted Pear Tree,C1
+tfidf_nouns_masked,suf-b027,baseline,Sufi,0.11773,306,The Danced-out Shoes,C1
+tfidf_nouns_masked,suf-b028,baseline,Sufi,0.12272,502,The Wild Man,C1
+tfidf_nouns_masked,suf-b029,baseline,Sufi,0.12645,800,The Tailor in Heaven,C1
+tfidf_nouns_masked,suf-b030,baseline,Sufi,0.11711,20C,The Animals Flee in Fear of the End of the World,C1
+tfidf_nouns_masked,suf-b031,baseline,Sufi,0.11983,777,The Wandering Jew,C1
+tfidf_nouns_masked,suf-b032,baseline,Sufi,0.16186,1423,The Enchanted Pear Tree,C7
+tfidf_nouns_masked,suf-b033,baseline,Sufi,0.098274,173,Human and Animal Life Spans Are Readjusted (previously Men and Animals Readjust Span of Life),C1
+tfidf_nouns_masked,suf-b034,baseline,Sufi,0.16468,502,The Wild Man,C1
+tfidf_nouns_masked,suf-b035,baseline,Sufi,0.1148,366,The Man from the Gallows,C1
+tfidf_nouns_masked,suf-b036,baseline,Sufi,0.093475,113A,Pan Is Dead (previously King of the Cats Is Dead),C1
+tfidf_nouns_masked,suf-b037,baseline,Sufi,0.12712,311,Rescue by the Sister,C1
+tfidf_nouns_masked,suf-b038,baseline,Sufi,0.10729,1342,Warming Hands and Cooling Soup with Same Breath,C3
+tfidf_nouns_masked,suf-b039,baseline,Sufi,0.11797,440,The Frog King or Iron Henry,C1
+tfidf_nouns_masked,suf-b040,baseline,Sufi,0.12465,1592,The Iron-eating Mice,C1
+tfidf_nouns_masked,tao-p001,parable,Taoist,0.126,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C1
+tfidf_nouns_masked,tao-p002,parable,Taoist,0.10763,402,"The Animal Bride (previously The Mouse [Cat, Frog, etc",C1
+tfidf_nouns_masked,tao-p003,parable,Taoist,0.12899,1540,The Student from Paradise (Paris),C3
+tfidf_nouns_masked,tao-p004,parable,Taoist,0.1542,306,The Danced-out Shoes,C1
+tfidf_nouns_masked,tao-p005,parable,Taoist,0.13172,231,The Heron and the Fish (previously The Heron [Crane] Transports the Fish),C1
+tfidf_nouns_masked,tao-p006,parable,Taoist,0.14678,780,The Singing Bone,C3
+tfidf_nouns_masked,tao-p007,parable,Taoist,0.11302,545B,Puss in Boots,C1
+tfidf_nouns_masked,tao-p008,parable,Taoist,0.13292,613,The Two Travelers,C1
+tfidf_nouns_masked,tao-p009,parable,Taoist,0.13181,1645,The Treasure at Home,C5
+tfidf_nouns_masked,tao-p010,parable,Taoist,0.10587,562,The Spirit in the Blue Light,C1
+tfidf_nouns_masked,tao-p011,parable,Taoist,0.11438,982,The Pretended Inheritance (previously Supposed Chest of Gold Induces Children to Care for Aged Father),C1
+tfidf_nouns_masked,tao-p012,parable,Taoist,0.12647,958E*,Deep Sleep Brought on by a Robber,C1
+tfidf_nouns_masked,tao-p013,parable,Taoist,0.13265,726,The Three Old Men (previously The Oldest on the Farm),C1
+tfidf_nouns_masked,tao-p014,parable,Taoist,0.13829,954,The Forty Thieves,C1
+tfidf_nouns_masked,tao-p015,parable,Taoist,0.13581,441,Hans my Hedgehog,C1
+tfidf_nouns_masked,tao-p016,parable,Taoist,0.13311,113A,Pan Is Dead (previously King of the Cats Is Dead),C1
+tfidf_nouns_masked,tao-p017,parable,Taoist,0.11407,958E*,Deep Sleep Brought on by a Robber,C3
+tfidf_nouns_masked,tao-p018,parable,Taoist,0.13276,1592,The Iron-eating Mice,C1
+tfidf_nouns_masked,tao-p019,parable,Taoist,0.13801,1676,The Pretended Ghost (previously Joker Posing as Ghost Punished by Victim),C2
+tfidf_nouns_masked,tao-p020,parable,Taoist,0.13608,440,The Frog King or Iron Henry,C1
+tfidf_nouns_masked,tao-p021,parable,Taoist,0.13632,2034F,The Clever Animal and the Fortunate Exchanges,C1
+tfidf_nouns_masked,tao-p022,parable,Taoist,0.14305,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,tao-p023,parable,Taoist,0.13672,1678,The Boy who Had Never Seen a Woman,C3
+tfidf_nouns_masked,tao-p024,parable,Taoist,0.16102,1365,The Obstinate Wife,C4
+tfidf_nouns_masked,tao-p025,parable,Taoist,0.12155,402,"The Animal Bride (previously The Mouse [Cat, Frog, etc",C3
+tfidf_nouns_masked,tao-p026,parable,Taoist,0.12365,112,Country Mouse Visits Town Mouse,C3
+tfidf_nouns_masked,tao-p027,parable,Taoist,0.13082,510A,Cinderella,C1
+tfidf_nouns_masked,tao-p028,parable,Taoist,0.15885,247,Each Mother Likes her Own Children Best (previously Each Likes his Own Children Best),C1
+tfidf_nouns_masked,tao-p029,parable,Taoist,0.14966,1965,The Disabled Comrades (previously Knoist and his Three Sons),C3
+tfidf_nouns_masked,tao-p030,parable,Taoist,0.13765,451,The Maiden Who Seeks her Brothers,C1
+tfidf_nouns_masked,tao-p031,parable,Taoist,0.1474,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,tao-p032,parable,Taoist,0.15742,332,Godfather Death,C1
+tfidf_nouns_masked,tao-p033,parable,Taoist,0.16725,1592,The Iron-eating Mice,C1
+tfidf_nouns_masked,tao-p034,parable,Taoist,0.14232,777,The Wandering Jew,C3
+tfidf_nouns_masked,tao-p035,parable,Taoist,0.14613,1174,Making a Rope of Sand,C3
+tfidf_nouns_masked,tao-p036,parable,Taoist,0.11306,900,King Thrushbeard,C1
+tfidf_nouns_masked,tao-p037,parable,Taoist,0.14793,545B,Puss in Boots,C1
+tfidf_nouns_masked,tao-p038,parable,Taoist,0.14872,670,The Man who Understands Animal Languages (previously The Animal Languages),C3
+tfidf_nouns_masked,tao-p039,parable,Taoist,0.14615,500,The Name of the Supernatural Helper,C3
+tfidf_nouns_masked,tao-p040,parable,Taoist,0.1367,113A,Pan Is Dead (previously King of the Cats Is Dead),C1
+tfidf_nouns_masked,tao-p041,parable,Taoist,0.15104,726,The Three Old Men (previously The Oldest on the Farm),C1
+tfidf_nouns_masked,tao-p042,parable,Taoist,0.14966,285A,The Man and the Wounded Snake (previously The Dead Child and the Snake's Tail),C2
+tfidf_nouns_masked,tao-p043,parable,Taoist,0.14379,1030,The Crop Division,C1
+tfidf_nouns_masked,tao-p044,parable,Taoist,0.18314,480,The Kind and the Unkind Girls (previously The Spinning-Women by the Spring,C4
+tfidf_nouns_masked,tao-p045,parable,Taoist,0.13995,91,Heart of Monkey as Medicine (previously Monkey [Cat] who Left his Heart at Home),C1
+tfidf_nouns_masked,tao-p046,parable,Taoist,0.15824,777,The Wandering Jew,C3
+tfidf_nouns_masked,tao-p047,parable,Taoist,0.13231,545B,Puss in Boots,C1
+tfidf_nouns_masked,tao-p048,parable,Taoist,0.16042,888,The Faithful Wife,C1
+tfidf_nouns_masked,tao-p049,parable,Taoist,0.12401,1353,The Old Woman as Trouble Maker,C3
+tfidf_nouns_masked,tao-p050,parable,Taoist,0.19013,306,The Danced-out Shoes,C1
+tfidf_nouns_masked,tao-b001,baseline,Taoist,0.091941,1540,The Student from Paradise (Paris),C1
+tfidf_nouns_masked,tao-b002,baseline,Taoist,0.098347,2250,Unfinished Tales,C1
+tfidf_nouns_masked,tao-b003,baseline,Taoist,0.10066,502,The Wild Man,C1
+tfidf_nouns_masked,tao-b004,baseline,Taoist,0.11121,980,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),C3
+tfidf_nouns_masked,tao-b005,baseline,Taoist,0.10991,750A,The Three Wishes (previously The Wishes),C3
+tfidf_nouns_masked,tao-b006,baseline,Taoist,0.10553,981,Wisdom of Hidden Old Man Saves Kingdom,C2
+tfidf_nouns_masked,tao-b007,baseline,Taoist,0.11535,1675,The Ox (Ass) as Mayor,C3
+tfidf_nouns_masked,tao-b008,baseline,Taoist,0.11561,650A,Strong John,C1
+tfidf_nouns_masked,tao-b009,baseline,Taoist,0.1194,1641,Doctor Know-All,C1
+tfidf_nouns_masked,tao-b010,baseline,Taoist,0.11532,1191,Sacrifice on the Bridge (previously The Dog on the Bridge),C3
+tfidf_nouns_masked,tao-b011,baseline,Taoist,0.12858,1592,The Iron-eating Mice,C1
+tfidf_nouns_masked,tao-b012,baseline,Taoist,0.14425,1540,The Student from Paradise (Paris),C1
+tfidf_nouns_masked,tao-b013,baseline,Taoist,0.12642,105,The Cat's Only Trick,C1
+tfidf_nouns_masked,tao-b014,baseline,Taoist,0.11678,332,Godfather Death,C2
+tfidf_nouns_masked,tao-b015,baseline,Taoist,0.11811,1965,The Disabled Comrades (previously Knoist and his Three Sons),C1
+tfidf_nouns_masked,tao-b016,baseline,Taoist,0.11367,1641,Doctor Know-All,C1
+tfidf_nouns_masked,tao-b017,baseline,Taoist,0.10226,1645,The Treasure at Home,C3
+tfidf_nouns_masked,tao-b018,baseline,Taoist,0.1017,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C3
+tfidf_nouns_masked,tao-b019,baseline,Taoist,0.11477,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C1
+tfidf_nouns_masked,tao-b020,baseline,Taoist,0.10035,955,The Robber Bridegroom [K1916],C1
+tfidf_nouns_masked,tao-b021,baseline,Taoist,0.11956,510B,"Peau d'asne (previously The Dress of Gold, of Silver, and of Stars [Cap o' Rushes])",C3
+tfidf_nouns_masked,tao-b022,baseline,Taoist,0.1085,650A,Strong John,C2
+tfidf_nouns_masked,tao-b023,baseline,Taoist,0.12658,650A,Strong John,C2
+tfidf_nouns_masked,tao-b024,baseline,Taoist,0.10598,1430,The Man and his Wife Build Air Castles,C1

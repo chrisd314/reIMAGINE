@@ -10,8 +10,8 @@ Unfinished from the earlier tasks, carried over unchanged: the three decisions u
 | --- | --- |
 | 1 Calibration not circular | Done. No retelling or near-copy in the pool (highest cosine TF-IDF 0.380, embeddings 0.894); assertion in every stage; no number changed (DECISIONS.md T1). |
 | 2 Headline: parables against the same-translation baseline | Done (`ouaw/headline.py`, stage `headline`). TF-IDF: Buddhist, Taoist and Jewish parables are closer to folktales than their baseline (permutation p ≤ 0.02); Christian (p = 0.07) and Sufi (p = 0.18) are not. Embeddings: Christian, Buddhist, Sufi closer. The old "king, prince, princess" lean of four traditions is mostly shared with their own baseline; against it, Christian parables lean to C3 (money, husband, woman; +17 points), Sufi to C2 (fox, wolf, lion; +11), Taoist to C4 (+5). Outputs `results/headline_*.csv`. RESULTS.md is rewritten in step 9. |
-| 3 Length confound | to do |
-| 4 Vocabulary against narrative | to do |
+| 3 Length confound | Done (`ouaw/length.py`, stage `length`). Baselines are length-matched (Mann-Whitney p ≥ 0.29). Every tradition's parables are *less* folktale-like than folktale excerpts of the same length (TF-IDF −0.04 to −0.06; embeddings −0.05 to −0.18): the gap to folklore is not a length effect. Closeness rises with length (TF-IDF +0.020 per log word). At equal length, parables beat their baseline for Buddhist and Taoist (p < 0.001), Christian borderline (p = 0.05), Jewish and Sufi not. The tradition order at equal length puts Christian first (τ = 0.8 with the raw order). |
+| 4 Vocabulary against narrative | Done (`ouaw/vocab.py`, stage `vocab`; spaCy in group `paper`). With nouns masked, recall@10 0.69 → 0.47 (chance 0.055). Headline with nouns masked: Buddhist and Taoist hold, Christian becomes significant (p = 0.001), Jewish is lost (p = 0.13), Sufi none. Archaic pronouns (thou, thee, thy) are among the top match drivers of Buddhist, Jewish and Sufi texts: translation register. Template has `driver_terms` (no labels were filled). |
 | 5 Network robustness | to do |
 | 6 Collection and translator | to do |
 | 7 Figures around one headline | to do |

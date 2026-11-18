@@ -1,5 +1,6 @@
-representation,queries,recall_at_1,recall_at_5,recall_at_k,k,ci_low,ci_high,chance_at_k,hits,expected_hits_by_chance,p_value,median_rank_of_first_right_answer,mean_reciprocal_rank
-tfidf,36,0.5,0.61111,0.69444,10,0.52778,0.83333,0.054546,25,1.9636,4.6672e-26,1.5,0.55821
-tfidf_masked,36,0.5,0.61111,0.69444,10,0.52778,0.83333,0.054546,25,1.9636,4.6672e-26,1.5,0.55981
-embedding,36,0.44444,0.5,0.61111,10,0.44444,0.77778,0.054546,22,1.9636,6.0022e-21,5.5,0.48492
-embedding_masked,36,0.44444,0.55556,0.61111,10,0.44444,0.77778,0.054546,22,1.9636,6.0022e-21,4,0.49447
+representation,queries,recall_at_1,recall_at_5,recall_at_k,k,ci_low,ci_high,chance_at_k,hits,expected_hits_by_chance,p_value,median_rank_of_first_right_answer,mean_reciprocal_rank,vote_accuracy,vote_hits,vote_chance,vote_chance_low,vote_chance_high
+tfidf,36,0.5,0.61111,0.69444,10,0.52778,0.83333,0.054546,25,1.9636,4.6672e-26,1.5,0.55821,0.36111,13,0.0055278,0,0.027778
+tfidf_masked,36,0.5,0.61111,0.69444,10,0.52778,0.83333,0.054546,25,1.9636,4.6672e-26,1.5,0.55981,0.33333,12,0.0055556,0,0.027778
+embedding,36,0.44444,0.5,0.61111,10,0.44444,0.77778,0.054546,22,1.9636,6.0022e-21,5.5,0.48492,0.38889,14,0.0055278,0,0.027778
+embedding_masked,36,0.44444,0.55556,0.61111,10,0.44444,0.77778,0.054546,22,1.9636,6.0022e-21,4,0.49447,0.36111,13,0.0055833,0,0.027778
+tfidf_nouns_masked,36,0.19444,0.36111,0.47222,10,0.30556,0.63889,0.054546,17,1.9636,1.2835e-13,22,0.27544,0.25,9,0.0055278,0,0.027778

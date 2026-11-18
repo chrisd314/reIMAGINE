@@ -96,3 +96,95 @@ def test_type_vote_sums_cosines_and_breaks_ties_by_the_nearer_tale():
     assert votes[2] is None
     tt = top_types(votes, {"327": "The Children and the Ogre"})
     assert tt[0] == dict(rank=1, atu_id="327", atu_name="The Children and the Ogre", texts=2, share=2 / 3)
+
+
+# ----------------------------------------------------------------- step 3: length-matched excerpts
+def test_excerpts_are_contiguous_length_matched_and_from_long_enough_tales():
+    from ouaw.length import sample_excerpts
+    rng = np.random.default_rng(0)
+    folk = [[f"t{i}w{j}" + ("." if j % 7 == 6 else "") for j in range(n)] for i, n in enumerate(rng.integers(20, 400, 60))]
+    targets = [30, 100, 250, 395]
+    ex = sample_excerpts(targets, folk, n_per=5, tol=0.10, seed=1)
+    assert ex == sample_excerpts(targets, folk, n_per=5, tol=0.10, seed=1)            # seeded
+    for t, n in enumerate(targets):
+        mine = [e for e in ex if e["target"] == t]
+        eligible = [i for i, w in enumerate(folk) if len(w) >= np.ceil(0.9 * n)]
+        assert len(mine) == min(5, len(eligible))
+        assert len({e["source"] for e in mine}) == len(mine)                          # distinct source tales
+        for e in mine:
+            assert e["source"] in eligible
+            assert 0.9 * n <= e["n_tokens"] <= n                                      # within 10% of the target
+            words = folk[e["source"]]
+            assert e["text"].split() == words[e["start"]:e["start"] + e["n_tokens"]]   # one contiguous stretch
+            if e["start"] > 0 and e["n_tokens"] < len(words) - 7:
+                assert words[e["start"] - 1].endswith(".")                            # opens at a sentence start
+
+
+def test_group_model_recovers_slope_and_group_levels():
+    from ouaw.length import contrast, group_model
+    rng = np.random.default_rng(2)
+    lt = rng.uniform(3, 7, 400)
+    g = np.array(["a", "b"] * 200)
+    y = 0.05 * (lt - 5) + np.where(g == "a", 0.30, 0.20) + rng.normal(0, 0.005, 400)
+    names, beta, cov = group_model(y, lt, g, at=5.0)
+    assert names == ["log_words", "a", "b"]
+    assert beta == pytest.approx([0.05, 0.30, 0.20], abs=0.003)
+    est, se, p = contrast(names, beta, cov, "a", "b")
+    assert est == pytest.approx(0.10, abs=0.003) and se < 0.002 and p < 1e-6
+
+
+# ----------------------------------------------------------------- step 4: vocabulary against narrative
+TAGGED = [("Once", "ADV", " "), ("a", "DET", " "), ("fox", "NOUN", " "), ("met", "VERB", " "), ("King", "PROPN", " "),
+          ("Janaka", "PROPN", " "), ("near", "ADP", " "), ("the", "DET", " "), ("old", "ADJ", " "), ("river", "NOUN", ""),
+          (".", "PUNCT", " "), ("The", "DET", " "), ("fox", "NOUN", " "), ("ran", "VERB", " "), ("quickly", "ADV", ""),
+          (".", "PUNCT", "")]
+
+
+def test_noun_masking_replaces_nouns_and_proper_nouns_only():
+    from ouaw.vocab import mask_nouns
+    out = mask_nouns(TAGGED, "[N]")
+    assert out == "Once a [N] met [N] [N] near the old [N]. The [N] ran quickly."
+    for kept in ("met", "near", "old", "ran", "quickly", "Once"):          # verbs, adjectives, adverbs, function words
+        assert kept in out
+    for gone in ("fox", "King", "Janaka", "river"):
+        assert gone not in out
+
+
+def test_masked_placeholder_is_invisible_to_tfidf():
+    from analysis.lexical import preprocess
+    import re
+    cfg = dict(unicode_normalisation="NFKC", lowercase=True, expand_negated_contractions=True)
+    tokens = re.findall(r"(?u)\b[^\W\d_]{2,}\b", preprocess("a [N] met [N] near the old [N]", cfg))
+    assert "n" not in tokens and tokens == ["met", "near", "the", "old"]
+
+
+def test_noun_lexicon_and_match_drivers():
+    import scipy.sparse as sp
+    from ouaw.vocab import drivers, noun_counts, noun_lexicon, noun_share_of_cosine
+    lex = noun_lexicon([noun_counts(TAGGED), noun_counts([("fox", "VERB", " ")])])
+    assert lex == {"fox", "king", "janaka", "river"}                       # fox: noun 2 of 3 uses
+    vocab = np.array(["fox", "king", "ran", "river"])
+    q = sp.csr_matrix(np.array([[0.6, 0.0, 0.8, 0.0]]))
+    f = sp.csr_matrix(np.array([[0.8, 0.3, 0.5, 0.1]]))
+    d = drivers(q, f, vocab, k=5)
+    assert [w for w, _ in d] == ["fox", "ran"] and d[0][1] == pytest.approx(0.48)
+    assert noun_share_of_cosine(q, f, np.array([w in lex for w in vocab])) == pytest.approx(0.48 / 0.88)
+
+
+def test_labels_started_detects_filled_coder_values(tmp_path, monkeypatch):
+    import pandas as pd
+    from ouaw import vocab
+    monkeypatch.setattr(vocab, "LABELING", tmp_path)
+    empty = pd.DataFrame(dict(parable_id=["a"], coder1=[""], coder2=[""]))
+    assert not vocab.labels_started(empty)
+    assert vocab.labels_started(empty.assign(coder2=["same_plot"]))
+    empty.assign(coder1=["unrelated"]).to_csv(tmp_path / "hand_labels.csv", index=False)
+    assert vocab.labels_started(empty)
+
+
+def test_vote_chance_is_low_for_a_large_pool():
+    from ouaw.checks import vote_chance
+    atu = np.array([f"T{i % 50}" for i in range(500)], dtype=object)
+    val = np.tile(np.linspace(0.5, 0.3, 10), (4, 1))
+    m, lo, hi = vote_chance(np.array(["T1", "T2", "T3", "T4"]), atu, val, n_draws=200, seed=0)
+    assert 0.0 <= lo <= m <= hi <= 1.0 and m < 0.1

@@ -17,9 +17,9 @@ import time
 
 from .common import Ctx
 
-ORDER = ["data", "parables", "partA", "partB", "headline", "checks", "figures"]
-MODULE = {"data": ".corpus", "parables": ".parables.build", "partA": ".part_a", "partB": ".part_b",
-          "headline": ".headline", "checks": ".checks", "figures": ".figures"}
+ORDER = ["data", "parables", "partA", "partB", "vocab", "headline", "length", "checks", "figures"]
+MODULE = {"data": ".corpus", "parables": ".parables.build", "partA": ".part_a", "partB": ".part_b", "vocab": ".vocab",
+          "headline": ".headline", "length": ".length", "checks": ".checks", "figures": ".figures"}
 
 
 def _stage(name: str):
