@@ -1,19 +1,25 @@
+/* reIMAGINE storybook theme: parchment, midnight ink, crimson; gilt only for ornaments, never for text. */
 :root {
-  --paper: #f6f1e7;
-  --paper-2: #efe7d8;
-  --paper-3: #e3d8c4;
-  --rule: #d6c9b1;
-  --ink: #1d2b33;
-  --ink-2: #3f4d55;
-  --ink-3: #6b767c;
-  --accent: #b4532a;
-  --accent-soft: #f0d6c6;
-  --teal: #2d6a6a;
+  --paper: #f7f0e1;
+  --paper-2: #efe4cd;
+  --paper-3: #e4d5b7;
+  --rule: #d6c39c;
+  --ink: #1e2340;
+  --ink-2: #3a3d5a;
+  --ink-3: #636276;
+  --accent: #9b3a30;
+  --accent-soft: #f2d9cc;
+  --teal: #2f5d50;
+  --gold: #a87b22;
+  --gold-soft: #e6d3a3;
+  --card: #fbf6ea;
   --halo: #e8a33d;
   --focus: #1f5fbf;
   --ok: #2f6b4f;
   --warn: #9a6a12;
   --serif: "Source Serif 4 Variable", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --display: "IM Fell English", "Source Serif 4 Variable", Georgia, serif;
+  --display-sc: "IM Fell English SC", "IM Fell English", Georgia, serif;
   --sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius: 6px;
   --shadow: 0 1px 2px rgba(29, 43, 51, 0.06), 0 6px 18px rgba(29, 43, 51, 0.07);
@@ -25,7 +31,11 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(168, 123, 34, 0.09), transparent 60%),
+    radial-gradient(circle at 12% 30%, rgba(155, 58, 48, 0.035), transparent 40%);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 18px;
@@ -38,9 +48,10 @@ a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 2
 a:hover { color: var(--accent); }
 p { margin: 0 0 1em; }
 h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.15; margin: 0 0 0.5em; letter-spacing: -0.01em; }
-h1 { font-size: clamp(2.3rem, 6vw, 4.2rem); font-weight: 600; }
-h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 600; }
-h3 { font-size: 1.25rem; font-weight: 600; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: 0; }
+h1 { font-size: clamp(2.3rem, 6vw, 4.2rem); }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+h3 { font-size: 1.35rem; }
 h4 { font-size: 1rem; font-family: var(--sans); font-weight: 650; letter-spacing: 0.01em; }
 small, .small { font-size: 0.85em; }
 .sans { font-family: var(--sans); }
@@ -57,11 +68,13 @@ small, .small { font-size: 0.85em; }
 .site-header {
   position: sticky; top: 0; z-index: 30; height: var(--header-h);
   display: flex; align-items: center; gap: 18px; padding: 0 20px;
-  background: rgba(246, 241, 231, 0.94); backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--rule); font-family: var(--sans); font-size: 14px;
+  background: rgba(247, 240, 225, 0.95); backdrop-filter: blur(6px);
+  border-bottom: 3px double var(--gold-soft); font-family: var(--sans); font-size: 14px;
 }
-.brand { display: flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-family: var(--serif); font-size: 19px; font-weight: 600; white-space: nowrap; }
-.brand svg { width: 26px; height: 26px; }
+.brand { display: flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-family: var(--display); font-size: 23px; font-weight: 400; white-space: nowrap; }
+.brand svg { width: 30px; height: 30px; }
+.brand .re { font-style: italic; color: var(--ink-2); }
+.brand .imagine { font-family: var(--display-sc); color: var(--accent); letter-spacing: 0.03em; }
 .site-nav { display: flex; gap: 2px; margin-left: 8px; overflow-x: auto; scrollbar-width: none; }
 .site-nav a { color: var(--ink-2); text-decoration: none; padding: 7px 10px; border-radius: 5px; white-space: nowrap; }
 .site-nav a[aria-current="page"] { background: var(--ink); color: var(--paper); }
@@ -295,3 +308,41 @@ html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="
   .chapter { padding: 40px 16px; }
   .hero { padding: 36px 16px 24px; }
 }
+
+/* ---------- reIMAGINE: storybook ornaments ---------- */
+.kicker-sc { font-family: var(--display-sc); font-size: 1.05rem; letter-spacing: 0.06em; color: var(--accent); }
+.flourish { display: flex; align-items: center; gap: 14px; color: var(--gold); margin: 44px auto 34px; max-width: 560px; font-size: 18px; line-height: 1; }
+.flourish::before, .flourish::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.dropcap::first-letter { font-family: var(--display); float: left; font-size: 3.7em; line-height: 0.8; padding: 7px 9px 0 0; color: var(--accent); }
+.storyframe { position: relative; background: var(--card); border: 1px solid var(--gold-soft); outline: 3px double var(--gold-soft);
+  outline-offset: 5px; border-radius: 4px; padding: 16px; margin: 26px 0; box-shadow: var(--shadow); }
+.storyframe::before, .storyframe::after { content: "✦"; position: absolute; color: var(--gold); font-size: 15px; line-height: 1; }
+.storyframe::before { top: -16px; left: -16px; }
+.storyframe::after { bottom: -16px; right: -16px; }
+.storyframe img { width: 100%; height: auto; border-radius: 2px; background: #fff; }
+.storyframe figcaption { font-family: var(--sans); font-size: 13.5px; color: var(--ink-2); margin-top: 12px; line-height: 1.55; }
+.storyframe figcaption strong { color: var(--ink); }
+.tale-hero { padding: 64px 20px 28px; max-width: 1100px; margin: 0 auto; text-align: left; }
+.tale-hero h1 { max-width: 24ch; margin-top: 8px; }
+.tale-hero .lede { font-size: 1.28rem; max-width: 780px; color: var(--ink-2); }
+.question-card { background: var(--card); border: 1px solid var(--gold-soft); border-left: 4px solid var(--accent); padding: 16px 20px; margin: 22px 0; border-radius: 0 6px 6px 0; max-width: 900px; }
+.question-card .tag, .motivation .tag { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-3); margin-bottom: 4px; }
+.question-card p { font-family: var(--display); font-size: 1.32rem; line-height: 1.4; margin: 0; }
+.motivation { position: relative; border: 1px dashed var(--rule); background: rgba(251, 246, 234, 0.6); padding: 14px 20px; margin: 0 0 22px; border-radius: 6px; max-width: 900px; }
+.motivation .ribbon { position: absolute; top: -11px; right: 16px; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 11.5px;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; }
+.section-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.section-head .num { font-family: var(--display-sc); color: var(--accent); font-size: 1.1rem; letter-spacing: 0.05em; }
+.chip.yes { background: #d9eadf; color: #24563d; }
+.chip.partly { background: #f3e2bd; color: #6b4a07; }
+.chip.no { background: #f2d9cc; color: #7a2a20; }
+.verdict { font-family: var(--sans); font-weight: 650; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+@media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
+.note-earlier { font-family: var(--sans); font-size: 13.5px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 30px; }
+.figure-links { font-family: var(--sans); font-size: 12.5px; margin-top: 6px; }
+
+/* ---------- small-screen fixes ---------- */
+.grid-2 > *, .grid-3 > *, .grid-main-side > *, .two-col > * { min-width: 0; }   /* a wide table inside must not widen the column */
+.mono { overflow-wrap: anywhere; }
+@media (max-width: 640px) { dl.glossary { grid-template-columns: 1fr !important; } }

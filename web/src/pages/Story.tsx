@@ -36,7 +36,7 @@ export function Story({ route, navigate }: { route: Route; navigate: (p: string,
   const [current, setCurrent] = useState("guess");
   const onVisible = useCallback((id: string) => setCurrent(id), []);
   const pair = route.params.pair?.split(",");
-  const openPair = (a: string, b: string) => navigate("/", { ...route.params, pair: `${a},${b}` }, true);
+  const openPair = (a: string, b: string) => navigate("/story", { ...route.params, pair: `${a},${b}` }, true);
   const toExplore = (id: string, rep: Rep) => navigate("/explore", { tale: id, rep });
   const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: document.documentElement.dataset.motion === "off" ? "auto" : "smooth" });
   if (summary.error) return <div className="page"><ErrorState message={summary.error} /></div>;
@@ -54,7 +54,7 @@ export function Story({ route, navigate }: { route: Route; navigate: (p: string,
   return (
     <>
       <header className="hero">
-        <div className="kicker">A literary atlas of {int(c.text_cohort)} recorded folktales</div>
+        <div className="kicker">Background · a literary atlas of {int(c.text_cohort)} recorded folktales</div>
         <h1>How far can a story travel?</h1>
         <p className="lede">The same tale turns up in very different places: a father who picks a forbidden flower, a heroine whose hands are cut off, a rabbit stuck to a tar figure. This site measures how the texts of {int(c.text_cohort)} recorded folktales resemble one another, and asks whether those resemblances follow geography or the kind of story.</p>
         <div className="questions">
@@ -74,7 +74,7 @@ export function Story({ route, navigate }: { route: Route; navigate: (p: string,
           <div className="tile"><div className="v">2</div><div className="l">text representations, compared separately</div></div>
         </div>
       </header>
-      <nav className="toc" aria-label="Chapters">{CHAPTERS.map((ch) => <a key={ch.id} href={`#/`} onClick={(e) => { e.preventDefault(); go(ch.id); }} aria-current={current === ch.id} title={ch.title} aria-label={ch.title} />)}</nav>
+      <nav className="toc" aria-label="Chapters">{CHAPTERS.map((ch) => <a key={ch.id} href={`#/story`} onClick={(e) => { e.preventDefault(); go(ch.id); }} aria-current={current === ch.id} title={ch.title} aria-label={ch.title} />)}</nav>
 
       <Chapter id="guess" num="Chapter 1" title="Guess the connection" onVisible={onVisible}>
         <SectionBoundary name="opening"><OpeningScene summary={s} onRead={openPair} /></SectionBoundary>{nav(0)}
@@ -132,11 +132,11 @@ export function Story({ route, navigate }: { route: Route; navigate: (p: string,
           </div>
         </div>
         <div className="callout neutral" style={{ marginTop: 20 }}>
-          <strong>Next: religious parables on this map.</strong> Do the teaching stories of five religions tell the same kinds of stories as the folktales, and do they land in the same part of the map? <a href="#/parables">Read part two</a>.
+          <strong>This map is the background of the main question.</strong> Do parables from five religious traditions sit inside these folktale communities more than non-story text from the same translations does, and which communities and tale types do they land in? <a href="#/">Read the overview</a> or <a href="#/parables">explore every parable</a>.
         </div>
         {nav(9)}
       </Chapter>
-      {pair && pair.length === 2 && <PairReader a={pair[0]} b={pair[1]} onClose={() => navigate("/", { ...route.params, pair: null }, true)} onSwap={() => openPair(pair[1], pair[0])} />}
+      {pair && pair.length === 2 && <PairReader a={pair[0]} b={pair[1]} onClose={() => navigate("/story", { ...route.params, pair: null }, true)} onSwap={() => openPair(pair[1], pair[0])} />}
     </>
   );
 }

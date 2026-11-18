@@ -123,7 +123,7 @@ def run(ctx: Ctx) -> dict:
             variants[name] = (sim, scores(ctx, sim, folk))
             print(f"    computed {name}")
 
-    # ---- calibration and the gate; first make sure the test is not circular (TA feedback, step 1)
+    # ---- calibration and the gate; first make sure the test is not circular (feedback update, step 1)
     for rep in ctx.reps:
         check_calibration_exclusion(folk["id"], queries.loc[cal, "id"], None, variants[rep][0]["S"][cal],
                                     float(ctx.paper["calibration_exclusion"]["max_cosine"]))

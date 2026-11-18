@@ -44,6 +44,12 @@ class Ctx:
         return self._dir(ROOT / "figures")
 
     @property
+    def report(self) -> Path:
+        """Material written for the final report (RESULTS.md, captions, LaTeX macros, short update). Git-ignored:
+        it is never committed with the code, the analysis or the website."""
+        return self._dir(ROOT / "report")
+
+    @property
     def work(self) -> Path:
         """Intermediate arrays (graphs, layouts, neighbour lists); git-ignored."""
         return self._dir(INTERIM / "ouaw")

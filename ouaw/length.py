@@ -1,4 +1,4 @@
-"""Stage `length`: does text length drive folk-closeness? (TA feedback, step 3)
+"""Stage `length`: does text length drive folk-closeness? (feedback update, step 3)
 
 Parables are much shorter than most folktales, and both representations behave differently on short texts.
   excerpts    for every parable and baseline passage, 5 contiguous excerpts of the same number of words

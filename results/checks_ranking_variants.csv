@@ -5,10 +5,10 @@ tfidf,as reported,Jewish,50,0.10866,3
 tfidf,as reported,Sufi,60,0.1076,4
 tfidf,as reported,Taoist,50,0.10118,5
 tfidf,names and formulae masked,Buddhist,81,0.12991,1
-tfidf,names and formulae masked,Christian,40,0.1115,2
-tfidf,names and formulae masked,Sufi,60,0.10889,3
-tfidf,names and formulae masked,Taoist,50,0.10374,4
-tfidf,names and formulae masked,Jewish,50,0.10333,5
+tfidf,names and formulae masked,Christian,40,0.11149,2
+tfidf,names and formulae masked,Sufi,60,0.10888,3
+tfidf,names and formulae masked,Taoist,50,0.10367,4
+tfidf,names and formulae masked,Jewish,50,0.10337,5
 tfidf,without the 10 most frequent neighbours,Buddhist,81,0.12169,1
 tfidf,without the 10 most frequent neighbours,Christian,40,0.1098,2
 tfidf,without the 10 most frequent neighbours,Jewish,50,0.10598,3
@@ -40,10 +40,10 @@ embedding,as reported,Christian,40,0.59449,3
 embedding,as reported,Jewish,50,0.54628,4
 embedding,as reported,Taoist,50,0.54345,5
 embedding,names and formulae masked,Buddhist,81,0.71267,1
-embedding,names and formulae masked,Sufi,60,0.67002,2
+embedding,names and formulae masked,Sufi,60,0.66909,2
 embedding,names and formulae masked,Christian,40,0.6211,3
 embedding,names and formulae masked,Taoist,50,0.62008,4
-embedding,names and formulae masked,Jewish,50,0.61665,5
+embedding,names and formulae masked,Jewish,50,0.61697,5
 embedding,without the 10 most frequent neighbours,Buddhist,81,0.64704,1
 embedding,without the 10 most frequent neighbours,Sufi,60,0.62939,2
 embedding,without the 10 most frequent neighbours,Christian,40,0.58544,3

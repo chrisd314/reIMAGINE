@@ -1,4 +1,4 @@
-"""Unit tests for the analyses added after the TA's feedback (toy inputs; no data, network or model needed)."""
+"""Unit tests for the analyses added in the feedback update (toy inputs; no data, network or model needed)."""
 import numpy as np
 import pytest
 
@@ -188,3 +188,62 @@ def test_vote_chance_is_low_for_a_large_pool():
     val = np.tile(np.linspace(0.5, 0.3, 10), (4, 1))
     m, lo, hi = vote_chance(np.array(["T1", "T2", "T3", "T4"]), atu, val, n_draws=200, seed=0)
     assert 0.0 <= lo <= m <= hi <= 1.0 and m < 0.1
+
+
+# ----------------------------------------------------------------- steps 5 and 6: network robustness and collection
+def test_knn_graph_is_symmetrised_and_positive():
+    from ouaw.network import knn_edges
+    S = np.array([[1.0, 0.9, 0.1, 0.0], [0.9, 1.0, 0.2, 0.0], [0.1, 0.2, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]])
+    e = knn_edges(S, 1)
+    pairs = set(zip(e["i"].tolist(), e["j"].tolist()))
+    assert pairs == {(0, 1), (1, 2)}                    # 2's nearest is 1 (kept by 2's choice); 3 has only zeros
+    assert all(a < b for a, b in pairs) and np.allclose(e["w"], [0.9, 0.2])
+
+
+def test_clustering_matches_networkx():
+    import networkx as nx
+    from ouaw.network import clustering
+    rng = np.random.default_rng(4)
+    G = nx.gnm_random_graph(40, 160, seed=4)
+    i, j = map(np.array, zip(*G.edges()))
+    w = rng.uniform(0.1, 1.0, len(i))
+    for (a, b), x in zip(G.edges(), w):
+        G[a][b]["weight"] = x
+    ref_u = nx.clustering(G)
+    ref_w = nx.clustering(G, weight="weight")
+    assert clustering(40, i, j) == pytest.approx([ref_u[k] for k in range(40)])
+    assert clustering(40, i, j, w) == pytest.approx([ref_w[k] for k in range(40)])
+
+
+def test_within_collection_shuffle_keeps_each_collection_fixed():
+    from ouaw.network import stratified_perms
+    coll = np.array(["grimm"] * 5 + ["lang"] * 4 + ["jacobs"])
+    perms = stratified_perms(coll, 30, seed=0)
+    assert perms.shape == (30, 10)
+    for p in perms:
+        assert (coll[p] == coll).all()
+    assert (perms[:, 9] == 9).all()                     # a one-tale collection never moves
+
+
+def test_type_signal_that_is_only_collection_style_disappears_under_the_within_collection_null():
+    import pandas as pd
+    from ouaw.network import label_tests
+    # 4 collections of 10 tales; communities = collections; tale type follows collection perfectly
+    coll = np.repeat([f"c{k}" for k in range(4)], 10)
+    folk = pd.DataFrame(dict(atu_id=np.repeat(["A", "B", "C", "D"], 10), region=np.tile(["x", "y"], 20), source_collection=coll))
+    part = np.repeat(np.arange(4), 10)
+    i, j = np.triu_indices(40, 1)
+    keep = part[i] == part[j]
+    e = dict(i=i[keep], j=j[keep], w=np.ones(keep.sum()))
+    rows = {(r["label"], r["null"], r["measure"]): r for r in label_tests(part, e, folk, np.arange(40), 200, 1)}
+    plain = rows[("atu_type", "label shuffle", "nmi")]
+    within = rows[("atu_type", "within-collection shuffle", "nmi")]
+    assert plain["observed"] == pytest.approx(1.0) and plain["p_upper"] < 0.01      # looks like a strong type signal ...
+    assert within["null_mean"] == pytest.approx(1.0) and within["p_upper"] == 1.0    # ... but collection explains all of it
+    assert ("source_collection", "within-collection shuffle", "nmi") not in rows
+
+
+def test_gini_of_equal_and_concentrated_degrees():
+    from ouaw.network import gini
+    assert gini(np.ones(10)) == pytest.approx(0.0)
+    assert gini(np.array([0, 0, 0, 10])) == pytest.approx(0.75)

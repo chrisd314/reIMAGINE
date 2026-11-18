@@ -1,0 +1,41 @@
+rep,map,label,null,measure,n,edges,categories,observed,null_mean,null_sd,null_max,excess,z,p_upper,shuffles,null_min,null_q025,null_q975
+tfidf,"canonical (10% density, seed 42)",atu_type,label shuffle,nmi,978,52770,149,0.39579,0.15871,0.0046609,0.17419,0.23707,50.864,0.000999,1000,0.14124,0.14947,0.16823
+tfidf,"canonical (10% density, seed 42)",atu_type,label shuffle,assortativity,978,52770,149,0.028866,-0.0023449,0.00028406,-0.0015113,0.031211,109.88,0.000999,1000,-0.00327,-0.0028802,-0.00175
+tfidf,"canonical (10% density, seed 42)",atu_type,within-collection shuffle,nmi,978,52770,149,0.39579,0.24535,0.0056353,0.26501,0.15043,26.695,0.000999,1000,0.22622,0.23474,0.25658
+tfidf,"canonical (10% density, seed 42)",atu_type,within-collection shuffle,assortativity,978,52770,149,0.028866,0.0072042,0.00057585,0.0093067,0.021662,37.617,0.000999,1000,0.00579,0.00613,0.00836
+tfidf,"canonical (10% density, seed 42)",region,label shuffle,nmi,978,52770,13,0.090761,0.029914,0.0035157,0.04383,0.060847,17.307,0.000999,1000,0.01926,0.023219,0.037553
+tfidf,"canonical (10% density, seed 42)",region,label shuffle,assortativity,978,52770,13,0.055822,-0.0024391,0.001263,0.001502,0.058261,46.129,0.000999,1000,-0.00611,-0.0049902,0.00010025
+tfidf,"canonical (10% density, seed 42)",region,within-collection shuffle,nmi,978,52770,13,0.090761,0.085731,0.0024037,0.093342,0.0050305,2.0928,0.018981,1000,0.07759,0.081047,0.090351
+tfidf,"canonical (10% density, seed 42)",region,within-collection shuffle,assortativity,978,52770,13,0.055822,0.050253,0.00097856,0.052857,0.0055696,5.6917,0.000999,1000,0.04691,0.04841,0.052191
+tfidf,"canonical (10% density, seed 42)",source_collection,label shuffle,nmi,978,52770,443,0.31496,0.28365,0.0036487,0.29626,0.031302,8.579,0.000999,1000,0.27064,0.27653,0.29088
+tfidf,"canonical (10% density, seed 42)",source_collection,label shuffle,assortativity,978,52770,443,0.0054802,-0.0023445,0.00022226,-0.0015898,0.0078248,35.206,0.000999,1000,-0.00305,-0.00277,-0.00189
+embedding,"canonical (10% density, seed 42)",atu_type,label shuffle,nmi,978,53028,149,0.38231,0.22457,0.0044195,0.23686,0.15774,35.692,0.000999,1000,0.21211,0.21588,0.23323
+embedding,"canonical (10% density, seed 42)",atu_type,label shuffle,assortativity,978,53028,149,0.020203,-0.002363,0.00028366,-0.0014075,0.022566,79.554,0.000999,1000,-0.00331,-0.0029302,-0.00179
+embedding,"canonical (10% density, seed 42)",atu_type,within-collection shuffle,nmi,978,53028,149,0.38231,0.27584,0.0046842,0.29168,0.10647,22.73,0.000999,1000,0.25939,0.26687,0.28552
+embedding,"canonical (10% density, seed 42)",atu_type,within-collection shuffle,assortativity,978,53028,149,0.020203,0.0036319,0.00049723,0.0057621,0.016572,33.328,0.000999,1000,0.00221,0.00269,0.00464
+embedding,"canonical (10% density, seed 42)",region,label shuffle,nmi,978,53028,13,0.14015,0.10441,0.0047952,0.12033,0.035746,7.4544,0.000999,1000,0.0911,0.095697,0.11454
+embedding,"canonical (10% density, seed 42)",region,label shuffle,assortativity,978,53028,13,0.033484,-0.0023979,0.0012702,0.0022353,0.035882,28.249,0.000999,1000,-0.00608,-0.0047903,0.00027025
+embedding,"canonical (10% density, seed 42)",region,within-collection shuffle,nmi,978,53028,13,0.14015,0.13381,0.0016776,0.13925,0.0063396,3.7791,0.000999,1000,0.12904,0.13074,0.13722
+embedding,"canonical (10% density, seed 42)",region,within-collection shuffle,assortativity,978,53028,13,0.033484,0.030497,0.00074381,0.033128,0.0029867,4.0154,0.000999,1000,0.0284,0.02905,0.03197
+embedding,"canonical (10% density, seed 42)",source_collection,label shuffle,nmi,978,53028,443,0.35658,0.32815,0.003915,0.34358,0.028437,7.2635,0.000999,1000,0.31556,0.32056,0.33579
+embedding,"canonical (10% density, seed 42)",source_collection,label shuffle,assortativity,978,53028,443,0.0020722,-0.0023457,0.00022764,-0.00173,0.0044179,19.407,0.000999,1000,-0.00301,-0.00277,-0.00192
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,label shuffle,nmi,978,52582,149,0.34344,0.15729,0.0045621,0.17121,0.18615,40.803,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,label shuffle,assortativity,978,52582,149,0.029412,-0.0023362,0.00027746,-0.0014379,0.031749,114.43,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,within-collection shuffle,nmi,978,52582,149,0.34344,0.22441,0.0051329,0.23958,0.11903,23.189,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,within-collection shuffle,assortativity,978,52582,149,0.029412,0.0073559,0.00058748,0.009327,0.022057,37.545,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",region,label shuffle,nmi,978,52582,13,0.13181,0.034312,0.0035807,0.046164,0.097499,27.229,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",region,label shuffle,assortativity,978,52582,13,0.052373,-0.0024219,0.0012051,0.0014755,0.054795,45.468,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",region,within-collection shuffle,nmi,978,52582,13,0.13181,0.12779,0.0021402,0.13515,0.00402,1.8784,0.030969,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",region,within-collection shuffle,assortativity,978,52582,13,0.052373,0.04736,0.00089832,0.049679,0.0050131,5.5805,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",source_collection,label shuffle,nmi,978,52582,443,0.33391,0.27977,0.0037312,0.29369,0.054141,14.51,0.000999,1000,,,
+tfidf,"names and collection/translator formulae masked (10% density, seed 42)",source_collection,label shuffle,assortativity,978,52582,443,0.004731,-0.002338,0.00022554,-0.0015522,0.007069,31.342,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,label shuffle,nmi,978,52073,149,0.39333,0.24653,0.0041609,0.26092,0.1468,35.28,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,label shuffle,assortativity,978,52073,149,0.020571,-0.0023865,0.00028962,-0.0014969,0.022958,79.268,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,within-collection shuffle,nmi,978,52073,149,0.39333,0.29507,0.0044334,0.30813,0.098257,22.163,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",atu_type,within-collection shuffle,assortativity,978,52073,149,0.020571,0.0039979,0.00052114,0.0058898,0.016573,31.802,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",region,label shuffle,nmi,978,52073,13,0.17379,0.1243,0.005069,0.14006,0.049483,9.7618,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",region,label shuffle,assortativity,978,52073,13,0.021401,-0.0024036,0.0012383,0.0019972,0.023804,19.224,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",region,within-collection shuffle,nmi,978,52073,13,0.17379,0.16858,0.0017402,0.17494,0.0052081,2.9927,0.001998,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",region,within-collection shuffle,assortativity,978,52073,13,0.021401,0.018944,0.00066013,0.021062,0.0024564,3.7211,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",source_collection,label shuffle,nmi,978,52073,443,0.3703,0.33966,0.0042595,0.35406,0.030635,7.1922,0.000999,1000,,,
+embedding,"names and collection/translator formulae masked (10% density, seed 42)",source_collection,label shuffle,assortativity,978,52073,443,0.00073236,-0.0023756,0.00022662,-0.0015834,0.003108,13.715,0.000999,1000,,,

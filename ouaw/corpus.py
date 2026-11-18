@@ -118,7 +118,7 @@ def load_corpus(ctx: Ctx) -> Corpus:
 
 
 def calibration_exclusion(ctx: Ctx, c: Corpus, spaces: dict | None = None) -> dict:
-    """Step 1 of the TA update: the 36 retellings and their near-copies are outside the folktale pool.
+    """Step 1 of the feedback update: the 36 retellings and their near-copies are outside the folktale pool.
 
     Checked with both representations (cosine of every calibration version to every pool folktale).
     `spaces` reuses already-built representation spaces (rep -> space fitted on `c.folk`).

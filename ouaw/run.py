@@ -5,8 +5,9 @@
     python -m ouaw.run --stage all --sample 100    fast development run (100 folktales, a few texts per
                                                    tradition, at most 100 shuffles; writes to results/_sample)
 
-Stages: data -> parables -> partA -> partB -> headline -> checks -> figures
-(figures also writes results/RESULTS.md).
+Stages: data -> parables -> partA -> partB -> vocab -> headline -> length -> network -> checks -> robustness
+-> figures -> site. `figures` also writes the report material into report/ (git-ignored): RESULTS.md, captions.md,
+short_update.md, numbers.tex, table1.tex; `site` writes the website's data and builds the site (web/dist) when Node is available.
 """
 from __future__ import annotations
 
@@ -17,9 +18,10 @@ import time
 
 from .common import Ctx
 
-ORDER = ["data", "parables", "partA", "partB", "vocab", "headline", "length", "checks", "figures"]
+ORDER = ["data", "parables", "partA", "partB", "vocab", "headline", "length", "network", "checks", "robustness", "figures", "site"]
 MODULE = {"data": ".corpus", "parables": ".parables.build", "partA": ".part_a", "partB": ".part_b", "vocab": ".vocab",
-          "headline": ".headline", "length": ".length", "checks": ".checks", "figures": ".figures"}
+          "headline": ".headline", "length": ".length", "network": ".network", "checks": ".checks",
+          "robustness": ".robustness", "figures": ".figures", "site": ".site"}
 
 
 def _stage(name: str):

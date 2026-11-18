@@ -1,4 +1,4 @@
-"""Stage `headline`: the main result of the paper (TA feedback, step 2).
+"""Stage `headline`: the main result of the paper (feedback update, step 2).
 
     Do parables from different religious traditions sit inside folktale communities more than non-story
     text from the same translations does, and which folktale communities and tale types do they land in?
@@ -157,7 +157,7 @@ def run(ctx: Ctx) -> dict:
     n_perm = ctx.shuffles(ctx.paper["headline"]["permutations"])
     n_boot = ctx.shuffles(ctx.paper["partB"]["bootstrap"], cap=1000)
 
-    by_trad, cells, types, per_text = [], [], [], []
+    by_trad, cells, types, per_text, region_cells = [], [], [], [], []
     for variant in variants(ctx):
         nb = neighbours(ctx, variant, queries)
         if nb is None:
@@ -212,6 +212,22 @@ def run(ctx: Ctx) -> dict:
                 top_source_collection_map_share=float(map_coll.get(top_c, 0.0)) if top_c else np.nan,
                 top_source_collection_baseline_share=float(cs_base.get(top_c, 0.0)) if top_c else np.nan,
                 permutations=r["permutations"], bootstrap=r["bootstrap"]))
+        if variant in ctx.reps:      # supplementary: the same test over the recorded regions of the nearest folktales
+            region = folk["region"].fillna("(no region)").to_numpy(dtype=object)
+            rnames = sorted(set(region) - {"(no region)"}) + ["(no region)"]
+            rcode = {r: k for k, r in enumerate(rnames)}
+            ri = np.array([rcode[r] for r in region])
+            CR = np.stack([(ri[idx] == k).sum(axis=1) for k in range(len(rnames))], axis=1)
+            rres = headline_tests(x, CR, is_par, trad, n_perm, n_boot, ctx.paper["headline"]["seed"] + 1)
+            m_cells = len(rres) * len(rnames)
+            for t in [t for t in TRADITIONS if t in rres]:
+                r = rres[t]
+                for k, nm in enumerate(rnames):
+                    region_cells.append(dict(variant=variant, tradition=t, region=nm, map_share=float((region == nm).mean()),
+                                             parable_share=r["parable_profile"][k], baseline_share=r["baseline_profile"][k],
+                                             excess=r["excess"][k], p_two_sided=r["excess_p"][k],
+                                             significant_bonferroni=bool(r["excess_p"][k] < 0.05 / m_cells),
+                                             jsd_bits=r["jsd"], jsd_p_upper=r["jsd_p_upper"], permutations=r["permutations"]))
         for i in range(len(q)):
             per_text.append(dict(variant=variant, id=q.at[i, "id"], kind=q.at[i, "kind"], tradition=q.at[i, "tradition"],
                                  folk_closeness=x[i], voted_atu=votes[i], voted_atu_name=atu_name.get(votes[i], "") if votes[i] else "",
@@ -224,4 +240,5 @@ def run(ctx: Ctx) -> dict:
     write_csv(pd.DataFrame(cells), ctx.results / "headline_community_excess.csv")
     write_csv(pd.DataFrame(types), ctx.results / "headline_atu_by_tradition.csv")
     write_csv(pd.DataFrame(per_text), ctx.results / "headline_texts.csv")
+    write_csv(pd.DataFrame(region_cells), ctx.results / "headline_region_excess.csv")
     return dict(variants=sorted({d["variant"] for d in by_trad}))

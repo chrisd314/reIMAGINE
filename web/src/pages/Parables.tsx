@@ -32,8 +32,12 @@ interface PerRep {
 }
 interface Cal { recall: number; low: number; high: number; chance: number; hits: number; queries: number; recall1: number }
 interface Pair { tradition: string; title: string; folktale: string; atu: string; cosine: number; parableOpening: string; folktaleOpening: string }
+// The headline test (parables against non-story text of the same translation; label shuffled within the tradition)
+interface HCell { tradition: string; community: string; par: number; base: number; diff: number; sig: boolean }
+interface HTrad { tradition: string; diff: number; low: number; high: number; p: number; closer: boolean; differs: boolean; jsdP: number }
 interface Payload {
   built: string; commit: string; primary: Rep; traditions: string[];
+  headline: Record<Rep, { cells: HCell[]; traditions: HTrad[] }>;
   corpus: { folktales: number; calibration: number; typed: number; types: number; both: number; regions: number; parables: number; baseline: number };
   folktales: { id: string[]; title: string[]; atu: string[]; atuName: string[]; region: string[] };
   maps: Record<Rep, MapData>; texts: TextItem[]; perRep: Record<Rep, PerRep>;
@@ -186,13 +190,13 @@ function ClosenessChart({ data, rep, setTip }: { data: Payload; rep: Rep; setTip
   );
 }
 
-/* ---------------------------------------------------------------- placement heatmap */
+/* ---------------------------------------------------------------- placement against the baseline */
 function Placement({ data, rep }: { data: Payload; rep: Rep }) {
-  const P = data.perRep[rep], m = data.maps[rep];
-  const ord = [...P.traditions].sort((a, b) => a.rank - b.rank).map((t) => t.tradition);
-  const cols = m.communities.map((c) => c.name).filter((n) => P.cells.some((c) => c.community === n));
-  const max = Math.max(0.05, ...P.cells.map((c) => Math.abs(c.diff)));
-  const cell = (tr: string, cn: string) => P.cells.find((c) => c.tradition === tr && c.community === cn) as Cell;
+  const H = data.headline[rep], m = data.maps[rep];
+  const ord = [...H.traditions].sort((a, b) => b.diff - a.diff).map((t) => t.tradition);
+  const cols = m.communities.map((c) => c.name).filter((n) => H.cells.some((c) => c.community === n));
+  const max = Math.max(0.05, ...H.cells.map((c) => Math.abs(c.diff)));
+  const cell = (tr: string, cn: string) => H.cells.find((c) => c.tradition === tr && c.community === cn) as HCell;
   return (
     <div className="table-wrap">
       <table className="data" style={{ minWidth: 640 }}>
@@ -201,13 +205,14 @@ function Placement({ data, rep }: { data: Payload; rep: Rep }) {
           {ord.map((tr) => (
             <tr key={tr}><th scope="row" style={{ position: "static" }}>{tr}</th>
               {cols.map((cn) => {
-                const c = cell(tr, cn), v = Math.round(c.diff * 100), t = 0.85 * Math.min(1, Math.abs(c.diff) / max);
+                const c = cell(tr, cn);
+                if (!c) return <td key={cn} className="num muted">–</td>;
+                const v = Math.round(c.diff * 100), t = 0.85 * Math.min(1, Math.abs(c.diff) / max);
                 return <td key={cn} className="num" style={{ textAlign: "center", background: mix("#fffaf2", c.diff >= 0 ? PARABLE : BASELINE, t), color: t > 0.55 ? "#fff" : "var(--ink)", fontWeight: c.sig ? 650 : 400 }}
-                  title={`${tr} → ${cn}: ${pc(c.share)} of links, ${pc(c.expected)} expected`}>{v === 0 ? "0" : signed(v)}{c.sig ? "*" : ""}</td>;
+                  title={`${tr} → ${cn}: parables ${pc(c.par)} of links, baseline ${pc(c.base)}`}>{v === 0 ? "0" : signed(v)}{c.sig ? "*" : ""}</td>;
               })}
             </tr>
           ))}
-          <tr><td className="muted small">expected</td>{cols.map((cn) => <td key={cn} className="num muted" style={{ textAlign: "center" }}>{pc(cell(ord[0], cn).expected)}</td>)}</tr>
         </tbody>
       </table>
     </div>
@@ -230,13 +235,20 @@ export function Parables({ route, navigate }: { route: Route; navigate: (path: s
   const data = d.data, m = data.maps[rep], P = data.perRep[rep], C = data.checks, F = data.folktales;
   const ord = [...P.traditions].sort((a, b) => a.rank - b.rank);
   const tvr = m.typeVsRegion;
-  const pos = P.cells.filter((c) => c.sig && c.diff > 0).sort((a, b) => b.diff - a.diff);
-  const byComm: Record<string, Cell[]> = {};
-  pos.forEach((c) => { (byComm[c.community] ??= []).push(c); });
-  const topComm = Object.keys(byComm).sort((a, b) => byComm[b].length - byComm[a].length)[0];
-  const topInfo = topComm ? m.communities.find((c) => c.name === topComm) : undefined;
+  const H = data.headline[rep];
+  const hOf = (t: string) => H.traditions.find((x) => x.tradition === t);
+  const closer = [...H.traditions].sort((a, b) => b.diff - a.diff).filter((t) => t.closer).map((t) => t.tradition);
+  const notCloser = [...H.traditions].sort((a, b) => b.diff - a.diff).filter((t) => !t.closer).map((t) => t.tradition);
+  const leans = H.traditions.filter((t) => t.differs).map((t) => {
+    const top = H.cells.filter((c) => c.tradition === t.tradition).sort((a, b) => b.diff - a.diff)[0];
+    const info = m.communities.find((c) => c.name === top?.community);
+    return top ? `${t.tradition}: ${top.community} (${info?.words.slice(0, 2).join(", ") ?? ""}) ${signed(Math.round(top.diff * 100))}` : t.tradition;
+  });
+  const pos = H.cells.filter((c) => c.sig && c.diff > 0).sort((a, b) => b.diff - a.diff);
   const cal = C.calibration[rep];
-  const above = ord.filter((t) => (t.minus_baseline_ci_low ?? 0) > 0).map((t) => t.tradition);
+  const collections = Object.entries(C.queries.reduce<Record<string, number>>((acc, q) => { acc[q.collection] = (acc[q.collection] ?? 0) + 1; return acc; }, {}))
+    .sort((a, b) => b[1] - a[1]).map(([k, v]) => `${v} ${k}`);
+  const andList = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`);
 
   let rows = data.texts.filter((t) => t.kind === kind && (trad === "all" || t.tradition === trad) && t.closeness[rep] !== undefined);
   const ql = q.trim().toLowerCase();
@@ -256,10 +268,10 @@ export function Parables({ route, navigate }: { route: Route; navigate: (path: s
     <div className="page">
       <Tooltip tip={tip} />
       <div className="prose-wide">
-        <p className="sans small muted" style={{ letterSpacing: "0.06em", textTransform: "uppercase" }}>Part two of the project</p>
+        <p className="kicker-sc" style={{ margin: "0 0 4px" }}>The parables explorer</p>
         <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>Religious parables on the map of folklore</h1>
-        <p style={{ fontSize: "1.15rem" }}>The Story pages ask what folktales group by. Here we ask what happens when the teaching stories of five religions are placed on the same map: <strong>do religious parables tell the same kinds of stories as the world's folktales, and do parables from different religions land in the same part of folklore?</strong></p>
-        <p>We built a text-similarity network of {int(data.corpus.folktales)} folktales, then compared {int(data.corpus.parables)} parables with every folktale: {ord.map((t) => `${t.n_parables} ${t.tradition}`).join(", ")}. The map itself never changes when parables are added.</p>
+        <p style={{ fontSize: "1.15rem" }}><strong>Do parables from different religious traditions sit inside folktale communities more than non-story text from the same translations does, and which folktale communities and tale types do they land in?</strong> The <a href="#/">overview</a> gives the answer in brief; here you can check it parable by parable.</p>
+        <p>We built a text-similarity network of {int(data.corpus.folktales)} folktales, then compared {int(data.corpus.parables)} parables with every folktale: {ord.map((t) => `${t.n_parables} ${t.tradition}`).join(", ")}. Each tradition is compared with {int(data.corpus.baseline)} non-story passages cut from the same translations, so that a translator's style cannot pass for a folktale. The map itself never changes when parables are added.</p>
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", margin: "18px 0 6px" }}>
@@ -271,10 +283,10 @@ export function Parables({ route, navigate }: { route: Route; navigate: (path: s
       </div>
 
       <div className="grid-2" style={{ gap: 12, margin: "14px 0 8px" }}>
-        <div className="callout neutral"><strong>Folklore groups by tale type more than by region.</strong> NMI with tale type {fmt(tvr.atu_type.observed, 2)}, with region {fmt(tvr.region.observed, 2)}; both above every shuffle.</div>
-        <div className="callout neutral"><strong>Parables sit far from folktales.</strong> Tradition medians {fmt(ord[ord.length - 1].median)} to {fmt(ord[0].median)}, while folktales reach {fmt(P.folktales.q50)} to each other. {ord[0].tradition} parables are the most folktale-like, {ord[ord.length - 1].tradition} the least.</div>
-        <div className="callout neutral">{topComm && topInfo ? <><strong>{byComm[topComm].length} of 5 traditions lean towards one community</strong>, {topComm} ({topInfo.words.slice(0, 3).join(", ")}): {byComm[topComm].map((c) => `${c.tradition} ${signed(Math.round(c.diff * 100))}`).join(", ")} percentage points.</> : <strong>No tradition leans towards one community beyond the shuffles.</strong>}</div>
-        <div className="callout neutral"><strong>The method finds known parallels.</strong> For {cal.hits} of 36 religious retellings with a known tale type, a folktale of that type is among the 10 nearest (chance: about {Math.round(cal.chance * 36)}).</div>
+        <div className="callout neutral"><strong>{closer.length ? <>Closer to folktales than their own baseline: {andList(closer)}.</> : <>No tradition is closer to folktales than its own baseline.</>}</strong> {notCloser.length > 0 && <>Not closer: {andList(notCloser)}. </>}Parable/baseline label shuffled within each tradition ({REP_NAME[rep]}).</div>
+        <div className="callout neutral">{leans.length ? <><strong>Where parables lean, against their baseline:</strong> {leans.join("; ")} percentage points of links.</> : <strong>No tradition's community profile differs from its baseline's.</strong>}</div>
+        <div className="callout neutral"><strong>Folklore groups by tale type {tvr.atu_type.observed - tvr.atu_type.nullMean > tvr.region.observed - tvr.region.nullMean ? "more than" : "no more than"} by region.</strong> NMI with tale type {fmt(tvr.atu_type.observed, 2)}, with region {fmt(tvr.region.observed, 2)}; {tvr.atu_type.observed > tvr.atu_type.nullMax && tvr.region.observed > tvr.region.nullMax ? "both above every shuffle" : "see the shuffle ranges below"}.</div>
+        <div className="callout neutral"><strong>The method finds known parallels.</strong> For {cal.hits} of {cal.queries} religious retellings with a known tale type, a folktale of that type is among the 10 nearest (chance: about {Math.round(cal.chance * cal.queries)}).</div>
       </div>
 
       {/* ---------------- map */}
@@ -354,38 +366,42 @@ export function Parables({ route, navigate }: { route: Route; navigate: (path: s
         </div>
         <div className="table-wrap">
           <table className="data">
-            <thead><tr><th>Rank</th><th>Tradition</th><th className="num">Parables</th><th className="num">Median [95% interval]</th><th className="num">Same-translation baseline</th><th className="num">Parables minus baseline [95% interval]</th><th className="num">Percentile among folktales</th></tr></thead>
-            <tbody>{ord.map((t) => (
-              <tr key={t.tradition}><td>{t.rank}</td><td>{t.tradition}</td><td className="num">{t.n_parables}</td><td className="num">{fmt(t.median)} [{fmt(t.ci_low)}, {fmt(t.ci_high)}]</td>
-                <td className="num">{fmt(t.baseline_median)}</td>
-                <td className="num">{t.minus_baseline_median !== null ? `${t.minus_baseline_median >= 0 ? "+" : ""}${fmt(t.minus_baseline_median)} [${fmt(t.minus_baseline_ci_low)}, ${fmt(t.minus_baseline_ci_high)}]` : "–"}{(t.minus_baseline_ci_low ?? 0) > 0 ? " ✓" : ""}</td>
-                <td className="num">{Math.round(t.percentile_among_folktales)}</td></tr>))}
+            <thead><tr><th>Rank</th><th>Tradition</th><th className="num">Parables</th><th className="num">Median [95% interval]</th><th className="num">Same-translation baseline</th><th className="num">Parables minus baseline [95% interval]</th><th className="num">Permutation</th><th className="num">Percentile among folktales</th></tr></thead>
+            <tbody>{ord.map((t) => {
+              const h = hOf(t.tradition);
+              return (
+                <tr key={t.tradition}><td>{t.rank}</td><td>{t.tradition}</td><td className="num">{t.n_parables}</td><td className="num">{fmt(t.median)} [{fmt(t.ci_low)}, {fmt(t.ci_high)}]</td>
+                  <td className="num">{fmt(t.baseline_median)}</td>
+                  <td className="num">{h ? `${h.diff >= 0 ? "+" : ""}${fmt(h.diff)} [${fmt(h.low)}, ${fmt(h.high)}]` : "–"}</td>
+                  <td className="num">{h ? <span className={`chip${h.closer ? " ok" : ""}`}>{h.p < 0.001 ? "p < 0.001" : `p = ${fmt(h.p)}`}</span> : "–"}</td>
+                  <td className="num">{Math.round(t.percentile_among_folktales)}</td></tr>
+              );
+            })}
             </tbody>
           </table>
         </div>
         <ul className="prose sans" style={{ fontSize: 14 }}>
           <li>Every tradition sits well below how close folktales are to each other (median {fmt(P.folktales.q50)}).</li>
-          <li>{above.length ? <>Clearly closer to folktales than non-story text of the same translation (✓): {above.join(", ")}. For the others, closeness may be partly the translator's style.</> : <>No tradition is clearly closer than non-story text of the same translation.</>}</li>
-          <li>Longer texts score higher (Spearman {fmt(C.length[rep], 2)} between closeness and length). The checks below repeat the ranking on long parables only and against folktales of the same length.</li>
+          <li>{closer.length ? <>Closer to folktales than non-story text of the same translation (green p: one-sided, 1,000 shuffles of the parable/baseline label within the tradition): {andList(closer)}. For the others, closeness may be the translator's style.</> : <>No tradition is closer than non-story text of the same translation.</>}</li>
+          <li>Longer texts score higher (Spearman {fmt(C.length[rep], 2)} between closeness and length). The baselines are cut to the parables' lengths; the overview compares parables with folktale excerpts of the same length as well.</li>
         </ul>
       </section>
 
       {/* ---------------- placement */}
       <section style={{ marginTop: 48 }}>
         <h2>Where do parables land?</h2>
-        <p className="prose">Each parable is linked to its 10 nearest folktales. A cell shows how many percentage points more (teal) or fewer (orange) of a tradition's links reach a community than if the community labels were shuffled over the folktales. * = outside 1,000 shuffles after Bonferroni correction.</p>
+        <p className="prose">Each text is linked to its 10 nearest folktales. A cell shows how many percentage points more (teal) or fewer (orange) of a tradition's parable links reach a community than the links of non-story text from the same translation. * = beyond 1,000 shuffles of the parable/baseline label within the tradition, after Bonferroni correction; the text, not the link, is the unit.</p>
         <Placement data={data} rep={rep} />
         <ul className="prose sans" style={{ fontSize: 14 }}>
-          <li>{pos.length ? <>Over-represented beyond the shuffles: {pos.map((c) => `${c.tradition} in ${c.community} (${pc(c.share)} of links, ${pc(c.expected)} expected)`).join("; ")}.</> : "No tradition is over-represented in any community beyond the shuffles."}</li>
-          <li>The traditions do not land in exactly the same places: their link patterns differ more than shuffled tradition labels would, but the differences are small.</li>
-          <li>The shuffle treats a parable's 10 links as separate draws, while the neighbours of one parable resemble each other, so the asterisks are generous.</li>
+          <li>{pos.length ? <>More parable than baseline links, beyond the shuffles: {pos.map((c) => `${c.tradition} in ${c.community} (parables ${pc(c.par)} of links, baseline ${pc(c.base)})`).join("; ")}.</> : "No tradition reaches any community more than its baseline does, beyond the shuffles."}</li>
+          <li>Profiles that differ from the baseline's as a whole (Jensen–Shannon divergence against the same shuffles): {andList(H.traditions.filter((t) => t.differs).map((t) => t.tradition)) || "none"}.</li>
         </ul>
       </section>
 
       {/* ---------------- trust */}
       <section style={{ marginTop: 48 }}>
         <h2>Can we trust the ranking?</h2>
-        <p className="prose">The folktale corpus already holds 36 retellings from religious collections whose tale type is known: 18 Jātaka, 11 Gesta Romanorum, 4 Rumi, 2 Jacques de Vitry and 1 Talmud. They were taken off the map and used as test queries. A hit means a folktale of the same type is among the 10 most similar. <span className={`chip ${C.gate.passed ? "ok" : "warn"}`}>{C.gate.passed ? "test passed" : "test not passed"}</span></p>
+        <p className="prose">The folktale corpus already holds {C.queries.length} retellings from religious collections whose tale type is known: {andList(collections)}. They were taken off the map (with any near-copy) and used as test queries. A hit means a folktale of the same type is among the 10 most similar. <span className={`chip ${C.gate.passed ? "ok" : "warn"}`}>{C.gate.passed ? "test passed" : "test not passed"}</span></p>
         <div className="grid-2">
           <div className="sans">
             {(["tfidf", "embedding"] as const).map((r) => {
@@ -407,7 +423,7 @@ export function Parables({ route, navigate }: { route: Route; navigate: (path: s
           <ul className="sans" style={{ fontSize: 14, margin: 0 }}>
             <li><strong>Second method.</strong> TF–IDF and embeddings agree moderately on which parables are folktale-like (Spearman {fmt(C.second.spearman, 2)}) but rarely on which folktales are nearest (mean overlap of the top-10 lists {fmt(C.second.jaccard, 2)}).</li>
             <li><strong>Hubs.</strong> The 10 most frequent neighbours take {pc(C.hubs[rep].top10Share)} of all links ({REP_NAME[rep]}); the most frequent, “{C.hubs[rep].first}”, is near {pc(C.hubs[rep].firstShare)} of parables.</li>
-            <li><strong>Names and formulae.</strong> Masking names and set phrases such as “when Brahmadatta was reigning in Benares” barely changes the scores.</li>
+            <li><strong>Names, formulae and nouns.</strong> Masking names and set phrases such as “when Brahmadatta was reigning in Benares”, or every noun, is one of the checks in <a href="#/">Table 1 of the overview</a>.</li>
             <li><strong>Hand labels</strong> <span className="chip warn">{C.hand.status}</span> Two of us judge the nearest pair of 100 parables: same plot, shared motif, theme only or unrelated.</li>
           </ul>
         </div>

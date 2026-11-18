@@ -115,7 +115,7 @@ class Masker:
     def __init__(self, texts: list[str], mcfg: dict):
         self.placeholder = mcfg["placeholder"]
         self.names = {w for w in name_like_words(texts, mcfg["name_threshold"]) if len(w) > 1}
-        self.formulae = [re.compile(p, flags=re.IGNORECASE) for p in mcfg["formulae"]]
+        self.formulae = [re.compile(p, flags=re.IGNORECASE) for p in mcfg["formulae"] + mcfg.get("translator_formulae", [])]
         self._word = re.compile(r"[^\W\d_]+")
         ph = re.escape(self.placeholder)
         self._runs = re.compile(rf"\b{ph}(?:(?:\s+|-){ph}\b)+") if self.placeholder else None

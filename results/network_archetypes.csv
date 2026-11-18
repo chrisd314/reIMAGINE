@@ -1,0 +1,21 @@
+rep,rank,id,title,atu_id,community,degree,pagerank,pagerank_rank,null_mean,null_sd,z,atu_name,region,source_collection,n_tokens
+tfidf,1,tale-1200,The Race (Parsons2),275,C2,66,0.00075068,443,0.00035351,1.0186e-05,38.991,The Race between Two Animals (previously The Race of the Fox and the Crayfish),Northern America,elsie clews parsons,210
+tfidf,2,tale-1183,Keeping Pace,275,C2,95,0.0008652,392,0.0004633,1.3341e-05,30.126,The Race between Two Animals (previously The Race of the Fox and the Crayfish),Northern America,elsie clews parsons,91
+tfidf,3,tale-1275,The Wandering Jew (Scudder),777,C7,69,0.000594,535,0.00036528,9.704e-06,23.57,The Wandering Jew,,horace scudder,501
+tfidf,4,tale-0958,"Mr. Fox Goes a-Hunting, but Mr. Rabbit Bags the Game",1,C2,69,0.00063303,504,0.00036298,1.1746e-05,22.991,The Theft of Fish,,joel chandler harris,486
+tfidf,5,tale-0871,The Son Forgave His Father,980,C6,63,0.00053108,598,0.00033949,9.2498e-06,20.713,The Ungrateful Son (previously Ungrateful Son Reproved by Naive Actions of Own Son),Southern Europe,jarnik,157
+tfidf,6,tale-0765,"Mr. Monkey, the Bridegroom",441,C9,68,0.00055388,569,0.00036066,9.8377e-06,19.64,Hans my Hedgehog,Northern America,,214
+tfidf,7,tale-1142,Playing Godfather: Tar-Baby: Mock Plea,175,C2,90,0.00065162,490,0.00044373,1.0964e-05,18.961,The Tarbaby and the Rabbit,Northern America,bacon parsons,436
+tfidf,8,tale-0187,The Pancake (Norway),2025,C2,70,0.00057552,548,0.00036856,1.1559e-05,17.905,The Fleeing Pancake,Northern Europe,peter christen asbjørnsen,1073
+tfidf,9,tale-0314,The Peasant and the Devil,1030,C5,61,0.00047985,665,0.00033304,8.2569e-06,17.78,The Crop Division,Western Europe,,366
+tfidf,10,tale-1485,How the Wolf Lost His Tail,2,C2,80,0.00059589,532,0.00040741,1.1334e-05,16.63,The Tail-Fisher,Northern Europe,campbell,259
+embedding,1,tale-1143,"The Dance for Water; or, Rabbit's Triumph",175,C1,95,0.00072515,517,0.00046632,1.0162e-05,25.471,The Tarbaby and the Rabbit,Sub-Saharan Africa,james honeÿ,785
+embedding,2,tale-1156,The Awful Fate of Mr. Wolf,124,C1,65,0.00048961,706,0.00035255,6.7241e-06,20.384,Blowing the House In [Z81],Northern America,joel chandler harris,800
+embedding,3,tale-0341,Death's Messengers (Grimm),335,C3,88,0.00073546,502,0.00044113,1.4787e-05,19.904,Death's Messengers,,jacob wilhelm grimm,557
+embedding,4,tale-0425,The Dream of the Zirl Bridge,1645,C3,98,0.00068196,542,0.0004773,1.0757e-05,19.027,The Treasure at Home,Western Europe,ignaz zingerle,405
+embedding,5,tale-0959,Playing Dead Twice in the Road,1,C1,85,0.00062261,592,0.00042882,1.0485e-05,18.482,The Theft of Fish,Northern America,bacon parsons,853
+embedding,6,tale-1015,Bobby Rag,955,C1,89,0.00065695,564,0.00044424,1.2514e-05,16.998,The Robber Bridegroom [K1916],Northern Europe,francis hindes groome,903
+embedding,7,tale-1193,The Hare and the Hedgehog,275,C1,65,0.00050812,691,0.00035443,9.0849e-06,16.917,The Race between Two Animals (previously The Race of the Fox and the Crayfish),,jacob wilhelm grimm,1265
+embedding,8,tale-0669,Brother Fox Catches Mr. Horse,47A,C1,91,0.00065683,565,0.00045017,1.2584e-05,16.422,"The Fox Hangs onto the Horse's Tail (previously The Fox [Bear, etc",Northern America,joel chandler harris,920
+embedding,9,tale-0209,Brother Rabbit Takes Some Exercise (Harris),20C,C1,108,0.0007028,529,0.00051522,1.1809e-05,15.884,The Animals Flee in Fear of the End of the World,Northern America,joel chandler harris,1303
+embedding,10,tale-1486,Reynard and Bruin,2,C1,70,0.00051779,677,0.00037331,9.1369e-06,15.812,The Tail-Fisher,,joseph jacobs,1928

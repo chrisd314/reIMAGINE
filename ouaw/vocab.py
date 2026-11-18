@@ -1,4 +1,4 @@
-"""Stage `vocab`: shared vocabulary or shared story? (TA feedback, step 4)
+"""Stage `vocab`: shared vocabulary or shared story? (feedback update, step 4)
 
 Text similarity picks up shared nouns (animals, kings, farmers) more than shared plot. Two checks:
   noun masking   every noun and proper noun (spaCy part-of-speech tags) is replaced by a placeholder that the
@@ -20,7 +20,7 @@ import pandas as pd
 
 from analysis.common import sha256_text
 
-from .common import LABELING, TRADITIONS, Ctx, write_csv
+from .common import INTERIM, LABELING, TRADITIONS, Ctx, write_csv
 from .corpus import load_corpus
 from .part_b import leave_one_out, nearest
 from .reps import TfidfSpace
@@ -76,7 +76,8 @@ def noun_share_of_cosine(q_row, f_row, is_noun_term: np.ndarray) -> float:
 
 # ----------------------------------------------------------------- tagging (spaCy; cached)
 def tag_all(ctx: Ctx, texts: list[str]) -> list[list[tuple[str, str, str]]]:
-    path = ctx.work.parent / "pos_cache.json"          # shared by full and development runs
+    path = INTERIM / "ouaw" / "pos_cache.json"          # shared by full and development runs (git-ignored)
+    path.parent.mkdir(parents=True, exist_ok=True)
     import spacy
     key_model = f"{SPACY_MODEL}-{spacy.util.get_package_version(SPACY_MODEL)}-pos-v1"
     cache = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}

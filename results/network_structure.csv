@@ -1,0 +1,21 @@
+rep,measure,observed,null,null_mean,null_sd,null_max,z,shuffles
+tfidf,degree: coefficient of variation,1.1777,"random graph G(n, m)",0.078638,0.0010998,0.080851,999.36,20
+tfidf,degree: largest,724,"random graph G(n, m)",184.85,2.4979,190,215.84,20
+tfidf,degree: Gini,0.60559,"random graph G(n, m)",0.044395,0.00062618,0.04575,896.22,20
+tfidf,degree: skewness,1.2312,"random graph G(n, m)",0.039438,0.051039,0.15809,23.35,20
+tfidf,"clustering (unweighted, mean over tales)",0.56127,degree-preserving shuffles,0.65385,0.0020132,0.6574,-45.982,20
+tfidf,"clustering (weighted, Onnela)",0.074086,"degree-preserving shuffles, weights reassigned",0.080639,0.00025938,0.081091,-25.263,20
+tfidf,strength against degree (Spearman),0.99684,"degree-preserving shuffles, weights reassigned",0.99963,3.3601e-05,0.99968,-83.024,20
+tfidf,mean edge weight per tale: coefficient of variation,0.21386,"degree-preserving shuffles, weights reassigned",0.10234,0.0031211,0.10989,35.731,20
+tfidf,"clustering expected in G(n, m) (= density)",0.1,,,,,,0
+tfidf,degree: mean,146.1,,,,,,0
+embedding,degree: coefficient of variation,1.1758,"random graph G(n, m)",0.078638,0.0010998,0.080851,997.61,20
+embedding,degree: largest,696,"random graph G(n, m)",184.85,2.4979,190,204.63,20
+embedding,degree: Gini,0.61426,"random graph G(n, m)",0.044395,0.00062618,0.04575,910.07,20
+embedding,degree: skewness,1.1679,"random graph G(n, m)",0.039438,0.051039,0.15809,22.109,20
+embedding,"clustering (unweighted, mean over tales)",0.61384,degree-preserving shuffles,0.57226,0.0024824,0.5759,16.752,20
+embedding,"clustering (weighted, Onnela)",0.43006,"degree-preserving shuffles, weights reassigned",0.39822,0.0016848,0.40075,18.896,20
+embedding,strength against degree (Spearman),0.99988,"degree-preserving shuffles, weights reassigned",0.99991,4.2493e-07,0.99991,-76.795,20
+embedding,mean edge weight per tale: coefficient of variation,0.29674,"degree-preserving shuffles, weights reassigned",0.29571,7.2325e-05,0.29578,14.319,20
+embedding,"clustering expected in G(n, m) (= density)",0.1,,,,,,0
+embedding,degree: mean,146.1,,,,,,0

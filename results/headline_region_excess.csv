@@ -1,0 +1,141 @@
+variant,tradition,region,map_share,parable_share,baseline_share,excess,p_two_sided,significant_bonferroni,jsd_bits,jsd_p_upper,permutations
+tfidf,Christian,Eastern Asia,0.017784,0.0025,0.0075,-0.005,0.61139,False,0.048985,0.000999,1000
+tfidf,Christian,Eastern Europe,0.065663,0.0825,0.115,-0.0325,0.11988,False,0.048985,0.000999,1000
+tfidf,Christian,Latin America and the Caribbean,0.0088919,0.0075,0.0025,0.005,0.6004,False,0.048985,0.000999,1000
+tfidf,Christian,Melanesia,0.001368,0,0,0,1,False,0.048985,0.000999,1000
+tfidf,Christian,Northern Africa,0.002052,0,0.0025,-0.0025,1,False,0.048985,0.000999,1000
+tfidf,Christian,Northern America,0.055404,0.04,0.0475,-0.0075,0.68032,False,0.048985,0.000999,1000
+tfidf,Christian,Northern Europe,0.24213,0.135,0.14,-0.005,0.92807,False,0.048985,0.000999,1000
+tfidf,Christian,South-Eastern Asia,0.022572,0.0075,0.0075,0,1,False,0.048985,0.000999,1000
+tfidf,Christian,Southern Asia,0.082079,0.06,0.05,0.01,0.62637,False,0.048985,0.000999,1000
+tfidf,Christian,Southern Europe,0.075923,0.1975,0.125,0.0725,0.005994,False,0.048985,0.000999,1000
+tfidf,Christian,Sub-Saharan Africa,0.0068399,0.0025,0.0025,0,1,False,0.048985,0.000999,1000
+tfidf,Christian,Western Asia,0.019152,0.0125,0.0025,0.01,0.2028,False,0.048985,0.000999,1000
+tfidf,Christian,Western Europe,0.171,0.2675,0.14,0.1275,0.001998,False,0.048985,0.000999,1000
+tfidf,Christian,(no region),0.22914,0.185,0.3575,-0.1725,0.000999,False,0.048985,0.000999,1000
+tfidf,Buddhist,Eastern Asia,0.017784,0.049383,0.016667,0.032716,0.063936,False,0.037285,0.00999,1000
+tfidf,Buddhist,Eastern Europe,0.065663,0.13951,0.1,0.039506,0.17383,False,0.037285,0.00999,1000
+tfidf,Buddhist,Latin America and the Caribbean,0.0088919,0.0024691,0,0.0024691,1,False,0.037285,0.00999,1000
+tfidf,Buddhist,Melanesia,0.001368,0,0.0041667,-0.0041667,0.23277,False,0.037285,0.00999,1000
+tfidf,Buddhist,Northern Africa,0.002052,0.0024691,0,0.0024691,1,False,0.037285,0.00999,1000
+tfidf,Buddhist,Northern America,0.055404,0.022222,0.0083333,0.013889,0.27772,False,0.037285,0.00999,1000
+tfidf,Buddhist,Northern Europe,0.24213,0.10247,0.15417,-0.051698,0.04995,False,0.037285,0.00999,1000
+tfidf,Buddhist,South-Eastern Asia,0.022572,0.037037,0.0083333,0.028704,0.048951,False,0.037285,0.00999,1000
+tfidf,Buddhist,Southern Asia,0.082079,0.15432,0.1375,0.016821,0.63037,False,0.037285,0.00999,1000
+tfidf,Buddhist,Southern Europe,0.075923,0.15679,0.16667,-0.0098765,0.76523,False,0.037285,0.00999,1000
+tfidf,Buddhist,Sub-Saharan Africa,0.0068399,0.022222,0.0041667,0.018056,0.12288,False,0.037285,0.00999,1000
+tfidf,Buddhist,Western Asia,0.019152,0.012346,0.0083333,0.0040123,0.78521,False,0.037285,0.00999,1000
+tfidf,Buddhist,Western Europe,0.171,0.079012,0.125,-0.045988,0.071928,False,0.037285,0.00999,1000
+tfidf,Buddhist,(no region),0.22914,0.21975,0.26667,-0.046914,0.16683,False,0.037285,0.00999,1000
+tfidf,Jewish,Eastern Asia,0.017784,0.02,0.015,0.005,0.63437,False,0.033718,0.000999,1000
+tfidf,Jewish,Eastern Europe,0.065663,0.112,0.08,0.032,0.16583,False,0.033718,0.000999,1000
+tfidf,Jewish,Latin America and the Caribbean,0.0088919,0.004,0,0.004,0.4995,False,0.033718,0.000999,1000
+tfidf,Jewish,Melanesia,0.001368,0,0,0,1,False,0.033718,0.000999,1000
+tfidf,Jewish,Northern Africa,0.002052,0.002,0.005,-0.003,0.5994,False,0.033718,0.000999,1000
+tfidf,Jewish,Northern America,0.055404,0.036,0.02,0.016,0.28072,False,0.033718,0.000999,1000
+tfidf,Jewish,Northern Europe,0.24213,0.106,0.18,-0.074,0.005994,False,0.033718,0.000999,1000
+tfidf,Jewish,South-Eastern Asia,0.022572,0.038,0.005,0.033,0.003996,False,0.033718,0.000999,1000
+tfidf,Jewish,Southern Asia,0.082079,0.086,0.06,0.026,0.1988,False,0.033718,0.000999,1000
+tfidf,Jewish,Southern Europe,0.075923,0.16,0.115,0.045,0.063936,False,0.033718,0.000999,1000
+tfidf,Jewish,Sub-Saharan Africa,0.0068399,0.016,0.005,0.011,0.17483,False,0.033718,0.000999,1000
+tfidf,Jewish,Western Asia,0.019152,0.026,0.03,-0.004,0.84416,False,0.033718,0.000999,1000
+tfidf,Jewish,Western Europe,0.171,0.11,0.135,-0.025,0.18781,False,0.033718,0.000999,1000
+tfidf,Jewish,(no region),0.22914,0.284,0.35,-0.066,0.047952,False,0.033718,0.000999,1000
+tfidf,Sufi,Eastern Asia,0.017784,0.018333,0.01,0.0083333,0.41159,False,0.044365,0.000999,1000
+tfidf,Sufi,Eastern Europe,0.065663,0.076667,0.1125,-0.035833,0.1029,False,0.044365,0.000999,1000
+tfidf,Sufi,Latin America and the Caribbean,0.0088919,0.0033333,0.0025,0.00083333,1,False,0.044365,0.000999,1000
+tfidf,Sufi,Melanesia,0.001368,0,0,0,1,False,0.044365,0.000999,1000
+tfidf,Sufi,Northern Africa,0.002052,0,0,0,1,False,0.044365,0.000999,1000
+tfidf,Sufi,Northern America,0.055404,0.043333,0.025,0.018333,0.2008,False,0.044365,0.000999,1000
+tfidf,Sufi,Northern Europe,0.24213,0.083333,0.08,0.0033333,0.91508,False,0.044365,0.000999,1000
+tfidf,Sufi,South-Eastern Asia,0.022572,0.016667,0.0075,0.0091667,0.24176,False,0.044365,0.000999,1000
+tfidf,Sufi,Southern Asia,0.082079,0.12667,0.0325,0.094167,0.000999,False,0.044365,0.000999,1000
+tfidf,Sufi,Southern Europe,0.075923,0.13167,0.135,-0.0033333,0.92707,False,0.044365,0.000999,1000
+tfidf,Sufi,Sub-Saharan Africa,0.0068399,0.02,0,0.02,0.021978,False,0.044365,0.000999,1000
+tfidf,Sufi,Western Asia,0.019152,0.036667,0.0475,-0.010833,0.39161,False,0.044365,0.000999,1000
+tfidf,Sufi,Western Europe,0.171,0.091667,0.1475,-0.055833,0.01998,False,0.044365,0.000999,1000
+tfidf,Sufi,(no region),0.22914,0.35167,0.4,-0.048333,0.15984,False,0.044365,0.000999,1000
+tfidf,Taoist,Eastern Asia,0.017784,0.034,0.016667,0.017333,0.1978,False,0.034285,0.011988,1000
+tfidf,Taoist,Eastern Europe,0.065663,0.128,0.12083,0.0071667,0.83217,False,0.034285,0.011988,1000
+tfidf,Taoist,Latin America and the Caribbean,0.0088919,0.006,0.0041667,0.0018333,1,False,0.034285,0.011988,1000
+tfidf,Taoist,Melanesia,0.001368,0,0,0,1,False,0.034285,0.011988,1000
+tfidf,Taoist,Northern Africa,0.002052,0.002,0.0041667,-0.0021667,1,False,0.034285,0.011988,1000
+tfidf,Taoist,Northern America,0.055404,0.042,0.0041667,0.037833,0.018981,False,0.034285,0.011988,1000
+tfidf,Taoist,Northern Europe,0.24213,0.192,0.11667,0.075333,0.012987,False,0.034285,0.011988,1000
+tfidf,Taoist,South-Eastern Asia,0.022572,0.02,0.0083333,0.011667,0.32767,False,0.034285,0.011988,1000
+tfidf,Taoist,Southern Asia,0.082079,0.09,0.125,-0.035,0.22977,False,0.034285,0.011988,1000
+tfidf,Taoist,Southern Europe,0.075923,0.148,0.18333,-0.035333,0.30569,False,0.034285,0.011988,1000
+tfidf,Taoist,Sub-Saharan Africa,0.0068399,0.014,0.0041667,0.0098333,0.32168,False,0.034285,0.011988,1000
+tfidf,Taoist,Western Asia,0.019152,0.008,0.0041667,0.0038333,0.76324,False,0.034285,0.011988,1000
+tfidf,Taoist,Western Europe,0.171,0.128,0.16667,-0.038667,0.24076,False,0.034285,0.011988,1000
+tfidf,Taoist,(no region),0.22914,0.188,0.24167,-0.053667,0.12088,False,0.034285,0.011988,1000
+embedding,Christian,Eastern Asia,0.017784,0.015,0,0.015,0.053946,False,0.063588,0.000999,1000
+embedding,Christian,Eastern Europe,0.065663,0.115,0.1225,-0.0075,0.80519,False,0.063588,0.000999,1000
+embedding,Christian,Latin America and the Caribbean,0.0088919,0,0,0,1,False,0.063588,0.000999,1000
+embedding,Christian,Melanesia,0.001368,0,0,0,1,False,0.063588,0.000999,1000
+embedding,Christian,Northern Africa,0.002052,0,0,0,1,False,0.063588,0.000999,1000
+embedding,Christian,Northern America,0.055404,0,0.02,-0.02,0.004995,False,0.063588,0.000999,1000
+embedding,Christian,Northern Europe,0.24213,0.1175,0.0775,0.04,0.098901,False,0.063588,0.000999,1000
+embedding,Christian,South-Eastern Asia,0.022572,0.0075,0,0.0075,0.25774,False,0.063588,0.000999,1000
+embedding,Christian,Southern Asia,0.082079,0.0325,0.0175,0.015,0.3037,False,0.063588,0.000999,1000
+embedding,Christian,Southern Europe,0.075923,0.1425,0.115,0.0275,0.31269,False,0.063588,0.000999,1000
+embedding,Christian,Sub-Saharan Africa,0.0068399,0,0,0,1,False,0.063588,0.000999,1000
+embedding,Christian,Western Asia,0.019152,0.015,0.0075,0.0075,0.47353,False,0.063588,0.000999,1000
+embedding,Christian,Western Europe,0.171,0.3125,0.185,0.1275,0.000999,False,0.063588,0.000999,1000
+embedding,Christian,(no region),0.22914,0.2425,0.455,-0.2125,0.000999,False,0.063588,0.000999,1000
+embedding,Buddhist,Eastern Asia,0.017784,0.061728,0.025,0.036728,0.028971,False,0.073072,0.000999,1000
+embedding,Buddhist,Eastern Europe,0.065663,0.064198,0.0041667,0.060031,0.005994,False,0.073072,0.000999,1000
+embedding,Buddhist,Latin America and the Caribbean,0.0088919,0.0012346,0,0.0012346,1,False,0.073072,0.000999,1000
+embedding,Buddhist,Melanesia,0.001368,0,0,0,1,False,0.073072,0.000999,1000
+embedding,Buddhist,Northern Africa,0.002052,0,0,0,1,False,0.073072,0.000999,1000
+embedding,Buddhist,Northern America,0.055404,0.0024691,0.0041667,-0.0016975,1,False,0.073072,0.000999,1000
+embedding,Buddhist,Northern Europe,0.24213,0.060494,0.025,0.035494,0.03996,False,0.073072,0.000999,1000
+embedding,Buddhist,South-Eastern Asia,0.022572,0.014815,0,0.014815,0.23177,False,0.073072,0.000999,1000
+embedding,Buddhist,Southern Asia,0.082079,0.32469,0.27083,0.053858,0.25974,False,0.073072,0.000999,1000
+embedding,Buddhist,Southern Europe,0.075923,0.074074,0.045833,0.028241,0.12388,False,0.073072,0.000999,1000
+embedding,Buddhist,Sub-Saharan Africa,0.0068399,0.0074074,0,0.0074074,0.46154,False,0.073072,0.000999,1000
+embedding,Buddhist,Western Asia,0.019152,0.01358,0.0125,0.0010802,1,False,0.073072,0.000999,1000
+embedding,Buddhist,Western Europe,0.171,0.051852,0.054167,-0.0023148,1,False,0.073072,0.000999,1000
+embedding,Buddhist,(no region),0.22914,0.32346,0.55833,-0.23488,0.000999,False,0.073072,0.000999,1000
+embedding,Jewish,Eastern Asia,0.017784,0.012,0.02,-0.008,0.40859,False,0.048342,0.000999,1000
+embedding,Jewish,Eastern Europe,0.065663,0.09,0.045,0.045,0.065934,False,0.048342,0.000999,1000
+embedding,Jewish,Latin America and the Caribbean,0.0088919,0,0,0,1,False,0.048342,0.000999,1000
+embedding,Jewish,Melanesia,0.001368,0,0,0,1,False,0.048342,0.000999,1000
+embedding,Jewish,Northern Africa,0.002052,0.002,0,0.002,1,False,0.048342,0.000999,1000
+embedding,Jewish,Northern America,0.055404,0.02,0.0125,0.0075,0.45954,False,0.048342,0.000999,1000
+embedding,Jewish,Northern Europe,0.24213,0.11,0.0475,0.0625,0.003996,False,0.048342,0.000999,1000
+embedding,Jewish,South-Eastern Asia,0.022572,0.01,0,0.01,0.055944,False,0.048342,0.000999,1000
+embedding,Jewish,Southern Asia,0.082079,0.11,0.05,0.06,0.012987,False,0.048342,0.000999,1000
+embedding,Jewish,Southern Europe,0.075923,0.094,0.0825,0.0115,0.56743,False,0.048342,0.000999,1000
+embedding,Jewish,Sub-Saharan Africa,0.0068399,0.004,0,0.004,0.52847,False,0.048342,0.000999,1000
+embedding,Jewish,Western Asia,0.019152,0.018,0.04,-0.022,0.10789,False,0.048342,0.000999,1000
+embedding,Jewish,Western Europe,0.171,0.148,0.14,0.008,0.78521,False,0.048342,0.000999,1000
+embedding,Jewish,(no region),0.22914,0.382,0.5625,-0.1805,0.000999,False,0.048342,0.000999,1000
+embedding,Sufi,Eastern Asia,0.017784,0.041667,0.0425,-0.00083333,1,False,0.056439,0.000999,1000
+embedding,Sufi,Eastern Europe,0.065663,0.071667,0.07,0.0016667,1,False,0.056439,0.000999,1000
+embedding,Sufi,Latin America and the Caribbean,0.0088919,0,0,0,1,False,0.056439,0.000999,1000
+embedding,Sufi,Melanesia,0.001368,0,0,0,1,False,0.056439,0.000999,1000
+embedding,Sufi,Northern Africa,0.002052,0.0016667,0,0.0016667,1,False,0.056439,0.000999,1000
+embedding,Sufi,Northern America,0.055404,0.01,0.01,0,1,False,0.056439,0.000999,1000
+embedding,Sufi,Northern Europe,0.24213,0.06,0.0675,-0.0075,0.7033,False,0.056439,0.000999,1000
+embedding,Sufi,South-Eastern Asia,0.022572,0.0016667,0,0.0016667,1,False,0.056439,0.000999,1000
+embedding,Sufi,Southern Asia,0.082079,0.16333,0.0375,0.12583,0.000999,False,0.056439,0.000999,1000
+embedding,Sufi,Southern Europe,0.075923,0.086667,0.0825,0.0041667,0.89311,False,0.056439,0.000999,1000
+embedding,Sufi,Sub-Saharan Africa,0.0068399,0.0066667,0,0.0066667,0.15285,False,0.056439,0.000999,1000
+embedding,Sufi,Western Asia,0.019152,0.05,0.0225,0.0275,0.034965,False,0.056439,0.000999,1000
+embedding,Sufi,Western Europe,0.171,0.061667,0.155,-0.093333,0.000999,False,0.056439,0.000999,1000
+embedding,Sufi,(no region),0.22914,0.445,0.5125,-0.0675,0.052947,False,0.056439,0.000999,1000
+embedding,Taoist,Eastern Asia,0.017784,0.062,0.029167,0.032833,0.070929,False,0.083144,0.000999,1000
+embedding,Taoist,Eastern Europe,0.065663,0.098,0.0375,0.0605,0.006993,False,0.083144,0.000999,1000
+embedding,Taoist,Latin America and the Caribbean,0.0088919,0,0,0,1,False,0.083144,0.000999,1000
+embedding,Taoist,Melanesia,0.001368,0,0,0,1,False,0.083144,0.000999,1000
+embedding,Taoist,Northern Africa,0.002052,0,0,0,1,False,0.083144,0.000999,1000
+embedding,Taoist,Northern America,0.055404,0.002,0.020833,-0.018833,0.010989,False,0.083144,0.000999,1000
+embedding,Taoist,Northern Europe,0.24213,0.12,0.045833,0.074167,0.004995,False,0.083144,0.000999,1000
+embedding,Taoist,South-Eastern Asia,0.022572,0.016,0,0.016,0.2018,False,0.083144,0.000999,1000
+embedding,Taoist,Southern Asia,0.082079,0.234,0.12917,0.10483,0.008991,False,0.083144,0.000999,1000
+embedding,Taoist,Southern Europe,0.075923,0.078,0.14583,-0.067833,0.001998,False,0.083144,0.000999,1000
+embedding,Taoist,Sub-Saharan Africa,0.0068399,0,0,0,1,False,0.083144,0.000999,1000
+embedding,Taoist,Western Asia,0.019152,0.022,0.0041667,0.017833,0.11888,False,0.083144,0.000999,1000
+embedding,Taoist,Western Europe,0.171,0.086,0.1375,-0.0515,0.084915,False,0.083144,0.000999,1000
+embedding,Taoist,(no region),0.22914,0.282,0.45,-0.168,0.000999,False,0.083144,0.000999,1000
