@@ -1,4 +1,4 @@
-"""Paths, settings and the run context of the paper pipeline."""
+"""Paths, settings and the run context of the analysis pipeline."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -16,8 +16,8 @@ REFS = ROOT / "data" / "mappings" / "parables"          # reviewable reference f
 TRADITIONS = ["Christian", "Buddhist", "Jewish", "Sufi", "Taoist"]
 
 
-def load_paper() -> dict:
-    with open(ROOT / "paper.yaml", encoding="utf-8") as fh:
+def load_analysis() -> dict:
+    with open(ROOT / "analysis.yaml", encoding="utf-8") as fh:
         return yaml.safe_load(fh)
 
 
@@ -25,9 +25,9 @@ def load_paper() -> dict:
 class Ctx:
     """One pipeline run. `sample` switches to a small development run with its own output folders."""
     sample: int | None = None
-    fetch: bool = False         # download source pages that are not in the cache (off by default; see README.md)
+    fetch: bool = False         # download source pages that are not in the cache (off by default, see README.md)
     cfg: dict = field(default_factory=load_config)
-    paper: dict = field(default_factory=load_paper)
+    analysis: dict = field(default_factory=load_analysis)
 
     def _dir(self, base: Path) -> Path:
         p = base / "_sample" if self.sample else base
@@ -39,23 +39,13 @@ class Ctx:
         return self._dir(ROOT / "results")
 
     @property
-    def figures(self) -> Path:
-        return self._dir(ROOT / "figures")
-
-    @property
-    def report(self) -> Path:
-        """Material written for the final report (RESULTS.md, captions, LaTeX macros, short update), kept apart
-        from the code, the analysis tables and the website."""
-        return self._dir(ROOT / "report")
-
-    @property
     def work(self) -> Path:
-        """Intermediate arrays (graphs, layouts, neighbour lists); git-ignored."""
+        """Intermediate arrays (graphs, layouts, neighbour lists), git-ignored."""
         return self._dir(INTERIM / "reimagine")
 
     @property
     def seed(self) -> int:
-        return int(self.paper["seed"])
+        return int(self.analysis["seed"])
 
     def shuffles(self, n: int, cap: int = 100) -> int:
         """Shuffle and bootstrap counts are capped in a development run."""
@@ -63,11 +53,11 @@ class Ctx:
 
     @property
     def reps(self) -> list[str]:
-        return list(self.paper["representations"])
+        return list(self.analysis["representations"])
 
     @property
     def primary(self) -> str:
-        return self.paper["primary_representation"]
+        return self.analysis["primary_representation"]
 
 
 def n_tokens(text: str) -> int:
@@ -81,7 +71,7 @@ def write_csv(df: pd.DataFrame, path: Path, digits: int = 5) -> None:
 
 
 def top_k(S: np.ndarray, k: int) -> np.ndarray:
-    """Column indices of the k largest entries of each row; ties go to the lower column index."""
+    """Column indices of the k largest entries of each row. Ties go to the lower column index."""
     k = min(k, S.shape[1])
     return np.argsort(-np.round(S, 12), axis=1, kind="stable")[:, :k]
 

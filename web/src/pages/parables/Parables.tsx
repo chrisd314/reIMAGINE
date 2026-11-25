@@ -40,7 +40,7 @@ export function ParablesPage() {
   return (
     <>
       <PageHead page="parables" kicker="reIMAGINE · part 3" title="Placing the parables"
-        lede={<>{int(d.corpus.parables)} parables from five religious traditions are placed among the {int(d.corpus.folktales)} folktales by text similarity and compared with {int(d.corpus.baseline)} non-story passages from the same translations. Are they closer to folktales than their own scripture, and which communities and tale types do they reach? Every text can be opened, read beside its nearest folktales, and followed to its source.</>}
+        lede={<>{int(d.corpus.parables)} parables from five religious traditions are placed among the {int(d.corpus.folktales)} folktales by text similarity and compared with {int(d.corpus.baseline)} non-story passages from the same traditions, from the same translation wherever possible. Are they closer to folktales than their own scripture, and which communities and tale types do they reach? Every text can be opened, read beside its nearest folktales, and followed to its source.</>}
         sections={PARABLE_SECTIONS} />
       <TextsSection d={d} near={near} />
       <TestChapter d={d} near={near} />
@@ -51,7 +51,7 @@ export function ParablesPage() {
       <section className="chapter" aria-label="Summary">
         <div className="wrap">
           <Result title="What the parables tell us">
-            <p>{list(H.filter((h) => h.closer).map((h) => h.tradition))} parables sit closer to folktales than their own scripture's non-story text ({rep === "tfidf" ? "TF–IDF" : "embeddings"}); only {list(standing)} {standing.length === 1 ? "does" : "do"} so under every check. Each tradition reaches its own communities and tale types.{below === H.length ? " None of them reads like a folktale: every tradition's parables stay below folktales compared with each other." : ""}</p>
+            <p>{list(H.filter((h) => h.closer).map((h) => h.tradition))} parables sit closer to folktales than their own scripture's non-story text ({rep === "tfidf" ? "TF–IDF" : "embeddings"}), and only {list(standing)} {standing.length === 1 ? "does" : "do"} so under every check. Each tradition reaches its own communities and tale types.{below === H.length ? " None of them reads like a folktale: every tradition's parables stay below folktales compared with each other." : ""}</p>
           </Result>
           <div className="next-page"><a href="#/folktales">← Part 1 and 2: the folktale network</a><a href="#/explore">Explore the network</a><a href="#/">The answer, on the overview →</a></div>
         </div>

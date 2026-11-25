@@ -38,7 +38,7 @@ def sha256_file(path: Path, chunk: int = 1 << 20) -> str:
 
 
 def content_hash(path: Path) -> str:
-    """SHA-256 of a file's content; for .npz archives, of the arrays themselves.
+    """SHA-256 of a file's content. For .npz archives, of the arrays themselves.
 
     Hashing names, dtypes, shapes and raw bytes keeps stamps and run IDs independent of
     how an archive was written (compression, zip metadata, library version).

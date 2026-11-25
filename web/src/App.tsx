@@ -87,8 +87,9 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <div className="inner">
-          <div><strong>reIMAGINE</strong> · a DTU 02805 course project on where religious parables land in the world of folktales.</div>
-          <div>Folktales: Annotated Folktales (Hagedorn &amp; Darányi 2022) from D. L. Ashliman's Folktexts, CC BY-NC-SA 4.0 · <a href="#/methods">Sources</a></div>
+          <div><strong>Research questions.</strong> Do religious parables resemble folktales more closely than non-story text from their own traditions does? Which parts of the folktale corpus and which tale types do they come closest to?</div>
+          <div>Christos Diamantis, Dávid Weiner and Evangelos Panagiotopoulos · DTU 02805 Social Graphs and Interactions, autumn 2026</div>
+          <div>Folktales: Annotated Folktales (Hagedorn &amp; Darányi 2022) from D. L. Ashliman's Folktexts · CC BY-NC-SA 4.0 · <a href="#/methods">Sources and licence</a></div>
         </div>
       </footer>
     </RepContext.Provider>

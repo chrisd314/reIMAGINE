@@ -1,11 +1,11 @@
 import { useCallback, useMemo, useState } from "react";
-import { communityOf, shortType, type NetMap, type Network, type Story, type SweepRow } from "../../data";
+import { communityName, communityOf, shortType, type NetMap, type Network, type Story, type SweepRow } from "../../data";
 import { alignTones, NetCanvas, type Tone } from "../../components/NetCanvas";
 import { RepToggle, useRep } from "../../components/rep";
 import { ShuffleLab } from "../../components/ShuffleLab";
 import { Chapter, DataTable, Result, Segmented, Why } from "../../components/ui";
 import { codes, nmi, rng, shuffled, shuffledWithin } from "../../lib/stats";
-import { fmt, int, pct } from "../../lib/format";
+import { fmt, int, pct, pMin } from "../../lib/format";
 
 const LABEL: Record<string, string> = { atu_type: "Tale type", region: "Region", source_collection: "Source book" };
 const COL: Record<string, "atu" | "region" | "collection"> = { atu_type: "atu", region: "region", source_collection: "collection" };
@@ -74,7 +74,7 @@ export function OrganiseSection({ d, maps }: { d: Story; maps: Record<string, Ne
               options={canWithin ? [{ value: "all", label: "across all tales" }, { value: "within", label: "within each book" }] : [{ value: "all", label: "across all tales" }]} />
           </div>
           <ShuffleLab observed={observed} runOne={runOne} reset={`${rep}-${label}-${within}`} label={`NMI of the communities with ${LABEL[label].toLowerCase()}`}
-            pipeline={ref ? `The pipeline's ${int(d.settings.labelShuffles)} shuffles: mean ${fmt(ref.nullMean, 3)}${ref.nullLow !== null ? `, 95% between ${fmt(ref.nullLow, 3)} and ${fmt(ref.nullHigh, 3)}` : ""}; p ${ref.p <= 0.0011 ? "≤ 0.001" : `= ${fmt(ref.p, 3)}`}.` : undefined} />
+            pipeline={ref ? `The pipeline's ${int(d.settings.labelShuffles)} shuffles: mean ${fmt(ref.nullMean, 3)}${ref.nullLow !== null ? `, 95% between ${fmt(ref.nullLow, 3)} and ${fmt(ref.nullHigh, 3)}` : ""}, p ${ref.p < 1.5 / (d.settings.labelShuffles + 1) ? pMin(d.settings.labelShuffles) : `= ${fmt(ref.p, 3)}`}.` : undefined} />
           <p className="caption">Each shuffle gives every tale a random {LABEL[label].toLowerCase()} {within && canWithin ? "from its own book" : "from the pool"} and recomputes NMI with the {map.stats.major}-community partition. Try region within each book: the gap between the observed value and the shuffles almost closes.</p>
         </figure>
         <figure className="figure">
@@ -107,7 +107,7 @@ function SweepChart({ rows, selected, onPick }: { rows: SweepRow[]; selected: st
   const ticks = [0, 0.05, 0.1, 0.15, 0.2, 0.25].filter((t) => t <= max);
   const series: [keyof SweepRow, string, string][] = [["type", "var(--c1)", "tale type"], ["region", "var(--c2)", "region"], ["collection", "var(--c3)", "source book"]];
   return (
-    <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Excess NMI of tale type, region and source book in every graph; click a row to see its communities">
+    <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Excess NMI of tale type, region and source book in every graph. Click a row to see its communities">
       {ticks.map((t) => <g key={t}><line className="axis" x1={x(t)} x2={x(t)} y1={T} y2={T + rows.length * rowH} strokeDasharray="2 4" /><text className="tick" x={x(t)} y={T + rows.length * rowH + 14} textAnchor="middle">{t.toFixed(2)}</text></g>)}
       {rows.map((r, k) => {
         const y = T + k * rowH + rowH / 2, sel = r.key === selected;
@@ -136,13 +136,13 @@ export function ChoicesSection({ d, net }: { d: Story; net: Network }) {
   const row = rows.find((r) => r.key === key) ?? rows[0];
   const part = map.partitions[row.key];
   const tone = useMemo(() => alignTones(part, map.group, [0, 1, 2]), [part, map]);
-  const nmis = all.filter((r) => !r.canonical).map((r) => r.nmiCanonical);
+  const nmis = rows.filter((r) => !r.canonical).map((r) => r.nmiCanonical);   // the selected representation, as in the table of checks
   const avg = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / Math.max(1, xs.length);
   const knnMore = avg(all.filter((r) => r.by === "knn").map((r) => r.communities)) > avg(all.filter((r) => r.by === "density").map((r) => r.communities));
   const bb = map.backbone, at = (f: string, a: number) => bb.find((b) => b.filtered.startsWith(f) && b.alpha === a);
   const thr05 = at("10%", 0.05), comp01 = at("complete", 0.01), comp05 = at("complete", 0.05);
   const F = d.folktales;
-  const tip = (i: number) => <><strong>{F.title[i]}</strong><br />{F.atu[i] ? `ATU ${F.atu[i]} ${shortType(F.atuName[i], 50)}` : "no tale type"}<br />main community {communityOf(map.group[i])}</>;
+  const tip = (i: number) => <><strong>{F.title[i]}</strong><br />{F.atu[i] ? `ATU ${F.atu[i]} ${shortType(F.atuName[i], 50)}` : "no tale type"}<br />main community {communityName(d, communityOf(map.group[i]), rep)}</>;
   const toneFn = useCallback((i: number): Tone => tone(i), [tone]);
   return (
     <Chapter id="choices" num="Folktales · 6" title="Edges are a modelling choice">
@@ -162,16 +162,16 @@ export function ChoicesSection({ d, net }: { d: Story; net: Network }) {
           <p className="figure-title">Communities of “{graphName(row)}”</p>
           <p className="figure-sub">{row.communities} large communities · NMI {fmt(row.nmiCanonical, 2)} with the main partition · the three that overlap most with C1–C3 in colour</p>
           <NetCanvas map={map} tone={toneFn} tip={tip} size="none" aspect={0.8} label={`Network coloured by the communities of the ${graphName(row)} graph`} />
-          <div className="legend" aria-hidden>{[1, 2, 3].map((k) => <span key={k}><i className="swatch" style={{ background: `var(--c${k})` }} />best match of C{k}</span>)}</div>
+          <div className="legend" aria-hidden>{[1, 2, 3].map((k) => <span key={k}><i className="swatch" style={{ background: `var(--c${k})` }} />best match of {communityName(d, `C${k}`, rep)}</span>)}</div>
         </figure>
       </div>
       <div className="two-col" style={{ marginTop: 18 }}>
         <Result>
-          <p><strong>Tale type beats region in {net.sweep.typeBeatsRegion} of {net.sweep.graphs} graphs.</strong> The communities themselves change with the rule (NMI {Math.min(...nmis).toFixed(2)}–{Math.max(...nmis).toFixed(2)} with the main partition{knnMore ? "; kNN graphs give more, smaller communities" : ""}), but what they follow does not.</p>
+          <p><strong>Tale type beats region in {net.sweep.typeBeatsRegion} of {net.sweep.graphs} graphs.</strong> The communities themselves change with the rule (NMI {Math.min(...nmis).toFixed(2)}–{Math.max(...nmis).toFixed(2)} with the main {rep === "tfidf" ? "TF–IDF" : "embedding"} partition{knnMore ? ", and kNN graphs give more, smaller communities" : ""}), but what they follow does not.</p>
         </Result>
         <div className="card">
           <div className="tag">Backbone (disparity filter)</div>
-          <p className="sans small" style={{ margin: 0 }}>On the thresholded graph the filter keeps only {thr05?.kept} of {int(thr05?.edgesIn)} links at α = 0.05: after thresholding, a tale's link weights are nearly equal, so few stand out. On the complete similarity graph it keeps {int(comp05?.kept)} (α = 0.05) or {int(comp01?.kept)} (α = 0.01) links, {pct(comp01?.within)} of them inside one community. The maps draw each tale's strongest links instead, for display only; every statistic uses the full graph.</p>
+          <p className="sans small" style={{ margin: 0 }}>On the thresholded graph the filter keeps only {thr05?.kept} of {int(thr05?.edgesIn)} links at α = 0.05: after thresholding, a tale's link weights are nearly equal, so few stand out. On the complete similarity graph it keeps {int(comp05?.kept)} (α = 0.05) or {int(comp01?.kept)} (α = 0.01) links, {pct(comp01?.within)} of them inside one community. The maps draw each tale's strongest links instead, for display only. Every statistic uses the full graph.</p>
         </div>
       </div>
     </Chapter>

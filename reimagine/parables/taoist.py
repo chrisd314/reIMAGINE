@@ -4,7 +4,7 @@ Baseline: the Tao Te Ching, same translator and volume. Both from sacred-texts.c
 Legge numbers the paragraphs of each of the 33 books ("1.", "2.", ...). One numbered paragraph,
 with the unnumbered paragraphs that continue it, is one section. Sections that tell a story or
 an anecdote with speech (reimagine.parables.narrative.is_story, without the exegesis test) are the
-candidate parables; a seeded random draw of them is kept. Discursive sections are not used.
+candidate parables. A seeded random draw of them is kept. Discursive sections are not used.
 """
 from __future__ import annotations
 
@@ -76,7 +76,7 @@ def zhuangzi_sections(ctx, fetcher: Fetcher) -> list[dict]:
 
 
 def tao_te_ching_units(ctx, fetcher: Fetcher) -> list[dict]:
-    """Numbered paragraphs of the 81 chapters; Legge's commentary under each chapter is left out."""
+    """Numbered paragraphs of the 81 chapters. Legge's commentary under each chapter is left out."""
     book = Book(fetcher, "taoist", "sbe39", "https://www.sacred-texts.com/tao/sbe39/index.htm").open()
     units = []
     for chap in [c for c in book.chapters if re.fullmatch(r"chapter-\d+", c)][:(6 if ctx.sample else None)]:
@@ -94,7 +94,7 @@ def tao_te_ching_units(ctx, fetcher: Fetcher) -> list[dict]:
 
 
 def collect(ctx, fetcher: Fetcher, is_duplicate):
-    pc = ctx.paper["parables"]
+    pc = ctx.analysis["parables"]
     secs = zhuangzi_sections(ctx, fetcher)
     cand = [s for s in secs if is_parable(s["text"], pc["min_tokens"]) and len(s["text"].split()) <= pc["max_tokens"]]
     rng = random.Random(ctx.seed)

@@ -1,7 +1,7 @@
 """Jewish teaching tales: S. Rapaport, Tales and Maxims from the Midrash (1907), sacred-texts.com.
 
 The book lists short passages, each closed by its source ("--Gen. Rabba 22."). A passage is one
-item. Items that tell a story (reimagine.parables.narrative.is_story) are the parables; short items
+item. Items that tell a story (reimagine.parables.narrative.is_story) are the parables. Short items
 without action or speech are the book's maxims and, with the sayings of Pirqe Aboth (Taylor
 1897), form the baseline. The two long retold legend cycles at the front of the book (Alexander
 of Macedon, Ashmedai) carry no source citations to cut them by and are not used.
@@ -23,7 +23,7 @@ AVOT = dict(tradition=TRADITION, source="Sayings of the Jewish Fathers (Pirqe Ab
 
 
 def midrash_items(paragraphs: list[str]) -> list[tuple[str, str]]:
-    """(text, reference) per item; paragraphs are joined until one ends with a source reference."""
+    """(text, reference) per item. Paragraphs are joined until one ends with a source reference."""
     items, cur = [], []
     for p in paragraphs:
         m = REFERENCE.search(p)
@@ -42,7 +42,7 @@ def short_title(text: str, words: int = 8) -> str:
 
 
 def collect(ctx, fetcher: Fetcher, is_duplicate):
-    pc = ctx.paper["parables"]
+    pc = ctx.analysis["parables"]
     book = Book(fetcher, "jewish", "midrash", "https://www.sacred-texts.com/jud/tmm/index.htm").open()
     chapters = [c for c in book.chapters if c not in SKIP]
     parables, units, skipped = [], [], []

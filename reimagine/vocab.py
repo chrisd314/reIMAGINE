@@ -2,7 +2,7 @@
 
 Text similarity picks up shared nouns (animals, kings, farmers) more than shared plot. Two checks:
   noun masking   every noun and proper noun (spaCy part-of-speech tags) is replaced by a placeholder that the
-                 TF-IDF tokenizer ignores; verbs, adjectives, adverbs and function words stay. TF-IDF is refitted
+                 TF-IDF tokenizer ignores. Verbs, adjectives, adverbs and function words stay. TF-IDF is refitted
                  on the masked folktales and every query is projected. The `headline` stage reruns the headline
                  on these neighbours (variant `tfidf_nouns_masked`) and the `checks` stage the calibration.
   match drivers  for the top-1 pair of every parable and baseline passage (unmasked TF-IDF), the 5 terms that
@@ -74,7 +74,7 @@ def noun_share_of_cosine(q_row, f_row, is_noun_term: np.ndarray) -> float:
     return float(prod.data[is_noun_term[prod.indices]].sum() / total) if total > 0 else np.nan
 
 
-# ----------------------------------------------------------------- tagging (spaCy; cached)
+# ----------------------------------------------------------------- tagging (spaCy, cached)
 def tag_all(ctx: Ctx, texts: list[str]) -> list[list[tuple[str, str, str]]]:
     path = INTERIM / "reimagine" / "pos_cache.json"          # shared by full and development runs (git-ignored)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -97,7 +97,7 @@ def tag_all(ctx: Ctx, texts: list[str]) -> list[list[tuple[str, str, str]]]:
 
 # ----------------------------------------------------------------- the stage
 def run(ctx: Ctx) -> dict:
-    vc = ctx.paper["vocab"]
+    vc = ctx.analysis["vocab"]
     corpus = load_corpus(ctx)
     folk, queries = corpus.folk, corpus.queries(ctx)
     tags_f = tag_all(ctx, folk["text"].tolist())
@@ -112,7 +112,7 @@ def run(ctx: Ctx) -> dict:
     mq = [mask_nouns(t, vc["placeholder"]) for t in tags_q]
     space = TfidfSpace(mf, ctx.cfg)
     S = space.sim(space.transform(mq))
-    k = ctx.paper["partB"]
+    k = ctx.analysis["partB"]
     idx, val = nearest(S, k["attach_k"])
     cal = (queries["kind"] == "calibration").to_numpy()
     loo_masked = leave_one_out(space.folk_sim(), k["closeness_k"])
@@ -161,7 +161,7 @@ def run(ctx: Ctx) -> dict:
                              folk_closeness_median=float(m["folk_closeness"].median()),
                              folk_closeness_nouns_masked_median=float(m["folk_closeness_nouns_masked"].median()),
                              # raw closeness is not comparable across the two spaces (masking leaves a smaller, more
-                             # common vocabulary, so every cosine rises); the folktales' own spread in each space is
+                             # common vocabulary, so every cosine rises). The folktales' own spread in each space is
                              percentile_among_folktales=float(100 * (zb["loo"] < m["folk_closeness"].median()).mean()),
                              percentile_among_folktales_nouns_masked=float(100 * (loo_masked < m["folk_closeness_nouns_masked"].median()).mean())))
     write_csv(pd.DataFrame(summ), ctx.results / "match_drivers_by_tradition.csv")

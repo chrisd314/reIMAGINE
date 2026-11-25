@@ -1,10 +1,10 @@
 """Text blocks from a sacred-texts.com reader page (the 2026 site layout).
 
 The book text is served inside <article data-slot="reader-content">. Footnotes sit in a
-<section data-slot="reader-footnotes"> at its end; footnote marks are pairs of anchors
-(<a id="fr_13"></a><a href="...#fn_13">2</a>, or <a></a><a href="#fn-..." data-footnote-ref="164:2">2</a>);
-printed page numbers are paragraphs of their own (<p><a>p. 165</a></p>) that can cut a paragraph in
-two; advertising placeholders are empty divs. Only the standard library is used.
+<section data-slot="reader-footnotes"> at its end. Footnote marks are pairs of anchors
+(<a id="fr_13"></a><a href="...#fn_13">2</a>, or <a></a><a href="#fn-..." data-footnote-ref="164:2">2</a>).
+Printed page numbers are paragraphs of their own (<p><a>p. 165</a></p>) that can cut a paragraph in
+two. Advertising placeholders are empty divs. Only the standard library is used.
 """
 from __future__ import annotations
 

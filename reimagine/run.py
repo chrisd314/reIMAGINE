@@ -1,13 +1,12 @@
-"""One command for the paper pipeline.
+"""One command for the analysis behind the website.
 
     python -m reimagine.run --stage all                 everything, on the full data
     python -m reimagine.run --stage partA partB         single stages, in pipeline order
     python -m reimagine.run --stage all --sample 100    fast development run (100 folktales, a few texts per
-                                                   tradition, at most 100 shuffles; writes to results/_sample)
+                                                   tradition, at most 100 shuffles, written to results/_sample)
 
 Stages: data -> parables -> partA -> partB -> vocab -> headline -> length -> network -> checks -> robustness
--> figures -> site. `figures` also writes the report material into report/: RESULTS.md, captions.md,
-short_update.md, numbers.tex, table1.tex; `site` writes the website's data and builds the site (web/dist) when Node is available.
+-> site. The last stage writes the website's data and builds the site (web/dist) when Node is available.
 """
 from __future__ import annotations
 
@@ -18,10 +17,10 @@ import time
 
 from .common import Ctx
 
-ORDER = ["data", "parables", "partA", "partB", "vocab", "headline", "length", "network", "checks", "robustness", "figures", "site"]
+ORDER = ["data", "parables", "partA", "partB", "vocab", "headline", "length", "network", "checks", "robustness", "site"]
 MODULE = {"data": ".corpus", "parables": ".parables.build", "partA": ".part_a", "partB": ".part_b", "vocab": ".vocab",
           "headline": ".headline", "length": ".length", "network": ".network", "checks": ".checks",
-          "robustness": ".robustness", "figures": ".figures", "site": ".site"}
+          "robustness": ".robustness", "site": ".site"}
 
 
 def _stage(name: str):

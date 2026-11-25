@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { communityOf, shortType, useNear, useNetwork, useStory, type Story } from "../../data";
+import { communityName, communityOf, shortType, useNear, useNetwork, useStory, type Story } from "../../data";
 import { NetCanvas, placeOnMap, type Marker, type Tone } from "../../components/NetCanvas";
 import { TalePanel, TextPanel } from "../../components/panels";
 import { RepToggle, useRep } from "../../components/rep";
 import { Search, type SearchItem } from "../../components/Search";
 import { Failed, Loading, Segmented } from "../../components/ui";
-import { categoryOf, nameOf, topCategories, type Mode } from "../folktales/communities";
+import { categoryOf, groupLabels, nameOf, topCategories, type Mode } from "../folktales/communities";
 
 type Sel = { kind: "tale"; i: number } | { kind: "text"; id: string } | null;
 
@@ -76,10 +76,12 @@ export function ExplorePage() {
   };
   const tip = (i: number) => (
     <><strong>{F.title[i]}</strong><br />{F.atu[i] ? `ATU ${F.atu[i]} ${shortType(F.atuName[i], 60)}` : "no tale type"}<br />
-      {F.region[i] || "no region"} · {communityOf(map.group[i])} · {map.degree[i]} links<br /><em>click to open it</em></>
+      {F.region[i] || "no region"} · {communityName(d, communityOf(map.group[i]), rep)} · {map.degree[i]} links<br /><em>click to open it</em></>
   );
   const textRings = selText ? [{ counts: new Map(selText.rep[rep].nearest.slice(0, 5).map((j) => [j, 1] as [number, number])), tone: 1 as Tone }] : [];
-  const labels = map.archetypes.slice(0, 3).map((a) => ({ node: a.node, text: a.title.replace(/\s*\(.*\)$/, "") }));
+  // coloured groups are labelled at their middle, an uncoloured map shows the three most central tales
+  const labels = mode === "none" ? map.archetypes.slice(0, 3).map((a) => ({ node: a.node, text: a.title.replace(/\s*\(.*\)$/, "") }))
+    : groupLabels(d, map, mode, picks, rep);
 
   return (
     <div className="explore">
@@ -105,7 +107,7 @@ export function ExplorePage() {
           <div className="chips" style={{ marginBottom: 10 }}>
             {cats.map((c) => (
               <button key={c.key} type="button" className="chip" aria-pressed={picks.includes(c.key)} onClick={() => setPicks((p) => (p.includes(c.key) ? p.filter((k) => k !== c.key) : [...p, c.key].slice(-3)))}>
-                {picks.includes(c.key) && <i className="swatch" style={{ background: `var(--c${picks.indexOf(c.key) + 1})` }} />}{nameOf(d, map, mode, c.key)} <span className="muted">{c.count}</span>
+                {picks.includes(c.key) && <i className="swatch" style={{ background: `var(--c${picks.indexOf(c.key) + 1})` }} />}{nameOf(d, map, mode, c.key, rep)} <span className="muted">{c.count}</span>
               </button>
             ))}
           </div>
@@ -118,7 +120,7 @@ export function ExplorePage() {
             onPick={(i) => select({ kind: "tale", i })} onPickMarker={(id) => select({ kind: "text", id })}
             label={`Network of ${F.title.length} folktales${overlay !== "none" ? " with parables" : ""}`} />
           <div className="legend" aria-hidden>
-            {mode !== "none" && picks.map((k, j) => <span key={k}><i className="swatch" style={{ background: `var(--c${j + 1})` }} />{nameOf(d, map, mode, k)}</span>)}
+            {mode !== "none" && picks.map((k, j) => <span key={k}><i className="swatch" style={{ background: `var(--c${j + 1})` }} />{nameOf(d, map, mode, k, rep)}</span>)}
             {overlay !== "none" && <span><i className="diamond" />parable</span>}
             {overlay !== "none" && baseline && <span><i className="diamond hollow" />non-story passage</span>}
           </div>
@@ -132,9 +134,9 @@ export function ExplorePage() {
               <h4>How to explore</h4>
               <ul className="sans small" style={{ paddingLeft: 18, margin: 0 }}>
                 <li>Search any folktale or parable by title, or click a dot.</li>
-                <li>Every tale opens with its nearest folktales and the words behind each match; <em>Read pair</em> puts two texts side by side, with links to read both in full at their source.</li>
-                <li>Colour the network by community, tale type, region or book; pick up to three to compare.</li>
-                <li>Put a tradition's parables on the map to see where they land; switch to embeddings to see the other network.</li>
+                <li>Every tale opens with its nearest folktales and the words behind each match, and <em>Read pair</em> puts two texts side by side, with links to read both in full at their source.</li>
+                <li>Colour the network by community, tale type, region or book, and pick up to three to compare.</li>
+                <li>Put a tradition's parables on the map to see where they land, and switch to embeddings to see the other network.</li>
               </ul>
             </div>
           )}

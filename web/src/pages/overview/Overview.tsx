@@ -1,4 +1,4 @@
-import { shortType, useNetwork, useStory, type Rep, type Story } from "../../data";
+import { communityName, shortType, useNetwork, useStory, type Rep, type Story } from "../../data";
 import { RepToggle, useRep } from "../../components/rep";
 import { Chapter, DataTable, Failed, Loading } from "../../components/ui";
 import { int, list, pct, points, pval, signed } from "../../lib/format";
@@ -19,9 +19,10 @@ function Panel({ d, rep, t, max }: { d: Story; rep: Rep; t: string; max: number 
       <ul className="diverging" aria-label={`${t}: share of links to each community, parables minus baseline`}>
         {cells.map((c) => {
           const w = (50 * Math.abs(c.excess)) / max;
+          const name = communityName(d, c.community, rep);
           return (
-            <li key={c.community} title={`${c.community} (${c.words.split(" ").slice(0, 3).join(", ")}): parables ${pct(c.par)}, baseline ${pct(c.base)}, ${points(c.excess)}${c.sig ? ", significant" : ""}`}>
-              <span className="dv-label">{c.community} {c.words.split(" ")[0]}</span>
+            <li key={c.community} title={`${name} (${c.words.split(" ").slice(0, 3).join(", ")}): parables ${pct(c.par)}, baseline ${pct(c.base)}, ${points(c.excess)}${c.sig ? ", significant" : ""}`}>
+              <span className="dv-label">{name !== c.community ? name : `${c.community} ${c.words.split(" ")[0]}`}</span>
               <span className="dv-track">
                 <span className="dv-bar" style={{ left: c.excess >= 0 ? "50%" : `${50 - w}%`, width: `${Math.max(w, 0.6)}%`,
                   background: c.excess >= 0 ? "var(--c1)" : "var(--c2)", opacity: c.sig ? 1 : 0.35 }} />
@@ -63,7 +64,7 @@ export function OverviewPage() {
             </div>
             <div className="card question">
               <div className="tag">The question we test</div>
-              <p>Do parables fall within folktale communities more than non-story text from the same translations does, and which communities and tale types do they land in?</p>
+              <p>Do religious parables resemble folktales more closely than non-story text from their own traditions does, and which parts of the folktale corpus and which tale types do they come closest to?</p>
             </div>
           </div>
         </div>
@@ -79,14 +80,14 @@ export function OverviewPage() {
           </div>
           <div className="step">
             <span className="n">2 · Folklore</span><h3>Communities</h3>
-            <ul><li>similarity of texts: TF–IDF, and embeddings as a check</li><li>a network of the strongest links; Louvain communities</li><li>do they follow tale type or location?</li></ul>
-            <p className="found">They follow tale type ({org("atu_type")?.excess.toFixed(2)} NMI above shuffles); location adds almost nothing once the source book is held fixed ({org("region", true)?.excess.toFixed(3)}).</p>
+            <ul><li>similarity of texts: TF–IDF, and embeddings as a check</li><li>a network of the strongest links, and Louvain communities</li><li>do they follow tale type or location?</li></ul>
+            <p className="found">They follow tale type ({org("atu_type")?.excess.toFixed(2)} NMI above shuffles), while location adds almost nothing once the source book is held fixed ({org("region", true)?.excess.toFixed(3)}).</p>
             <a className="more" href="#/folktales/communities">The network →</a>
           </div>
           <div className="step">
             <span className="n">3 · Parables</span><h3>Into the communities</h3>
-            <ul><li>{int(d.corpus.parables)} parables placed by similarity to the folktales</li><li>{int(d.corpus.baseline)} non-story passages from the same translations as baseline</li><li>the parable/passage label shuffled {int(d.settings.permutations)} times as the null</li></ul>
-            <p className="found">{list(closer)} parables are closer to folktales than their baseline; {list(standing)} under every check.</p>
+            <ul><li>{int(d.corpus.parables)} parables placed by similarity to the folktales</li><li>{int(d.corpus.baseline)} non-story passages from the same traditions as baseline, from the same translation wherever possible</li><li>the parable/passage label shuffled {int(d.settings.permutations)} times as the null</li></ul>
+            <p className="found">{list(closer)} parables are closer to folktales than their baseline.{standing.length ? ` ${list(standing)} parables stay closer under every check.` : ""}</p>
             <a className="more" href="#/parables">The parables →</a>
           </div>
         </div>
@@ -97,7 +98,7 @@ export function OverviewPage() {
         <div className="controls-row"><RepToggle /><a className="btn" href="#/explore">Explore the whole network →</a></div>
         <div className="multiples" style={{ marginTop: 14 }}>{d.traditions.map((t) => <Panel key={t} d={d} rep={rep} t={t} max={max} />)}</div>
         <DataTable head={["Tradition", "Closer than baseline", "p", "Leans most towards", "Excess", "Significant"]}
-          rows={R.headline.map((h) => [h.tradition, h.closer ? "yes" : "no", pval(h.p, d.settings.permutations), h.topCommunity, points(h.topExcess), h.topSig ? "yes" : "no"])} />
+          rows={R.headline.map((h) => [h.tradition, h.closer ? "yes" : "no", pval(h.p, d.settings.permutations), communityName(d, h.topCommunity, rep), points(h.topExcess), h.topSig ? "yes" : "no"])} />
         <p className="caption">Hover a bar for the shares. Communities are those of the {rep === "tfidf" ? "TF–IDF" : "embedding"} network, so their numbers differ between the two representations.</p>
       </Chapter>
 
@@ -110,7 +111,7 @@ export function OverviewPage() {
                 <tr key={c.id}><td>{c.label}</td>{d.traditions.map((t) => {
                   const ok = holds(d, t, c.match);
                   const rows = d.robust.filter((r) => r.tradition === t && c.match(r.variant));
-                  const tipText = rows.map((r) => `${r.variant}: ${signed(r.diff)}, ${pval(r.p, d.settings.permutations)}`).join("; ");
+                  const tipText = rows.map((r) => `${r.variant}: ${signed(r.diff)}, ${pval(r.p, d.settings.permutations)}`).join(" · ");
                   return <td key={t} className={ok ? "mark-yes" : "mark-no"} title={tipText} aria-label={`${ok ? "yes" : "no"}. ${tipText}`}>{ok ? "✓" : "·"}</td>;
                 })}</tr>
               ))}</tbody>

@@ -9,7 +9,7 @@ Writes three files to data/site/ (committed), so that each page loads only what 
                 the three Louvain seeds, the partitions of every edge construction, PageRank and its shuffles,
                 and the tales and partition of the label tests (for shuffles in the browser)
   near.json     the ten nearest folktales of every folktale, the words behind each match, and the openings
-Only titles, labels, words and openings of at most 40 words are included, never full texts; every tale links to
+Only titles, labels, words and openings of at most 40 words are included, never full texts. Every tale links to
 the page of D. L. Ashliman's Folktexts it was taken from. Then the site is built with `npm run build` when Node
 is available (`web/scripts/copy-data.mjs` copies data/site/ into the build). No number on the site is typed by hand.
 """
@@ -234,7 +234,7 @@ def calibration(ctx: Ctx, corpus, atu_names: dict, nearest: dict) -> dict:
     p = cal.loc[prim]
     return dict(queries=int(p["queries"]), hits=int(p["hits"]), recall=r(p["recall_at_k"], 3), low=r(p["ci_low"], 3),
                 high=r(p["ci_high"], 3), chance=r(p["chance_at_k"], 3), vote=r(p["vote_accuracy"], 3), voteChance=r(p["vote_chance"], 4),
-                k=int(ctx.paper["checks"]["recall_k"]),
+                k=int(ctx.analysis["checks"]["recall_k"]),
                 byRep={rep: dict(recall=r(cal.at[rep, "recall_at_k"], 3), low=r(cal.at[rep, "ci_low"], 3), high=r(cal.at[rep, "ci_high"], 3),
                                  vote=r(cal.at[rep, "vote_accuracy"], 3)) for rep in cal.index},
                 other={rep: r(cal.at[rep, "recall_at_k"], 3) for rep in cal.index if rep != prim},
@@ -310,11 +310,14 @@ def story_payload(ctx: Ctx, corpus, folk: pd.DataFrame, fidx: dict) -> dict:
     ps = pd.read_csv(R / "parables_summary.csv")
     sm = pd.read_csv(R / "checks_second_method.csv")
     slope = reg[(reg["rep"] == prim) & reg["model"].str.startswith("parables") & (reg["term"] == "log(words)")].iloc[0]
+    ct = pd.read_csv(R / "community_table.csv")
+    named = ct[(ct["rep"] == prim) & ct["name"].notna()]          # the nine large communities of the main network
 
     return dict(
         built=date.today().isoformat(), commit=git_commit(), primary=prim, reps=ctx.reps, traditions=TRADITIONS,
-        settings=dict(permutations=ctx.paper["headline"]["permutations"], closenessK=ctx.paper["partB"]["closeness_k"],
-                      attachK=ctx.paper["partB"]["attach_k"], labelShuffles=ctx.paper["map"]["label_shuffles"],
+        communityNames=dict(zip(named["community"], named["name"])),
+        settings=dict(permutations=ctx.analysis["headline"]["permutations"], closenessK=ctx.analysis["partB"]["closeness_k"],
+                      attachK=ctx.analysis["partB"]["attach_k"], labelShuffles=ctx.analysis["map"]["label_shuffles"],
                       openingWords=OPENING_WORDS, nearK=NEAR_K),
         corpus=dict(folktales=summary["folktales"], calibration=summary["calibration"], typed=summary["folktales_with_one_atu_type"],
                     types=summary["atu_types"], withRegion=summary["folktales_with_region"], regions=summary["regions"],

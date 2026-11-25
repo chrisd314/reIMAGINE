@@ -57,7 +57,7 @@ def test_indices_and_counts_agree(site):
 
 
 def test_browser_shuffles_start_from_the_published_values(site):
-    """The label test of the site recomputes NMI from exported arrays; it must equal the pipeline's value."""
+    """The label test of the site recomputes NMI from exported arrays. It must equal the pipeline's value."""
     from reimagine.core.metrics import codes, nmi
     F = site["story"]["folktales"]
     for rep, m in site["network"]["maps"].items():
@@ -86,7 +86,7 @@ def test_every_check_of_the_site_exists_in_the_data(site):
 
 
 def test_folktexts_page_rules():
-    """The corpus's scraper derived a tale's ATU type from its page name; the links invert that rule."""
+    """The corpus's scraper derived a tale's ATU type from its page name. The links invert that rule."""
     from reimagine.folktexts import dataset_type, title_fragment
     assert dataset_type("0910b") == "910B" and dataset_type("0001") == "1" and dataset_type("0779j*") == "779J*"
     assert title_fragment("The Race (Parsons2)") == "#:~:text=The%20Race"

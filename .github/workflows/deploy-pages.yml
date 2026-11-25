@@ -49,9 +49,9 @@ jobs:
           texts = [o for f in sorted(pathlib.Path("data/site").glob("*.json"))
                    for o in openings(json.loads(f.read_text(encoding="utf-8")))]
           longest = max(len(t.replace(" …", "").split()) for t in texts)
-          print(f"{len(texts)} openings; longest {longest} words (limit {limit})")
+          print(f"{len(texts)} openings, the longest has {longest} words (limit {limit})")
           if longest > limit:
-              sys.exit("an opening is longer than the excerpt limit; refusing to deploy")
+              sys.exit("an opening is longer than the excerpt limit, so the site is not deployed")
           EOF
 
       - uses: actions/setup-node@v7

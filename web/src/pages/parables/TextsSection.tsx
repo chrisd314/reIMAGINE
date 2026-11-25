@@ -24,14 +24,14 @@ export function TextsSection({ d, near }: { d: Story; near: Near | null }) {
   return (
     <Chapter id="texts" num="Parables · 1" title="The parables and their baseline">
       <Why course="week 5 (documents and their checks)"
-        what={<>{int(d.corpus.parables)} parables from five traditions, each from one public-domain English translation, and {int(d.corpus.baseline)} <em>non-story</em> passages cut from the very same translations: sayings, laws, verses, sermons. The passages are consecutive verses or sayings, spread evenly through each book's non-story text, and cut to the lengths of that tradition's parables.</>}
-        why={<>These {int(d.corpus.baseline)} passages are the baseline of the outline. A parable and a passage from the same book share the translator and the vocabulary of scripture; they differ in whether they tell a story. If parables sit closer to folktales than their own book's non-story text, it is the story that does it.</>} />
+        what={<>{int(d.corpus.parables)} parables from five traditions in public-domain English translations, and {int(d.corpus.baseline)} <em>non-story</em> passages from the same traditions: sayings, laws, verses, sermons. Wherever possible a passage comes from the same translation as the parables (the table lists every source): the same translation for the Christian and Sufi texts and for most Jewish passages, the same translator for the Taoist texts. The Buddhist passages come from a different translation of the same period, Müller's Dhammapada, so for Buddhist texts the translator is not held fixed. The passages are consecutive verses or sayings, spread evenly through each book's non-story text, and cut to the lengths of that tradition's parables.</>}
+        why={<>These {int(d.corpus.baseline)} passages are the baseline of the outline. A parable and a passage from the same tradition share the vocabulary of its scripture and, wherever possible, the translator. They differ in whether they tell a story. If parables sit closer to folktales than their own tradition's non-story text, the story is the likeliest reason.</>} />
       <div className="table-wrap">
         <table className="data">
           <thead><tr><th>Tradition</th><th className="n">Parables</th><th className="n">median words</th><th>from</th><th className="n">Baseline</th><th className="n">median words</th><th>from</th></tr></thead>
           <tbody>{d.traditions.map((tr) => {
             const a = src(tr, "parable"), c = src(tr, "baseline");
-            return <tr key={tr}><td>{tr}</td><td className="n">{a?.n}</td><td className="n">{int(a?.tokens)}</td><td>{a?.sources}</td><td className="n">{c?.n}</td><td className="n">{int(c?.tokens)}</td><td>{c?.sources}</td></tr>;
+            return <tr key={tr}><td>{tr}</td><td className="n">{a?.n}</td><td className="n">{int(a?.tokens)}</td><td>{a?.sources.split("; ").join(" · ")}</td><td className="n">{c?.n}</td><td className="n">{int(c?.tokens)}</td><td>{c?.sources.split("; ").join(" · ")}</td></tr>;
           })}</tbody>
         </table>
       </div>

@@ -20,7 +20,7 @@ export function Tooltip({ tip }: { tip: Tip | null }) {
   return <div className="tooltip" role="status" style={{ left, top: tip.y + 16 }}>{tip.body}</div>;
 }
 
-/** Chart colours come from CSS tokens so light and dark mode stay in step; canvas code reads them here. */
+/** Chart colours come from CSS tokens so light and dark mode stay in step. Canvas code reads them here. */
 export function useTokens(names: string[]): Record<string, string> {
   const read = () => {
     const s = getComputedStyle(document.documentElement);
@@ -77,7 +77,7 @@ export function Chapter({ id, num, title, children }: { id: string; num: string;
   );
 }
 
-/** What was analysed and why, side by side, at the start of every section; `course` names the course week. */
+/** What was analysed and why, side by side, at the start of every section. `course` names the course week. */
 export function Why({ what, why, course }: { what: ReactNode; why: ReactNode; course?: string }) {
   return (
     <div className="why">
@@ -109,7 +109,7 @@ export function PageHead({ kicker, title, lede, sections, page }: {
   );
 }
 
-/** Horizontal bars with the value written at the end; hover shows the label in full. With `onPick`, each bar is a
+/** Horizontal bars with the value written at the end, and hovering shows the label in full. With `onPick`, each bar is a
  *  button that selects its item (pressed bars are outlined). */
 export function BarList({ items, max, format = (v) => String(v), tone = "c1", label, onPick, selected }: {
   items: { label: string; value: number; note?: string; key?: string }[]; max?: number; format?: (v: number) => string; tone?: string; label: string;

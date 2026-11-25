@@ -2,9 +2,9 @@
 
 Whinfield gives each story as a prose summary of the tale followed by translated couplets, most of
 them the teaching that Rumi hangs on the tale, and by numbered notes. Per story:
-  parable  = the prose summary (the long lines);
-  baseline = the couplets (the short lines), later cut into length-matched passages;
-  notes are dropped.
+  Parable  = the prose summary (the long lines).
+  Baseline = the couplets (the short lines), later cut into length-matched passages.
+  Notes are dropped.
 """
 from __future__ import annotations
 
@@ -40,14 +40,14 @@ def stories(blocks) -> list[dict]:
         for ln in lines:
             if NOTE.match(ln):
                 in_notes = True
-            if in_notes:            # notes close a block; text resumes in the next block
+            if in_notes:            # notes close a block. Text resumes in the next block
                 continue
             (cur["prose"] if len(ln.split()) >= PROSE_MIN_WORDS else cur["verse"]).append(strip_note_digits(ln))
     return out
 
 
 def collect(ctx, fetcher: Fetcher, is_duplicate, known_stories: set[tuple[int, int]] = frozenset()):
-    pc = ctx.paper["parables"]
+    pc = ctx.analysis["parables"]
     book = Book(fetcher, "sufi", "masnavi", "https://www.sacred-texts.com/isl/masnavi/index.htm").open()
     parables, units, skipped = [], [], []
     for n, chap in enumerate(book.chapters[:1] if ctx.sample else book.chapters, start=1):

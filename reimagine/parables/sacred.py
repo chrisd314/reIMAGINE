@@ -58,6 +58,6 @@ def join_lines(text: str) -> str:
 
 
 def roman(s: str) -> int:
-    """Value of a Roman numeral (i, v, x, l, c; either case)."""
+    """Value of a Roman numeral (i, v, x, l, c, either case)."""
     vals = [{"i": 1, "v": 5, "x": 10, "l": 50, "c": 100}[c] for c in s.lower()]
     return sum(-v if k + 1 < len(vals) and v < vals[k + 1] else v for k, v in enumerate(vals))

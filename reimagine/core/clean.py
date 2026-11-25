@@ -24,7 +24,7 @@ ABBREV = {"vol", "vols", "no", "nos", "pp", "p", "ed", "eds", "trans", "tr", "mr
           "vs", "etc", "v", "bd", "hrsg", "ff", "fig", "chap", "ch", "sec", "pt", "bk", "n", "nf", "aufl"}
 
 # Markers that something after them is not narrative. Mode "segment" markers
-# open a new segment, so the cut starts at the marker itself; mode "sentence"
+# open a new segment, so the cut starts at the marker itself. Mode "sentence"
 # markers sit inside a bibliographic or editorial sentence whose start is found
 # by walking back to the previous sentence boundary.
 STRONG_MARKERS = [
@@ -177,7 +177,7 @@ def clean_text(record_id: str, raw: str, review: dict, cfg: dict, log: list) -> 
         logit("exact_repetition", "(second copy of the text removed)", "end")
         flags.append("repetition_collapsed")
     t = squash(t)
-    # residual non-narrative markers (should be none; reviewed if present)
+    # residual non-narrative markers (should be none, reviewed if present)
     if early_markers(t, 1.01):
         flags.append("residual_marker")
     return t, flags

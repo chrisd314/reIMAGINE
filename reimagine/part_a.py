@@ -1,13 +1,13 @@
-"""Stage `partA`: the map of world folklore, built from the folktales alone.
+"""Stage `partA`: the folktale network, built from the folktales alone.
 
 For each text representation:
-  1. cosine graph at fixed density (5%, 10% primary, 15%), existing builder and tie rule;
-  2. Louvain for three seeds, modularity against degree-preserving shuffles, NMI between seeds;
-  3. what the communities are: top words per community, LDA topics against communities;
-  4. tale type against region: NMI and attribute assortativity with label shuffles;
-  5. PageRank against the same degree-preserving shuffles (optional result);
-  6. a backbone and a layout, for drawing only.
-The canonical partition (primary density, primary seed) is what Part B attaches parables to.
+  1. cosine graph at fixed density (5%, 10% main, 15%), with a fixed tie rule
+  2. Louvain for three seeds, modularity against degree-preserving shuffles, NMI between seeds
+  3. what the communities are: top words per community, LDA topics against communities
+  4. PageRank against the same degree-preserving shuffles
+  5. a backbone and a layout, for drawing only
+The main partition (10% density, seed 42) is the one the parables are placed on. What the communities follow
+(tale type, region or source book) is tested in the network stage.
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import CountVectorizer
 
 from .core.lexical import name_like_words, preprocess, stopwords
-from .core.metrics import codes, label_agreement, nmi, permutation_matrix
+from .core.metrics import codes, nmi, permutation_matrix
 from .core.networks import (disparity_backbone, double_edge_swaps, louvain, modularity, select_edges,
                                strongest_per_node, structure, to_graph)
 
@@ -44,7 +44,7 @@ def pagerank_vector(G: nx.Graph) -> np.ndarray:
 
 
 def _null_one(args):
-    """One degree-preserving shuffle (week 2 edge swaps; weights reassigned at random), then Louvain and PageRank."""
+    """One degree-preserving shuffle (week 2 edge swaps, weights reassigned at random), then Louvain and PageRank."""
     edges, weights, n, swaps_per_edge, seed, k, louvain_seed, resolution, want_pagerank = args
     rng = np.random.default_rng([seed, k])          # one independent stream per shuffle: order and workers do not matter
     m = len(edges)
@@ -100,7 +100,7 @@ FRAGMENTS = {"ll", "ve", "re"}       # left over from 'll, 've, 're after tokeni
 
 
 def community_words(X, vocab: np.ndarray, labels: np.ndarray, top: int) -> dict[int, list[str]]:
-    """Course week 6 definition: each group is one document; TF = share of the group's tokens,
+    """Course week 6 definition: each group is one document. TF = share of the group's tokens,
     IDF = log(K / number of groups that contain the word). Words found in every group score 0."""
     groups = np.unique(labels)
     C = np.vstack([np.asarray(X[labels == g].sum(axis=0)).ravel() for g in groups]).astype(float)
@@ -134,8 +134,8 @@ def nmi_null(a: np.ndarray, b: np.ndarray, perms: np.ndarray) -> dict:
 def map_layout(e: dict, seed: int, iterations: int, cache_dir=None) -> np.ndarray:
     """Positions for drawing: ForceAtlas2 on the whole analysis graph (linear attraction), unit square.
 
-    The layout of a thin backbone does not show the communities of these dense similarity graphs;
-    the whole graph does. Positions are never used for any statistic.
+    The layout of a thin backbone does not show the communities of these dense similarity graphs.
+    The whole graph does. Positions are never used for any statistic.
     """
     path = None
     if cache_dir is not None:
@@ -145,7 +145,7 @@ def map_layout(e: dict, seed: int, iterations: int, cache_dir=None) -> np.ndarra
         if path.exists():
             return np.load(path)
     G = to_graph(e["n"], e["i"], e["j"], e["w"])
-    with warnings.catch_warnings():         # ForceAtlas2 divides by zero for coincident points; harmless
+    with warnings.catch_warnings():         # ForceAtlas2 divides by zero for coincident points. Harmless
         warnings.simplefilter("ignore", RuntimeWarning)
         pos = nx.forceatlas2_layout(G, max_iter=iterations, scaling_ratio=2.0, gravity=1.0, linlog=False, weight="weight",
                                     seed=seed, strong_gravity=False)
@@ -167,7 +167,7 @@ def major_communities(labels: np.ndarray) -> np.ndarray:
 
 
 def map_one(ctx: Ctx, rep: str, folk: pd.DataFrame, names: set[str], X_counts, vocab, tfidf) -> dict:
-    g, mp = ctx.cfg["graphs"], ctx.paper["map"]
+    g, mp = ctx.cfg["graphs"], ctx.analysis["map"]
     n = len(folk)
     S = (tfidf if rep == "tfidf" else build_space(rep, folk["text"].tolist(), ctx.cfg)).folk_sim()
     seeds, prim_seed, res = g["seeds"], g["primary_seed"], g["louvain_resolution"]
@@ -219,7 +219,7 @@ def map_one(ctx: Ctx, rep: str, folk: pd.DataFrame, names: set[str], X_counts, v
             top_regions="; ".join(f"{r} ({k})" for r, k in reg.head(3).items()),
             median_tokens=float(members["n_tokens"].median())))
 
-    # ---- LDA topics against communities (major communities only; k = their number)
+    # ---- LDA topics against communities (major communities only, k = their number)
     in_major = group >= 0
     k = max(2, len(major))
     Xl, vl = count_matrix(folk["text"].tolist(), ctx.cfg["lexical"], extra_stop=names | FRAGMENTS, min_df=min(5, max(1, n // 50)),
@@ -232,34 +232,8 @@ def map_one(ctx: Ctx, rep: str, folk: pd.DataFrame, names: set[str], X_counts, v
     topic_rows = [dict(rep=rep, topic=t, tales=int((topic == t).sum()),
                        top_words=" ".join(vl[np.argsort(-lda.components_[t])[:mp["top_words"]]])) for t in range(k)]
 
-    # ---- tale type against region, on the tales that carry both labels
-    agree_rows, nulls = [], {}
-    deg_all = np.bincount(np.concatenate([e["i"], e["j"]]), minlength=n)
-    for node_set, mask in (("type_and_region", (folk["atu_id"].notna() & folk["region"].notna()).to_numpy()),
-                           ("all_typed", folk["atu_id"].notna().to_numpy())):
-        idx = np.flatnonzero(mask)
-        remap = -np.ones(n, dtype=np.int64)
-        remap[idx] = np.arange(len(idx))
-        keep = (remap[e["i"]] >= 0) & (remap[e["j"]] >= 0)
-        ei, ej = remap[e["i"][keep]], remap[e["j"][keep]]
-        if len(idx) < 10 or not len(ei):
-            continue
-        part, _ = codes(labels[idx].tolist())
-        perms = permutation_matrix(len(idx), ctx.shuffles(mp["label_shuffles"]), mp["label_shuffle_seed"])
-        for system, col in (("atu_type", "atu_id"), ("region", "region")):
-            if node_set == "all_typed" and system == "region":
-                continue
-            y, cats = codes(folk.loc[idx, col].tolist())
-            r = label_agreement(part, y, ei, ej, perms, keep_null=True)
-            nulls[f"{node_set}|{system}"] = r.pop("null_values")
-            for measure in ("nmi", "assortativity", "same_label_edge_share"):
-                v = r[measure]
-                agree_rows.append(dict(rep=rep, node_set=node_set, label=system, measure=measure, n=len(idx),
-                                       edges=int(len(ei)), categories=len(cats), observed=v["observed"],
-                                       null_mean=v["null_mean"], null_sd=v["null_sd"], null_max=v["null_max"],
-                                       excess=v["excess"], z=v["z"], p_upper=v["p_upper"], shuffles=len(perms)))
-
     # ---- PageRank against the degree-preserving shuffles
+    deg_all = np.bincount(np.concatenate([e["i"], e["j"]]), minlength=n)
     pr = pagerank_vector(G)
     pr_mean, pr_sd = canon["pr_null"].mean(axis=0), canon["pr_null"].std(axis=0, ddof=1)
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -285,7 +259,6 @@ def map_one(ctx: Ctx, rep: str, folk: pd.DataFrame, names: set[str], X_counts, v
     np.savez_compressed(ctx.work / f"map_{rep}.npz", ids=folk["id"].to_numpy(dtype=str), i=e["i"], j=e["j"], w=e["w"],
                         labels=labels, group=group, backbone=bb, xy=xy, pagerank=pr, pagerank_z=pr_z, lda_topic=topic,
                         **{f"seed{s}": p for s, p in canon["parts"].items()})
-    write_json(ctx.work / f"map_{rep}_nulls.json", nulls, compact=True)
 
     summary = dict(rep=rep, n=n, communities=int(labels.max() + 1), communities_major=int(len(major)),
                    tales_in_major=int(in_major.sum()), tales_in_small=int((~in_major).sum()),
@@ -293,7 +266,7 @@ def map_one(ctx: Ctx, rep: str, folk: pd.DataFrame, names: set[str], X_counts, v
                    backbone=dict(method=f"disparity filter, alpha {b['alpha']}" if use_disparity
                                  else f"each tale's {b['fallback_k']} strongest edges",
                                  disparity_edges_at_alpha=int(disp.sum()), alpha=b["alpha"], edges_drawn=int(bb.sum())))
-    return dict(graphs=graph_rows, communities=comm_rows, topics=topic_rows, agreement=agree_rows, pagerank=pr_rows,
+    return dict(graphs=graph_rows, communities=comm_rows, topics=topic_rows, pagerank=pr_rows,
                 summary=summary, labels=labels, group=group, topic=topic)
 
 
@@ -305,9 +278,9 @@ def run(ctx: Ctx) -> dict:
     tfidf = build_space("tfidf", folk["text"].tolist(), ctx.cfg)
     out = {rep: map_one(ctx, rep, folk, names, X_counts, vocab, tfidf) for rep in ctx.reps}
 
-    for name in ("graphs", "communities", "topics", "agreement", "pagerank"):
+    for name in ("graphs", "communities", "topics", "pagerank"):
         file = {"graphs": "partA_graphs.csv", "communities": "partA_communities.csv", "topics": "partA_lda_topics.csv",
-                "agreement": "partA_type_vs_region.csv", "pagerank": "partA_pagerank_top10.csv"}[name]
+                "pagerank": "partA_pagerank_top10.csv"}[name]
         write_csv(pd.DataFrame([r for rep in ctx.reps for r in out[rep][name]]), ctx.results / file)
     member = folk[["id", "title", "atu_id", "region", "n_tokens"]].copy()
     for rep in ctx.reps:

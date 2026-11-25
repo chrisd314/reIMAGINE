@@ -76,7 +76,7 @@ class TfidfSpace:
         return self.vec.transform([preprocess(t, self.lcfg) for t in texts]).tocsr()
 
     def sim(self, Q) -> np.ndarray:
-        """Cosine of every query row to every folktale (rows are L2-normalised; an empty row gives 0)."""
+        """Cosine of every query row to every folktale (rows are L2-normalised, and an empty row gives 0)."""
         return np.asarray((Q @ self.F.T).todense())
 
     def folk_sim(self) -> np.ndarray:

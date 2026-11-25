@@ -64,6 +64,8 @@ export interface Driver { tradition: string; kind: Kind; terms: string; nounShar
 
 export interface Story {
   built: string; commit: string; primary: Rep; reps: Rep[]; traditions: string[];
+  /** names of the nine large communities of the main TF–IDF network, by id (C1 … C9), from analysis.yaml */
+  communityNames: Record<string, string>;
   settings: { permutations: number; closenessK: number; attachK: number; labelShuffles: number; openingWords: number; nearK: number };
   corpus: { folktales: number; calibration: number; typed: number; types: number; withRegion: number; regions: number; europeShare: number;
     collectionKnown: number; collections: number; translatorKnown: number; regionCounts: Record<string, number>; parables: number; baseline: number };
@@ -114,9 +116,25 @@ export const useNear = () => useFile<Near>("near.json");
 /** Community name of a map group: groups 0..8 are C1..C9, -1 marks the small groups. */
 export const communityOf = (g: number) => (g < 0 ? "small" : `C${g + 1}`);
 
+/** "C2 Animal fables" for a named community of the main TF–IDF network, the bare id otherwise, and "small groups" for
+ *  the communities under 1% of the tales. The names come from the pipeline (story.json). Embedding communities and
+ *  the other Louvain seeds have no names. */
+export function communityName(d: Story, key: string, rep: Rep): string {
+  if (key === "small") return "small groups";
+  const name = rep === d.primary ? d.communityNames[key] : undefined;
+  return name ? `${key} ${name}` : key;
+}
+
+/** The middle of a group of tales on the map (the median of their layout positions), where the group's label goes. */
+export function groupCentre(map: NetMap, members: number[]): { x: number; y: number } | null {
+  if (!members.length) return null;
+  const med = (v: number[]) => { const s = [...v].sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  return { x: med(members.map((i) => map.x[i])), y: med(members.map((i) => map.y[i])) };
+}
+
 /** A tale-type name without the catalogue's "(previously …)" notes, short enough for a chip or a list. */
 export function shortType(name: string, max = 44): string {
-  const s = name.replace(/\s*\(previously[^)]*\)/gi, "").replace(/\s*\[[^\]]*\]/g, "").trim();
+  const s = name.replace(/\s*\(previously[^)]*\)/gi, "").replace(/\s*\[[^\]]*\]/g, "").replace(/\s*\[[^\]]*$/, "").trim();   // also an unclosed motif note, "… [W154"
   return s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s;
 }
 
@@ -136,7 +154,7 @@ export function atuChapter(atu: string): string {
 }
 
 /** Where to read a folktale in full: the page(s) of D. L. Ashliman's Folktexts it was taken from (the corpus took
- *  every tale from the page of its tale type), opened at its title; else the collection's index. */
+ *  every tale from the page of its tale type), opened at its title, or else the collection's index. */
 export function readLinks(links: Story["links"], atu: string, title: string): { href: string; label: string }[] {
   const t = title.replace(/\s*\([^)]*\)\s*$/, "").trim();
   const frag = t ? `#:~:text=${encodeURIComponent(t)}` : "";

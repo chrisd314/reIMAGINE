@@ -3,7 +3,7 @@ Lotus Sutra (Kern 1884). Baseline: the Dhammapada (Müller 1881). All from sacre
 
 A Jātaka has a "story of the present" (why the Buddha told it), the "story of the past" (the tale)
 and a closing identification of the births. Only the story of the past is kept when its opening
-and its end can both be located; otherwise the whole text is kept and `segment_note` says so.
+and its end can both be located. Otherwise the whole text is kept and `segment_note` says so.
 """
 from __future__ import annotations
 
@@ -69,7 +69,7 @@ def jataka_title(h1: str) -> tuple[str, int | None]:
 
 
 def collect_jataka(ctx, fetcher: Fetcher, is_duplicate, known_numbers: set[int]):
-    pc = ctx.paper["parables"]
+    pc = ctx.analysis["parables"]
     where = {}                                                  # Jātaka number -> (volume, book, chapter slug)
     for v in JATAKA:
         book = Book(fetcher, "buddhist", f"j{v}", f"https://www.sacred-texts.com/bud/j{v}/index.htm").open()

@@ -1,4 +1,4 @@
-"""Unit tests of the headline, length, vocabulary and network checks (toy inputs; no data, network or model needed)."""
+"""Unit tests of the headline, length, vocabulary and network checks (toy inputs, no data, network or model needed)."""
 import numpy as np
 import pytest
 
@@ -59,7 +59,7 @@ def test_permute_within_moves_items_only_inside_their_group():
 
 def test_headline_null_shuffles_labels_within_each_tradition_only():
     rng = np.random.default_rng(0)
-    # tradition A: parables clearly closer than baseline; tradition B: no difference
+    # tradition A: parables clearly closer than baseline. Tradition B: no difference
     x = np.concatenate([rng.normal(0.3, 0.01, 20), rng.normal(0.1, 0.01, 20), rng.normal(0.2, 0.01, 40)])
     is_par = np.array([True] * 20 + [False] * 20 + [True, False] * 20)
     trad = np.array(["A"] * 40 + ["B"] * 40)
@@ -91,7 +91,7 @@ def test_type_vote_sums_cosines_and_breaks_ties_by_the_nearer_tale():
     idx = np.array([[0, 1, 2, 3], [1, 0, 2, 4], [2, 2, 2, 2]])
     val = np.array([[0.5, 0.3, 0.9, 0.3], [0.4, 0.4, 0.3, 0.0], [0.5, 0.4, 0.3, 0.2]])
     votes = type_votes(idx, val, atu)
-    assert votes[0] == "327"            # 0.3 + 0.3 beats 0.5; the untyped tale does not vote
+    assert votes[0] == "327"            # 0.3 + 0.3 beats 0.5. The untyped tale does not vote
     assert votes[1] == "327"            # tie 0.4 / 0.4: the nearer tale's type wins
     assert votes[2] is None
     tt = top_types(votes, {"327": "The Children and the Ogre"})
@@ -185,7 +185,7 @@ def test_knn_graph_is_symmetrised_and_positive():
     S = np.array([[1.0, 0.9, 0.1, 0.0], [0.9, 1.0, 0.2, 0.0], [0.1, 0.2, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]])
     e = knn_edges(S, 1)
     pairs = set(zip(e["i"].tolist(), e["j"].tolist()))
-    assert pairs == {(0, 1), (1, 2)}                    # 2's nearest is 1 (kept by 2's choice); 3 has only zeros
+    assert pairs == {(0, 1), (1, 2)}                    # 2's nearest is 1 (kept by 2's choice). 3 has only zeros
     assert all(a < b for a, b in pairs) and np.allclose(e["w"], [0.9, 0.2])
 
 
@@ -217,7 +217,7 @@ def test_within_collection_shuffle_keeps_each_collection_fixed():
 def test_type_signal_that_is_only_collection_style_disappears_under_the_within_collection_null():
     import pandas as pd
     from reimagine.network import label_tests
-    # 4 collections of 10 tales; communities = collections; tale type follows collection perfectly
+    # 4 collections of 10 tales. Communities = collections. Tale type follows collection perfectly
     coll = np.repeat([f"c{k}" for k in range(4)], 10)
     folk = pd.DataFrame(dict(atu_id=np.repeat(["A", "B", "C", "D"], 10), region=np.tile(["x", "y"], 20), source_collection=coll))
     part = np.repeat(np.arange(4), 10)

@@ -7,9 +7,9 @@ import { fmt, list, pval, signed } from "../../lib/format";
 export const HEADLINE = "tfidf (headline)";
 export const CHECKS: { id: string; label: string; note: string; match: (v: string) => boolean }[] = [
   { id: "embedding", label: "Meaning instead of words", note: "sentence embeddings (MiniLM) instead of TF–IDF word weights", match: (v) => v === "embedding" },
-  { id: "length", label: "Equal length", note: "longer texts look more folk-like; compare at equal length (regression)", match: (v) => v === "tfidf, regression at equal length" },
+  { id: "length", label: "Equal length", note: "longer texts look more folk-like, so the comparison is made at equal length (regression)", match: (v) => v === "tfidf, regression at equal length" },
   { id: "nouns", label: "Nouns masked", note: "every noun and name removed before measuring", match: (v) => v === "tfidf_nouns_masked" },
-  { id: "names", label: "Names and old formulae masked", note: "names and translators' formulae (“thou”, “verily”) removed", match: (v) => v === "tfidf, names and formulae masked" },
+  { id: "names", label: "Names and old formulae masked", note: "names (words capitalised in most of their uses, such as Moses or God) and fixed phrases such as “Once upon a time” or “Verily I say unto you” removed", match: (v) => v === "tfidf, names and formulae masked" },
   { id: "hubs", label: "Hubs removed", note: "the folktales that are everybody's neighbour taken out", match: (v) => v === "tfidf, hubs removed" },
   { id: "graphs", label: "Other ways to build the graph", note: "density 5% and 15%, k-nearest-neighbour graphs with k = 5, 10, 20", match: (v) => v.startsWith("tfidf, communities of") },
 ];
@@ -84,7 +84,7 @@ export function BreakChapter({ d }: { d: Story }) {
                 {[{ id: "h", label: "Section 3 (TF–IDF)", match: (v: string) => v === HEADLINE }, ...active].map((c) => (
                   <tr key={c.id}><td>{c.label}</td>{d.traditions.map((t) => {
                     const ok = holds(d, t, c.match), sel = cell?.id === c.id && cell.t === t;
-                    return <td key={t} className={`${ok ? "mark-yes" : "mark-no"}${sel ? " sel" : ""}`}><button type="button" className="cell-btn" aria-label={`${c.label}, ${t}: ${ok ? "closer" : "not closer"}; show the numbers`} aria-pressed={sel}
+                    return <td key={t} className={`${ok ? "mark-yes" : "mark-no"}${sel ? " sel" : ""}`}><button type="button" className="cell-btn" aria-label={`${c.label}, ${t}: ${ok ? "closer" : "not closer"}. Show the numbers`} aria-pressed={sel}
                       onClick={() => setCell(sel ? null : { id: c.id, label: c.label, t, match: c.match })}>{ok ? "✓" : "·"}</button></td>;
                   })}</tr>
                 ))}
@@ -92,7 +92,7 @@ export function BreakChapter({ d }: { d: Story }) {
             </table>
           </div>
           <p className="survivors" aria-live="polite">Still standing: {standing.length ? list(standing) : "no tradition"}</p>
-          <p className="caption">✓ parables closer than their own non-story passages (one-sided permutation test, p &lt; 0.05); · not distinguishable. Click a cell for its numbers.</p>
+          <p className="caption">✓ marks parables closer than their own non-story passages (one-sided permutation test, p &lt; 0.05), and · marks no difference. Click a cell for its numbers.</p>
           {cell && (
             <div className="card" style={{ marginTop: 8 }}>
               <div className="tag">{cell.t} · {cell.label}</div>

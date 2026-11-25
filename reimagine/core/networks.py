@@ -154,7 +154,7 @@ def align_communities(ref: np.ndarray, other: np.ndarray) -> dict[int, int]:
     """Display-only colour mapping: greedily match communities of `other` to `ref` by overlap size.
 
     Unmatched communities receive new indices after the reference ones. This is a
-    declared overlap-based mapping; community IDs have no meaning of their own.
+    declared overlap-based mapping. Community IDs have no meaning of their own.
     """
     cont = {}
     for a, b in zip(other.tolist(), ref.tolist()):

@@ -2,11 +2,11 @@
 
 Parables are much shorter than most folktales, and both representations behave differently on short texts.
   excerpts    for every parable and baseline passage, 5 contiguous excerpts of the same number of words
-              (within 10%) from random folktales; each excerpt's folk-closeness is computed against the pool
+              (within 10%) from random folktales. Each excerpt's folk-closeness is computed against the pool
               without its own source tale (and that tale's near-copies). This is a "folktale as query" at the
               text's length. Per tradition: parable minus its excerpts (paired), with a bootstrap interval.
   regression  OLS of folk-closeness on log(words) and group (each tradition's parables, each tradition's
-              baseline, folktale excerpts), robust (HC1) standard errors; and a parables-only model with
+              baseline, folktale excerpts), robust (HC1) standard errors. And a parables-only model with
               tradition. Does the tradition ranking hold at equal length?
   matching    are the baseline passages as long as the parables? (medians, Mann-Whitney test)
 """
@@ -36,7 +36,7 @@ def sentence_starts(words: list[str]) -> np.ndarray:
 def sample_excerpts(targets, folk_words: list[list[str]], n_per: int, tol: float, seed: int) -> list[dict]:
     """Contiguous folktale excerpts matched in length to each target.
 
-    For a target of n words, a folktale is eligible if it has at least ceil((1 - tol) n) words; `n_per` distinct
+    For a target of n words, a folktale is eligible if it has at least ceil((1 - tol) n) words. `n_per` distinct
     eligible folktales are drawn at random, and from each an excerpt of min(n, its length) words is cut, starting
     at a random sentence start that leaves room for it (any word if none does). Excerpt lengths therefore lie in
     [(1 - tol) n, n]. Returns one dict per excerpt: target, k, source (folktale index), start, n_tokens, text.
@@ -87,7 +87,7 @@ def contrast(names: list[str], beta: np.ndarray, cov: np.ndarray, a: str, b: str
 
 # ----------------------------------------------------------------- the stage
 def run(ctx: Ctx) -> dict:
-    lc = ctx.paper["length"]
+    lc = ctx.analysis["length"]
     corpus = load_corpus(ctx)
     folk, queries = corpus.folk, corpus.queries(ctx)
     texts = queries[queries["kind"].isin(["parable", "baseline"])].reset_index(drop=True)
@@ -107,7 +107,7 @@ def run(ctx: Ctx) -> dict:
     pos = {k: i for i, k in enumerate(folk["id"])}
     blocked = [[s] + [pos[p] for p in near.get(folk.at[s, "id"], ()) if p in pos] for s in ex["source"]]
 
-    k = ctx.paper["partB"]["closeness_k"]
+    k = ctx.analysis["partB"]["closeness_k"]
     rows, reg_rows, match_rows = [], [], []
     for rep in ctx.reps:
         space = build_space(rep, folk["text"].tolist(), ctx.cfg)
@@ -124,7 +124,7 @@ def run(ctx: Ctx) -> dict:
 
         # ---- paired: text minus its own length-matched excerpts
         rng = np.random.default_rng(lc["seed"])
-        n_boot = ctx.shuffles(ctx.paper["partB"]["bootstrap"], cap=1000)
+        n_boot = ctx.shuffles(ctx.analysis["partB"]["bootstrap"], cap=1000)
         for trad in TRADITIONS:
             for kind in ("parable", "baseline"):
                 m = ((texts["tradition"] == trad) & (texts["kind"] == kind)).to_numpy() & texts[f"excerpt_closeness_{rep}"].notna().to_numpy()

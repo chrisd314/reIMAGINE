@@ -46,7 +46,7 @@ def expect(page, selector: str, what: str, errors: list[str], timeout: int = 400
 
 
 def interact(page, route: str) -> list[str]:
-    """Use the controls of a page once; return what did not work."""
+    """Use the controls of a page once. Return what did not work."""
     errors: list[str] = []
     try:
         if route == "/":

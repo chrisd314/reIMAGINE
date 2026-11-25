@@ -1,17 +1,17 @@
-"""Stage `robustness`: Table 1, does the headline survive each modelling choice?
+"""Stage `robustness`: the table of checks. Does the main result survive each modelling choice?
 
-The headline, per tradition and in the primary representation, is two findings:
-  closer  the parables are closer to folktales than the non-story text of the same translation
+The main result, per tradition and in the primary representation, is two findings:
+  closer  the parables are closer to folktales than the non-story text of their own tradition
           (one-sided within-tradition permutation p < 0.05)
   where   the parables' community profile differs from the baseline's (Jensen-Shannon divergence, permutation
-          p < 0.05); the community with the largest positive excess is reported next to it
-A check is compared verdict by verdict with the headline: "yes" when every comparable verdict agrees, "partly"
-when at least 60% agree, "no" otherwise. The rule was fixed before the table was first computed (ai-assist/DECISIONS.md).
+          p < 0.05), and the community with the largest positive excess is reported next to it
+A check is compared verdict by verdict with the main result: "yes" when every comparable verdict agrees, "partly"
+when at least 60% agree, "no" otherwise. The rule was fixed before the table was first computed (ai-assist/DECISIONS.md K4).
 
 Checks: edge construction (other densities and kNN graphs: the profile on their partitions), representation
-(embeddings), length (regression at equal length; length-matched folktale excerpts), noun masking, source
-collection (within-collection null; collection share of the parables' links), names and collection/translator
-formulae masked, hubs removed.
+(embeddings), length (regression at equal length, and length-matched folktale excerpts), noun masking, source
+collection (within-collection null, and the collection share of the parables' links), names and fixed phrases
+masked, hubs removed.
 """
 from __future__ import annotations
 
@@ -65,10 +65,10 @@ def run(ctx: Ctx) -> dict:
     q = queries[sel].reset_index(drop=True)
     is_par = (q["kind"] == "parable").to_numpy()
     trad = q["tradition"].to_numpy()
-    n_perm = ctx.shuffles(ctx.paper["headline"]["permutations"])
-    n_boot = ctx.shuffles(ctx.paper["partB"]["bootstrap"], cap=1000)
-    seed = ctx.paper["headline"]["seed"]
-    k = ctx.paper["partB"]
+    n_perm = ctx.shuffles(ctx.analysis["headline"]["permutations"])
+    n_boot = ctx.shuffles(ctx.analysis["partB"]["bootstrap"], cap=1000)
+    seed = ctx.analysis["headline"]["seed"]
+    k = ctx.analysis["partB"]
     R = ctx.results
 
     hb = pd.read_csv(R / "headline_by_tradition.csv")
@@ -115,13 +115,13 @@ def run(ctx: Ctx) -> dict:
     type_above = int((graphs["atu_type_nmi_p"] < 0.05).sum())
     type_over_region = int((graphs["atu_type_nmi"] - graphs["atu_type_nmi_null_mean"] > graphs["region_nmi"] - graphs["region_nmi_null_mean"]).sum())
     g_rep = graphs[graphs["rep"] == rep]
-    rows.append(dict(check="Edge construction", variant="densities 5% and 15%; kNN graphs, k = 5, 10, 20 (communities recomputed)",
+    rows.append(dict(check="Edge construction", variant="densities 5% and 15%, and kNN graphs with k = 5, 10, 20 (communities recomputed)",
                      holds=verdict(ag, tot), agreement=f"{ag} of {tot}",
-                     key_number=(f"profile verdicts agree in {ag} of {tot} tradition × partition cases; partitions share NMI "
+                     key_number=(f"profile verdicts agree in {ag} of {tot} tradition × partition cases, partitions share NMI "
                                  f"{g_rep[~g_rep['canonical']]['nmi_with_canonical'].min():.2f}–{g_rep[~g_rep['canonical']]['nmi_with_canonical'].max():.2f} "
-                                 f"with the canonical one; tale type beats its label shuffles in {type_above} of {len(graphs)} graphs and beats region "
+                                 f"with the main one, and tale type beats its label shuffles in {type_above} of {len(graphs)} graphs and beats region "
                                  f"in excess NMI in {type_over_region} of {len(graphs)}"),
-                     source="results/robustness_headline.csv; results/network_robustness.csv"))
+                     source="results/robustness_headline.csv, results/network_robustness.csv"))
 
     # ---- 2. representation
     other = [r for r in ctx.reps if r != rep]
@@ -135,8 +135,8 @@ def run(ctx: Ctx) -> dict:
         rows.append(dict(check="Representation", variant=f"{REP_NAME.get(o, o)} instead of {REP_NAME.get(rep, rep)}", holds=verdict(a, t_),
                          agreement=f"{a} of {t_}",
                          key_number=(f"closer than baseline with {REP_NAME.get(o, o)}: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])} "
-                                     f"(headline: {names_of(closer_base)}); closer under both: {names_of(both)}; Spearman of folk-closeness {rho:.2f}"),
-                         source="results/headline_by_tradition.csv; results/checks_second_method.csv"))
+                                     f"(main result: {names_of(closer_base)}), closer under both: {names_of(both)}, Spearman of folk-closeness {rho:.2f}"),
+                         source="results/headline_by_tradition.csv, results/checks_second_method.csv"))
 
     # ---- 3. length
     reg = pd.read_csv(R / "length_regression.csv")
@@ -148,12 +148,12 @@ def run(ctx: Ctx) -> dict:
     a, t_ = compare(base, v, keys=("closer",))
     ex = lc[(lc["rep"] == rep) & (lc["kind"] == "parable")]
     lm = pd.read_csv(R / "length_matching.csv")
-    rows.append(dict(check="Length", variant="parables against baseline at equal length (OLS on log words); length-matched folktale excerpts",
+    rows.append(dict(check="Length", variant="parables against baseline at equal length (OLS on log words), and length-matched folktale excerpts",
                      holds=verdict(a, t_), agreement=f"{a} of {t_}",
-                     key_number=(f"at equal length closer than baseline: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])}; parables minus "
-                                 f"length-matched folktale excerpts {ex['diff_median'].min():+.3f} to {ex['diff_median'].max():+.3f} (all below); "
+                     key_number=(f"at equal length closer than baseline: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])}, parables minus "
+                                 f"length-matched folktale excerpts {ex['diff_median'].min():+.3f} to {ex['diff_median'].max():+.3f} (all below), "
                                  f"baselines length-matched in {int(lm['matched'].sum())} of {len(lm)} traditions"),
-                     source="results/length_regression.csv; results/length_control.csv; results/length_matching.csv"))
+                     source="results/length_regression.csv, results/length_control.csv, results/length_matching.csv"))
 
     # ---- 4. noun masking
     if (hb["variant"] == "tfidf_nouns_masked").any():
@@ -163,10 +163,10 @@ def run(ctx: Ctx) -> dict:
         cal = pd.read_csv(R / "calibration.csv").set_index("representation")
         rows.append(dict(check="Noun masking", variant="nouns and proper nouns masked (spaCy), TF-IDF refitted", holds=verdict(a, t_),
                          agreement=f"{a} of {t_}",
-                         key_number=(f"closer than baseline: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])} (headline: {names_of(closer_base)}); "
+                         key_number=(f"closer than baseline: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])} (main result: {names_of(closer_base)}), "
                                      f"recall@10 {cal.at['tfidf_nouns_masked', 'recall_at_k']:.2f} against {cal.at['tfidf', 'recall_at_k']:.2f} unmasked "
                                      f"(chance {cal.at['tfidf', 'chance_at_k']:.3f})"),
-                         source="results/headline_by_tradition.csv; results/calibration.csv"))
+                         source="results/headline_by_tradition.csv, results/calibration.csv"))
 
     # ---- 5. source collection
     cc = pd.read_csv(R / "collection_confound.csv")
@@ -175,16 +175,16 @@ def run(ctx: Ctx) -> dict:
     rw = c0.loc[("region", "within-collection shuffle")]
     hp = hb[hb["variant"] == rep]
     max_share = float(hp["top_source_collection_share"].max())
-    checks_ok = [bool(tw["p_upper"] < 0.05), max_share < ctx.paper["robustness"]["collection_dominance"]]
+    checks_ok = [bool(tw["p_upper"] < 0.05), max_share < ctx.analysis["robustness"]["collection_dominance"]]
     p_txt = "p < 0.001" if tw["p_upper"] < 0.001 else f"p = {tw['p_upper']:.3f}"
-    rows.append(dict(check="Source collection", variant="type and region shuffled within source collection; collections of the parables' neighbours",
+    rows.append(dict(check="Source collection", variant="type and region shuffled within source collection, and the collections of the parables' neighbours",
                      holds={2: "yes", 1: "partly", 0: "no"}[sum(checks_ok)], agreement=f"{sum(checks_ok)} of 2",
-                     key_number=(f"type NMI {tw['observed']:.3f} against {tw['null_mean']:.3f} within collections ({p_txt}); "
-                                 f"region {rw['observed']:.3f} against {rw['null_mean']:.3f}; at most {max_share:.0%} of a tradition's links go to one collection"),
-                     source="results/collection_confound.csv; results/headline_by_tradition.csv"))
+                     key_number=(f"type NMI {tw['observed']:.3f} against {tw['null_mean']:.3f} within collections ({p_txt}), "
+                                 f"region {rw['observed']:.3f} against {rw['null_mean']:.3f}, and at most {max_share:.0%} of a tradition's links go to one collection"),
+                     source="results/collection_confound.csv, results/headline_by_tradition.csv"))
 
-    # ---- 6 and 7: names and formulae masked; hubs removed (primary representation, recomputed here)
-    masker = Masker(folk["text"].tolist() + queries["text"].tolist(), ctx.paper["masking"])
+    # ---- 6 and 7: names and fixed phrases masked, and hubs removed (primary representation, recomputed here)
+    masker = Masker(folk["text"].tolist() + queries["text"].tolist(), ctx.analysis["masking"])
     space_m = build_space(rep, [masker.mask(t) for t in folk["text"]], ctx.cfg)
     Sm = space_m.sim(space_m.transform([masker.mask(t) for t in q["text"]]))
     space = build_space(rep, folk["text"].tolist(), ctx.cfg)
@@ -194,7 +194,7 @@ def run(ctx: Ctx) -> dict:
     pos = {f: i for i, f in enumerate(folk["id"])}
     S[:, [pos[h] for h in hub_ids if h in pos]] = -np.inf
     for label, check, variant_text, Sx, extra in (
-            ("names and formulae masked", "Names and formulae masked", "names, collection and translator formulae masked (TF-IDF refitted)", Sm,
+            ("names and formulae masked", "Names and formulae masked", "names and fixed phrases masked (TF-IDF refitted)", Sm,
              None),
             ("hubs removed", "Hubness", f"the {len(hub_ids)} most frequent neighbours removed from the pool", S, None)):
         idx, val = nearest(Sx, k["attach_k"])
@@ -205,7 +205,7 @@ def run(ctx: Ctx) -> dict:
         a, t_ = compare(base, v)
         same_top = sum(v[t]["top"] == base[t]["top"] for t in base if t in v and base[t]["where"])
         rows.append(dict(check=check, variant=variant_text, holds=verdict(a, t_), agreement=f"{a} of {t_}",
-                         key_number=(f"closer than baseline: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])} (headline: {names_of(closer_base)}); "
+                         key_number=(f"closer than baseline: {names_of([t for t in TRADITIONS if v.get(t, {}).get('closer')])} (main result: {names_of(closer_base)}), "
                                      f"same top community for {same_top} of {len(where_base)} traditions whose profile differs"),
                          source="results/robustness_headline.csv"))
 
@@ -216,5 +216,5 @@ def run(ctx: Ctx) -> dict:
     write_csv(det, R / "robustness_headline.csv")
     write_csv(tab, R / "table1_robustness.csv")
     for _, r in tab.iterrows():
-        print(f"    {r['check']}: {r['holds']} ({r['agreement']}); {r['key_number']}")
+        print(f"    {r['check']}: {r['holds']} ({r['agreement']}), {r['key_number']}")
     return dict(rows=len(tab))

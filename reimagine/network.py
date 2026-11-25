@@ -1,17 +1,18 @@
-"""Stage `network`: the folklore map as a modelling choice, and what the map is.
+"""Stage `network`: the folktale network as a modelling choice, and what the network is.
 
-  sweep        edges by density (5%, 10%, 15%) and by k nearest neighbours (k = 5, 10, 20; symmetrised), for
+  sweep        edges by density (5%, 10%, 15%) and by k nearest neighbours (k = 5, 10, 20, symmetrised), for
                TF-IDF and embeddings: communities, modularity against degree-preserving shuffles, NMI between
                Louvain seeds, NMI and assortativity of tale type, region and source collection against label
                shuffles, the type and region tests again against shuffles *within* source collection, and NMI of
-               each partition with the canonical one (10% density, seed 42)
-  backbone     disparity filter (alpha 0.05 and 0.01) on the 10% graph and on the complete similarity graph;
-               drawing only, communities always come from the full 10% graph
-  structure    degree and strength distributions against random graphs; clustering against degree-preserving
-               shuffles; PageRank-central ("archetypal") tales from Part A
-  communities  one table: size, top words, LDA topic, dominant tale types, regions and source collections
-  collection   coverage of the collection and translator labels; the canonical map and a map built from texts
-               with names and collection/translator formulae masked, both against both nulls
+               each partition with the main one (10% density, seed 42)
+  backbone     disparity filter (alpha 0.05 and 0.01) on the 10% graph and on the complete similarity graph.
+               For drawing only, the communities always come from the full 10% graph
+  structure    degree and strength distributions against random graphs, clustering against degree-preserving
+               shuffles, and the PageRank-central ("archetypal") tales from Part A
+  communities  one table: name (for the nine large TF-IDF communities), size, top words, LDA topic, dominant
+               tale types, regions and source collections
+  collection   coverage of the collection and translator labels, and the main map and a map built from texts
+               with names and fixed phrases masked, both against both nulls
 """
 from __future__ import annotations
 
@@ -39,7 +40,7 @@ LABELS = (("atu_type", "atu_id"), ("region", "region"), ("source_collection", "s
 # ----------------------------------------------------------------- pure functions
 def knn_edges(S: np.ndarray, k: int) -> dict:
     """Symmetrised k-nearest-neighbour graph: i-j is an edge if j is among the k most similar tales of i or i of j
-    (ties: lower index first; only positive similarities). Same output keys as `select_edges`."""
+    (ties: lower index first, only positive similarities). Same output keys as `select_edges`."""
     n = S.shape[0]
     M = np.round(S, 12).astype(float)
     np.fill_diagonal(M, -np.inf)
@@ -167,9 +168,9 @@ def backbone_path(ctx: Ctx, rep: str, filtered: str, alpha: float):
 
 
 def backbones(ctx: Ctx, rep: str, S: np.ndarray, canon_e: dict, canon_labels: np.ndarray) -> list[dict]:
-    """Disparity filter (week 4) at every alpha of paper.yaml, on the thresholded 10% graph and on the complete
-    similarity graph; each kept edge set is saved for drawing. Communities never come from a backbone."""
-    nc = ctx.paper["network"]
+    """Disparity filter (week 4) at every alpha of analysis.yaml, on the thresholded 10% graph and on the complete
+    similarity graph. Each kept edge set is saved for drawing. Communities never come from a backbone."""
+    nc = ctx.analysis["network"]
     n = S.shape[0]
     iu, ju = np.triu_indices(n, 1)
     wu = S[iu, ju]
@@ -190,7 +191,7 @@ def backbones(ctx: Ctx, rep: str, S: np.ndarray, canon_e: dict, canon_labels: np
 
 # ----------------------------------------------------------------- the stage
 def graph_specs(ctx: Ctx) -> list[tuple[str, float | int]]:
-    nc = ctx.paper["network"]
+    nc = ctx.analysis["network"]
     return [("density", d) for d in ctx.cfg["graphs"]["densities"]] + [("knn", k) for k in nc["knn"]]
 
 
@@ -199,7 +200,7 @@ def build_edges(S: np.ndarray, kind: str, value) -> dict:
 
 
 def run(ctx: Ctx) -> dict:
-    nc, g, mp = ctx.paper["network"], ctx.cfg["graphs"], ctx.paper["map"]
+    nc, g, mp = ctx.analysis["network"], ctx.cfg["graphs"], ctx.analysis["map"]
     corpus = load_corpus(ctx)
     folk = corpus.folk
     n = len(folk)
@@ -320,12 +321,20 @@ def run(ctx: Ctx) -> dict:
         topics = topics[topics["rep"] == rep].set_index("topic")
         cc = member[f"community_{rep}"].to_numpy()
         names = folk.dropna(subset=["atu_id"]).drop_duplicates("atu_id").set_index("atu_id")["atu_name"].to_dict()
+        # the names of the nine large communities of the main network, each checked against its first top word
+        given = ctx.analysis.get("community_names", {}) if rep == ctx.primary else {}
+        assert set(given) <= set(comm.index), f"community_names lists communities the {rep} map does not have"
         for c in comm.index:
             m = cc == c
             f = folk[m]
             t = pd.Series(member[f"lda_topic_{rep}"].to_numpy()[m]).value_counts()
             coll = f["source_collection"].value_counts()
-            comm_rows.append(dict(rep=rep, community=c, size=int(m.sum()), share=float(m.mean()),
+            first = str(comm.at[c, "top_words"]).split()[0]
+            if c in given:
+                assert given[c]["first_word"] == first, (
+                    f"{c} of the {rep} map now starts with '{first}', not '{given[c]['first_word']}'. The partition changed, "
+                    "so check community_names in analysis.yaml")
+            comm_rows.append(dict(rep=rep, community=c, name=given[c]["name"] if c in given else "", size=int(m.sum()), share=float(m.mean()),
                                   top_words=", ".join(str(comm.at[c, "top_words"]).split()[:8]),
                                   lda_topic=int(t.index[0]), lda_topic_share=float(t.iloc[0] / m.sum()),
                                   lda_topic_words=", ".join(str(topics.at[t.index[0], "top_words"]).split()[:6]),
@@ -338,7 +347,7 @@ def run(ctx: Ctx) -> dict:
 
     # ---- step 6.4: a map built from texts with names and collection/translator formulae masked
     queries = corpus.queries(ctx)
-    masker = Masker(folk["text"].tolist() + queries["text"].tolist(), ctx.paper["masking"])
+    masker = Masker(folk["text"].tolist() + queries["text"].tolist(), ctx.analysis["masking"])
     masked = [masker.mask(t) for t in folk["text"]]
     for rep in ctx.reps:
         S = build_space(rep, masked, ctx.cfg).folk_sim()

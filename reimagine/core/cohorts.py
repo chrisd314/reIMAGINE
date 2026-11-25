@@ -1,8 +1,8 @@
 """Stage 3: narratives, labels and cohorts.
 
 One node per distinct cleaned narrative text. Exact duplicates (after the
-conservative whitespace normalisation already applied in cleaning) are merged;
-every member record keeps its ID and metadata. Label conflicts inside a
+conservative whitespace normalisation already applied in cleaning) are merged.
+Every member record keeps its ID and metadata. Label conflicts inside a
 duplicate group are preserved and only exclude the narrative from analyses
 that need that label.
 """

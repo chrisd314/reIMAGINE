@@ -3,8 +3,8 @@
 The corpus (Annotated Folktales) keeps no URL per tale, but its scraper (`fetch_ashliman.R` in the trilogy
 repository) took every tale from a tale-type page listed on the collection's two index pages, and derived the
 tale's ATU type from that page's name. The same rules, applied to the two saved index pages
-(data/raw/metadata/ashliman_folktexts*.html), give back the page of every type. A few types have two pages;
-then both are listed. Links point at the pages' current address, https://sites.pitt.edu/~dash/.
+(data/raw/metadata/ashliman_folktexts*.html), give back the page of every type. A few types have two pages.
+Then both are listed. Links point at the pages' current address, https://sites.pitt.edu/~dash/.
 """
 from __future__ import annotations
 
@@ -54,7 +54,7 @@ def type_pages() -> dict[str, list[str]]:
 
 
 def title_fragment(title: str) -> str:
-    """A text fragment (#:~:text=...) that scrolls a browser to the tale's title on its page; the corpus adds a
+    """A text fragment (#:~:text=...) that scrolls a browser to the tale's title on its page. The corpus adds a
     source tag in brackets to some titles, which the page does not print."""
     t = re.sub(r"\s*\([^)]*\)\s*$", "", str(title)).strip()
     return "#:~:text=" + quote(t, safe="") if t else ""

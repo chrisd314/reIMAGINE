@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { communityOf, shortType, type NetMap, type Near, type Story } from "../../data";
+import { communityName, communityOf, shortType, type NetMap, type Near, type Story } from "../../data";
 import { NetCanvas, type Tone } from "../../components/NetCanvas";
 import { TalePanel } from "../../components/panels";
 import { RepToggle, useRep } from "../../components/rep";
@@ -73,7 +73,7 @@ export function NetworkSection({ maps }: { maps: Record<string, NetMap> }) {
     <Chapter id="network" num="Folktales · 3" title="The network: hubs and clustering">
       <Why course="week 1 (degree distributions), week 2 (random graphs, clustering, degree-preserving shuffles), week 4 (weighted networks, global threshold)"
         what={<>Two tales are linked when their similarity is among the strongest {pct(map.stats.density)} of all pairs (cosine above {fmt(map.stats.threshold, 3)}): {int(map.stats.n)} tales, {int(map.stats.edges)} weighted links. We compare the network with a random graph of the same size, G(n, m), and with degree-preserving shuffles that keep every tale's number of links.</>}
-        why={<>A similarity network always has links; the question is whether its shape says something beyond chance. The random graph shows what “no structure” looks like; the shuffles show how much follows from the degrees alone.</>} />
+        why={<>A similarity network always has links. The question is whether its shape says something beyond chance. The random graph shows what “no structure” looks like, and the shuffles show how much follows from the degrees alone.</>} />
       <div className="controls-row">
         <RepToggle />
         <Segmented label="Keep the strongest pairs" value={dens} onChange={setDens}
@@ -95,9 +95,9 @@ export function NetworkSection({ maps }: { maps: Record<string, NetMap> }) {
             rows={shown.map((r) => [MEASURE[r.measure], fmt(r.observed, 3), r.null ?? "", fmt(r.nullMean, 3), fmt(r.z, 1)])} />
         </figure>
         <Result>
-          <p><strong>A few tales are hubs.</strong> In the main graph the most linked tale has {largest ? int(largest.observed) : "–"} links, where a random graph of the same size gives about {largest ? int(largest.nullMean ?? 0) : "–"}; degree inequality (Gini) is {fmt(gini?.observed, 2)} against {fmt(gini?.nullMean, 2)}. Hubs are the long tales: the 20 most linked have a median of {int(dl.hubTokens)} words against {int(dl.medianTokens)} for all tales (Spearman of links and length {fmt(dl.spearman, 2)}). Long texts share some words with almost everything, which is why every placement test later controls for length.</p>
+          <p><strong>A few tales are hubs.</strong> In the main graph the most linked tale has {largest ? int(largest.observed) : "–"} links, where a random graph of the same size gives about {largest ? int(largest.nullMean ?? 0) : "–"}, and degree inequality (Gini) is {fmt(gini?.observed, 2)} against {fmt(gini?.nullMean, 2)}. Hubs are the long tales: the 20 most linked have a median of {int(dl.hubTokens)} words against {int(dl.medianTokens)} for all tales (Spearman of links and length {fmt(dl.spearman, 2)}). Long texts share some words with almost everything, which is why every placement test later controls for length.</p>
           <p><strong>Tales cluster.</strong> Neighbours of a tale are linked to each other far more often than in a random graph ({fmt(clus?.observed, 2)} against {fmt(cRandom?.observed, 2)}), but less than in shuffles that keep the degrees ({fmt(clus?.nullMean, 2)}): much of the clustering comes from the hubs themselves.</p>
-          <p>Move the threshold: with the strongest {pct(lo.density)} of pairs, {int(lo.isolates)} tales are isolated and Louvain finds {lo.communities} communities; with {pct(hi.density)}, {int(hi.isolates)} and {hi.communities}. The rule changes how finely the network splits, which is why section 6 repeats every test across thresholds.</p>
+          <p>Move the threshold: with the strongest {pct(lo.density)} of pairs, {int(lo.isolates)} tales are isolated and Louvain finds {lo.communities} communities, and with {pct(hi.density)}, {int(hi.isolates)} and {hi.communities}. The rule changes how finely the network splits, which is why section 6 repeats every test across thresholds.</p>
         </Result>
       </div>
     </Chapter>
@@ -134,11 +134,11 @@ export function CentralSection({ d, maps, near }: { d: Story; maps: Record<strin
   const tone = useCallback((i: number): Tone => (i === pick ? 2 : top.has(i) ? 1 : 0), [pick, top]);
   const F = d.folktales;
   const labels = useMemo(() => A.slice(0, 5).map((x) => ({ node: x.node, text: x.title.replace(/\s*\(.*\)$/, "") })), [A]);
-  const tip = (i: number) => <><strong>{F.title[i]}</strong><br />{map.degree[i]} links · PageRank {fmt(map.pagerank[i], 2)}× average · z {fmt(map.pagerankZ[i], 1)}<br />{communityOf(map.group[i])}</>;
+  const tip = (i: number) => <><strong>{F.title[i]}</strong><br />{map.degree[i]} links · PageRank {fmt(map.pagerank[i], 2)}× average · z {fmt(map.pagerankZ[i], 1)}<br />{communityName(d, communityOf(map.group[i]), rep)}</>;
   return (
     <Chapter id="central" num="Folktales · 7" title="Which tales are central?">
       <Why course="week 3 (PageRank, compared to what?)"
-        what={<>PageRank scores every tale by how much of the network's “attention” flows to it. Because long tales collect links, each score is compared with the same tale's PageRank in degree-preserving shuffles; a high z means more central than its number of links explains.</>}
+        what={<>PageRank scores every tale by how much of the network's “attention” flows to it. Because long tales collect links, each score is compared with the same tale's PageRank in degree-preserving shuffles. A high z means more central than its number of links explains.</>}
         why={<>Central tales are the archetypes of the map: the versions that sit between many others. They show what kind of story holds the network together.</>} />
       <div className="controls-row">
         <RepToggle />
@@ -173,7 +173,7 @@ export function CentralSection({ d, maps, near }: { d: Story; maps: Record<strin
         </div>
       </div>
       <Result>
-        <p>Once their number of links is accounted for, the most central tales are retellings of a few widespread types ({[...new Set(A.slice(0, 5).filter((x) => x.atu).map((x) => shortType(F.atuName[x.node], 34)))].join("; ")}), led by <em>{A[0]?.title}</em>.{A.slice(0, 5).every((x) => x.degree < meanDeg) ? <> All of the top five have fewer links than the average tale ({A.slice(0, 5).map((x) => x.degree).join(", ")} against {Math.round(meanDeg)}), so their centrality comes from where they sit, not from size.</> : null}</p>
+        <p>Once their number of links is accounted for, the most central tales are retellings of a few widespread types ({[...new Set(A.slice(0, 5).filter((x) => x.atu).map((x) => shortType(F.atuName[x.node], 34)))].join(", ")}), led by <em>{A[0]?.title}</em>.{A.slice(0, 5).every((x) => x.degree < meanDeg) ? <> All of the top five have fewer links than the average tale ({A.slice(0, 5).map((x) => x.degree).join(", ")} against {Math.round(meanDeg)}), so their centrality comes from where they sit, not from size.</> : null}</p>
       </Result>
     </Chapter>
   );

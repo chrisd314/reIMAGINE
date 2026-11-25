@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { ATU_CHAPTERS, atuChapter, communityOf, REP_NAME, shortType, type NetMap, type Near, type Story } from "../../data";
+import { ATU_CHAPTERS, atuChapter, communityName, communityOf, REP_NAME, shortType, type NetMap, type Near, type Story } from "../../data";
 import { NetCanvas, type Tone } from "../../components/NetCanvas";
 import { NearList, PairCard, ReadLinks } from "../../components/panels";
 import { useRep } from "../../components/rep";
@@ -49,13 +49,13 @@ export function CorpusSection({ d, maps }: { d: Story; maps: Record<string, NetM
   }, [members, map]);
   const pickName = pick ? (pick.kind === "type" ? `ATU ${pick.key} ${shortType(F.atuName[F.atu.indexOf(pick.key)] ?? "", 40)}` : pick.kind === "book" ? pick.key.replace(/\b\w/g, (x) => x.toUpperCase()) : pick.key) : "";
   const choose = (kind: NonNullable<Pick>["kind"]) => (key: string) => setPick((p) => (p && p.kind === kind && p.key === key ? null : { kind, key }));
-  const tip = (i: number) => <><strong>{F.title[i]}</strong><br />{F.atu[i] ? `ATU ${F.atu[i]} ${shortType(F.atuName[i], 60)}` : "no tale type"}<br />{F.region[i] || "no region"} · {communityOf(map.group[i])}</>;
+  const tip = (i: number) => <><strong>{F.title[i]}</strong><br />{F.atu[i] ? `ATU ${F.atu[i]} ${shortType(F.atuName[i], 60)}` : "no tale type"}<br />{F.region[i] || "no region"} · {communityName(d, communityOf(map.group[i]), rep)}</>;
 
   return (
     <Chapter id="corpus" num="Folktales · 1" title="The folktales and their tale types">
       <Why course="week 5, document checks before modelling"
         what={<>We take {int(c.folktales)} English folktale versions from <em>Annotated Folktales</em> (Hagedorn &amp; Darányi 2022), built on D. L. Ashliman's <em>Folktexts</em>. Each carries up to three labels: its ATU tale type ({int(c.typed)} tales, {int(c.types)} types), the region where it was recorded ({int(c.withRegion)} tales, {c.regions} regions) and the book it was printed in ({int(c.collectionKnown)} tales, {int(c.collections)} books).</>}
-        why={<>The ATU index (Aarne–Thompson–Uther) is the folklorists' own grouping of stories by plot. It is the ground truth we compare the network against. Region is the “location” a tale belongs to; the source book is what might fake both.</>} />
+        why={<>The ATU index (Aarne–Thompson–Uther) is the folklorists' own grouping of stories by plot. It is the ground truth we compare the network against. Region is the “location” a tale belongs to, and the source book is what might fake both.</>} />
       <div className="tiles">
         <div className="tile"><div className="v">{int(c.folktales)}</div><div className="l">folktale versions</div></div>
         <div className="tile"><div className="v">{int(c.types)}</div><div className="l">ATU tale types ({int(c.typed)} tales have one)</div></div>
@@ -79,7 +79,7 @@ export function CorpusSection({ d, maps }: { d: Story; maps: Record<string, NetM
         <figure className="figure">
           <p className="figure-title">{pick ? `${pickName}: ${int(members.length)} tales` : "Pick a bar"}</p>
           <NetCanvas map={map} tone={tone} tip={tip} size="none" aspect={0.9} label={`Network with ${pickName || "nothing"} highlighted`} />
-          {pick && <p className="caption">Their largest communities: {spread.slice(0, 3).map(([g, n]) => `${g} ${pct(n / Math.max(1, members.length))}`).join(", ")}. Compare a tale type with a region: section 5 measures the difference.</p>}
+          {pick && <p className="caption">Their largest communities: {spread.slice(0, 3).map(([g, n]) => `${communityName(d, g, rep)} ${pct(n / Math.max(1, members.length))}`).join(", ")}. Compare a tale type with a region: section 5 measures the difference.</p>}
         </figure>
       </div>
       <Result>
@@ -124,7 +124,7 @@ export function SimilaritySection({ d, near }: { d: Story; near: Near | null }) 
                 </div>
               ))}
             </div>
-            <p className="sans small" style={{ margin: "8px 0 0" }}>{both.size} of the {d.settings.nearK} nearest tales are the same under both instruments; {lists[0].filter((x) => F.atu[x.i] && F.atu[x.i] === F.atu[tale]).length} (TF–IDF) and {lists[1].filter((x) => F.atu[x.i] && F.atu[x.i] === F.atu[tale]).length} (embeddings) share its tale type.</p>
+            <p className="sans small" style={{ margin: "8px 0 0" }}>{both.size} of the {d.settings.nearK} nearest tales are the same under both instruments, and {lists[0].filter((x) => F.atu[x.i] && F.atu[x.i] === F.atu[tale]).length} (TF–IDF) and {lists[1].filter((x) => F.atu[x.i] && F.atu[x.i] === F.atu[tale]).length} (embeddings) share its tale type.</p>
             {pair && <PairCard story={d} near={near} left={{ kind: "tale", i: tale }} right={lists[pair.rep === "tfidf" ? 0 : 1][pair.k].i} cosine={lists[pair.rep === "tfidf" ? 0 : 1][pair.k].cos}
               words={near.folk.tfidf.words[tale][near.folk.tfidf.idx[tale].indexOf(lists[pair.rep === "tfidf" ? 0 : 1][pair.k].i)] ?? undefined} onClose={() => setPair(null)} />}
           </>

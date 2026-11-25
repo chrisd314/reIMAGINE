@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 // "Shuffle it yourself": every click reruns the null model in the browser and adds the result to a histogram, next to
-// the observed value. This is the permutation logic of the course (week 2; week 3 label shuffles), made visible.
+// the observed value. This is the permutation logic of the course (week 2, and the label shuffles of week 3), made visible.
 
 export function ShuffleLab({ observed, runOne, label, unit = "", pipeline, reset, digits = 3 }: {
   observed: number; runOne: () => number; label: string; unit?: string; pipeline?: string; reset: string; digits?: number;
@@ -45,8 +45,8 @@ export function ShuffleLab({ observed, runOne, label, unit = "", pipeline, reset
         <text className="tick" x={(L + W - R) / 2} y={H - 2} textAnchor="middle">{label}</text>
       </svg>
       <p className="sans small" style={{ margin: "4px 0 0" }}>
-        {values.length === 0 ? <>Press <em>Shuffle</em>: each shuffle breaks the link being tested and recomputes the value. The orange bars are what chance gives; the blue line is what we observed.</>
-          : <>Your {values.length} shuffles average {mean!.toFixed(digits)}{unit}; {atLeast} reach the observed value, so p ≈ {p!.toFixed(values.length >= 99 ? 3 : 2)}.</>}
+        {values.length === 0 ? <>Press <em>Shuffle</em>: each shuffle breaks the link being tested and recomputes the value. The orange bars are what chance gives, and the blue line is what we observed.</>
+          : <>Your {values.length} shuffles average {mean!.toFixed(digits)}{unit}, and {atLeast} reach the observed value, so p ≈ {p!.toFixed(values.length >= 99 ? 3 : 2)}.</>}
         {pipeline ? <span className="muted"> {pipeline}</span> : null}
       </p>
     </div>

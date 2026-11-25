@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Near, Story } from "../../data";
+import { communityName, type Near, type Story } from "../../data";
 import { TextPanel } from "../../components/panels";
 import { Chapter, DataTable, Result, Why } from "../../components/ui";
 import { list, pct } from "../../lib/format";
@@ -25,6 +25,10 @@ export function WordsSection({ d, near }: { d: Story; near: Near | null }) {
     return { t, par, base, h, words, terms, masked: holds(d, t, (v) => v === "tfidf_nouns_masked"), archaic: terms.filter(([w]) => ARCHAIC.has(w)).map(([w]) => w) };
   });
   const archaic = rows.filter((r) => r.archaic.length);
+  // traditions that share the same old-translation words are named together: "thou for Jewish and Sufi parables"
+  const archaicByWords = new Map<string, string[]>();
+  archaic.forEach((r) => { const w = list(r.archaic); archaicByWords.set(w, [...(archaicByWords.get(w) ?? []), r.t]); });
+  const archaicText = list([...archaicByWords].map(([w, ts]) => `${w} for ${list(ts)} parables`));
   const shares = rows.map((r) => r.par?.nounShare ?? 0).filter((x) => x > 0);
   const lost = rows.filter((r) => r.h.closer && !r.masked).map((r) => r.t), gained = rows.filter((r) => !r.h.closer && r.masked).map((r) => r.t);
   // the parables whose best match is carried by the clicked word (words behind each text's nearest folktale)
@@ -45,7 +49,7 @@ export function WordsSection({ d, near }: { d: Story; near: Near | null }) {
                 style={{ fontSize: `${(1.25 - (0.45 * k) / 7).toFixed(2)}rem` }}>{w}<small> {n}</small></button>
             ))}</div>
             <p className="type">Nouns carry {r.par ? pct(r.par.nounShare) : "–"} of the similarity (baseline {r.base ? pct(r.base.nounShare) : "–"}).</p>
-            <p className="type">Leans towards {r.h.topCommunity} ({r.words}){r.h.topSig ? "" : ", not significant"}.</p>
+            <p className="type">Leans towards {communityName(d, r.h.topCommunity, "tfidf")} ({r.words}){r.h.topSig ? "" : ", not significant"}.</p>
           </div>
         ))}
       </div>
@@ -65,7 +69,7 @@ export function WordsSection({ d, near }: { d: Story; near: Near | null }) {
         rows={rows.map((r) => [r.t, r.terms.slice(0, 6).map(([w]) => w).join(", "), r.par ? pct(r.par.nounShare) : "–", r.base ? pct(r.base.nounShare) : "–", r.masked ? "yes" : "no"])} />
       <Result>
         <p>Matches rest on the people, animals and objects of a story: nouns carry {pct(Math.min(...shares))} to {pct(Math.max(...shares))} of a parable's similarity to its nearest folktale. With every noun masked, {list(rows.filter((r) => r.masked).map((r) => r.t))} parables are closer to folktales than their baseline.{lost.length > 0 && <> {list(lost)} {lost.length === 1 ? "loses its" : "lose their"} lead: that resemblance rested on a shared cast.</>}{gained.length > 0 && <> {list(gained)} {gained.length === 1 ? "becomes" : "become"} closer only once nouns are masked.</>}</p>
-        {archaic.length > 0 && <p>Old-translation words ({[...new Set(archaic.flatMap((r) => r.archaic))].join(", ")}) are among the top matching words of {list(archaic.map((r) => r.t))}: part of any resemblance is the translators' English, which is why the baseline from the same book is the comparison that counts.</p>}
+        {archaic.length > 0 && <p>Old-translation words are among the top matching words: {archaicText}. Part of any resemblance is the translators' English, which is why each tradition is compared with its own non-story text, from the same translation wherever possible.</p>}
       </Result>
     </Chapter>
   );

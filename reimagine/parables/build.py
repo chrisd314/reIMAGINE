@@ -3,7 +3,7 @@
 For each tradition: collect the parables, drop any that repeats one of the 36 calibration versions
 (same story number where the corpus prints one, same title, or TF-IDF cosine above 0.9), draw the
 target number where more qualify, and cut length-matched baseline passages from non-story teaching
-text of the same translation. A source that cannot be downloaded is reported and skipped; the other
+text of the same translation. A source that cannot be downloaded is reported and skipped. The other
 traditions still run.
 """
 from __future__ import annotations
@@ -35,7 +35,7 @@ def norm_title(title: str) -> str:
 class Duplicates:
     """Is a new story one of the 36 calibration versions? Same title (after removing case, accents,
     punctuation and brackets), or TF-IDF cosine above the threshold. Story numbers printed in the corpus
-    (Jātaka number; Masnavi book and story) are matched by the tradition modules."""
+    (Jātaka number, Masnavi book and story) are matched by the tradition modules."""
 
     def __init__(self, ctx: Ctx):
         corpus = load_corpus(ctx)
@@ -43,8 +43,8 @@ class Duplicates:
         self.cal = corpus.calib
         self.C = self.space.transform(self.cal["text"].tolist())
         self.titles = [norm_title(t) for t in self.cal["title"]]
-        self.threshold = ctx.paper["parables"]["duplicate_cosine"]
-        cal_list = pd.read_csv(ctx.paper["calibration_list"], dtype=str, keep_default_na=False)
+        self.threshold = ctx.analysis["parables"]["duplicate_cosine"]
+        cal_list = pd.read_csv(ctx.analysis["calibration_list"], dtype=str, keep_default_na=False)
         known = [k.split(":") for k in cal_list["known_story"] if k]
         self.jataka_numbers = {int(k[1]) for k in known if k[0] == "jataka"}
         self.masnavi_stories = {(int(k[1]), int(k[2])) for k in known if k[0] == "masnavi"}
@@ -114,7 +114,7 @@ def make_baseline(units: list[dict], lengths: list[int], n: int, seed: int) -> l
 
 
 def collect_all(ctx: Ctx):
-    pc = ctx.paper["parables"]
+    pc = ctx.analysis["parables"]
     fetcher = Fetcher(pc["user_agent"], pc["seconds_between_requests"], allow_fetch=ctx.fetch)
     dup = Duplicates(ctx)
     jobs = {

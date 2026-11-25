@@ -3,8 +3,8 @@
 One request per second at most. Every page is stored once, gzip-compressed, under
 data/raw/parables/<tradition>/ and never requested again. Each download is logged in
 data/raw/parables/fetch_log.csv with its URL, final URL, UTC time, HTTP status, size and SHA-256.
-A page that cannot be downloaded raises SourceBlocked; nothing is retried by another route.
-Downloading is off unless it is switched on explicitly; without it only the cache is read.
+A page that cannot be downloaded raises SourceBlocked. Nothing is retried by another route.
+Downloading is off unless it is switched on explicitly. Without it only the cache is read.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ class CacheMiss(RuntimeError):
 class Fetcher:
     """`allow_fetch` must be switched on explicitly (python -m reimagine.run --fetch) before anything is
     downloaded. The terms of sacred-texts.com ask users not to scrape the site, so the default is to
-    work from the cache only; see README.md, "Data sources"."""
+    work from the cache only. See README.md, "Data sources"."""
 
     def __init__(self, user_agent: str, delay: float = 1.0, allow_fetch: bool = False):
         self.user_agent, self.delay, self._last, self.allow_fetch = user_agent, delay, 0.0, allow_fetch

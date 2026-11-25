@@ -1,10 +1,15 @@
 [project]
 name = "reimagine"
 version = "1.0.0"
-description = "reIMAGINE: where religious parables land in a text-similarity network of folktales (DTU 02805 course project)."
+description = "reIMAGINE: a text-similarity network of folktales, the religious parables placed on it, and the website that shows both."
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
-license = { text = "Code licence to be decided by the authors; data terms in LICENSE_NOTES.md" }
+license = { text = "CC BY-NC-SA 4.0, see LICENSE and LICENSE_NOTES.md" }
+authors = [
+  { name = "Christos Diamantis" },
+  { name = "Dávid Weiner" },
+  { name = "Evangelos Panagiotopoulos" },
+]
 dependencies = [
   "numpy>=1.26",
   "pandas>=2.2",
@@ -16,13 +21,12 @@ dependencies = [
   "requests>=2.31",
   "sentence-transformers>=3.0",
   "torch>=2.2",
-  "matplotlib>=3.8",
   "ftfy>=6.2",
 ]
 
 [dependency-groups]
 dev = ["pytest>=8", "playwright>=1.45"]
-paper = [
+spacy = [
     "en-core-web-sm",
     "spacy>=3.8,<3.9",
 ]

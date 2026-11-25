@@ -10,6 +10,9 @@ import { Tooltip, useTokens, type Tip } from "./ui";
 export type Tone = 0 | 1 | 2 | 3;
 export interface Rings { counts: Map<number, number>; tone: Tone }
 export interface Marker { id: string; x: number; y: number; tone: Tone; hollow?: boolean; title: string }
+/** A tale label sits next to its dot (node). A group label sits in a box at a layout position (x, y), framed in the
+ *  group's colour (tone). */
+export type MapLabel = { node: number; text: string } | { x: number; y: number; text: string; tone?: Tone };
 
 function quantile(sorted: number[], q: number) { return sorted[Math.min(sorted.length - 1, Math.max(0, Math.round(q * (sorted.length - 1))))]; }
 
@@ -17,8 +20,8 @@ export function NetCanvas({ map, tone, tip, label, onPick, onPickMarker, rings =
   focus = null, markers = [], aspect = 0.68, height, wheel = "ctrl" }: {
   map: NetMap; tone: (i: number) => Tone; tip: (i: number) => ReactNode; label: string;
   onPick?: (i: number) => void; onPickMarker?: (id: string) => void; rings?: Rings[]; size?: "degree" | "pagerank" | "none";
-  labels?: { node: number; text: string }[]; selected?: number | null; focus?: number | null; markers?: Marker[]; aspect?: number; height?: number;
-  /** "ctrl": the wheel scrolls the page and Ctrl + wheel zooms (story pages); "always": the wheel zooms (Explore) */
+  labels?: MapLabel[]; selected?: number | null; focus?: number | null; markers?: Marker[]; aspect?: number; height?: number;
+  /** "ctrl": the wheel scrolls the page and Ctrl + wheel zooms (story pages). "always": the wheel zooms (Explore). */
   wheel?: "ctrl" | "always";
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -119,6 +122,16 @@ export function NetCanvas({ map, tone, tip, label, onPick, onPickMarker, rings =
     }
     ctx.globalAlpha = 1; ctx.font = "600 11.5px Inter Variable, Inter, system-ui, sans-serif"; ctx.textBaseline = "middle";
     for (const l of labels) {
+      if (!("node" in l)) {                         // a group label: a framed box at the group's middle, no dot
+        const gx = tx + k * base.px(l.x), gy = ty + k * base.py(l.y);
+        if (gx < 0 || gx > w || gy < 0 || gy > h) continue;
+        const tw = ctx.measureText(l.text).width, bw = tw + 12;
+        const bx = Math.min(Math.max(gx - bw / 2, 2), w - bw - 2), by = Math.min(Math.max(gy - 10, 2), h - 22);
+        ctx.globalAlpha = 0.92; ctx.fillStyle = tk.paper; ctx.fillRect(bx, by, bw, 20); ctx.globalAlpha = 1;
+        ctx.lineWidth = 1.6; ctx.strokeStyle = l.tone ? colours[l.tone] : tk.ink; ctx.strokeRect(bx, by, bw, 20);
+        ctx.textAlign = "left"; ctx.fillStyle = tk.ink; ctx.fillText(l.text, bx + 6, by + 10);
+        continue;
+      }
       const x = px(l.node), y = py(l.node);
       if (x < 0 || x > w || y < 0 || y > h) continue;
       const right = x + 7 + ctx.measureText(l.text).width > w - 4;

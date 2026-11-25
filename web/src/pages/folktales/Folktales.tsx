@@ -29,7 +29,7 @@ export function FolktalesPage() {
   return (
     <>
       <PageHead page="folktales" kicker="reIMAGINE · part 1 and 2" title="The folktale network"
-        lede={<>Before parables can land anywhere, the folktales need a map. This page builds a network of {int(d.corpus.folktales)} folktales from their texts, finds its communities, and asks what they follow: the kind of story, the place it was recorded, or the book it was printed in. Every map can be zoomed, every tale opened, read and followed to its source; the switch at each section turns the whole page from TF–IDF to embeddings.</>}
+        lede={<>Before parables can land anywhere, the folktales need a map. This page builds a network of {int(d.corpus.folktales)} folktales from their texts, finds its communities, and asks what they follow: the kind of story, the place it was recorded, or the book it was printed in. Every map can be zoomed, every tale opened, read and followed to its source, and the switch at each section turns the whole page from TF–IDF to embeddings.</>}
         sections={FOLKTALE_SECTIONS} />
       <CorpusSection d={d} maps={maps} />
       <SimilaritySection d={d} near={near} />

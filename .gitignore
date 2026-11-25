@@ -13,12 +13,11 @@ __pycache__/
 data/interim/
 data/processed/*.parquet
 
-# Raw source pages of the parables (third-party page markup; data/raw/parables/fetch_log.csv stays tracked)
+# Raw source pages of the parables (third-party page markup, while data/raw/parables/fetch_log.csv stays tracked)
 data/raw/parables/*/
 
 # Development runs (--sample N)
 results/_sample/
-figures/_sample/
 
 # Website: dependencies, build, and the data copied from data/site/ at every build
 web/node_modules/

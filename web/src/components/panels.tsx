@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { communityOf, readLinks, shortType, type NetMap, type Near, type Rep, type Story, type Text } from "../data";
+import { communityName, communityOf, readLinks, shortType, type NetMap, type Near, type Rep, type Story, type Text } from "../data";
 import { fmt, int } from "../lib/format";
 
 // Reading panels: a folktale or a text, its nearest folktales, the words behind each match, the two openings side by
@@ -14,13 +14,13 @@ export function ReadLinks({ story, atu, title, url }: { story: Story; atu?: stri
   );
 }
 
-function TaleMeta({ story, map, i }: { story: Story; map?: NetMap; i: number }) {
+function TaleMeta({ story, map, rep, i }: { story: Story; map?: NetMap; rep?: Rep; i: number }) {
   const F = story.folktales;
   return (
     <div className="sans small muted">
       {F.atu[i] ? `ATU ${F.atu[i]} ${shortType(F.atuName[i], 60)}` : "no tale type"}{F.region[i] ? ` · ${F.region[i]}` : ""}
       {F.collection[i] ? ` · ${F.collection[i].replace(/\b\w/g, (c) => c.toUpperCase())}` : ""}
-      {map ? ` · ${communityOf(map.group[i])}, ${map.degree[i]} links` : ""} · {int(F.tokens[i])} words
+      {map ? ` · ${rep ? communityName(story, communityOf(map.group[i]), rep) : communityOf(map.group[i])}, ${map.degree[i]} links` : ""} · {int(F.tokens[i])} words
     </div>
   );
 }
@@ -101,7 +101,7 @@ export function TalePanel({ story, map, near, rep, i, onSelect, onClose }: {
         <h4 style={{ margin: 0 }}>{F.title[i]}</h4>
         {onClose && <button type="button" className="btn small" onClick={onClose}>Close</button>}
       </div>
-      <TaleMeta story={story} map={map} i={i} />
+      <TaleMeta story={story} map={map} rep={rep} i={i} />
       {map.pagerankZ[i] !== null && <div className="sans small muted">PageRank {fmt(map.pagerank[i], 2)}× the average tale, {fmt(Math.abs(map.pagerankZ[i]), 1)} standard deviations {map.pagerankZ[i] >= 0 ? "above" : "below"} its degree-preserving shuffles</div>}
       {near && <p className="o" style={{ margin: "8px 0" }}>“{near.opening[i]}”</p>}
       <ReadLinks story={story} atu={F.atu[i]} title={F.title[i]} />
@@ -129,7 +129,7 @@ export function TextPanel({ story, near, rep, t, onSelectTale, extra }: {
       <p className="o" style={{ margin: "6px 0" }}>“{t.opening}”</p>
       <ReadLinks story={story} title={t.title} url={t.url} />
       <div className="sans small" style={{ marginTop: 8 }}>
-        Folk-closeness <strong>{fmt(r.closeness, 3)}</strong> ({int(t.tokens)} words){r.community ? <> · its neighbours sit mostly in <strong>{r.community}</strong></> : null}
+        Folk-closeness <strong>{fmt(r.closeness, 3)}</strong> ({int(t.tokens)} words){r.community ? <> · its neighbours sit mostly in <strong>{communityName(story, r.community, rep)}</strong></> : null}
         {r.voted ? <> · they vote for <strong>ATU {r.voted}{voted ? ` ${shortType(voted, 40)}` : ""}</strong></> : null}
       </div>
       {extra}

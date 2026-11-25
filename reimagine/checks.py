@@ -1,11 +1,10 @@
-"""Stage `checks`: can the ranking be trusted, and does the tradition ranking survive?
+"""Stage `checks`: can the similarity measure be trusted?
 
   calibration    the 36 religious retellings as queries with a known answer (a folktale of the same
-                 ATU type): recall@10 against the analytic chance rate; this is the 14 November gate
-  second method  TF-IDF against embeddings: rank correlation of folk_closeness, overlap of neighbours
-  length         folk_closeness against text length
-  hubness        how often each folktale is a neighbour; ranking repeated without the 10 biggest hubs
-  masking        ranking repeated with names and collection formulae replaced by a placeholder
+                 ATU type): recall@10 against the analytic chance rate. This is the gate fixed on 14 November.
+  second method  TF-IDF against embeddings: rank correlation of folk_closeness and overlap of neighbours
+  hubness        how often each folktale is a neighbour, and which folktales are the hubs
+  masking        how much text the names and fixed phrases make up (the masked test itself is in robustness)
 """
 from __future__ import annotations
 
@@ -16,7 +15,7 @@ from scipy.stats import skew, spearmanr
 from .common import TRADITIONS, Ctx, write_csv, write_json
 from .corpus import check_calibration_exclusion, load_corpus
 from .headline import type_votes
-from .part_b import folk_closeness, length_curve, load_map, nearest, scores, similarities
+from .part_b import load_map, nearest, scores, similarities
 from .reps import Masker
 
 # ----------------------------------------------------------------- calibration (pure functions)
@@ -30,7 +29,7 @@ def chance_recall(n_same: np.ndarray, n_total: int, k: int) -> np.ndarray:
 
 
 def first_hit_rank(S: np.ndarray, right: np.ndarray) -> np.ndarray:
-    """Rank (1 = nearest) of the first right answer in each row; `right` is a boolean matrix like S."""
+    """Rank (1 = nearest) of the first right answer in each row. `right` is a boolean matrix like S."""
     order = np.argsort(-np.round(S, 12), axis=1, kind="stable")
     hit = np.take_along_axis(right, order, axis=1)
     return np.where(hit.any(axis=1), hit.argmax(axis=1) + 1, S.shape[1] + 1)
@@ -72,27 +71,13 @@ def calibration(S_cal: np.ndarray, cal_atu: np.ndarray, folk_atu: np.ndarray, k:
 
 
 # ----------------------------------------------------------------- the checks
-def ranking_of(queries: pd.DataFrame, closeness: np.ndarray, keep: np.ndarray | None = None) -> pd.DataFrame:
-    rows = []
-    for trad in TRADITIONS:
-        m = ((queries["kind"] == "parable") & (queries["tradition"] == trad)).to_numpy()
-        if keep is not None:
-            m = m & keep
-        if m.any():
-            rows.append(dict(tradition=trad, n=int(m.sum()), median=float(np.median(closeness[m]))))
-    out = pd.DataFrame(rows).sort_values("median", ascending=False)
-    out["rank"] = np.arange(1, len(out) + 1)
-    return out
-
-
 def run(ctx: Ctx) -> dict:
     corpus = load_corpus(ctx)
     folk, queries = corpus.folk, corpus.queries(ctx)
-    ck, pb = ctx.paper["checks"], ctx.paper["partB"]
-    masker = Masker(folk["text"].tolist() + queries["text"].tolist(), ctx.paper["masking"])
+    ck, pb = ctx.analysis["checks"], ctx.analysis["partB"]
+    masker = Masker(folk["text"].tolist() + queries["text"].tolist(), ctx.analysis["masking"])
     par = (queries["kind"] == "parable").to_numpy()
     cal = (queries["kind"] == "calibration").to_numpy()
-    tokens = queries["n_tokens"].to_numpy()
     folk_atu = folk["atu_id"].fillna("").to_numpy(dtype=str)
 
     variants = {}                                   # name -> (similarities, scores)
@@ -102,10 +87,10 @@ def run(ctx: Ctx) -> dict:
             variants[name] = (sim, scores(ctx, sim, folk))
             print(f"    computed {name}")
 
-    # ---- calibration and the gate; first make sure the test is not circular
+    # ---- calibration and the gate. First make sure the test is not circular
     for rep in ctx.reps:
         check_calibration_exclusion(folk["id"], queries.loc[cal, "id"], None, variants[rep][0]["S"][cal],
-                                    float(ctx.paper["calibration_exclusion"]["max_cosine"]))
+                                    float(ctx.analysis["calibration_exclusion"]["max_cosine"]))
     cal_rows, per_query = [], queries.loc[cal, ["id", "title", "tradition", "atu_id", "n_tokens"]].reset_index(drop=True)
     S_cal = {name: sim["S"][cal] for name, (sim, _) in variants.items()}
     nm = ctx.work / "tfidf_nouns_masked.npz"                       # written by the vocab stage (step 4)
@@ -162,17 +147,11 @@ def run(ctx: Ctx) -> dict:
                                same_nearest_folktale=float((ca["idx"][m, 0] == cb["idx"][m, 0]).mean())))
     write_csv(pd.DataFrame(second).assign(representations=f"{a} vs {b}"), ctx.results / "checks_second_method.csv")
 
-    # ---- length, hubness, and the tradition ranking under every variant
-    length_rows, hub_rows, hub_list, rank_rows = [], [], [], []
+    # ---- hubness: how often each folktale is a neighbour of a parable
+    hub_rows, hub_list = [], []
     for rep in ctx.reps:
-        sim, sc = variants[rep]
+        sc = variants[rep][1]
         group = load_map(ctx, rep, folk)
-        for scope, x, y in (("parables", tokens[par], sc["closeness"][par]),
-                            ("baseline passages", tokens[queries["kind"].to_numpy() == "baseline"], sc["closeness"][queries["kind"].to_numpy() == "baseline"]),
-                            ("folktales (leave-one-out)", folk["n_tokens"].to_numpy(), sc["loo"])):
-            if len(x) > 3:
-                rho, p = spearmanr(x, y)
-                length_rows.append(dict(rep=rep, scope=scope, n=len(x), spearman_closeness_vs_tokens=float(rho), p_value=float(p)))
         occ = np.bincount(sc["idx"][par].ravel(), minlength=len(folk))          # k-occurrence over all parable top-10 lists
         hubs = np.argsort(-occ, kind="stable")[:ck["hubs_removed"]]
         hub_rows.append(dict(rep=rep, parables=int(par.sum()), links=int(occ.sum()), folktales_never_a_neighbour=float((occ == 0).mean()),
@@ -183,28 +162,10 @@ def run(ctx: Ctx) -> dict:
             hub_list.append(dict(rep=rep, rank=r + 1, folktale_id=folk.at[f, "id"], title=folk.at[f, "title"], atu_id=folk.at[f, "atu_id"],
                                  community=f"C{group[f] + 1}" if group[f] >= 0 else "small", n_tokens=int(folk.at[f, "n_tokens"]),
                                  times_a_neighbour=int(occ[f]), share_of_parables=float(occ[f] / max(par.sum(), 1))))
-        S_nohub = sim["S"].copy()
-        S_nohub[:, hubs] = -np.inf
-        expected = length_curve(folk["n_tokens"].to_numpy(), sc["loo"])
-        named = {"as reported": (sc["closeness"], None),
-                 "names and formulae masked": (variants[f"{rep}_masked"][1]["closeness"], None),
-                 f"without the {ck['hubs_removed']} most frequent neighbours": (folk_closeness(S_nohub, pb["closeness_k"]), None),
-                 f"parables of at least {ck['long_parable_tokens']} tokens": (sc["closeness"], tokens >= ck["long_parable_tokens"]),
-                 "minus folktales of the same length": (sc["closeness"] - expected(tokens), None),
-                 "nearest folktale only (k = 1)": (sc["val"][:, 0], None),
-                 "10 nearest folktales (k = 10)": (sc["val"].mean(axis=1), None)}
-        for name, (values, keep) in named.items():
-            t = ranking_of(queries, values, keep)
-            rank_rows += [dict(rep=rep, variant=name, **r) for r in t.to_dict("records")]
-        m = spearmanr(sc["closeness"][par], variants[f"{rep}_masked"][1]["closeness"][par])[0]
-        length_rows.append(dict(rep=rep, scope="parables: masked against unmasked folk_closeness", n=int(par.sum()),
-                                spearman_closeness_vs_tokens=float(m), p_value=np.nan))
-    write_csv(pd.DataFrame(length_rows), ctx.results / "checks_length.csv")
     write_csv(pd.DataFrame(hub_rows), ctx.results / "checks_hubness.csv")
     write_csv(pd.DataFrame(hub_list), ctx.results / "checks_hubs.csv")
-    write_csv(pd.DataFrame(rank_rows), ctx.results / "checks_ranking_variants.csv")
     write_json(ctx.results / "checks_masking.json", dict(
-        name_like_words=len(masker.names), formulae=ctx.paper["masking"]["formulae"], placeholder=masker.placeholder,
+        name_like_words=len(masker.names), formulae=ctx.analysis["masking"]["formulae"], placeholder=masker.placeholder,
         share_of_tokens_masked=float(np.mean([masker.masked_share(t) for t in queries.loc[par, "text"]])),
         share_of_tokens_masked_by_tradition={t: float(np.mean([masker.masked_share(x) for x in queries.loc[par & (queries["tradition"] == t).to_numpy(), "text"]]))
                                              for t in TRADITIONS if (par & (queries["tradition"] == t).to_numpy()).any()},

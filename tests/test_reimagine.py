@@ -1,4 +1,4 @@
-"""Fast unit tests of the paper pipeline's core functions (toy inputs; no data, network or model needed)."""
+"""Fast unit tests of the pipeline's core functions (toy inputs, no data, network or model needed)."""
 import math
 
 import networkx as nx
@@ -12,8 +12,7 @@ from reimagine.parables.build import make_baseline, norm_title
 from reimagine.parables.html import Block
 from reimagine.parables.narrative import is_saying, is_story
 from reimagine.part_a import community_words, degree_null, major_communities, tfidf_lift_words
-from reimagine.part_b import (entropy_bits, folk_closeness, jsd_bits, leave_one_out, length_curve, log_odds, nearest,
-                         placement_null)
+from reimagine.part_b import folk_closeness, jsd_bits, leave_one_out, length_curve, nearest
 from reimagine.reps import Masker
 
 
@@ -143,23 +142,9 @@ def test_leave_one_out_ignores_self_and_excluded():
     assert S[0, 0] == 1.0, "the input matrix must not be changed"
 
 
-def test_placement_null_shape_and_conservation():
-    groups = np.array([0] * 6 + [1] * 3 + [2] * 1)
-    attach = np.arange(10, dtype=float)
-    null = placement_null(attach, groups, 3, 200, seed=1)
-    assert null.shape == (200, 3)
-    assert np.allclose(null.sum(axis=1), attach.sum())                       # every shuffle keeps all links
-    assert null.mean(axis=0) / attach.sum() == pytest.approx([0.6, 0.3, 0.1], abs=0.03)   # expectation = group share
-    assert (placement_null(attach, groups, 3, 5, seed=1) == placement_null(attach, groups, 3, 5, seed=1)).all()
-
-
-def test_entropy_divergence_and_log_odds():
-    assert entropy_bits(np.array([5, 5, 0]))[0] == pytest.approx(1.0)
-    assert entropy_bits(np.array([[4, 0], [1, 1]])).tolist() == pytest.approx([0.0, 1.0])
+def test_jensen_shannon_divergence():
     assert jsd_bits(np.array([1.0, 0.0]), np.array([0.0, 1.0])) == pytest.approx(1.0)
     assert jsd_bits(np.array([2.0, 2.0]), np.array([5.0, 5.0])) == pytest.approx(0.0)
-    z = log_odds(np.array([50.0, 5.0, 20.0]), np.array([5.0, 50.0, 20.0]), prior=0.01)
-    assert z[0] > 2 and z[1] < -2 and abs(z[2]) < 1e-9
 
 
 def test_length_curve_recovers_a_trend():

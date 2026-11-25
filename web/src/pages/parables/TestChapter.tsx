@@ -7,7 +7,7 @@ import { ordinal, pct, rng } from "../../lib/format";
 
 interface Round { item: CalItem; options: string[] }
 
-/** The held-out retellings in a fixed shuffled order; each round offers the true tale type and decoys of other retellings. */
+/** The held-out retellings in a fixed shuffled order. Each round offers the true tale type and decoys of other retellings. */
 function makeRounds(items: CalItem[], nOptions: number): Round[] {
   const rand = rng(20261118);
   const order = items.map((it) => ({ it, k: rand() })).sort((a, b) => a.k - b.k).map((x) => x.it);
@@ -55,7 +55,7 @@ export function TestChapter({ d, near }: { d: Story; near: Near | null }) {
           </div>
           {chosen && (
             <div className="sans" style={{ marginTop: 14, fontSize: 14.5 }}>
-              <p style={{ marginBottom: 6 }}>{chosen === it.atuName ? "Right." : "Not quite."} It is <strong>ATU {it.atu} {shortType(it.atuName, 90)}</strong>; {it.sameType} folktale{it.sameType === 1 ? "" : "s"} of that type are in the network. <ReadLinks story={d} atu={it.atu} title={it.title} /></p>
+              <p style={{ marginBottom: 6 }}>{chosen === it.atuName ? "Right." : "Not quite."} It is <strong>ATU {it.atu} {shortType(it.atuName, 90)}</strong>, and {it.sameType} folktale{it.sameType === 1 ? "" : "s"} of that type are in the network. <ReadLinks story={d} atu={it.atu} title={it.title} /></p>
               <p style={{ margin: 0 }}>{rank <= c.k
                 ? <>With {REP_NAME[rep]}, the method found one as the <strong>{rank === 1 ? "very nearest" : `${ordinal(rank)} nearest`}</strong> folktale.</>
                 : <>With {REP_NAME[rep]}, the method missed: the nearest folktale of this type is only the {ordinal(rank)}.</>}</p>
@@ -74,7 +74,7 @@ export function TestChapter({ d, near }: { d: Story; near: Near | null }) {
           <div className="tiles">
             <div className="tile"><div className="v">{pct(c.byRep[rep].recall)}</div><div className="l">found a same-type folktale among the {c.k} nearest (95% CI {pct(c.byRep[rep].low)}–{pct(c.byRep[rep].high)}), {REP_NAME[rep]}</div></div>
             <div className="tile"><div className="v">{pct(c.chance, 1)}</div><div className="l">expected by chance with {c.k} random folktales</div></div>
-            <div className="tile"><div className="v">{pct(c.byRep[rep].vote)}</div><div className="l">neighbours vote for the right type (chance {pct(c.voteChance, 1)})</div></div>
+            <div className="tile"><div className="v">{pct(c.byRep[rep].vote)}</div><div className="l">neighbours vote for the right type (chance {pct(c.voteChance, 2)})</div></div>
           </div>
           <BarList label="Recall by representation" items={reps.map((r) => ({ label: REP_NAME[r] ?? r, value: c.byRep[r].recall }))} max={1} format={(v) => pct(v)} />
           <DataTable head={["Retelling", "Tale type", "Rank, TF–IDF", "Rank, embeddings"]} caption="All 36 retellings"

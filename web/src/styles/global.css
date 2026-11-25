@@ -1,4 +1,4 @@
-/* reIMAGINE storybook theme: parchment, midnight ink, crimson; gilt only for ornaments, never for text.
+/* reIMAGINE storybook theme: parchment, midnight ink and crimson, with gilt only for ornaments, never for text.
    Chart colours: three fixed categorical hues (parables, baseline, folktales / map picks) and one neutral. */
 :root {
   --paper: #f7f0e1;
@@ -13,9 +13,9 @@
   --gold: #a87b22;
   --gold-soft: #e6d3a3;
   --focus: #1f5fbf;
-  --c1: #2a78d6;       /* parables; first map pick */
-  --c2: #eb6834;       /* baseline passages; second map pick */
-  --c3: #1baf7a;       /* folktales; third map pick */
+  --c1: #2a78d6;       /* parables, and the first map pick */
+  --c2: #eb6834;       /* baseline passages, and the second map pick */
+  --c3: #1baf7a;       /* folktales, and the third map pick */
   --neutral: #b9ae98;  /* everything not picked */
   --edge: #6b6a7c;
   --yes-bg: #d9eadf; --yes-fg: #24563d;
@@ -297,8 +297,8 @@ button.linklike:focus-visible { outline: 3px solid var(--focus); }
 @media (max-width: 520px) { .site-nav a { padding: 6px 7px; font-size: 13px; } }
 .page .table-wrap { margin: 10px 0 0; }
 .diverging { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 3px; }
-.diverging li { display: grid; grid-template-columns: 7.2em minmax(0, 1fr); gap: 6px; align-items: center; font-size: 11.5px; }
-.dv-label { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.diverging li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 6px; align-items: center; font-size: 11px; }
+.dv-label { color: var(--ink-2); line-height: 1.15; }       /* full community names, wrapped onto two lines where needed */
 .dv-track { position: relative; height: 11px; background: linear-gradient(var(--rule), var(--rule)) center / 1px 100% no-repeat; }
 .dv-bar { position: absolute; top: 1px; bottom: 1px; border-radius: 2px; }
 .dv-star { position: absolute; top: -3px; padding: 0 2px; font-weight: 700; color: var(--ink); }

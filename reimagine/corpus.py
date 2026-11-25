@@ -25,7 +25,7 @@ _TRANSLATED = re.compile(r"[Tt]ranslated(?: from the [A-Z]\w+)?(?: into [A-Z]\w+
 def translator_of(source, notes) -> str | None:
     """The translator named in a tale's source reference (or, failing that, its notes): 'translated ... by X'.
 
-    None when no translator is stated; Ashliman's own translations usually state none.
+    None when no translator is stated. Ashliman's own translations usually state none.
     """
     for s in (source, notes):
         if isinstance(s, str):
@@ -94,7 +94,7 @@ def load_corpus(ctx: Ctx) -> Corpus:
         from .core import prepare
         prepare()
     nar = pd.read_parquet(path).sort_values("narrative_id").reset_index(drop=True)
-    cal = pd.read_csv(ROOT / ctx.paper["calibration_list"], dtype=str, keep_default_na=False)
+    cal = pd.read_csv(ROOT / ctx.analysis["calibration_list"], dtype=str, keep_default_na=False)
     assert cal["narrative_id"].is_unique and set(cal["narrative_id"]) <= set(nar["narrative_id"])
     assert cal.groupby("collection").size().to_dict() == EXPECTED_CALIBRATION, "calibration list changed"
 
@@ -124,7 +124,7 @@ def calibration_exclusion(ctx: Ctx, c: Corpus, spaces: dict | None = None) -> di
     `spaces` reuses already-built representation spaces (rep -> space fitted on `c.folk`).
     """
     from .reps import build_space
-    thr = float(ctx.paper["calibration_exclusion"]["max_cosine"])
+    thr = float(ctx.analysis["calibration_exclusion"]["max_cosine"])
     out = {}
     for rep in ctx.reps:
         sp = (spaces or {}).get(rep) or build_space(rep, c.folk["text"].tolist(), ctx.cfg)

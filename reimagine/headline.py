@@ -1,21 +1,21 @@
-"""Stage `headline`: the main result of the paper.
+"""Stage `headline`: the main result, the answer to the two research questions.
 
-    Do parables from different religious traditions sit inside folktale communities more than non-story
-    text from the same translations does, and which folktale communities and tale types do they land in?
+    1. Do religious parables resemble folktales more closely than non-story text from their own traditions does?
+    2. Which parts of the folktale corpus and which tale types do they come closest to?
 
-For each tradition and each variant (TF-IDF, embeddings, and the noun-masked TF-IDF of step 4), the
-parables are compared with the baseline passages cut from the same translations. Every test shuffles the
-parable/baseline label *within the tradition*, with the text as the unit (1,000 shuffles):
+For each tradition and each variant (TF-IDF, embeddings, and TF-IDF with nouns masked), the parables are
+compared with the tradition's baseline passages. Every test shuffles the parable/baseline label *within the
+tradition*, with the text as the unit (1,000 shuffles):
 
-  closeness  median folk-closeness of the parables minus that of the baseline; one-sided permutation p
+  closeness  median folk-closeness of the parables minus that of the baseline, with a one-sided permutation p
              (parables closer) and a bootstrap 95% interval over texts
-  profile    where a text's 10 nearest folktales sit among the canonical Louvain communities; parable share
-             minus baseline share per community (two-sided p), and the Jensen-Shannon divergence of the two
+  profile    where a text's 10 nearest folktales sit among the Louvain communities of the main network: parable
+             share minus baseline share per community (two-sided p), and the Jensen-Shannon divergence of the two
              profiles against the same shuffles
-  inside     share of parables above the 95th percentile of their own baseline ("inside folklore")
-  types      the ATU type voted by each text's 10 nearest folktales (largest summed cosine); the 5 most
+  inside     share of parables above the 95th percentile of their own baseline
+  types      the ATU type voted by each text's 10 nearest folktales (largest summed cosine), and the 5 most
              common per tradition, for parables and for the baseline
-  collection which source collection a tradition's nearest folktales come from (step 6)
+  collection which source collection a tradition's nearest folktales come from
 """
 from __future__ import annotations
 
@@ -32,7 +32,7 @@ VARIANT_NAME = {"tfidf": "TF-IDF", "embedding": "embeddings", "tfidf_nouns_maske
 
 # ----------------------------------------------------------------- pure functions
 def community_counts(idx: np.ndarray, group: np.ndarray) -> tuple[np.ndarray, list[str]]:
-    """Links per community for each text: idx (texts x k) holds folktale indices; group[f] is the community of
+    """Links per community for each text: idx (texts x k) holds folktale indices. Group[f] is the community of
     folktale f (-1 = the small communities, reported together). Returns counts (texts x K) and community names."""
     labels = sorted(set(group.tolist()) - {-1}) + ([-1] if (group == -1).any() else [])
     code = np.full(int(group.max()) + 2, -1)
@@ -44,7 +44,7 @@ def community_counts(idx: np.ndarray, group: np.ndarray) -> tuple[np.ndarray, li
 
 
 def type_votes(idx: np.ndarray, val: np.ndarray, folk_atu) -> np.ndarray:
-    """ATU type with the largest summed cosine among each text's nearest folktales; ties go to the type met first
+    """ATU type with the largest summed cosine among each text's nearest folktales. Ties go to the type met first
     (that is, the type of the nearer folktale). Folktales without a type do not vote. None if no neighbour has one."""
     out = np.empty(len(idx), dtype=object)
     for q in range(len(idx)):
@@ -154,10 +154,10 @@ def run(ctx: Ctx) -> dict:
     folk_atu = folk["atu_id"].to_numpy(dtype=object)
     folk_coll = folk["source_collection"].to_numpy(dtype=object)
     map_coll = folk["source_collection"].dropna().value_counts(normalize=True)
-    n_perm = ctx.shuffles(ctx.paper["headline"]["permutations"])
-    n_boot = ctx.shuffles(ctx.paper["partB"]["bootstrap"], cap=1000)
+    n_perm = ctx.shuffles(ctx.analysis["headline"]["permutations"])
+    n_boot = ctx.shuffles(ctx.analysis["partB"]["bootstrap"], cap=1000)
 
-    by_trad, cells, types, per_text, region_cells = [], [], [], [], []
+    by_trad, cells, types, per_text = [], [], [], []
     for variant in variants(ctx):
         nb = neighbours(ctx, variant, queries)
         if nb is None:
@@ -171,7 +171,7 @@ def run(ctx: Ctx) -> dict:
         C, names = community_counts(idx, group)
         words = comm[comm["rep"] == rep].set_index("community")["top_words"].astype(str).to_dict()
         map_share = {nm: float(np.mean([("small" if g < 0 else f"C{g + 1}") == nm for g in group])) for nm in names}
-        res = headline_tests(x, C, is_par, trad, n_perm, n_boot, ctx.paper["headline"]["seed"])
+        res = headline_tests(x, C, is_par, trad, n_perm, n_boot, ctx.analysis["headline"]["seed"])
         votes = type_votes(idx, val, folk_atu)
         n_cells = len(res) * len(names)
         for t in [t for t in TRADITIONS if t in res]:
@@ -212,33 +212,16 @@ def run(ctx: Ctx) -> dict:
                 top_source_collection_map_share=float(map_coll.get(top_c, 0.0)) if top_c else np.nan,
                 top_source_collection_baseline_share=float(cs_base.get(top_c, 0.0)) if top_c else np.nan,
                 permutations=r["permutations"], bootstrap=r["bootstrap"]))
-        if variant in ctx.reps:      # supplementary: the same test over the recorded regions of the nearest folktales
-            region = folk["region"].fillna("(no region)").to_numpy(dtype=object)
-            rnames = sorted(set(region) - {"(no region)"}) + ["(no region)"]
-            rcode = {r: k for k, r in enumerate(rnames)}
-            ri = np.array([rcode[r] for r in region])
-            CR = np.stack([(ri[idx] == k).sum(axis=1) for k in range(len(rnames))], axis=1)
-            rres = headline_tests(x, CR, is_par, trad, n_perm, n_boot, ctx.paper["headline"]["seed"] + 1)
-            m_cells = len(rres) * len(rnames)
-            for t in [t for t in TRADITIONS if t in rres]:
-                r = rres[t]
-                for k, nm in enumerate(rnames):
-                    region_cells.append(dict(variant=variant, tradition=t, region=nm, map_share=float((region == nm).mean()),
-                                             parable_share=r["parable_profile"][k], baseline_share=r["baseline_profile"][k],
-                                             excess=r["excess"][k], p_two_sided=r["excess_p"][k],
-                                             significant_bonferroni=bool(r["excess_p"][k] < 0.05 / m_cells),
-                                             jsd_bits=r["jsd"], jsd_p_upper=r["jsd_p_upper"], permutations=r["permutations"]))
         for i in range(len(q)):
             per_text.append(dict(variant=variant, id=q.at[i, "id"], kind=q.at[i, "kind"], tradition=q.at[i, "tradition"],
                                  folk_closeness=x[i], voted_atu=votes[i], voted_atu_name=atu_name.get(votes[i], "") if votes[i] else "",
                                  modal_community=names[int(np.argmax(C[i]))]))
         b = [d for d in by_trad if d["variant"] == variant]
         print(f"    {variant}: parables minus baseline (permutation p): "
-              + "; ".join(f"{d['tradition']} {d['diff']:+.3f} (p={d['diff_p_upper']:.3f})" for d in b))
+              + ", ".join(f"{d['tradition']} {d['diff']:+.3f} (p={d['diff_p_upper']:.3f})" for d in b))
 
     write_csv(pd.DataFrame(by_trad), ctx.results / "headline_by_tradition.csv")
     write_csv(pd.DataFrame(cells), ctx.results / "headline_community_excess.csv")
     write_csv(pd.DataFrame(types), ctx.results / "headline_atu_by_tradition.csv")
     write_csv(pd.DataFrame(per_text), ctx.results / "headline_texts.csv")
-    write_csv(pd.DataFrame(region_cells), ctx.results / "headline_region_excess.csv")
     return dict(variants=sorted({d["variant"] for d in by_trad}))

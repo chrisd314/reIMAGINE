@@ -129,8 +129,8 @@ export function PlaceChapter({ d, near, trad, setTrad }: { d: Story; near: Near 
   return (
     <Chapter id="place" num="Parables · 3" title="Are parables closer to folktales than their own scripture?">
       <Why course="week 5 (cosine similarity, nearest neighbours), week 2 (permutation test, p = (1 + k)/(1 + N))"
-        what={<>We placed {int(d.corpus.parables)} parables from five traditions among the folktales, together with {int(d.corpus.baseline)} non-story passages cut from the very same translations, matched in length. A text's <em>folk-closeness</em> is its mean similarity to its {d.settings.closenessK} nearest folktales.</>}
-        why={<>Old translations share one voice: “thou” and “thee”, kings and servants. Any text from those books would look a little folk-like for that reason alone. Comparing each tradition's parables with non-story text from its own book takes that voice out, so what remains is the story.</>} />
+        what={<>We placed {int(d.corpus.parables)} parables from five traditions among the folktales, together with {int(d.corpus.baseline)} non-story passages from the same traditions (from the same translation wherever possible), matched in length. A text's <em>folk-closeness</em> is its mean similarity to its {d.settings.closenessK} nearest folktales.</>}
+        why={<>Old translations share one voice: “thou” and “thee”, kings and servants. Any text from those books would look a little folk-like for that reason alone. Comparing each tradition's parables with its own non-story text, from the same translation wherever possible, takes most of that voice out, so what remains is mostly the story. For the Buddhist texts the two come from different translations (section 1).</>} />
       <div className="controls-row"><RepToggle /><TraditionPicker d={d} value={trad} onChange={choose} /></div>
       <div className="two-col">
         <figure className="figure">
@@ -152,7 +152,7 @@ export function PlaceChapter({ d, near, trad, setTrad }: { d: Story; near: Near 
         <PermutationLab d={d} rep={rep} trad={trad} setTrad={setTrad} />
       </div>
       <Result>
-        <p><strong>{list(closer.map((h) => h.tradition))}</strong> parables sit closer to folktales than non-story text from their own translations ({closer.map((h) => `${h.tradition} ${signed(h.diff)}, ${pval(h.p, perm)}`).join("; ")}; {rep === "tfidf" ? "TF–IDF" : "embeddings"}). For {list(notCloser)} we cannot tell parables from their baseline. Switch the representation to see which verdicts change.</p>
+        <p><strong>{list(closer.map((h) => h.tradition))}</strong> parables sit closer to folktales than non-story text from their own tradition ({rep === "tfidf" ? "TF–IDF" : "embeddings"}): {closer.map((h) => `${h.tradition} ${signed(h.diff)} (${pval(h.p, perm)})`).join(", ")}. For {list(notCloser)} we cannot tell parables from their baseline. Switch the representation to see which verdicts change.</p>
         <p>Even so, {below === H.length ? "every tradition's" : `${below} of ${H.length} traditions'`} parables stay below the band of folktales compared with each other: parables lean towards folktales, they do not read like them.</p>
       </Result>
     </Chapter>
