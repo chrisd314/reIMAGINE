@@ -1,6 +1,6 @@
 # Results
 
-Written by `python -m ouaw.run --stage figures` on 2026-11-18. Every number is followed by the file that holds it and is also a LaTeX macro in `report/numbers.tex`. All statements describe these English translations and this corpus.
+Written by `python -m reimagine.run --stage figures` on 2026-11-18. Every number is followed by the file that holds it and is also a LaTeX macro in `report/numbers.tex`. All statements describe these English translations and this corpus.
 
 **Question.** Do parables from different religious traditions sit inside folktale communities more than non-story text from the same translations does, and which folktale communities and tale types do they land in?
 
@@ -95,7 +95,6 @@ Communities of the TF-IDF map (`results/community_table.csv`):
 - TF-IDF: a same-type folktale is among the 10 nearest for 25 of 36 retellings (recall@10 0.69, 95% CI 0.53 to 0.83; chance 0.055, p < 0.001). The type voted by the 10 nearest is right for 13 (0.36; chance 0.006, 95% of random draws below 0.03) (`results/calibration.csv`).
 - embeddings: a same-type folktale is among the 10 nearest for 22 of 36 retellings (recall@10 0.61, 95% CI 0.44 to 0.78; chance 0.055, p < 0.001). The type voted by the 10 nearest is right for 14 (0.39; chance 0.006, 95% of random draws below 0.03) (`results/calibration.csv`).
 - TF-IDF with nouns masked: a same-type folktale is among the 10 nearest for 17 of 36 retellings (recall@10 0.47, 95% CI 0.31 to 0.64; chance 0.055, p < 0.001). The type voted by the 10 nearest is right for 9 (0.25; chance 0.006, 95% of random draws below 0.03) (`results/calibration.csv`).
-- Hand labels: **pending.** `labeling/hand_labels_template.csv` holds the top-1 pair of 100 parables with the five terms that drive each match. Two coders fill `labeling/hand_labels.csv`; `python -m ouaw.agreement` then reports precision and Cohen's κ.
 
 ## 4. Robustness (Table 1)
 

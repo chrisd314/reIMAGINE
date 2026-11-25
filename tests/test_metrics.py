@@ -4,9 +4,9 @@ import numpy as np
 import pytest
 from sklearn.metrics import normalized_mutual_info_score
 
-from analysis.metrics import (assortativity_and_share, codes, label_agreement, nmi, permutation_matrix,
+from reimagine.core.metrics import (assortativity_and_share, codes, label_agreement, nmi, permutation_matrix,
                               top_k_neighbours)
-from analysis.networks import align_communities, disparity_backbone, select_edges
+from reimagine.core.networks import align_communities, disparity_backbone, select_edges
 
 
 @pytest.fixture(scope="module")
@@ -87,7 +87,7 @@ def test_neighbours_exclude_self_and_respect_eligibility(random_graph):
 
 
 def test_double_edge_swaps_preserve_degrees_without_loops_or_repeats(random_graph):
-    from analysis.networks import double_edge_swaps
+    from reimagine.core.networks import double_edge_swaps
     S, e, _ = random_graph
     n = S.shape[0]
     edges = np.stack([e["i"], e["j"]], 1).astype(np.int64)

@@ -1,7 +1,7 @@
 """Stage stamps and run IDs must depend on array content, not on how an archive was written."""
 import numpy as np
 
-from analysis.common import content_hash, sha256_file
+from reimagine.core.common import content_hash, sha256_file
 
 
 def test_npz_content_hash_ignores_archive_format(tmp_path):

@@ -1,5 +1,5 @@
 {
-  "description": "Immutable raw inputs for Once Upon a World. URLs pin the trilogy repository commit.",
+  "description": "Immutable raw inputs for reIMAGINE. URLs pin the trilogy repository commit.",
   "trilogy_repository": "https://github.com/j-hagedorn/trilogy",
   "trilogy_commit": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
   "files": [
@@ -40,18 +40,6 @@
       "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
     },
     {
-      "filename": "trilogy/data_dictionary.md",
-      "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/docs/data_dictionary.md",
-      "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
-      "retrieved_at": "2026-11-11T10:17:37Z",
-      "sha256": "85b0bbfa5472b615c9f014691ff0f6153a4ac3008c69d5148a1ff28b0410dd59",
-      "bytes": 7977,
-      "format": "markdown",
-      "role": "field definitions for aft.csv and the type/motif tables",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
-    },
-    {
       "filename": "trilogy/atu_df.csv",
       "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/data/atu_df.csv",
       "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
@@ -60,66 +48,6 @@
       "bytes": 3452690,
       "format": "csv",
       "role": "type-level ATU descriptions (reference only; not tale-level annotation)",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
-    },
-    {
-      "filename": "trilogy/atu_seq.csv",
-      "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/data/atu_seq.csv",
-      "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
-      "retrieved_at": "2026-11-11T10:17:41Z",
-      "sha256": "b48026f6ff9b9c79c4ab9ea06bbb7f543e63473ca75770710fa5bc11205bdf2c",
-      "bytes": 11347937,
-      "format": "csv",
-      "role": "type-level motif sequences per ATU type (reference only; not tale-level annotation)",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
-    },
-    {
-      "filename": "trilogy/tmi.csv",
-      "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/data/tmi.csv",
-      "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
-      "retrieved_at": "2026-11-11T10:17:44Z",
-      "sha256": "94faab724fbd24f437e75dac8a8ee22f44213f1380ab025b495924b58fc03b6b",
-      "bytes": 7566490,
-      "format": "csv",
-      "role": "Thompson Motif Index entries (reference only)",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
-    },
-    {
-      "filename": "trilogy/atu_combos.csv",
-      "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/data/atu_combos.csv",
-      "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
-      "retrieved_at": "2026-11-11T10:17:45Z",
-      "sha256": "b5c0cffcba1995395beaecdbfcd98d276593ff4a6fce2deca65338fe9ff62497",
-      "bytes": 44945,
-      "format": "csv",
-      "role": "documented co-occurring tale-type combinations (reference only)",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
-    },
-    {
-      "filename": "trilogy/fetch_ashliman.R",
-      "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/fetch/fetch_ashliman.R",
-      "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
-      "retrieved_at": "2026-11-11T10:17:47Z",
-      "sha256": "fe0ac6fe82d404b7208e17cad23d646f01c9bc0b5996149e68d312154eb3e921",
-      "bytes": 14523,
-      "format": "R source (read as documentation; never executed)",
-      "role": "documents how aft.csv fields were scraped and derived",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
-    },
-    {
-      "filename": "trilogy/aft_article_johd.Rmd",
-      "url": "https://raw.githubusercontent.com/j-hagedorn/trilogy/d57c2cefd0b216c8ce5c251f618c3e931c732d0a/docs/analyses/aft_article_intro/aft_article_johd.Rmd",
-      "version": "d57c2cefd0b216c8ce5c251f618c3e931c732d0a",
-      "retrieved_at": "2026-11-11T10:17:48Z",
-      "sha256": "2e1ff9060522f3090b1217ed4471f3292a89bc26b4b46f47c52749873122067b",
-      "bytes": 32957,
-      "format": "R Markdown (read as documentation)",
-      "role": "source of the corpus paper; describes collection and curation",
       "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
       "stated_licence": "Repository README and LICENSE.md disagree (see LICENSE_NOTES.md); treated as CC BY-NC-SA 4.0, the more restrictive"
     },
@@ -136,42 +64,6 @@
       "stated_licence": "as recorded in the Zenodo metadata itself"
     },
     {
-      "filename": "metadata/crossref_johd78.json",
-      "url": "https://api.crossref.org/works/10.5334/johd.78",
-      "version": "Crossref API snapshot at retrieval time",
-      "retrieved_at": "2026-10-29T19:14:20Z",
-      "sha256": "96fa9307140af9cf86ef7fbc93b0a4186592a7bfa2824c094eeca82ad29adab8",
-      "bytes": 14856,
-      "format": "json",
-      "role": "bibliographic metadata used to verify the corpus citation",
-      "citation": "Hagedorn, J. & Darányi, S. (2022). Bearing a Bag-of-Tales: An Open Corpus of Annotated Folktales for Reproducible Research. Journal of Open Humanities Data 8: 16. https://doi.org/10.5334/johd.78",
-      "stated_licence": "Crossref metadata (facts, CC0 per Crossref)"
-    },
-    {
-      "filename": "geo/ne_50m_admin_0_countries.geojson",
-      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson",
-      "version": "Natural Earth v5.1.2 (git tag)",
-      "retrieved_at": "2026-11-11T10:17:50Z",
-      "sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
-      "bytes": 3083490,
-      "format": "geojson",
-      "role": "country label points (LABEL_X/LABEL_Y) and UN sub-regions for recorded country associations",
-      "citation": "Natural Earth (2022). Admin 0 - Countries, 1:50m, v5.1.2. https://www.naturalearthdata.com/",
-      "stated_licence": "Public domain (Natural Earth terms of use)"
-    },
-    {
-      "filename": "geo/ne_50m_admin_0_map_subunits.geojson",
-      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_map_subunits.geojson",
-      "version": "Natural Earth v5.1.2 (git tag)",
-      "retrieved_at": "2026-11-11T10:17:53Z",
-      "sha256": "b1df8433477614c89e6b724990a7ab3733ec647559863321b6255c3fa3fce3ec",
-      "bytes": 3330118,
-      "format": "geojson",
-      "role": "label points for England, Scotland and Wales (map subunits of the United Kingdom)",
-      "citation": "Natural Earth (2022). Admin 0 - Map subunits, 1:50m, v5.1.2. https://www.naturalearthdata.com/",
-      "stated_licence": "Public domain (Natural Earth terms of use)"
-    },
-    {
       "filename": "metadata/ashliman_folktexts.html",
       "url": "https://sites.pitt.edu/~dash/folktexts.html",
       "version": "page snapshot at retrieval time (single page; the site was not crawled)",
@@ -179,8 +71,20 @@
       "sha256": "cbea797b31962546440c0326dcd2c77249e849a1f25e5453f614135a14c42761",
       "bytes": 118947,
       "format": "html",
-      "role": "attribution and copyright notice of the underlying collection",
+      "role": "attribution and copyright notice of the underlying collection; first half of the index of its tale pages (links each tale to the page it was taken from)",
       "citation": "Ashliman, D. L. (1996-). Folktexts: A library of folktales, folklore, fairy tales, and mythology. University of Pittsburgh. https://sites.pitt.edu/~dash/folktexts.html",
+      "stated_licence": "Copyright notice as printed on the page (see LICENSE_NOTES.md)"
+    },
+    {
+      "filename": "metadata/ashliman_folktexts2.html",
+      "url": "https://sites.pitt.edu/~dash/folktexts2.html",
+      "version": "page snapshot at retrieval time (single page; the site was not crawled)",
+      "retrieved_at": "2026-11-18T18:10:19Z",
+      "sha256": "a8e1fe346cdff09e34b2878eb1ea923ef5c0e8c34b1f21626071e57f7bdccc39",
+      "bytes": 95175,
+      "format": "html",
+      "role": "second half of the index of the collection's tale pages (the corpus was scraped from both index pages); links each tale to the page it was taken from",
+      "citation": "Ashliman, D. L. (1996-). Folktexts: A library of folktales, folklore, fairy tales, and mythology. University of Pittsburgh. https://sites.pitt.edu/~dash/folktexts2.html",
       "stated_licence": "Copyright notice as printed on the page (see LICENSE_NOTES.md)"
     }
   ]

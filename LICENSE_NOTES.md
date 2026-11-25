@@ -13,7 +13,7 @@ These are notes for a noncommercial educational project (DTU 02805). They are no
 **The discrepancy is recorded, not resolved.** This project follows the more restrictive reading, CC BY-NC-SA 4.0:
 
 - noncommercial use only
-- attribution to the dataset and its sources (see SOURCES.md)
+- attribution to the dataset and its sources (see "Data sources" in README.md)
 - share-alike terms for any adapted data we redistribute, such as `data/processed/` and the website payloads
 - notices preserved: `data/raw/trilogy/README.md` and `LICENSE.md` are kept verbatim
 
@@ -25,21 +25,20 @@ These are notes for a noncommercial educational project (DTU 02805). They are no
 
 ## 3. What this means for the website
 
-- **The local preview shows full texts for private study and annotation.** This is controlled by `export.include_full_texts` in `config.yaml`.
-- **The public deployment (GitHub Pages, from 2026-11-11) is excerpt-only.** The deployment workflow sets `OUAW_PUBLIC_BUILD=1`, which overrides `include_full_texts`: each tale page shows the first 120 words plus the source citation, and the opening scene quotes one further passage (at most 200 tokens) from each of its two tales. The workflow refuses to deploy an export that contains more. Derived data that cannot reconstruct a text (TF–IDF weights, embedding vectors, similarity scores) are published for every tale.
-- **Publishing full texts** would require confirmation from the rights holders that republication is covered. That has not been obtained, so do not remove the override without it.
-
-  Either way, the CC BY-NC-SA attribution and share-alike terms apply to the derived data.
+- **The website shows excerpts only, locally and in public.** It reads three files in `data/site/`, which hold titles, ATU labels, regions, source names, the three words that carry each match, and openings of at most 40 words (folktales, parables, baseline passages and the 36 calibration retellings). No full text, TF–IDF weight vector or embedding vector is published. The deploy workflow and `tests/test_site.py` refuse an opening over the limit.
+- **Full texts are read at the source.** Every folktale links to the page of D. L. Ashliman's *Folktexts* it was taken from, every parable and passage to its page at sacred-texts.com or eBible.org. The links are built from the collection's two index pages (saved once each, in `data/raw/metadata/`; the site was not crawled) with the rules of the corpus's own scraper (`reimagine/folktexts.py`).
+- **Publishing full texts** would require confirmation from the rights holders that republication is covered. That has not been obtained.
+- Either way, the CC BY-NC-SA attribution and share-alike terms apply to the derived data shown on the site.
 - The repository itself contains the full dataset (`data/raw/trilogy/aft.csv`) and is private. Making it public would redistribute the dataset; that is a separate decision under the same CC BY-NC-SA terms.
-- Maps use Natural Earth (public domain) via world-atlas (ISC). Fonts are Source Serif 4 and Inter (SIL Open Font License, via @fontsource).
+- Fonts are Source Serif 4, Inter and IM Fell English (SIL Open Font License, via @fontsource).
 
 ## 4. The model
 
-`sentence-transformers/all-MiniLM-L6-v2`, revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41`, Apache-2.0. Only vectors derived from it are exported; the model is not redistributed.
+`sentence-transformers/all-MiniLM-L6-v2`, revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41`, Apache-2.0. Neither the model nor vectors derived from it are redistributed.
 
 ## 5. The software
 
-The code in `analysis/`, `tests/`, `scripts/` and `web/src/` is the project's own work and is licensed **separately** from the data. A code licence has **not** been chosen yet; this is a decision for the authors (see STATUS.md). Until then the `pyproject.toml` licence field says “to be decided”.
+The code in `reimagine/`, `tests/` and `web/` is the project's own work and is licensed **separately** from the data. A code licence has **not** been chosen yet; this is a decision for the authors (see ai-assist/PROGRESS.md). Until then the `pyproject.toml` licence field says “to be decided”.
 
 ## 6. Not reproduced
 

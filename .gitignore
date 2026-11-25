@@ -7,39 +7,27 @@ __pycache__/
 # Local toolchains and caches (re-creatable)
 .tools/
 .cache/
-data/interim/cache/
 
-# Large intermediate artefacts (re-creatable from pinned sources + scripts)
-data/interim/*.npy
-data/interim/*.npz
-data/interim/*.parquet
-data/interim/graphs/
+# Intermediate data, re-created by the pipeline: cleaned records, embedding and part-of-speech caches,
+# arrays of every stage, input stamps of the data preparation
+data/interim/
 data/processed/*.parquet
 
-# Generated website payloads (python -m analysis export). They contain full tale texts;
-# do not publish them until the questions in LICENSE_NOTES.md are resolved.
-web/public/data/
-
-# Paper pipeline (python -m ouaw.run): intermediate arrays, development runs, and the raw source
-# pages of the parables (third-party page markup; data/raw/parables/fetch_log.csv stays tracked)
-data/interim/ouaw/
+# Raw source pages of the parables (third-party page markup; data/raw/parables/fetch_log.csv stays tracked)
 data/raw/parables/*/
+
+# Development runs (--sample N)
 results/_sample/
 figures/_sample/
 
-# Pipeline bookkeeping and logs
-outputs/.stamps/
-outputs/metrics/_*.txt
-
-# Frontend
+# Website: dependencies, build, and the data copied from data/site/ at every build
 web/node_modules/
 web/dist/
 web/.vite/
+web/public/data/
 
-# Browser-check artefacts
-outputs/browser/*.png
-
-# OS / editor
+# OS / editor / local assistant settings
 .DS_Store
 Thumbs.db
 .vscode/
+.claude/
